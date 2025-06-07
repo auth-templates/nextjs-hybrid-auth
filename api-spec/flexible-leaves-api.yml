@@ -1,0 +1,419 @@
+openapi: 3.0.0
+info:
+  title: Flexible Leaves API
+  version: 1.0.0
+  description: API Description for leave management app
+servers:
+  - url: http://localhost:3000
+paths:
+  /2fa/setup:
+    post:
+      summary: Generates QR code and temporary secret for 2FA setup
+      description: >-
+        Initiates the 2FA setup process by generating a QR code and a temporary
+        secret for a TOTP app like Google Authenticator.
+      security:
+        - bearerAuth: []
+      responses:
+        '200':
+          description: 2FA setup information returned successfully
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  qrCodeUrl:
+                    type: string
+                    format: uri
+                    example: >-
+                      otpauth://totp/MyApp:username@example.com?secret=ABCDEF123456&issuer=MyApp
+                  secret:
+                    type: string
+                    example: ABCDEF123456
+        '401':
+          description: Unauthorized - missing or invalid token
+  /2fa/verify-setup:
+    post:
+      summary: Verifies the 2FA setup code
+      description: Verifies the TOTP code to confirm 2FA setup with an authenticator app.
+      security:
+        - bearerAuth: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - code
+              properties:
+                code:
+                  type: string
+                  example: '123456'
+      responses:
+        '200':
+          description: Verification successful, 2FA enabled
+        '400':
+          description: Invalid code
+        '401':
+          description: Unauthorized
+  /2fa/disable:
+    delete:
+      summary: Disables 2FA
+      description: >-
+        Disables two-factor authentication for the current user and deletes the
+        2FA secret from the database.
+      security:
+        - bearerAuth: []
+      responses:
+        '200':
+          description: 2FA disabled successfully
+        '400':
+          description: Invalid request
+        '401':
+          description: Unauthorized - missing or invalid token
+  /2fa/recover:
+    post:
+      summary: Request email-based 2FA reset
+      description: >-
+        Requests a recovery process for users who are locked out due to losing
+        access to their 2FA device (phone).
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - email
+              properties:
+                email:
+                  type: string
+                  example: user@example.com
+      responses:
+        '200':
+          description: 2FA reset request sent successfully
+        '400':
+          description: Invalid email or failed request
+        '404':
+          description: User not found
+  /2fa/confirm-recover:
+    post:
+      summary: Confirm 2FA reset
+      description: >-
+        Confirms the reset process for 2FA by verifying the token sent to the
+        user's email.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - token
+              properties:
+                token:
+                  type: string
+                  example: abc123def456
+      responses:
+        '200':
+          description: 2FA successfully disabled and reset
+        '400':
+          description: Invalid token
+        '401':
+          description: Unauthorized - missing or invalid token
+  /auth/signup:
+    post:
+      summary: User Signup
+      description: Registers a new user and saves them to the database with admin role.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - firstName
+                - lastName
+                - email
+                - password
+              properties:
+                firstName:
+                  type: string
+                  example: John
+                lastName:
+                  type: string
+                  example: Doe
+                email:
+                  type: string
+                  example: john.doe@example.com
+                password:
+                  type: string
+                  example: $SuperSecurePassword123
+      responses:
+        '200':
+          description: User successfully registered.
+        '500':
+          description: Server error during signup.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    example: Error retrieving items
+                  error:
+                    type: string
+  /auth/verify-signup:
+    post:
+      summary: Verify Signup Token
+      description: Verifies a user's signup token and activates their account.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - token
+              properties:
+                token:
+                  type: string
+                  example: signup-verification-token-here
+      responses:
+        '200':
+          description: Token verified and user activated.
+        '400':
+          description: Invalid or expired token.
+        '404':
+          description: User not found.
+        '500':
+          description: Server error during verification.
+  /auth/login:
+    post:
+      summary: User Login
+      description: >-
+        Generates a session token for the user and sets it in an HTTP-only
+        cookie.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                email:
+                  type: string
+                  example: dev@mail.com
+                password:
+                  type: string
+                  example: $SuperSecurePassword45
+      responses:
+        '200':
+          description: >-
+            Login successful, session token set in cookie and user info
+            returned.
+          headers:
+            Set-Cookie:
+              description: HTTP-only session cookie containing the session token.
+              schema:
+                type: string
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/User'
+        '400':
+          description: Validation errors in login data.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    message:
+                      type: string
+                      example: Invalid email format
+        '500':
+          description: Server error during login.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    example: Error retrieving items
+                  error:
+                    type: string
+  /auth/logout:
+    post:
+      summary: User Logout
+      description: Logs out the user by deleting the session cookie.
+      responses:
+        '204':
+          description: Logout successful, session cookie deleted.
+        '500':
+          description: Server error during logout.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    example: Error retrieving items
+                  error:
+                    type: string
+  /auth/refresh:
+    post:
+      summary: Refresh Access Token
+      description: >-
+        Refreshes the access token using a valid refresh token stored in
+        cookies. Requires authentication.
+      responses:
+        '204':
+          description: Access token refreshed successfully. No content returned.
+        '403':
+          description: Invalid or missing refresh token.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    example: Invalid refresh token
+        '500':
+          description: Server error during token refresh.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    example: Internal server error
+  /auth/reset-password/request:
+    post:
+      summary: Initiate Password Reset
+      description: >-
+        Sends a password reset email to the given email address. Always responds
+        with 204 to avoid revealing user existence.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - userEmail
+              properties:
+                userEmail:
+                  type: string
+                  example: user@example.com
+      responses:
+        '200':
+          description: >-
+            Password reset not allowed (e.g., user inactive). Response used to
+            avoid user enumeration.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    example: Password reset not allowed
+        '204':
+          description: Password reset email sent if user exists and is active.
+        '500':
+          description: Server error during password reset.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    example: Internal server error
+  /auth/reset-password:
+    post:
+      summary: Complete Password Reset
+      description: Resets the user's password using a valid reset token and a new password.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - token
+                - newPassword
+              properties:
+                token:
+                  type: string
+                  example: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...
+                newPassword:
+                  type: string
+                  example: StrongNewPassword!2025
+      responses:
+        '204':
+          description: Password successfully reset.
+        '400':
+          description: Invalid or expired token, or invalid password format.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    example: Invalid or expired token
+        '500':
+          description: Server error during password reset.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    example: Internal server error
+components:
+  schemas:
+    User:
+      type: object
+      properties:
+        id:
+          type: integer
+          example: 123
+        firstName:
+          type: string
+          example: John
+        lastName:
+          type: string
+          example: Doe
+        email:
+          type: string
+          format: email
+          example: john.doe@example.com
+        role:
+          type: string
+          description: Role of the user
+          example: admin
+        createdAt:
+          type: string
+          format: date-time
+          example: '2023-01-01T12:00:00Z'
+        enabled2FA:
+          type: boolean
+          nullable: true
+          example: true
+        status:
+          type: string
+          nullable: true
+          description: Status of the user
+          example: active
+tags: []

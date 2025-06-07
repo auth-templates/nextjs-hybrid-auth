@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
+    "codegen": "openapi-rq -i ./api-spec/flexible-leaves-api.yml -o src/api/generated/flexible-leaves-api",
     "test": "jest --watch",
     "test:ci": "jest --ci --coverage",
     "predev": "npm run init-database",
@@ -48,6 +49,7 @@
     "swr": "^2.2.5"
   },
   "devDependencies": {
+    "@7nohe/openapi-react-query-codegen": "^1.6.2",
     "@commitlint/cli": "^19.8.1",
     "@commitlint/config-conventional": "^19.8.1",
     "@testing-library/jest-dom": "^6.4.2",
