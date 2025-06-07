@@ -1,0 +1,17 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ConfirmationEmailSent renders correctly 1`] = `
+<div
+  className="confirmationEmailSent"
+>
+  A confirmation email has been sent to
+  <div
+    className="email"
+  >
+     
+    account@mail.com
+     
+  </div>
+  and it should arrive soon. Please check your inbox.
+</div>
+`;

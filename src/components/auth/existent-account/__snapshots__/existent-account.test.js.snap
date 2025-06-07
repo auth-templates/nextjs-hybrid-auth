@@ -1,0 +1,29 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ExistentAccount renders correctly 1`] = `
+<div
+  className="existentAccount"
+>
+  An account with the email 
+  <div
+    className="email"
+  >
+    account@mail.com
+  </div>
+   already exists. Please go to
+  <a
+    href="/login"
+    onClick={[Function]}
+  >
+     Sign in 
+  </a>
+  page to sign in or go to
+  <a
+    href="/recover-password"
+    onClick={[Function]}
+  >
+     Forgot password 
+  </a>
+  page to reset your password.
+</div>
+`;

@@ -1,0 +1,16 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ConfirmationEmailExpired renders correctly 1`] = `
+<div
+  className="confirmationEmailExpired"
+>
+  Your account confirmation email has expired. Please go to
+  <a
+    href="/resend-confirmation-email"
+    onClick={[Function]}
+  >
+     Resend confirmation email 
+  </a>
+  page in order to send a new mail.
+</div>
+`;

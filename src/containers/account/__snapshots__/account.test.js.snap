@@ -1,0 +1,11 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`AccountView renders correctly 1`] = `
+<div
+  className="accountView"
+>
+  <div
+    className="billing-wrapper"
+  />
+</div>
+`;

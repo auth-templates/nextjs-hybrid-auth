@@ -1,0 +1,9 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`MessageBox renders correctly 1`] = `
+<ul
+  aria-live="assertive"
+  className="info"
+  role="alert"
+/>
+`;

@@ -1,0 +1,8 @@
+.inexistentAccount {
+    composes: error from '../../message-box/message-box.module.css';
+}
+
+.email {
+    display: inline;
+    font-weight: bold;
+}

@@ -1,0 +1,50 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Details renders correctly 1`] = `
+<div
+  className="details"
+>
+  <div
+    className="group"
+  >
+    <label
+      htmlFor="firstname"
+    >
+      First name (optional)
+    </label>
+    <input
+      className="normal"
+      id="firstname"
+      name="firstname"
+    />
+  </div>
+  <div
+    className="group"
+  >
+    <label
+      htmlFor="lastname"
+    >
+      Last name (optional)
+    </label>
+    <input
+      className="normal"
+      id="lastname"
+      name="lastname"
+    />
+  </div>
+  <div
+    className="group"
+  >
+    <label
+      htmlFor="company"
+    >
+      Company (optional)
+    </label>
+    <input
+      className="normal"
+      id="company"
+      name="company"
+    />
+  </div>
+</div>
+`;

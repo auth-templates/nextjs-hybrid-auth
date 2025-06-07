@@ -1,0 +1,8 @@
+.accountVerified {
+    composes: info from '../../message-box/message-box.module.css';
+}
+
+.email {
+    display: inline;
+    font-weight: bold;
+}

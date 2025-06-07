@@ -1,0 +1,15 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`VerifyAccount renders correctly 1`] = `
+<div
+  className="verifyAccount"
+>
+  <div
+    className="ldsRing smallLoader"
+    data-testid="small-lds-ring"
+  >
+    <div />
+    <div />
+  </div>
+</div>
+`;

@@ -1,0 +1,30 @@
+.base {
+    box-sizing: border-box;
+    margin: 0px;
+    margin-bottom: 10px;
+    border-radius: 4px;
+    padding: 4px;
+    padding-right: 8px;
+    padding-left: 8px;
+    width: 100%;
+    list-style: none;
+    text-align: left;
+}
+
+.error {
+    background-color: rgba(248, 106, 111, 0.8);
+    color:black;
+    composes: base;
+}
+
+.info {
+    background-color: rgb(136, 227, 255, 0.8);
+    color:black;
+    composes: base;
+}
+
+.warning {
+    background-color: rgba(245, 217, 95, 0.8);
+    color:black;
+    composes: base;
+}

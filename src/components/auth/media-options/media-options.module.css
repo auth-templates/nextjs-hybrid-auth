@@ -1,0 +1,88 @@
+.line {
+    position: relative;
+    height: 1px;
+    width: 100%;
+    margin: 16px 0;
+    background-color: #d4d4d4;
+}
+
+.line::before {
+    content: 'Or';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #FFF;
+    color: #8b8b8b;
+    padding: 0 15px;
+}
+
+.mediaOptions {
+    width: 100%;
+}
+
+.mediaOption {
+    width: 100%;
+}
+
+.buttonLink {
+    position: relative;
+    width: 100%;
+    margin-top: 16px;
+    border-radius: 6px;
+    display: flex;
+}
+
+.buttonLinkInner, .buttonLinkLabel {
+    width: 100%;
+}
+
+.buttonLinkLabel {
+    display: grid;
+}
+
+.icon {
+    position: absolute;
+    justify-self: flex-start;
+}
+
+.facebook {
+    color: #fff;
+    background-color: #4267b2;
+    border: 1px solid #4267b2;
+  
+}
+
+.facebook:hover {
+    background-color: #0171d3;
+    border: 1px solid #0171d3;
+}
+
+.google {
+    border: 1px solid #CACACA;
+}
+
+.googleLabel {
+    font-weight: 500;
+    opacity: 0.6;
+    color: #232836;
+}
+
+@media screen and (max-width: 350px) {
+    .icon  {
+        position: relative;
+    }
+
+    .buttonLink {
+        height: fit-content;
+    }
+
+    .buttonLinkLabel{
+        padding: 4px;
+        display: flex;
+        gap: 4px;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
+}

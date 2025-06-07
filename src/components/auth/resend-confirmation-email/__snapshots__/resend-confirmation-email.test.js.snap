@@ -1,0 +1,54 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ResendConfirmationEmail renders correctly 1`] = `
+<div
+  className="resendConfirmationEmail"
+>
+  <form
+    className="form"
+    onSubmit={[Function]}
+  >
+    <div
+      className="group"
+    >
+      <label
+        htmlFor="email"
+      >
+        Email
+      </label>
+      <input
+        className="normal"
+        id="email"
+        name="email"
+        onFocus={[Function]}
+        required={true}
+        type="email"
+      />
+    </div>
+    <div
+      className="actionsGroup"
+    >
+      <div
+        className="subgroup"
+      >
+        <button
+          className="normal sendButton"
+          type="submit"
+        >
+          Resend confirmation email
+        </button>
+        <div>
+          or go back to 
+          <a
+            className="link"
+            href="/login"
+            onClick={[Function]}
+          >
+             Sign in 
+          </a>
+        </div>
+      </div>
+    </div>
+  </form>
+</div>
+`;
