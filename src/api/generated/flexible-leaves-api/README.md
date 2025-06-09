@@ -1,1 +1,0 @@
-This code is auto-generated via @7nohe/openapi-react-query-codegen. Do not manually edit.

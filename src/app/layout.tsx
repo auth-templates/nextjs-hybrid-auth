@@ -2,10 +2,11 @@ import './globals.css';
 import '@mantine/core/styles.css';
 import { Inter } from 'next/font/google'
 import { MantineProvider } from '@mantine/core';
+import { MSWProvider } from '@/providers/msw-provider';
 import { theme } from '@/theme';
 
 if (process.env.NEXT_RUNTIME === 'nodejs') {
-    const { server } = require('../mocks/node')
+    const { server } = require('@/mocks/node')
     server.listen()
 }
 
@@ -20,9 +21,11 @@ export default function RootLayout({children}:{children: React.ReactNode}) {
   return (
     <html lang="en">
         <body className={inter.className}>
-            <MantineProvider theme={theme}>
-                {children}
-            </MantineProvider>
+            <MSWProvider>   
+                <MantineProvider theme={theme}>
+                    {children}    
+                </MantineProvider>
+            </MSWProvider>
         </body>
     </html>
   )

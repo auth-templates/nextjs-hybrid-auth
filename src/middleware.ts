@@ -1,5 +1,3 @@
-import { createCsrfProtect, CsrfError } from '@edge-csrf/nextjs';
-import { HttpResponse } from 'msw';
 import { NextResponse } from 'next/server';
 import type { NextRequest } from 'next/server';
 
@@ -18,8 +16,8 @@ export async function middleware(request: NextRequest) {
     const response = NextResponse.next();
 
 
-    console.log("request", request);
-    console.log("request", request.headers);
+    // console.log("request", request);
+    // console.log("request", request.headers);
 
     // if ( request.nextUrl.pathname === `/csrf-token` ) {
     //     return NextResponse.json({csrfToken: response.headers.get('X-CSRF-Token') || 'missing'})
