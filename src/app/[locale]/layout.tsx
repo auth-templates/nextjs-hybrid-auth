@@ -3,7 +3,7 @@ import {Locale, hasLocale, NextIntlClientProvider} from 'next-intl';
 import {getTranslations, setRequestLocale} from 'next-intl/server';
 import {ReactNode} from 'react';
 import {routing} from '@/i18n/routing';
-import Navigation from '@/components/Navigation';
+import Navigation from '@/components/routing/navigation/navigation';
 
 type Props = {
   children: ReactNode;

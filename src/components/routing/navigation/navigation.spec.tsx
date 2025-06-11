@@ -2,7 +2,7 @@ import {render} from '@testing-library/react';
 import pick from 'lodash/pick';
 import {NextIntlClientProvider} from 'next-intl';
 import messages from '@/messages/en.json';
-import Navigation from './Navigation';
+import Navigation from './navigation';
 
 // If the tested component uses features from Next.js, you have to mock them.
 jest.mock('next/navigation', () => ({

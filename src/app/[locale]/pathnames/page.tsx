@@ -1,7 +1,7 @@
 import {Locale, useTranslations} from 'next-intl';
 import {setRequestLocale} from 'next-intl/server';
 import {use} from 'react';
-import PageLayout from '@/components/PageLayout';
+import PageLayout from '@/components/routing/PageLayout';
 
 type Props = {
   params: Promise<{locale: Locale}>;
