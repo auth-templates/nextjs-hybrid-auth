@@ -1,19 +1,25 @@
 'use client'
 
-import { useRouter } from 'next/navigation';
-import { useState } from 'react';
-import { login } from '../../api/client/auth';
 import LoginForm from '@/components/auth/login-form';
 import { getCsrfToken } from '@/api/client/csrf';
 import { updateOrCreateToast } from '@/services/toast';
+import { useMutation } from '@tanstack/react-query';
+import { postAuthLoginMutation } from '@/api/generated/@tanstack/react-query.gen';
 
 export default function LoginContainer() {
-    const router = useRouter();
-    const [ status, setStatus ] = useState();
+    const { data, error, mutate } = useMutation({...postAuthLoginMutation()});
+    console.log("data", data);
     
     const handleLogin = async (data: {email: string, password: string}) => {
         try {
-            await login(data, await getCsrfToken());
+            mutate({
+                headers: {
+                    'x-csrf-token': await getCsrfToken(),
+                },
+                body: {
+                    ...data
+                }
+            });
         } catch (error: any) {
             console.log("error", error);
             updateOrCreateToast({containerId: "login-toast-container", toastId: 'uniqueToastId', message: error.message, type: 'error'});

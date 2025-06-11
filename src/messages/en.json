@@ -1,4 +1,7 @@
 {
+    "pages": {
+        "login": "Login"
+    },
     "Metadata": {
         "title": "Metadata"
     },

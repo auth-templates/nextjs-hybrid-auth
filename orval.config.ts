@@ -1,6 +1,6 @@
 export default {
   api: {
-    input: './api-spec/flexible-leaves-api.yml',
+    input: '',
     output: {
         mode: 'split',
         target: './src/api/generated/',

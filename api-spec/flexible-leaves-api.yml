@@ -20,16 +20,7 @@ paths:
           content:
             application/json:
               schema:
-                type: object
-                properties:
-                  qrCodeUrl:
-                    type: string
-                    format: uri
-                    example: >-
-                      otpauth://totp/MyApp:username@example.com?secret=ABCDEF123456&issuer=MyApp
-                  secret:
-                    type: string
-                    example: ABCDEF123456
+                $ref: '#/components/schemas/TwoFASetupResponse'
         '401':
           description: Unauthorized - missing or invalid token
   /2fa/verify-setup:
@@ -43,13 +34,7 @@ paths:
         content:
           application/json:
             schema:
-              type: object
-              required:
-                - code
-              properties:
-                code:
-                  type: string
-                  example: '123456'
+              $ref: '#/components/schemas/Verify2FACodeRequest'
       responses:
         '200':
           description: Verification successful, 2FA enabled
@@ -83,13 +68,7 @@ paths:
         content:
           application/json:
             schema:
-              type: object
-              required:
-                - email
-              properties:
-                email:
-                  type: string
-                  example: user@example.com
+              $ref: '#/components/schemas/Recover2FARequest'
       responses:
         '200':
           description: 2FA reset request sent successfully
@@ -108,13 +87,7 @@ paths:
         content:
           application/json:
             schema:
-              type: object
-              required:
-                - token
-              properties:
-                token:
-                  type: string
-                  example: abc123def456
+              $ref: '#/components/schemas/ConfirmRecover2FARequest'
       responses:
         '200':
           description: 2FA successfully disabled and reset
@@ -131,25 +104,7 @@ paths:
         content:
           application/json:
             schema:
-              type: object
-              required:
-                - firstName
-                - lastName
-                - email
-                - password
-              properties:
-                firstName:
-                  type: string
-                  example: John
-                lastName:
-                  type: string
-                  example: Doe
-                email:
-                  type: string
-                  example: john.doe@example.com
-                password:
-                  type: string
-                  example: $SuperSecurePassword123
+              $ref: '#/components/schemas/SignupRequest'
       responses:
         '200':
           description: User successfully registered.
@@ -158,13 +113,7 @@ paths:
           content:
             application/json:
               schema:
-                type: object
-                properties:
-                  message:
-                    type: string
-                    example: Error retrieving items
-                  error:
-                    type: string
+                $ref: '#/components/schemas/ErrorResponse'
   /auth/verify-signup:
     post:
       summary: Verify Signup Token
@@ -174,13 +123,7 @@ paths:
         content:
           application/json:
             schema:
-              type: object
-              required:
-                - token
-              properties:
-                token:
-                  type: string
-                  example: signup-verification-token-here
+              $ref: '#/components/schemas/VerifyTokenRequest'
       responses:
         '200':
           description: Token verified and user activated.
@@ -201,14 +144,7 @@ paths:
         content:
           application/json:
             schema:
-              type: object
-              properties:
-                email:
-                  type: string
-                  example: dev@mail.com
-                password:
-                  type: string
-                  example: $SuperSecurePassword45
+              $ref: '#/components/schemas/LoginRequest'
       responses:
         '200':
           description: >-
@@ -230,23 +166,13 @@ paths:
               schema:
                 type: array
                 items:
-                  type: object
-                  properties:
-                    message:
-                      type: string
-                      example: Invalid email format
+                  $ref: '#/components/schemas/ValidationErrorItem'
         '500':
           description: Server error during login.
           content:
             application/json:
               schema:
-                type: object
-                properties:
-                  message:
-                    type: string
-                    example: Error retrieving items
-                  error:
-                    type: string
+                $ref: '#/components/schemas/ErrorResponse'
   /auth/logout:
     post:
       summary: User Logout
@@ -259,13 +185,7 @@ paths:
           content:
             application/json:
               schema:
-                type: object
-                properties:
-                  message:
-                    type: string
-                    example: Error retrieving items
-                  error:
-                    type: string
+                $ref: '#/components/schemas/ErrorResponse'
   /auth/refresh:
     post:
       summary: Refresh Access Token
@@ -280,21 +200,13 @@ paths:
           content:
             application/json:
               schema:
-                type: object
-                properties:
-                  message:
-                    type: string
-                    example: Invalid refresh token
+                $ref: '#/components/schemas/ErrorResponse'
         '500':
           description: Server error during token refresh.
           content:
             application/json:
               schema:
-                type: object
-                properties:
-                  message:
-                    type: string
-                    example: Internal server error
+                $ref: '#/components/schemas/ErrorResponse'
   /auth/reset-password/request:
     post:
       summary: Initiate Password Reset
@@ -306,18 +218,10 @@ paths:
         content:
           application/json:
             schema:
-              type: object
-              required:
-                - userEmail
-              properties:
-                userEmail:
-                  type: string
-                  example: user@example.com
+              $ref: '#/components/schemas/ResetPasswordRequest'
       responses:
         '200':
-          description: >-
-            Password reset not allowed (e.g., user inactive). Response used to
-            avoid user enumeration.
+          description: Password reset not allowed (e.g., user inactive).
           content:
             application/json:
               schema:
@@ -333,11 +237,7 @@ paths:
           content:
             application/json:
               schema:
-                type: object
-                properties:
-                  message:
-                    type: string
-                    example: Internal server error
+                $ref: '#/components/schemas/ErrorResponse'
   /auth/reset-password:
     post:
       summary: Complete Password Reset
@@ -347,17 +247,7 @@ paths:
         content:
           application/json:
             schema:
-              type: object
-              required:
-                - token
-                - newPassword
-              properties:
-                token:
-                  type: string
-                  example: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...
-                newPassword:
-                  type: string
-                  example: StrongNewPassword!2025
+              $ref: '#/components/schemas/ConfirmResetPasswordRequest'
       responses:
         '204':
           description: Password successfully reset.
@@ -366,23 +256,149 @@ paths:
           content:
             application/json:
               schema:
-                type: object
-                properties:
-                  message:
-                    type: string
-                    example: Invalid or expired token
+                $ref: '#/components/schemas/ErrorResponse'
         '500':
           description: Server error during password reset.
           content:
             application/json:
               schema:
-                type: object
-                properties:
-                  message:
-                    type: string
-                    example: Internal server error
+                $ref: '#/components/schemas/ErrorResponse'
+  /csrf-token:
+    get:
+      summary: Get CSRF token
+      tags:
+        - Security
+      description: >
+        Returns a CSRF token and sets a cookie named `XSRF-TOKEN`.<br>
+
+        Include the returned token in the `x-csrf-token` header of all write
+        (POST, PUT, PATCH, DELETE) requests.<br>
+
+        This protects against Cross-Site Request Forgery attacks by validating
+        state-changing requests.
+      responses:
+        '200':
+          description: CSRF token returned successfully.
+          headers:
+            Set-Cookie:
+              description: Cookie named `XSRF-TOKEN` containing the token.
+              schema:
+                type: string
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CsrfTokenResponse'
 components:
   schemas:
+    TwoFASetupResponse:
+      type: object
+      properties:
+        qrCodeUrl:
+          type: string
+          format: uri
+          example: >-
+            otpauth://totp/MyApp:username@example.com?secret=ABCDEF123456&issuer=MyApp
+        secret:
+          type: string
+          example: ABCDEF123456
+    Verify2FACodeRequest:
+      type: object
+      required:
+        - code
+      properties:
+        code:
+          type: string
+          example: '123456'
+    Recover2FARequest:
+      type: object
+      required:
+        - email
+      properties:
+        email:
+          type: string
+          example: user@example.com
+    ConfirmRecover2FARequest:
+      type: object
+      required:
+        - token
+      properties:
+        token:
+          type: string
+          example: abc123def456
+    SignupRequest:
+      type: object
+      required:
+        - firstName
+        - lastName
+        - email
+        - password
+      properties:
+        firstName:
+          type: string
+          example: John
+        lastName:
+          type: string
+          example: Doe
+        email:
+          type: string
+          example: john.doe@example.com
+        password:
+          type: string
+          example: $SuperSecurePassword123
+    LoginRequest:
+      type: object
+      required:
+        - email
+        - password
+      properties:
+        email:
+          type: string
+          example: dev@mail.com
+        password:
+          type: string
+          example: $SuperSecurePassword45
+    VerifyTokenRequest:
+      type: object
+      required:
+        - token
+      properties:
+        token:
+          type: string
+          example: signup-verification-token-here
+    ResetPasswordRequest:
+      type: object
+      required:
+        - userEmail
+      properties:
+        userEmail:
+          type: string
+          example: user@example.com
+    ConfirmResetPasswordRequest:
+      type: object
+      required:
+        - token
+        - newPassword
+      properties:
+        token:
+          type: string
+          example: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...
+        newPassword:
+          type: string
+          example: StrongNewPassword!2025
+    ErrorResponse:
+      type: object
+      properties:
+        message:
+          type: string
+          example: Internal server error
+        error:
+          type: string
+    ValidationErrorItem:
+      type: object
+      properties:
+        message:
+          type: string
+          example: Invalid email format
     User:
       type: object
       properties:
@@ -401,7 +417,6 @@ components:
           example: john.doe@example.com
         role:
           type: string
-          description: Role of the user
           example: admin
         createdAt:
           type: string
@@ -414,6 +429,11 @@ components:
         status:
           type: string
           nullable: true
-          description: Status of the user
           example: active
+    CsrfTokenResponse:
+      type: object
+      properties:
+        csrfToken:
+          type: string
+          example: abc123csrfTOKEN456xyz
 tags: []

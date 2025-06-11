@@ -1,11 +1,11 @@
-import billingHandlers from './api/billing';
-import authHandlers from './api/auth';
-import leaveHandlers from './api/leaves';
-import timeOffHandlers from './api/time-offs';
-import { getFlexibleLeavesAPIMock } from '@/api/generated/flexibleLeavesAPI.msw';
+import { handlers as billingHandlers } from './api/billing';
+import { handlers as authHandlers }  from './api/auth';
+import { handlers as leaveHandlers } from './api/leaves';
+import { handlers as timeOffHandlers } from './api/time-offs';
+import { handlers as csrfHandlers } from './api/csrf';
 
 export const handlers = [
-    ...getFlexibleLeavesAPIMock(),
+    ...csrfHandlers, 
     ...billingHandlers,
     ...authHandlers,
     ...leaveHandlers,

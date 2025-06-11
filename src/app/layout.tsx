@@ -4,8 +4,9 @@ import { Inter } from 'next/font/google'
 import { MantineProvider } from '@mantine/core';
 import { MSWProvider } from '@/providers/msw-provider';
 import { theme } from '@/theme';
+import { ReactQueryProvider } from '@/providers/react-query-provider';
 
-if (process.env.NEXT_RUNTIME === 'nodejs') {
+if ( process.env.NEXT_RUNTIME === 'nodejs' ) {
     const { server } = require('@/mocks/node')
     server.listen()
 }
@@ -21,11 +22,13 @@ export default function RootLayout({children}:{children: React.ReactNode}) {
   return (
     <html lang="en">
         <body className={inter.className}>
-            <MSWProvider>   
-                <MantineProvider theme={theme}>
-                    {children}    
-                </MantineProvider>
-            </MSWProvider>
+            <ReactQueryProvider>
+                <MSWProvider>   
+                    <MantineProvider theme={theme}>
+                        {children}    
+                    </MantineProvider>
+                </MSWProvider>
+            </ReactQueryProvider>
         </body>
     </html>
   )

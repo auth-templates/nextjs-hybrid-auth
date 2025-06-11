@@ -1,8 +1,17 @@
 import { http, HttpResponse } from 'msw';
+import { csrfToken } from './csrf';
 
 export const handlers = [
     http.post('/auth/login', async ({ request }) => {
-        const { email, password, csrfToken } = await request.json() as any;
+        const { email, password } = await request.json() as any;
+        console.log(email, password, request.headers.get('x-csrf-token'))
+      
+        if ( request.headers.get('x-csrf-token') !== csrfToken) {
+            return new HttpResponse(
+                null,
+                { status: 400 }
+            );
+        }
 
         if( email === 'invalidaccount@mail.com') {
             return HttpResponse.json(
@@ -28,22 +37,6 @@ export const handlers = [
                 { status: 400 }
             );
         } 
-
-        
-        if ( email === 'badcsrftoken@mail.com' && csrfToken === '4gdf23ff' ) {
-            return new HttpResponse(
-                null,
-                { status: 400 }
-            );
-        } 
-
-        
-        if ( !csrfToken ) {
-            return new HttpResponse(
-                null,
-                { status: 400 }
-            );
-        }
 
         return HttpResponse.json(
             {

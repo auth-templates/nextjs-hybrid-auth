@@ -8,12 +8,15 @@ import { login as apiLogin } from '@/api/client/auth';
 import Router from 'next/router';
 import MediaOptions from '../media-options';
 import CustomToastContainer from '@/components/custom-toast-container';
+import { useTranslations } from 'next-intl';
 
 type LoginFormProps = {
     onSubmit: (data: any) => void,
 }
 
 export default function LoginForm({onSubmit}: LoginFormProps ) {
+    const t = useTranslations('pages.login');
+
     const emailInputId = useId();
     const passwordInputId = useId(); 
     const [error, setError] = useState<string|null>(null);
