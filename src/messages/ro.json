@@ -1,53 +1,63 @@
 {
-  "Metadata": {
-    "title": "Metadate"
-  },
-  "HomePage": {
-    "title": "Pagina principală",
-    "about": "despre"
-  },
-  "Error": {
-    "description": "<p>Din păcate, am întâmpinat o eroare.</p><p>Puteți încerca să <retry>reîncărcați pagina</retry> pe care o vizitați.</p>",
-    "title": "Ceva nu a mers bine!"
-  },
-  "IndexPage": {
-    "description": "Acesta este un exemplu de bază care demonstrează utilizarea <code>next-intl</code> cu Next.js App Router. Încercați să schimbați limba în colțul din dreapta sus și vedeți cum se schimbă conținutul.",
-    "title": "exemplu next-intl"
-  },
-  "LocaleLayout": {
-    "title": "exemplu next-intl"
-  },
-  "LocaleSwitcher": {
-    "label": "Schimbă limba",
-    "locale": "{locale, select, ro {🇷🇴 Română} en {🇺🇸 Engleză} other {Necunoscut}}"
-  },
-  "Manifest": {
-    "name": "exemplu next-intl"
-  },
-  "Navigation": {
-    "home": "Acasă",
-    "pathnames": "Căi de acces"
-  },
-  "NotFoundPage": {
-    "description": "Vă rugăm să verificați încă o dată bara de adrese a browserului sau să folosiți navigarea pentru a merge la o pagină cunoscută.",
-    "title": "Pagina nu a fost găsită"
-  },
-  "PageLayout": {
-    "links": {
-      "docs": {
-        "description": "Aflați mai multe despre next-intl în documentația oficială.",
-        "href": "https://next-intl.dev",
-        "title": "Documentație"
-      },
-      "source": {
-        "description": "Răsfoiți codul sursă al acestui exemplu pe GitHub.",
-        "href": "https://github.com/amannn/next-intl/tree/main/examples/example-app-router",
-        "title": "Cod sursă"
-      }
+    "navigation": {
+        "login": "Autentificare",
+        "home": "Pagina de start",
+        "signout": "Ieșire din cont"
+    },
+    "pages": {
+        "login": {
+            "title": "Autentificare"
+        }
+    },
+    "Metadata": {
+        "title": "Metadate"
+    },
+    "HomePage": {
+        "title": "Pagina principală",
+        "about": "despre"
+    },
+    "Error": {
+        "description": "<p>Din păcate, am întâmpinat o eroare.</p><p>Puteți încerca să <retry>reîncărcați pagina</retry> pe care o vizitați.</p>",
+        "title": "Ceva nu a mers bine!"
+    },
+    "IndexPage": {
+        "description": "Acesta este un exemplu de bază care demonstrează utilizarea <code>next-intl</code> cu Next.js App Router. Încercați să schimbați limba în colțul din dreapta sus și vedeți cum se schimbă conținutul.",
+        "title": "exemplu next-intl"
+    },
+    "LocaleLayout": {
+        "title": "exemplu next-intl"
+    },
+    "LocaleSwitcher": {
+        "label": "Schimbă limba",
+        "locale": "{locale, select, ro {🇷🇴 Română} en {🇺🇸 Engleză} other {Necunoscut}}"
+    },
+    "Manifest": {
+        "name": "exemplu next-intl"
+    },
+    "Navigation": {
+        "home": "Acasă",
+        "pathnames": "Căi de acces"
+    },
+    "NotFoundPage": {
+        "description": "Vă rugăm să verificați încă o dată bara de adrese a browserului sau să folosiți navigarea pentru a merge la o pagină cunoscută.",
+        "title": "Pagina nu a fost găsită"
+    },
+    "PageLayout": {
+        "links": {
+            "docs": {
+                "description": "Aflați mai multe despre next-intl în documentația oficială.",
+                "href": "https://next-intl.dev",
+                "title": "Documentație"
+            },
+            "source": {
+                "description": "Răsfoiți codul sursă al acestui exemplu pe GitHub.",
+                "href": "https://github.com/amannn/next-intl/tree/main/examples/example-app-router",
+                "title": "Cod sursă"
+            }
+        }
+    },
+    "PathnamesPage": {
+        "description": "<p>Căile de acces sunt de asemenea internaționalizate.</p><p>Dacă folosiți limba implicită Engleză, veți vedea <code>/en/pathnames</code> în bara de adrese a browserului pe această pagină.</p><p>Dacă schimbați limba în Română, URL-ul este localizat corespunzător (<code>/ro/pathnames</code>).</p>",
+        "title": "Căi de acces"
     }
-  },
-  "PathnamesPage": {
-    "description": "<p>Căile de acces sunt de asemenea internaționalizate.</p><p>Dacă folosiți limba implicită Engleză, veți vedea <code>/en/pathnames</code> în bara de adrese a browserului pe această pagină.</p><p>Dacă schimbați limba în Română, URL-ul este localizat corespunzător (<code>/ro/pathnames</code>).</p>",
-    "title": "Căi de acces"
-  }
 }

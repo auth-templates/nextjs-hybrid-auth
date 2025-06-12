@@ -1,6 +1,13 @@
 {
+    "navigation": {
+        "home": "Home",
+        "login": "Login",
+        "signout": "Log out"
+    },
     "pages": {
-        "login": "Login"
+        "login": {
+            "title": "Login"
+        }
     },
     "Metadata": {
         "title": "Metadata"

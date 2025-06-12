@@ -1,0 +1,53 @@
+.root {
+    display: flex;
+    flex-direction: row;
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+    gap: 10px;
+}
+
+.username {
+    margin: 0px;
+    color: var(--white);
+    font-size: var(--font-size);
+}
+
+.user {
+    display: flex;
+    gap: 2px;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+}
+
+.userIcon {
+    width: 1.5em;
+    height: 1.5em;
+    color: white
+}
+
+.downIcon {
+    color: white;
+}
+
+.loginButton {
+    padding: 3px 8px;
+    border: 1px solid var(--color-hover-default);
+    border-radius: 4px;
+    text-decoration: none;
+    color: var(--color-text-primary);
+    background-color: var(--blue)
+}
+
+.homeButton {
+    padding: 3px 8px;
+    border: 1px solid var(--color-hover-default);
+    border-radius: 4px;
+    text-decoration: none;
+    color: var(--color-text-primary);
+    background-color: var(--black)
+}
+
+.logoutButton {
+    width: fit-content;
+}
