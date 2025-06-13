@@ -27,10 +27,7 @@
     "LocaleLayout": {
         "title": "exemplu next-intl"
     },
-    "LocaleSwitcher": {
-        "label": "Schimbă limba",
-        "locale": "{locale, select, ro {🇷🇴 Română} en {🇺🇸 Engleză} other {Necunoscut}}"
-    },
+
     "Manifest": {
         "name": "exemplu next-intl"
     },

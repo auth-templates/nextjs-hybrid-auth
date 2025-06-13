@@ -1,0 +1,24 @@
+.input {
+    background-color: transparent;
+    color: var(--color-text-primary);
+    border: none;
+}
+
+.dropdown {
+    background-color: transparent;
+    border-color: var(--color-disabled-background)
+}
+
+.options {
+   background-color: transparent;
+}
+
+.option {
+    background-color: transparent;
+    color: var(--color-text-primary);
+}
+
+.option:hover {
+    color: var(--color-text-primary);
+    background-color: var(--color-hover-default);
+}

@@ -11,6 +11,7 @@
     box-shadow: 0px 2px 6px var(--shadow-color2);
     padding: 0px 20px;
     z-index: 1;
+    grid-row: 1;
 }
 
 .appInfo {

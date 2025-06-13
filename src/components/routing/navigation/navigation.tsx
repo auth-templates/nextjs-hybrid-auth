@@ -2,7 +2,7 @@ import React from 'react';
 import classes from './navigation.module.css';
 import { GiDandelionFlower } from "react-icons/gi";
 import classnames from "classnames";
-import LocaleSwitcher from '../LocaleSwitcher';
+import LocaleSwitcher from '../locale-switcher/locale-switcher';
 import { NavigationButtons } from './navigation-buttons/navigation-buttons';
 
 export default function Navigation({ className }: { className?: string }) {
