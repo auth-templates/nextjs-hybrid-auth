@@ -15,7 +15,7 @@ type LoginFormProps = {
 }
 
 export default function LoginForm({onSubmit}: LoginFormProps ) {
-    const t = useTranslations('pages.login');
+    const t = useTranslations('forms.login');
 
     const emailInputId = useId();
     const passwordInputId = useId(); 

@@ -6,7 +6,7 @@ import { use } from "react";
 
 export async function generateMetadata({ params }: LocaleParams) {
     const { locale } = await params;
-    const t = await getTranslations({ locale, namespace: 'verify-deactivate-2fa' });
+    const t = await getTranslations({ locale, namespace: 'pages.verify-deactivate-2fa' });
 
     return {
         title: t('title'),
@@ -20,7 +20,7 @@ type Props = {
 
 export default function VerifyTwoStepDeactivationPage({ params }: Props) {
     const { locale } = use(params);
-    const t = useTranslations('verify-deactivate-2fa');
+    const t = useTranslations('pages.verify-deactivate-2fa');
 
     // Enable static rendering
     setRequestLocale(locale);

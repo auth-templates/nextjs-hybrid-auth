@@ -6,7 +6,7 @@ import { use } from "react";
 
 export async function generateMetadata({ params }: LocaleParams) {
     const { locale } = await params;
-    const t = await getTranslations({ locale, namespace: 'send-deactivate-2fa-email' });
+    const t = await getTranslations({ locale, namespace: 'pages.send-deactivate-2fa-email' });
 
     return {
         title: t('title'),
@@ -20,7 +20,7 @@ type Props = {
 
 export default function SendDeactivationTwoStepEmailPage({ params }: Props) {
     const { locale } = use(params);
-    const t = useTranslations('send-deactivate-2fa-email');
+    const t = useTranslations('pages.send-deactivate-2fa-email');
 
     // Enable static rendering
     setRequestLocale(locale);

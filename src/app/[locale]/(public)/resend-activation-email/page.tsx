@@ -7,7 +7,7 @@ import { use } from "react";
 
 export async function generateMetadata({ params }: LocaleParams) {
     const { locale } = await params;
-    const t = await getTranslations({ locale, namespace: 'resend-activation-email' });
+    const t = await getTranslations({ locale, namespace: 'pages.resend-activation-email' });
 
     return {
         title: t('title'),
@@ -21,7 +21,7 @@ type Props = {
 
 export default function ResendActivationEmailPage({ params }: Props) {
     const { locale } = use(params);
-    const t = useTranslations('resend-activation-email');
+    const t = useTranslations('pages.resend-activation-email');
     
     // Enable static rendering
     setRequestLocale(locale);

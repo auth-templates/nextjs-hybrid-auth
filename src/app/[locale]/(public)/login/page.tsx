@@ -7,7 +7,7 @@ import { use } from "react";
 
 export async function generateMetadata({ params }: LocaleParams) {
     const { locale } = await params;
-    const t = await getTranslations({ locale, namespace: 'login' });
+    const t = await getTranslations({ locale, namespace: 'pages.login' });
 
     return {
         title: t('title'),
@@ -21,7 +21,7 @@ type Props = {
 
 export default function LoginPage({ params }: Props) {
     const { locale } = use(params);
-    const t = useTranslations('login');
+    const t = useTranslations('pages.login');
 
     // Enable static rendering
     setRequestLocale(locale);

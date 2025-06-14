@@ -1,27 +1,11 @@
-import {notFound} from 'next/navigation';
-import {Locale, hasLocale, NextIntlClientProvider} from 'next-intl';
-import {getTranslations, setRequestLocale} from 'next-intl/server';
-import {ReactNode} from 'react';
-import {routing} from '@/i18n/routing';
+import { notFound } from 'next/navigation';
+import { hasLocale, NextIntlClientProvider } from 'next-intl';
+import { setRequestLocale } from 'next-intl/server';
+import { routing } from '@/i18n/routing';
 import Navigation from '@/components/routing/navigation/navigation';
 
-type Props = {
-  children: ReactNode;
-  params: Promise<{locale: Locale}>;
-};
-
 export function generateStaticParams() {
-  return routing.locales.map((locale) => ({ locale }));
-}
-
-export async function generateMetadata(props: Omit<Props, 'children'>) {
-  const {locale} = await props.params;
-
-  const t = await getTranslations({locale, namespace: 'LocaleLayout'});
-
-  return {
-    title: t('title')
-  };
+    return routing.locales.map((locale) => ({ locale }));
 }
 
 export default async function LocaleLayout({

@@ -7,7 +7,7 @@ import { LocaleParams } from "@/types/global";
 
 export async function generateMetadata({ params }: LocaleParams) {
     const { locale } = await params;
-    const t = await getTranslations({ locale, namespace: 'register' });
+    const t = await getTranslations({ locale, namespace: 'pages.register' });
 
     return {
         title: t('title'),
@@ -21,7 +21,7 @@ type Props = {
 
 export default function RegisterPage({params}: Props) {
     const { locale } = use(params);
-    const t = useTranslations('register');
+    const t = useTranslations('pages.register');
     
     // Enable static rendering
     setRequestLocale(locale);

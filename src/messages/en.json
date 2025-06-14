@@ -4,103 +4,69 @@
         "login": "Login",
         "signout": "Log out"
     },
-    "home-page": {
-        "title": "Next.js Auth Demo",
-        "subtitle": "A full-featured authentication demo using Next.js frontend and Node.js backend, combining sessions with JWT for secure and scalable login flows.",
-        "getStarted": "Get Started",
-        "whatsInside": "What’s Inside",
-        "description": "This demo app is a real-world example of implementing secure authentication using <strong>Next.js</strong> on the frontend and a <strong>Node.js backend</strong>. It combines <strong>JWT</strong> and <strong>sessions</strong> to balance stateless APIs with server-side control — great for full-stack developers building production-ready login flows.",
-        "features": {
-            "0": "🔐 Login, signup, logout, and protected route examples using <code>Next.js</code>",
-            "1": "🛡️ Hybrid auth model: server sessions + JWT for frontend flexibility",
-            "2": "🔄 Secure cookie storage with automatic token refresh and CSRF protection",
-            "3": "⚙️ Backend auth API built with <code>Node.js</code> and <code>Express</code>",
-            "4": "📄 SSR support with session checks for private pages",
-            "5": "👥 Role-based access control with frontend and backend guards"
+    "pages": {
+        "home": {
+            "title": "Next.js Auth Demo",
+            "subtitle": "A full-featured authentication demo using Next.js frontend and Node.js backend, combining sessions with JWT for secure and scalable login flows.",
+            "getStarted": "Get Started",
+            "whatsInside": "What’s Inside",
+            "description": "This demo app is a real-world example of implementing secure authentication using <strong>Next.js</strong> on the frontend and a <strong>Node.js backend</strong>. It combines <strong>JWT</strong> and <strong>sessions</strong> to balance stateless APIs with server-side control — great for full-stack developers building production-ready login flows.",
+            "features": {
+                "0": "🔐 Login, signup, logout, and protected route examples using <code>Next.js</code>",
+                "1": "🛡️ Hybrid auth model: server sessions + JWT for frontend flexibility",
+                "2": "🔄 Secure cookie storage with automatic token refresh and CSRF protection",
+                "3": "⚙️ Backend auth API built with <code>Node.js</code> and <code>Express</code>",
+                "4": "📄 SSR support with session checks for private pages",
+                "5": "👥 Role-based access control with frontend and backend guards"
+            }
+        },
+        "register": {
+            "title": "Create a New Account",
+            "subtitle": "Sign up with your email address to access your dashboard securely."
+        },
+        "login": {
+            "title": "Log In to Your Account",
+            "subtitle": "Please enter your credentials to proceed."
+        },
+        "reset-password": {
+            "title": "Reset Your Password",
+            "subtitle": "Set a new password to regain access to your account."
+        },
+        "resend-activation-email": {
+            "title": "Request New Activation Email",
+            "subtitle": "If you did not receive the activation email, you may request a new one here."
+        },
+        "send-reset-password-email": {
+            "title": "Request Password Reset",
+            "subtitle": "Submit your email address to receive password reset instructions."
+        },
+        "send-deactivate-2fa-email": {
+            "title": "Request Two-Factor Authentication Deactivation",
+            "subtitle": "If you can no longer access your 2FA device, request to deactivate two-factor authentication and regain access."
+        },
+        "verify-account": {
+            "title": "Verify Your Account",
+            "subtitle": "We are confirming your email address. Please wait while we complete the verification process."
+        },
+        "verify-deactivate-2fa": {
+            "title": "Verify Two-Factor Deactivation",
+            "subtitle": "We are validating your request to deactivate two-factor authentication. Please wait while we complete the process."
+        },
+        "dashboard": {
+            "title": "Your Dashboard",
+            "subtitle": "Overview of your account, activity, and key insights."
+        },
+        "not-found": {
+            "title": "Page not found",
+            "subtitle": "Please double-check the browser address bar or use the navigation to go to a known page."
         }
     },
-    "register": {
-        "title": "Create a New Account",
-        "subtitle": "Sign up with your email address to access your dashboard securely."
-    },
-    "login": {
-        "title": "Log In to Your Account",
-        "subtitle": "Please enter your credentials to proceed."
-    },
-    "reset-password": {
-        "title": "Reset Your Password",
-        "subtitle": "Set a new password to regain access to your account."
-    },
-    "resend-activation-email": {
-        "title": "Request New Activation Email",
-        "subtitle": "If you did not receive the activation email, you may request a new one here."
-    },
-    "send-reset-password-email": {
-        "title": "Request Password Reset",
-        "subtitle": "Submit your email address to receive password reset instructions."
-    },
-    "send-deactivate-2fa-email": {
-        "title": "Request Two-Factor Authentication Deactivation",
-        "subtitle": "If you can no longer access your 2FA device, request to deactivate two-factor authentication and regain access."
-    },
-    "verify-account": {
-        "title": "Verify Your Account",
-        "subtitle": "We are confirming your email address. Please wait while we complete the verification process."
-    },
-    "verify-deactivate-2fa": {
-        "title": "Verify Two-Factor Deactivation",
-        "subtitle": "We are validating your request to deactivate two-factor authentication. Please wait while we complete the process."
-    },
-    "pages": {
+    "forms": {
         "login": {
             "title": "Login"
         }
     },
-    "Metadata": {
-        "title": "Metadata"
-    },
-    "HomePage": {
-        "title": "Homepage",
-        "about": "about"
-    },
-    "Error": {
-        "description": "<p>We've unfortunately encountered an error.</p><p>You can try to <retry>reload the page</retry> you were visiting.</p>",
-        "title": "Something went wrong!"
-    },
-    "IndexPage": {
-        "description": "This is a basic example that demonstrates the usage of <code>next-intl</code> with the Next.js App Router. Try changing the locale in the top right corner and see how the content changes.",
-        "title": "next-intl example"
-    },
-    "LocaleLayout": {
-        "title": "next-intl example"
-    },
-    "Manifest": {
-        "name": "next-intl example"
-    },
-    "Navigation": {
-        "home": "Home",
-        "pathnames": "Pathnames"
-    },
-    "NotFoundPage": {
-        "description": "Please double-check the browser address bar or use the navigation to go to a known page.",
-        "title": "Page not found"
-    },
-    "PageLayout": {
-        "links": {
-            "docs": {
-                "description": "Learn more about next-intl in the official docs.",
-                "href": "https://next-intl.dev",
-                "title": "Docs"
-            },
-            "source": {
-                "description": "Browse the source code of this example on GitHub.",
-                "href": "https://github.com/amannn/next-intl/tree/main/examples/example-app-router",
-                "title": "Source code"
-            }
-        }
-    },
-    "PathnamesPage": {
-        "description": "<p>The pathnames are internationalized too.</p><p>If you're using the default language English, you'll see <code>/en/pathnames</code> in the browser address bar on this page.</p><p>If you change the locale to German, the URL is localized accordingly (<code>/de/pfadnamen</code>).</p>",
-        "title": "Pathnames"
+    "manifest": {
+        "name": "Next.js Auth Demo"
     }
 }

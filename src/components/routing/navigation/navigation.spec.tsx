@@ -23,7 +23,7 @@ it('renders', () => {
   render(
     <NextIntlClientProvider
       locale="en"
-      messages={pick(messages, ['Navigation', 'LocaleSwitcher'])}
+      messages={pick(messages, ['navigation'])}
     >
       <Navigation />
     </NextIntlClientProvider>

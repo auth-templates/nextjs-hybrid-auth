@@ -7,7 +7,7 @@ import { use } from "react";
 
 export async function generateMetadata({ params }: LocaleParams) {
     const { locale } = await params;
-    const t = await getTranslations({ locale, namespace: 'verify-account' });
+    const t = await getTranslations({ locale, namespace: 'pages.verify-account' });
 
     return {
         title: t('title'),
@@ -21,7 +21,7 @@ type Props = {
 
 export default function VerifyAccountPage({ params }: Props) {
     const { locale } = use(params);
-    const t = useTranslations('verify-account');
+    const t = useTranslations('pages.verify-account');
 
     // Enable static rendering
     setRequestLocale(locale);
