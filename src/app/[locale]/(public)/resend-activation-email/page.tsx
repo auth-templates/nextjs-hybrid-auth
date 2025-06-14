@@ -1,5 +1,4 @@
-
-import ResetPasswordContainer from "@/containers/reset-password";
+import ResendConfirmationEmailContainer from "@/containers/resend-confirmation-email/resend-confirmation-email";
 import AuthLayout from "@/hoc/auth-layout";
 import { LocaleParams } from "@/types/global";
 import { Locale, useTranslations } from "next-intl";
@@ -8,7 +7,7 @@ import { use } from "react";
 
 export async function generateMetadata({ params }: LocaleParams) {
     const { locale } = await params;
-    const t = await getTranslations({ locale, namespace: 'reset-password' });
+    const t = await getTranslations({ locale, namespace: 'resend-activation-email' });
 
     return {
         title: t('title'),
@@ -20,10 +19,10 @@ type Props = {
     params: Promise<{ locale: Locale }>;
 };
 
-export default function ResetPasswordPage({ params }: Props) {
+export default function ResendActivationEmailPage({ params }: Props) {
     const { locale } = use(params);
-    const t = useTranslations('reset-password');
-
+    const t = useTranslations('resend-activation-email');
+    
     // Enable static rendering
     setRequestLocale(locale);
 
@@ -32,7 +31,7 @@ export default function ResetPasswordPage({ params }: Props) {
             title={t('title')}
             subtitle={t('subtitle')}
         >
-            <ResetPasswordContainer />
+            <ResendConfirmationEmailContainer />
         </AuthLayout>
     );
 }

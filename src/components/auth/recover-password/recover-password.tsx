@@ -1,6 +1,5 @@
 import React, { useEffect, useRef, useState } from 'react';
 import classes from './recover-password.module.css';
-import { Link }  from 'react-router-dom';
 import classNames from 'classnames';
 import MessageBox from '../../message-box';
 import SmallLoader from '../../small-loader';
@@ -8,6 +7,7 @@ import InexistentAccount from '../inexistent-account';
 import ResetPasswordEmailSent from '../reset-password-email-sent';
 import AccountNotActive from '../account-not-active';
 import { Button, Input } from '@mantine/core';
+import Link from 'next/link';
 
 type RecoverPasswordProps = {
     onSend: (data: {email: string}) => void,
@@ -59,7 +59,7 @@ const RecoverPassword = ({status, onSend}: RecoverPasswordProps) => {
                     :
                 emailSent 
                     ?
-                        <ResetPasswordEmailSent email={email.current} />
+                        <ResetPasswordEmailSent email={email.current as any} />
                     :
                         <form className={classes.form} onSubmit={onSubmit}>
                             <div className={classes.group}>
@@ -89,7 +89,11 @@ const RecoverPassword = ({status, onSend}: RecoverPasswordProps) => {
                                             :
                                                 <Button type='submit' className={classes.sendButton}>Send reset password email</Button>
                                     }
-                                    <div>or go back to <Link className={classes.link} to="/login" state={{email: email.current}}> Sign in </Link></div>
+                                    <div>or go back to <Link 
+                                    className={classes.link} 
+                                    href="/login" 
+                                    /*state={{email: email.current}}*/
+                                    > Sign in </Link></div>
                                 </div>
                             </div>
                         </form>
@@ -97,3 +101,4 @@ const RecoverPassword = ({status, onSend}: RecoverPasswordProps) => {
         </div>
     );
 }
+export default RecoverPassword;

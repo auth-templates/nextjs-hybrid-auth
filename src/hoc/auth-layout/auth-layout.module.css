@@ -1,0 +1,94 @@
+.layout {
+  min-height: calc(100vh - var(--navbarHeight));
+  background: var(--color-primary);
+  color: white;
+  display: flex;
+  flex-direction: column;
+  min-width: 100%;
+}
+
+.top {
+  position: relative;
+  flex-grow: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 4rem; /* space between hero and form */
+  padding: 0 2rem;
+  /* Make sure wave stays at bottom */
+  overflow: visible;
+  box-sizing: border-box;
+}
+
+.hero {
+  max-width: 480px;
+  text-align: left;
+}
+
+.title {
+  font-family: var(--font-family);
+  font-size: 3rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+  line-height: 1.1;
+}
+
+.subtitle {
+  font-size: 1.25rem;
+  font-weight: 400;
+  opacity: 0.85;
+  line-height: 1.4;
+}
+
+.form {
+  max-width: 480px;
+  background: var(--color-surface);
+  padding: 2.5rem 3rem;
+  border-radius: var(--border-radius);
+  box-shadow: var(--shadow1);
+  color: var(--color-text-primary);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  min-height: 280px;
+  box-sizing: border-box;
+}
+
+.wave {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 120px;
+  overflow: hidden;
+  line-height: 0;
+  pointer-events: none;
+  user-select: none;
+  z-index: 0;
+}
+
+.wave svg {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+/* Responsive: stack vertically on smaller screens */
+@media (max-width: 768px) {
+  .top {
+    flex-direction: column;
+    gap: 2rem;
+    padding-bottom: 6rem; /* extra padding so wave doesn't overlap */
+  }
+
+  .hero,
+  .form {
+    max-width: 100%;
+    width: 100%;
+    text-align: center;
+  }
+
+  .form {
+    min-height: auto;
+  }
+}

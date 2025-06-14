@@ -1,29 +1,38 @@
-import { useTranslations } from 'next-intl';
-import { Link } from '@/i18n/navigation';
-
-import { getTranslations } from 'next-intl/server';
+import { Locale, useTranslations } from 'next-intl';
+import { getTranslations, setRequestLocale } from 'next-intl/server';
 import { LocaleParams } from '@/types/global';
 
 import classes from './page.module.css'
+import { use } from 'react';
 
 export async function generateMetadata({ params }: LocaleParams) {
     const { locale } = await params;
-    const t = await getTranslations({ locale, namespace: 'Metadata' });
+    const t = await getTranslations({ locale, namespace: 'home-page' });
 
     return {
-        title: t('title')
+        title: t('title'),
+        description: t('subtitle')
     };
 }
 
-export default function HomePage() {
+type Props = {
+    params: Promise<{ locale: Locale }>;
+};
+
+export default function HomePage({ params }: Props) {
+    const { locale } = use(params);
     const t = useTranslations('home-page');
+
+    // Enable static rendering
+    setRequestLocale(locale);
+
     return (
         <div className={classes.layout}>
             <section className={classes.top}>
                 <div className={classes.heroContent}>
                     <h1 className={classes.title}>{t('title')}</h1>
                     <p className={classes.subtitle}>{t('subtitle')}</p>
-                    <a href="#get-started" className={classes.button}>
+                    <a href="/register" className={classes.button}>
                         {t('getStarted')}
                     </a>
                 </div>

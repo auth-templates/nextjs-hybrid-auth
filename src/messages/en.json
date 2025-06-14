@@ -19,6 +19,38 @@
             "5": "👥 Role-based access control with frontend and backend guards"
         }
     },
+    "register": {
+        "title": "Create a New Account",
+        "subtitle": "Sign up with your email address to access your dashboard securely."
+    },
+    "login": {
+        "title": "Log In to Your Account",
+        "subtitle": "Please enter your credentials to proceed."
+    },
+    "reset-password": {
+        "title": "Reset Your Password",
+        "subtitle": "Set a new password to regain access to your account."
+    },
+    "resend-activation-email": {
+        "title": "Request New Activation Email",
+        "subtitle": "If you did not receive the activation email, you may request a new one here."
+    },
+    "send-reset-password-email": {
+        "title": "Request Password Reset",
+        "subtitle": "Submit your email address to receive password reset instructions."
+    },
+    "send-deactivate-2fa-email": {
+        "title": "Request Two-Factor Authentication Deactivation",
+        "subtitle": "If you can no longer access your 2FA device, request to deactivate two-factor authentication and regain access."
+    },
+    "verify-account": {
+        "title": "Verify Your Account",
+        "subtitle": "We are confirming your email address. Please wait while we complete the verification process."
+    },
+    "verify-deactivate-2fa": {
+        "title": "Verify Two-Factor Deactivation",
+        "subtitle": "We are validating your request to deactivate two-factor authentication. Please wait while we complete the process."
+    },
     "pages": {
         "login": {
             "title": "Login"

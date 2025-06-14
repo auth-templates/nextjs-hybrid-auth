@@ -19,6 +19,38 @@
             "5": "👥 Control bazat pe roluri cu protecții pe frontend și backend"
         }
     },
+    "register": {
+        "title": "Creați un Cont Nou",
+        "subtitle": "Înregistrați-vă cu adresa de email pentru a accesa tabloul de bord în siguranță."
+    },
+    "login": {
+        "title": "Conectați-vă la Contul Dvs.",
+        "subtitle": "Vă rugăm să introduceți datele de autentificare pentru a continua."
+    },
+    "reset-password": {
+        "title": "Resetare Parolă",
+        "subtitle": "Stabiliți o parolă nouă pentru a vă recăpăta accesul la cont."
+    },
+    "resend-activation-email": {
+        "title": "Solicitați un Nou Email de Activare",
+        "subtitle": "Dacă nu ați primit emailul de activare, puteți solicita unul nou aici."
+    },
+    "send-reset-password-email": {
+        "title": "Solicitare Resetare Parolă",
+        "subtitle": "Introduceți adresa de email pentru a primi instrucțiuni de resetare a parolei."
+    },
+    "send-deactivate-2fa-email": {
+        "title": "Solicitare Dezactivare Autentificare în Doi Pași",
+        "subtitle": "Dacă nu mai aveți acces la dispozitivul dvs. 2FA, solicitați dezactivarea autentificării în doi pași pentru a vă recupera accesul."
+    },
+    "verify-account": {
+        "title": "Verificați-vă Contul",
+        "subtitle": "Confirmăm adresa dvs. de email. Vă rugăm să așteptați finalizarea procesului de verificare."
+    },
+    "verify-deactivate-2fa": {
+        "title": "Verificare Dezactivare Autentificare în Doi Pași",
+        "subtitle": "Validăm solicitarea dvs. de a dezactiva autentificarea în doi pași. Vă rugăm să așteptați finalizarea procesului."
+    },
     "pages": {
         "login": {
             "title": "Autentificare"

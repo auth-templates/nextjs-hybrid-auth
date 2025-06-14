@@ -19,7 +19,7 @@ export default function MessageBox({data = {theme: 'info', lines: [] }, ariaLive
         <ul 
             {...rest}
             role="alert"
-            aria-Live={ariaLive ?? "assertive"}
+            aria-live={ariaLive ?? "assertive"}
             className={(MessageTypes as any)[data.theme]}>
             {
                 data.lines.map((line, index) => <li key={index} tabIndex={0}>{line}</li>)

@@ -4,7 +4,7 @@ import VerifyAccount from '../../components/auth/verify-account';
 import { verifyAccount } from '../../api/client/auth';
 import useCsrfToken from '../../hooks/use-csrf-token';
 import { useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
+import { useParams } from 'next/navigation';
 
 const VerifyAccountContainer = () => {
     const { token } = useParams();
@@ -15,7 +15,7 @@ const VerifyAccountContainer = () => {
         verify({token});
     }, [token])
 
-    const verify = async (data) => {
+    const verify = async (data: any) => {
         const response = await verifyAccount({...data, csrfToken: await getCsrfToken()});
         try {
             if( response.ok ) {

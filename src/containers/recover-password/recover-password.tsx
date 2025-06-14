@@ -9,7 +9,7 @@ const RecoverPasswordContainer = () => {
     const [status, setStatus] = useState();
     const getCsrfToken = useCsrfToken();
 
-    const onSend = async (data) => {
+    const onSend = async (data: any) => {
         const response = await recoverPassword({...data, csrfToken: await getCsrfToken()});
         try {
             if( response.ok ) {
