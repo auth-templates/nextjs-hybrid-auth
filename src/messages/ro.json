@@ -4,6 +4,21 @@
         "home": "Pagina de start",
         "signout": "Ieșire din cont"
     },
+    "home-page": {
+        "title": "Demo Autentificare Next.js",
+        "subtitle": "Un demo complet de autentificare folosind Next.js pe frontend și Node.js pe backend, combinând sesiuni cu JWT pentru fluxuri de autentificare sigure și scalabile.",
+        "getStarted": "Începe acum",
+        "whatsInside": "Ce găsești aici",
+        "description": "Această aplicație demo este un exemplu real de implementare a autentificării securizate folosind <strong>Next.js</strong> pe frontend și un <strong>backend Node.js</strong>. Combină <strong>JWT</strong> și <strong>sesiuni</strong> pentru a echilibra API-uri fără stare cu control pe server — ideal pentru dezvoltatorii full-stack care construiesc fluxuri de autentificare gata pentru producție.",
+        "features": {
+            "0": "🔐 Exemple de autentificare, înregistrare, logout și rute protejate folosind <code>Next.js</code>",
+            "1": "🛡️ Model hibrid de autentificare: sesiuni pe server + JWT pentru flexibilitate frontend",
+            "2": "🔄 Stocare sigură a cookie-urilor cu reîmprospătare automată a token-ului și protecție CSRF",
+            "3": "⚙️ API backend de autentificare construit cu <code>Node.js</code> și <code>Express</code>",
+            "4": "📄 Suport SSR cu verificări de sesiune pentru pagini private",
+            "5": "👥 Control bazat pe roluri cu protecții pe frontend și backend"
+        }
+    },
     "pages": {
         "login": {
             "title": "Autentificare"
@@ -27,7 +42,6 @@
     "LocaleLayout": {
         "title": "exemplu next-intl"
     },
-
     "Manifest": {
         "name": "exemplu next-intl"
     },

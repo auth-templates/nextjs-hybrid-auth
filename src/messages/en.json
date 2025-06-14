@@ -4,6 +4,21 @@
         "login": "Login",
         "signout": "Log out"
     },
+    "home-page": {
+        "title": "Next.js Auth Demo",
+        "subtitle": "A full-featured authentication demo using Next.js frontend and Node.js backend, combining sessions with JWT for secure and scalable login flows.",
+        "getStarted": "Get Started",
+        "whatsInside": "What’s Inside",
+        "description": "This demo app is a real-world example of implementing secure authentication using <strong>Next.js</strong> on the frontend and a <strong>Node.js backend</strong>. It combines <strong>JWT</strong> and <strong>sessions</strong> to balance stateless APIs with server-side control — great for full-stack developers building production-ready login flows.",
+        "features": {
+            "0": "🔐 Login, signup, logout, and protected route examples using <code>Next.js</code>",
+            "1": "🛡️ Hybrid auth model: server sessions + JWT for frontend flexibility",
+            "2": "🔄 Secure cookie storage with automatic token refresh and CSRF protection",
+            "3": "⚙️ Backend auth API built with <code>Node.js</code> and <code>Express</code>",
+            "4": "📄 SSR support with session checks for private pages",
+            "5": "👥 Role-based access control with frontend and backend guards"
+        }
+    },
     "pages": {
         "login": {
             "title": "Login"
@@ -16,7 +31,7 @@
         "title": "Homepage",
         "about": "about"
     },
-  "Error": {
+    "Error": {
         "description": "<p>We've unfortunately encountered an error.</p><p>You can try to <retry>reload the page</retry> you were visiting.</p>",
         "title": "Something went wrong!"
     },
