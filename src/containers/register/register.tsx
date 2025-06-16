@@ -1,34 +1,46 @@
 'use client';
 
-import Register from '../../components/auth/register';
-import { register } from '../../api/client/auth';
 import useCsrfToken from '../../hooks/use-csrf-token';
 import { useRouter } from 'next/navigation';
 import { PublicRoutes } from '../../routes';
-import { useState } from 'react';
+import { useEffect } from 'react';
+import { useMutation } from '@tanstack/react-query';
+import { postAuthSignupMutation } from '@/api/generated/@tanstack/react-query.gen';
+import { SignupRequest } from '@/api/generated';
+import { updateOrCreateToast } from '@/services/toast';
+import SignupForm from '@/components/auth/signup-form';
 
 const RegisterContainer = () => {
-    const router = useRouter();
     const getCsrfToken = useCsrfToken();
-    const [ status, setStatus ] = useState(null);
+    const router = useRouter();
+    const { data, error, mutate, status } = useMutation({...postAuthSignupMutation()});
+    console.log("data", data);
+    
+    useEffect(() => {
+        if ( status === 'success' ) {
+            router.push(PublicRoutes.login);
+        }
+    }, [status])
 
-    const onRegister = async (data: any) => {
-        // const response = await register({...data, csrfToken: await getCsrfToken()});
-        // try {
-        //     if( response.ok ) {
-        //         router.push({pathname: PublicRoutes.login, query: { email: data.email }}, PublicRoutes.login);
-        //     } else {
-        //         const { message } = await response.json();
-        //         setStatus({theme: 'error', lines: [message]});
-        //     }
-        // } catch (error) {
-        //     setStatus({theme: 'error', lines: [ 'Registration failed! Please try again.' ]});
-        // }
+    const onRegister = async (data: SignupRequest) => {
+        try {
+            mutate({
+                headers: {
+                    'x-csrf-token': await getCsrfToken(),
+                },
+                body: {
+                    ...data
+                }
+            });
+        } catch (error: any) {
+            console.log("error", error);
+            updateOrCreateToast({containerId: "login-toast-container", toastId: 'uniqueToastId', message: error.message, type: 'error'});
+        };
     }
 
     return (
         <>
-            <Register onRegister={onRegister} status={status}/>
+            <SignupForm onSubmit={onRegister} errorMesage={error?.message}/>
         </>
     )
 }

@@ -32,7 +32,7 @@
 
     --color-danger-background: var(--color-alert); /* Danger background */
     --color-danger-border: #C63929; /* Darker red for danger inputs */
-    --color-default-background: var(--color-surface); /* Default input background */
+    --color-default-background: #FEFAF6; /* Default input background */
     --color-default-border: #003366; /* Navy border color for default inputs */
     --color-disabled-background: #E0E0E0; /* Background color for disabled inputs */
     --color-disabled-text: var(--color-text-secondary); /* Text color for disabled inputs */

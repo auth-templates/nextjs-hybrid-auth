@@ -16,7 +16,7 @@ export async function generateMetadata({ params }: LocaleParams) {
 }
 
 type Props = {
-  params: Promise<{locale: Locale}>;
+    params: Promise<{locale: Locale}>;
 };
 
 export default function RegisterPage({params}: Props) {

@@ -1,20 +1,26 @@
 .line {
-    position: relative;
-    height: 1px;
-    width: 100%;
-    margin: 16px 0;
-    background-color: #d4d4d4;
+  position: relative;
+  height: 1px;
+  width: 100%;
+  background-color: var(--color-primary, #b0b0b0);
+  margin: 1.5rem 0 2rem 0;
+  border-radius: 2px;
 }
 
 .line::before {
-    content: 'Or';
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    background-color: #FFF;
-    color: #8b8b8b;
-    padding: 0 15px;
+  content: 'Or';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: var(--color-surface, #f9f9f9); /* Slightly tinted fallback for contrast */
+  color: var(--color-text-primary, #333); /* Visible in both modes */
+  font-size: 0.9rem;
+  font-weight: 500;
+  padding: 0 0.75rem;
+  border-radius: 999px;
+  border: 1px solid var(--color-primary, rgba(0, 0, 0, 0.374)); /* subtle separator */
+  box-shadow: 0 1px 5px rgba(0, 0, 0, 0.08); /* light separation glow */
 }
 
 .mediaOptions {

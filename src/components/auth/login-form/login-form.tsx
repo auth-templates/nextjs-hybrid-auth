@@ -34,7 +34,6 @@ export default function LoginForm({onSubmit}: LoginFormProps ) {
     return (
         <Container className={styles.container}>
             <Card className={styles.card}>
-                <Title order={2}>Login</Title>
                 <form onSubmit={handleSubmit(onSubmit)} className={styles.form}>
                     <TextInput
                         {...register('email', { 

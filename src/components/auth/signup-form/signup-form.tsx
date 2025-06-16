@@ -1,15 +1,20 @@
 'use client';
+
 import styles from './signup-form.module.css';
 import { TextInput, Container, Card, Button, Notification, PasswordInput } from '@mantine/core';
 import Link from 'next/link';
-import { useId, useState } from 'react';
+import { useEffect, useId, useState } from 'react';
 import { useForm } from 'react-hook-form';
-import { register as apiRegister } from '../../api/auth';
-import Router from 'next/router';
 import MediaOptions from '../media-options';
 import { PasswordRulesText, validatePassword } from '@/services/password-rules';
+import { SignupRequest } from '@/api/generated';
 
-const SignupForm = () => {
+type SignupFormProps = {
+    onSubmit: (data: SignupRequest) => void
+    errorMesage?: string
+}
+
+const SignupForm = ({onSubmit, errorMesage}: SignupFormProps) => {
     const emailInputId = useId();
     const passwordInputId = useId(); 
     const confirmPasswordInputId = useId(); 
@@ -27,10 +32,17 @@ const SignupForm = () => {
         }
     });
 
-    const onSubmit = async (data:any) => {
+    useEffect(() => {
+        if ( errorMesage ) {
+            setError(errorMesage)
+        } else {
+            setError(null)
+        }
+    }, [errorMesage])
+
+    const callSubmit = async (data:any) => {
         try {
-            await apiRegister(data);
-            Router.push('/dashboard');
+            onSubmit(data)
         } catch (error: any) {
             console.log("ERROR", error);
             setError(error)
@@ -40,8 +52,7 @@ const SignupForm = () => {
     return (
         <Container className={styles.container}>
             <Card className={styles.card}>
-                <h2>Sign up</h2>
-                <form onSubmit={handleSubmit(onSubmit)} className={styles.form}>
+                <form onSubmit={handleSubmit(callSubmit)} className={styles.form}>
                 { error && (
                     <Notification
                         color="none"
@@ -105,7 +116,7 @@ const SignupForm = () => {
                         className={styles.confirmPasswordField}
                         error={errors.confirmPassword?.message}
                     />
-                    <Button fullWidth type="submit">Login</Button>
+                    <Button fullWidth type="submit">Sign up</Button>
                 </form>
                 <div className={styles.formLink}>
                     <span>

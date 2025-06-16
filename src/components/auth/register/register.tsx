@@ -9,22 +9,14 @@ import ExistentAccount from '../existent-account/existent-account';
 import { validatePassword, PasswordRulesText } from '../../../services/password-rules';
 import CaptchaContainer from '../captcha/container';
 import { Button } from '@mantine/core';
+import { SignupRequest } from '@/api/generated';
 
 const Errors = {
     passwordMissmatch: 'Passwords do not match'
 }
 
 type RegisterProps = { 
-    onRegister: (data: {
-        firstname: string,
-        lastname: string,
-        company: string,
-        email: string,
-        password: string,
-        confirmPassword: string,
-        captcha: string,
-        toc: boolean
-    }) => void,
+    onRegister: (data: SignupRequest) => void,
     status: {
         theme: string, 
         lines: string[]
