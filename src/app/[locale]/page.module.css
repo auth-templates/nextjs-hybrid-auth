@@ -64,7 +64,7 @@
 }
 
 .bottom {
-  background: var(--color-background);
+  background: var(--color-footer);
   padding: 3rem 2rem;
   min-height: 40vh;
   color: var(--color-text-primary);

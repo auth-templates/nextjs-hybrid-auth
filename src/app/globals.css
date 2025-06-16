@@ -22,7 +22,8 @@
 
     --color-primary: #003366; /* Navy Blue for main interactive elements */
     --color-secondary: #F5F5DC; /* Cream for less prominent elements */
-    --color-background: #FEFAF6; /* Soft Off-White for the main application area */
+    --color-background: transparent;
+    --color-footer: #FEFAF6; /* Soft Off-White for the main application area */
     --color-surface: #EADBC8; /* Light Beige for cards, panels, or elevated elements */
     --color-accent: #DC143C; /* Crimson for highlights, borders, or decorative details */
     --color-alert: #CB6040; /* Deep Coral for warnings, errors, or important notifications */
@@ -67,7 +68,8 @@
 
         --color-primary: #A7C6DB; /* Lightened Navy for buttons */
         --color-secondary: #EADBC8; /* Light Beige remains the same */
-        --color-background: #1C1C1C; /* Dark background color for the main application area */
+        --color-background: transparent; /* Dark blue background color for the main application area */
+        --color-footer: #1C1C1C; /* Dark background color for the footer area */
         --color-surface: #2A2A2A; /* Surface color for cards, panels, or elevated elements */
         --color-accent: #DC143C; /* Crimson remains the same */
         --color-alert: #CB6040; /* Alert color remains the same */
@@ -100,7 +102,7 @@ body {
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     color: var(--color-text-primary);
-    background-color: var(--color-background);
+    background-color: var(--color-footer);
     background-image: linear-gradient(to right, var(--gradient-start) 0%, var(--gradient-end) 100%);
     width: 100vw;
     height: 100vh;

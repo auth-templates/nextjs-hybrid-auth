@@ -15,7 +15,7 @@ export default function AuthLayout({ title, subtitle, children }: {title: string
           <svg viewBox="0 0 1440 320" preserveAspectRatio="none">
             <path
               d="M0,160 C720,320 720,0 1440,160 L1440,320 L0,320 Z"
-              fill="var(--color-background)"
+              fill="var(--color-footer)"
             />
           </svg>
         </div>

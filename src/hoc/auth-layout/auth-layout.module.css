@@ -1,6 +1,6 @@
 .layout {
   min-height: calc(100vh - var(--navbarHeight));
-  background: var(--color-primary);
+  background: var(--color-background);
   color: white;
   display: flex;
   flex-direction: column;
