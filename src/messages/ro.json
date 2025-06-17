@@ -86,6 +86,35 @@
             "prompts": {
                 "noAccount": "Nu ai un cont?"
             }
+        },
+        "register" : {
+            "labels": {
+                "email": "Email:",
+                "password": "Parolă:",
+                "confirmPassword": "Confirmă parola:"
+            },
+            "placeholders": {
+                "email": "Introdu adresa ta de email",
+                "password": "Introdu parola ta",
+                "confirmPassword": "Reintrodu parola"
+            },
+            "validation": {
+                "emailRequired": "Emailul este obligatoriu",
+                "invalidEmail": "Adresă de email invalidă",
+                "passwordRequired": "Parola este obligatorie",
+                "passwordRules": "Parola ta trebuie să aibă cel puțin 8 caractere și să conțină cel puțin o literă mică, o literă mare, un simbol și o cifră.",
+                "confirmPasswordRequired": "Confirmarea parolei este obligatorie",
+                "passwordsMismatch": "Parolele nu se potrivesc"
+            },
+            "buttons": {
+                "signUp": "Înregistrează-te"
+            },
+            "links": {
+                "login": "Autentificare"
+            },
+            "prompts": {
+                "haveAccount": "Ai deja un cont?"
+            }
         }
     },
     "manifest": {

@@ -86,6 +86,35 @@
             "prompts": {
                 "noAccount": "Don't have an account?"
             }
+        },
+        "register": {
+            "labels": {
+                "email": "Email:",
+                "password": "Password:",
+                "confirmPassword": "Confirm password:"
+            },
+            "placeholders": {
+                "email": "Enter your email",
+                "password": "Enter your password",
+                "confirmPassword": "Retype your password"
+            },
+            "validation": {
+                "emailRequired": "Email is required",
+                "invalidEmail": "Invalid email address",
+                "passwordRequired": "Password is required",
+                "passwordRules": "Your password should be at least 8 characters long and it should contain at least one lowercase character, one uppercase character, one symbol, and one number.",
+                "confirmPasswordRequired": "Confirming your password is required",
+                "passwordsMismatch": "Passwords do not match"
+            },
+            "buttons": {
+                "signUp": "Sign up"
+            },
+            "links": {
+                "login": "Login"
+            },
+            "prompts": {
+                "haveAccount": "Already have an account?"
+            }
         }
     },
     "manifest": {
