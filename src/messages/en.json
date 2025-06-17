@@ -63,7 +63,29 @@
     },
     "forms": {
         "login": {
-            "title": "Login"
+            "labels": {
+                "email": "Email:",
+                "password": "Password:"
+            },
+            "placeholders": {
+                "email": "Enter your email",
+                "password": "Enter your password"
+            },
+            "validation": {
+                "emailRequired": "Email is required",
+                "invalidEmail": "Invalid email address",
+                "passwordRequired": "Password is required"
+            },
+            "links": {
+                "forgotPassword": "Forgot password?",
+                "signUp": "Sign up"
+            },
+            "buttons": {
+                "login": "Login"
+            },
+            "prompts": {
+                "noAccount": "Don't have an account?"
+            }
         }
     },
     "manifest": {

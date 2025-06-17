@@ -14,12 +14,13 @@ type LoginFormProps = {
     onSubmit: (data: any) => void,
 }
 
-export default function LoginForm({onSubmit}: LoginFormProps ) {
+export default function LoginForm({ onSubmit }: LoginFormProps) {
     const t = useTranslations('forms.login');
 
     const emailInputId = useId();
-    const passwordInputId = useId(); 
-    const [error, setError] = useState<string|null>(null);
+    const passwordInputId = useId();
+    const [error, setError] = useState<string | null>(null);
+
     const {
         register,
         handleSubmit,
@@ -27,8 +28,8 @@ export default function LoginForm({onSubmit}: LoginFormProps ) {
     } = useForm({
         defaultValues: {
             email: '',
-            password: ''
-        }
+            password: '',
+        },
     });
 
     return (
@@ -36,48 +37,54 @@ export default function LoginForm({onSubmit}: LoginFormProps ) {
             <Card className={styles.card}>
                 <form onSubmit={handleSubmit(onSubmit)} className={styles.form}>
                     <TextInput
-                        {...register('email', { 
-                            required: 'Email is required',
+                        {...register('email', {
+                            required: t('validation.emailRequired'),
                             pattern: {
                                 value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
-                                message: "Invalid email address"
-                            } 
+                                message: t('validation.invalidEmail'),
+                            },
                         })}
                         id={emailInputId}
-                        label="Email:"
-                        type='email'
+                        label={t('labels.email')}
+                        type="email"
                         withAsterisk={false}
-                        placeholder="Enter your email"
+                        placeholder={t('placeholders.email')}
                         className={styles.emailField}
                         error={errors.email?.message}
                     />
                     <PasswordInput
-                        {...register('password',{ required: 'Password is required' })}
+                        {...register('password', {
+                            required: t('validation.passwordRequired'),
+                        })}
                         id={passwordInputId}
-                        label="Password:"
+                        label={t('labels.password')}
                         withAsterisk={false}
-                        placeholder="Enter your password"
+                        placeholder={t('placeholders.password')}
                         className={styles.passwordField}
                         error={errors.password?.message}
                     />
                     <div className={styles.formLink}>
                         <span>
-                            <Link href="/recover-password" className={styles.forgotPassword}>Forgot password?</Link>
+                            <Link href="/recover-password" className={styles.forgotPassword}>
+                                {t('links.forgotPassword')}
+                            </Link>
                         </span>
                     </div>
                     <CustomToastContainer containerId="login-toast-container" />
-                    <Button fullWidth type="submit">Login</Button>
+                    <Button fullWidth type="submit">
+                        {t('buttons.login')}
+                    </Button>
                 </form>
                 <div className={styles.formLink}>
                     <span>
-                        Don't have an account?{' '}
+                        {t('prompts.noAccount')}{' '}
                         <Link href="/signup" className={styles.signupLink}>
-                            Sign up
+                            {t('links.signUp')}
                         </Link>
                     </span>
                 </div>
                 <MediaOptions />
             </Card>
-          </Container>
+        </Container>
     );
 }

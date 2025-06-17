@@ -63,7 +63,29 @@
     },
     "forms": {
         "login": {
-            "title": "Autentificare"
+            "labels": {
+                "email": "Email:",
+                "password": "Parolă:"
+            },
+            "placeholders": {
+                "email": "Introdu adresa ta de email",
+                "password": "Introdu parola ta"
+            },
+            "validation": {
+                "emailRequired": "Emailul este obligatoriu",
+                "invalidEmail": "Adresă de email invalidă",
+                "passwordRequired": "Parola este obligatorie"
+            },
+            "links": {
+                "forgotPassword": "Ai uitat parola?",
+                "signUp": "Înregistrează-te"
+            },
+            "buttons": {
+                "login": "Autentificare"
+            },
+            "prompts": {
+                "noAccount": "Nu ai un cont?"
+            }
         }
     },
     "manifest": {
