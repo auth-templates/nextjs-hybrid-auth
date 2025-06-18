@@ -1,22 +1,31 @@
-import { act, render, screen, waitFor } from '@testing-library/react';
+import { render, screen, waitFor } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import SignupForm from './signup-form';
 import { MantineProvider } from '@mantine/core';
 import mockRouter from 'next-router-mock';
-import { PasswordRulesText } from '@/services/password-rules';
+import { SignupRequest } from '@/api/generated';
+import { NextIntlClientProvider } from 'next-intl';
+import { pick } from 'lodash';
+import messages from '@/messages/en.json';
 
-jest.mock('../../api/auth', () => {return {...jest.requireActual('../../api/auth'), register: jest.fn()}});
 jest.mock('next/router', () => jest.requireActual('next-router-mock'));   
+
 
 describe("SignupForm", () => {
     it('should contain all elements', () => {
         render(
-            <MantineProvider>
-                <SignupForm />
-            </MantineProvider>
+            <NextIntlClientProvider
+                locale="en"
+                messages={pick(messages, ['forms.register'])}
+            >
+                <MantineProvider>
+                    <SignupForm onSubmit={function (data: SignupRequest): void {
+                        throw new Error('Function not implemented.');
+                    } } />
+                </MantineProvider>
+            </NextIntlClientProvider>
         );
 
-        expect(screen.getByRole('heading', { name: 'Sign up'})).toBeInTheDocument();
         const email = screen.getByLabelText('Email:');
         expect(email).toBeInTheDocument();
         expect(email).toHaveAttribute('type', 'email');
@@ -26,7 +35,7 @@ describe("SignupForm", () => {
         const confirmPassword = screen.getByLabelText('Confirm password:');
         expect(confirmPassword).toBeInTheDocument();
         expect(confirmPassword).toHaveAttribute('type', 'password');
-        const loginButton = screen.getByRole('button', { name: 'Login'});
+        const loginButton = screen.getByRole('button', { name: 'Sign up'});
         expect(loginButton).toBeInTheDocument();
         expect(loginButton).toHaveAttribute('type', 'submit');
         expect(screen.getByText(/Already have an account?/)).toBeInTheDocument();

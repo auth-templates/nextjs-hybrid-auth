@@ -3,23 +3,23 @@ import '@testing-library/jest-dom'
 
 import './src/mocks/next-router-utils/next-router-utils';
 
-import { server } from './src/mocks/node'
+// import { server } from './src/mocks/node'
 
 beforeAll(() => {
   // Enable API mocking before all the tests.
-  server.listen()
+//   server.listen()
 })
 
 afterEach(() => {
   // Reset the request handlers between each test.
   // This way the handlers we add on a per-test basis
   // do not leak to other, irrelevant tests.
-  server.resetHandlers()
+//   server.resetHandlers()
 })
 
 afterAll(() => {
   // Finally, disable API mocking after the tests are done.
-  server.close()
+//   server.close()
 })
 
 

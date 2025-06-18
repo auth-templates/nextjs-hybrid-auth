@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuites name="jest tests" tests="8" failures="0" errors="0" time="3.42">
+  <testsuite name="SignupForm" errors="0" failures="0" skipped="7" timestamp="2025-06-18T18:46:17" time="2.466" tests="8">
+    <testcase classname="SignupForm should contain all elements" name="SignupForm should contain all elements" time="0.227">
+    </testcase>
+    <testcase classname="SignupForm displays error message when email is not provided" name="SignupForm displays error message when email is not provided" time="0">
+      <skipped/>
+    </testcase>
+    <testcase classname="SignupForm displays error message when password is not provided" name="SignupForm displays error message when password is not provided" time="0">
+      <skipped/>
+    </testcase>
+    <testcase classname="SignupForm displays error message when confirm password is not provided" name="SignupForm displays error message when confirm password is not provided" time="0">
+      <skipped/>
+    </testcase>
+    <testcase classname="SignupForm makes a redirect to dashboard page after successful login" name="SignupForm makes a redirect to dashboard page after successful login" time="0">
+      <skipped/>
+    </testcase>
+    <testcase classname="SignupForm displays error message when email is invalid" name="SignupForm displays error message when email is invalid" time="0">
+      <skipped/>
+    </testcase>
+    <testcase classname="SignupForm displays error message when password doesn&apos;t meet the rules" name="SignupForm displays error message when password doesn&apos;t meet the rules" time="0">
+      <skipped/>
+    </testcase>
+    <testcase classname="SignupForm displays error message when confirm password do not match password" name="SignupForm displays error message when confirm password do not match password" time="0">
+      <skipped/>
+    </testcase>
+  </testsuite>
+</testsuites>

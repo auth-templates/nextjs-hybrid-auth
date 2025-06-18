@@ -3,7 +3,7 @@
 import styles from './signup-form.module.css';
 import { TextInput, Container, Card, Button, Notification, PasswordInput } from '@mantine/core';
 import Link from 'next/link';
-import { useEffect, useId, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import MediaOptions from '../media-options';
 import { validatePassword } from '@/services/password-rules';
@@ -17,9 +17,6 @@ type SignupFormProps = {
 
 export default function SignupForm({ onSubmit, errorMesage }: SignupFormProps) {
     const t = useTranslations('forms.register');
-    const emailInputId = useId();
-    const passwordInputId = useId();
-    const confirmPasswordInputId = useId();
     const [error, setError] = useState<string | null>(null);
 
     const {
@@ -43,7 +40,6 @@ export default function SignupForm({ onSubmit, errorMesage }: SignupFormProps) {
         try {
             onSubmit(data);
         } catch (error: any) {
-            console.log("ERROR", error);
             setError(error);
         }
     };
@@ -75,7 +71,6 @@ export default function SignupForm({ onSubmit, errorMesage }: SignupFormProps) {
                                 message: t('validation.invalidEmail')
                             }
                         })}
-                        id={emailInputId}
                         label={t('labels.email')}
                         type="email"
                         withAsterisk={false}
@@ -92,7 +87,6 @@ export default function SignupForm({ onSubmit, errorMesage }: SignupFormProps) {
                                 }
                             }
                         })}
-                        id={passwordInputId}
                         label={t('labels.password')}
                         withAsterisk={false}
                         placeholder={t('placeholders.password')}
@@ -108,7 +102,6 @@ export default function SignupForm({ onSubmit, errorMesage }: SignupFormProps) {
                                 }
                             }
                         })}
-                        id={confirmPasswordInputId}
                         label={t('labels.confirmPassword')}
                         withAsterisk={false}
                         placeholder={t('placeholders.confirmPassword')}
