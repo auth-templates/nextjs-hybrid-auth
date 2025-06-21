@@ -1,29 +1,19 @@
-import { render, screen, waitFor } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import SignupForm from './signup-form';
-import { MantineProvider } from '@mantine/core';
 import mockRouter from 'next-router-mock';
-import { SignupRequest } from '@/api/generated';
-import { NextIntlClientProvider } from 'next-intl';
-import { pick } from 'lodash';
-import messages from '@/messages/en.json';
+import { render, screen, waitFor } from '@/test-utils';
 
 jest.mock('next/router', () => jest.requireActual('next-router-mock'));   
-
 
 describe("SignupForm", () => {
     it('should contain all elements', () => {
         render(
-            <NextIntlClientProvider
-                locale="en"
-                messages={pick(messages, ['forms.register'])}
-            >
-                <MantineProvider>
-                    <SignupForm onSubmit={function (data: SignupRequest): void {
-                        throw new Error('Function not implemented.');
-                    } } />
-                </MantineProvider>
-            </NextIntlClientProvider>
+            <SignupForm 
+                onSubmit={jest.fn()}
+            />,
+            {
+                pickedMessages: ['forms.register']
+            }
         );
 
         const email = screen.getByLabelText('Email:');
@@ -42,15 +32,18 @@ describe("SignupForm", () => {
         const linkSignUp = screen.getByRole('link', {name: 'Login'});
         expect(linkSignUp).toBeInTheDocument();
         expect(linkSignUp).toHaveAttribute('href', '/login');
-        expect(screen.getByRole('link', {name: /Login with Facebook/})).toBeInTheDocument();
+        expect(screen.getByRole('link', {name: /Login with Github/})).toBeInTheDocument();
         expect(screen.getByRole('link', {name: /Login with Google/})).toBeInTheDocument();
     });
 
     it('displays error message when email is not provided', async () => {
-        render(        
-            <MantineProvider>
-                <SignupForm />
-            </MantineProvider>
+        render(
+            <SignupForm 
+                onSubmit={jest.fn()}
+            />,
+            {
+                pickedMessages: ['forms.register']
+            }
         );
 
         await userEvent.click(screen.getByRole('button', { name: 'Login'}));
@@ -61,10 +54,13 @@ describe("SignupForm", () => {
     });
     
     it('displays error message when password is not provided', async () => {
-        render(        
-            <MantineProvider>
-                <SignupForm />
-            </MantineProvider>
+        render(
+            <SignupForm 
+                onSubmit={jest.fn()}
+            />,
+            {
+                pickedMessages: ['forms.register']
+            }
         );
 
         await userEvent.click(screen.getByRole('button', { name: 'Login'}));
@@ -74,10 +70,13 @@ describe("SignupForm", () => {
     });
 
     it('displays error message when confirm password is not provided', async () => {
-        render(        
-            <MantineProvider>
-                <SignupForm />
-            </MantineProvider>
+        render(
+            <SignupForm 
+                onSubmit={jest.fn()}
+            />,
+            {
+                pickedMessages: ['forms.register']
+            }
         );
 
         await userEvent.click(screen.getByRole('button', { name: 'Login'}));
@@ -89,10 +88,13 @@ describe("SignupForm", () => {
     it('makes a redirect to dashboard page after successful login', async () => {
         mockRouter.push("/signup");
 
-        render(        
-            <MantineProvider>
-                <SignupForm />
-            </MantineProvider>
+        render(
+            <SignupForm 
+                onSubmit={jest.fn()}
+            />,
+            {
+                pickedMessages: ['forms.register']
+            }
         );
   
         await userEvent.type(screen.getByLabelText('Email:'), "user@gmail.com");
@@ -108,10 +110,13 @@ describe("SignupForm", () => {
     }, 10000);
 
     it('displays error message when email is invalid', async () => {
-        render(        
-            <MantineProvider>
-                <SignupForm />
-            </MantineProvider>
+        render(
+            <SignupForm 
+                onSubmit={jest.fn()}
+            />,
+            {
+                pickedMessages: ['forms.register']
+            }
         );
 
         await userEvent.type(screen.getByLabelText('Email:'), "user@gmail");
@@ -121,10 +126,13 @@ describe("SignupForm", () => {
     });
     
     it('displays error message when password doesn\'t meet the rules', async () => {
-        render(        
-            <MantineProvider>
-                <SignupForm />
-            </MantineProvider>
+        render(
+            <SignupForm 
+                onSubmit={jest.fn()}
+            />,
+            {
+                pickedMessages: ['forms.register']
+            }
         );
 
         await userEvent.type(screen.getByLabelText('Password:'), "111");
@@ -134,10 +142,13 @@ describe("SignupForm", () => {
     });
 
     it('displays error message when confirm password do not match password', async () => {
-        render(        
-            <MantineProvider>
-                <SignupForm />
-            </MantineProvider>
+        render(
+            <SignupForm 
+                onSubmit={jest.fn()}
+            />,
+            {
+                pickedMessages: ['forms.register']
+            }
         );
 
         await userEvent.type(screen.getByLabelText('Password:'), "Passw!or34d");

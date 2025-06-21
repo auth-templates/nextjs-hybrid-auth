@@ -115,6 +115,12 @@
             "prompts": {
                 "haveAccount": "Already have an account?"
             }
+        },
+        "social-auth": {
+            "login-with-google": "Login with Google",
+            "login-with-github": "Login with GitHub",
+            "signup-with-google": "Sign up with Google",
+            "signup-with-github": "Sign up with GitHub"
         }
     },
     "manifest": {

@@ -115,6 +115,12 @@
             "prompts": {
                 "haveAccount": "Ai deja un cont?"
             }
+        },
+        "social-auth": {
+            "login-with-google": "Autentificare cu Google",
+            "login-with-github": "Autentificare cu GitHub",
+            "signup-with-google": "Înregistrare cu Google",
+            "signup-with-github": "Înregistrare cu GitHub"
         }
     },
     "manifest": {

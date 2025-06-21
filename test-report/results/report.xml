@@ -1,7 +1,195 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuites name="jest tests" tests="8" failures="0" errors="0" time="3.42">
-  <testsuite name="SignupForm" errors="0" failures="0" skipped="7" timestamp="2025-06-18T18:46:17" time="2.466" tests="8">
-    <testcase classname="SignupForm should contain all elements" name="SignupForm should contain all elements" time="0.227">
+<testsuites name="jest tests" tests="8" failures="1" errors="0" time="5.131">
+  <testsuite name="SignupForm" errors="0" failures="1" skipped="7" timestamp="2025-06-21T06:09:02" time="3.79" tests="8">
+    <testcase classname="SignupForm should contain all elements" name="SignupForm should contain all elements" time="0.2">
+      <failure>TestingLibraryElementError: Unable to find an accessible element with the role &quot;link&quot; and name `/Login with Github/`
+
+Here are the accessible roles:
+
+  textbox:
+
+  Name &quot;Email:&quot;:
+  &lt;input
+    aria-invalid=&quot;false&quot;
+    class=&quot;input m_8fb7ebe7 mantine-Input-input mantine-TextInput-input&quot;
+    data-variant=&quot;default&quot;
+    id=&quot;mantine-8xaux8u4i&quot;
+    name=&quot;email&quot;
+    placeholder=&quot;Enter your email&quot;
+    type=&quot;email&quot;
+  /&gt;
+
+  --------------------------------------------------
+  button:
+
+  Name &quot;Sign up&quot;:
+  &lt;button
+    class=&quot;mantine-focus-auto mantine-active root m_77c9d27d mantine-Button-root m_87cf2631 mantine-UnstyledButton-root&quot;
+    data-block=&quot;true&quot;
+    style=&quot;--button-color: var(--mantine-color-white);&quot;
+    type=&quot;submit&quot;
+  /&gt;
+
+  --------------------------------------------------
+  link:
+
+  Name &quot;Login&quot;:
+  &lt;a
+    class=&quot;loginLink&quot;
+    href=&quot;/login&quot;
+  /&gt;
+
+  Name &quot;Login with Facebook&quot;:
+  &lt;a
+    class=&quot;mantine-focus-auto mantine-active root buttonLink facebook m_77c9d27d mantine-Button-root m_87cf2631 mantine-UnstyledButton-root&quot;
+    href=&quot;https://mantine.dev&quot;
+    style=&quot;--button-color: var(--mantine-color-white);&quot;
+  /&gt;
+
+  Name &quot;Login with Google&quot;:
+  &lt;a
+    class=&quot;mantine-focus-auto mantine-active root buttonLink google m_77c9d27d mantine-Button-root m_87cf2631 mantine-UnstyledButton-root&quot;
+    href=&quot;https://mantine.dev&quot;
+    style=&quot;--button-color: var(--mantine-color-white);&quot;
+  /&gt;
+
+  --------------------------------------------------
+
+Ignored nodes: comments, script, style
+&lt;body&gt;
+  &lt;div&gt;
+    &lt;div
+      class=&quot;container m_7485cace mantine-Container-root&quot;
+    &gt;
+      &lt;div
+        class=&quot;card m_e615b15f mantine-Card-root m_1b7284a3 mantine-Paper-root&quot;
+      &gt;
+        &lt;form
+          class=&quot;form&quot;
+        &gt;
+          &lt;div
+            class=&quot;root emailField m_46b77525 mantine-InputWrapper-root mantine-TextInput-root&quot;
+          &gt;
+            &lt;label
+              class=&quot;label m_8fdc1311 mantine-InputWrapper-label mantine-TextInput-label&quot;
+              for=&quot;mantine-8xaux8u4i&quot;
+              id=&quot;mantine-8xaux8u4i-label&quot;
+            &gt;
+              Email:
+            &lt;/label&gt;
+            &lt;div
+              class=&quot;inputWrapper m_6c018570 mantine-Input-wrapper mantine-TextInput-wrapper&quot;
+              data-variant=&quot;default&quot;
+            &gt;
+              &lt;input
+                aria-invalid=&quot;false&quot;
+                class=&quot;input m_8fb7ebe7 mantine-Input-input mantine-TextInput-input&quot;
+                data-variant=&quot;default&quot;
+                id=&quot;mantine-8xaux8u4i&quot;
+                name=&quot;email&quot;
+                placeholder=&quot;Enter your email&quot;
+                type=&quot;email&quot;
+              /&gt;
+            &lt;/div&gt;
+          &lt;/div&gt;
+          &lt;div
+            class=&quot;root root passwordField m_f61ca620 mantine-PasswordInput-root m_46b77525 mantine-InputWrapper-root mantine-PasswordInput-root&quot;
+          &gt;
+            &lt;label
+              class=&quot;label m_8fdc1311 mantine-InputWrapper-label mantine-PasswordInput-label&quot;
+              for=&quot;mantine-ru39qrreu&quot;
+              id=&quot;mantine-ru39qrreu-label&quot;
+            &gt;
+              Password:
+            &lt;/label&gt;
+            &lt;div
+              class=&quot;inputWrapper m_6c018570 mantine-Input-wrapper mantine-PasswordInput-wrapper&quot;
+              data-variant=&quot;default&quot;
+              data-with-right-section=&quot;true&quot;
+              style=&quot;--input-left-section-pointer-events: none; --input-right-section-pointer-events: all;&quot;
+            &gt;
+              &lt;div
+                class=&quot;input m_ccf8da4c m_8fb7ebe7 mantine-Input-input mantine-PasswordInput-input&quot;
+                data-variant=&quot;default&quot;
+              &gt;
+                &lt;input
+                  autocomplete=&quot;off&quot;
+                  class=&quot;m_f2d85dd2 mantine-PasswordInput-innerInput&quot;
+                  id=&quot;mantine-ru39qrreu&quot;
+                  name=&quot;password&quot;
+                  placeholder=&quot;Enter your password&quot;
+                  type=&quot;password&quot;
+                /&gt;
+              &lt;/div&gt;
+              &lt;div
+                class=&quot;section m_82577fc2 mantine-Input-section mantine-PasswordInput-section&quot;
+                data-position=&quot;right&quot;
+              &gt;
+                &lt;button
+                  aria-hidden=&quot;true&quot;
+                  class=&quot;mantine-focus-auto mantine-active m_b1072d44 mantine-PasswordInput-visibilityToggle m_8d3f4000 mantine-ActionIcon-root m_87cf2631 mantine-UnstyledButton-root&quot;
+                  data-variant=&quot;subtle&quot;
+                  style=&quot;--ai-bg: transparent; --ai-hover: var(--mantine-color-gray-light-hover); --ai-color: var(--mantine-color-gray-light-color); --ai-bd: calc(0.0625rem * var(--mantine-scale)) solid transparent;&quot;
+                  tabindex=&quot;-1&quot;
+                  type=&quot;button&quot;
+                &gt;
+                  &lt;span
+                    class=&quot;m_8d3afb97 mantine-ActionIcon-icon&quot;
+                  &gt;
+                    &lt;svg
+                      fill=&quot;none&quot;
+                      style=&quot;width: var(--psi-icon-size); height: var(--psi-icon-size);&quot;
+                      viewBox=&quot;0 0 15 15&quot;
+                      xmlns=&quot;http://www.w3.org/2000/svg&quot;
+                    &gt;
+                      &lt;path
+                        clip-rule=&quot;evenodd&quot;
+                        d=&quot;M7.5 11C4.80285 11 2.52952 9.62184 1.09622 7.50001C2.52952 5.37816 4.80285 4 7.5 4C10.1971 4 12.4705 5.37816 13.9038 7.50001C12.4705 9.62183 10.1971 11 7.5 11ZM7.5 3C4.30786 3 1.65639 4.70638 0.0760002 7.23501C-0.0253338 7.39715 -0.0253334 7.60288 0.0760014 7.76501C1.65639 10.2936 4.30786 12 7.5 12C10.6921 12 13.3436 10.2936 14.924 7.76501C15.0253 7.60288 15.0253 7.39715 14.924 7.23501C13.3436 4.70638 10.6921 3 7.5 3ZM7.5 9.5C8.60457 9.5 9.5 8.60457 9.5 7.5C9.5 6.39543 8.60457 5.5 7.5 5.5C6.39543 5.5 5.5 6.39543 5.5 7.5C5.5 8.60457 6.39543 9.5 7.5 9.5Z&quot;
+                        fill=&quot;currentColor&quot;
+                        fill-rule=&quot;evenodd&quot;
+                      /&gt;
+                    &lt;/svg&gt;
+                  &lt;/span&gt;
+                &lt;/button&gt;
+              &lt;/div&gt;
+            &lt;/div&gt;
+          &lt;/div&gt;
+          &lt;div
+            class=&quot;root root confirmPasswordField m_f61ca620 mantine-PasswordInput-root m_46b77525 mantine-InputWrapper-root mantine-PasswordInput-root&quot;
+          &gt;
+            &lt;label
+              class=&quot;label m_8fdc1311 mantine-InputWrapper-label mantine-PasswordInput-label&quot;
+              for=&quot;mantine-w3ty7v24p&quot;
+              id=&quot;mantine-w3ty7v24p-label&quot;
+            &gt;
+              Confirm password:
+            &lt;/label&gt;
+            &lt;div
+              class=&quot;inputWrapper m_6c018570 mantine-Input-wrapper mantine-PasswordInput-wrapper&quot;
+              data-variant=&quot;default&quot;
+              data-with-right-section=&quot;true&quot;
+              style=&quot;--input-left-section-pointer-events: none; --input-right-section-pointer-events: all;&quot;
+            &gt;
+              &lt;div
+                class=&quot;input m_ccf8da4c m_8fb7ebe7 mantine-Inp...
+    at Object.getElementError (C:\Users\Paul\OneDrive\Desktop\flexible-leaves-web\node_modules\@testing-library\react\node_modules\@testing-library\dom\dist\config.js:37:19)
+    at getElementError (C:\Users\Paul\OneDrive\Desktop\flexible-leaves-web\node_modules\@testing-library\react\node_modules\@testing-library\dom\dist\query-helpers.js:76:38)
+    at allQuery (C:\Users\Paul\OneDrive\Desktop\flexible-leaves-web\node_modules\@testing-library\react\node_modules\@testing-library\dom\dist\query-helpers.js:52:17)
+    at query (C:\Users\Paul\OneDrive\Desktop\flexible-leaves-web\node_modules\@testing-library\react\node_modules\@testing-library\dom\dist\query-helpers.js:95:19)
+    at Object.getByRole (C:\Users\Paul\OneDrive\Desktop\flexible-leaves-web\src\components\auth\signup-form\signup-form.test.tsx:35:23)
+    at Promise.then.completed (C:\Users\Paul\OneDrive\Desktop\flexible-leaves-web\node_modules\jest-circus\build\utils.js:298:28)
+    at new Promise (&lt;anonymous&gt;)
+    at callAsyncCircusFn (C:\Users\Paul\OneDrive\Desktop\flexible-leaves-web\node_modules\jest-circus\build\utils.js:231:10)
+    at _callCircusTest (C:\Users\Paul\OneDrive\Desktop\flexible-leaves-web\node_modules\jest-circus\build\run.js:316:40)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at _runTest (C:\Users\Paul\OneDrive\Desktop\flexible-leaves-web\node_modules\jest-circus\build\run.js:252:3)
+    at _runTestsForDescribeBlock (C:\Users\Paul\OneDrive\Desktop\flexible-leaves-web\node_modules\jest-circus\build\run.js:126:9)
+    at _runTestsForDescribeBlock (C:\Users\Paul\OneDrive\Desktop\flexible-leaves-web\node_modules\jest-circus\build\run.js:121:9)
+    at run (C:\Users\Paul\OneDrive\Desktop\flexible-leaves-web\node_modules\jest-circus\build\run.js:71:3)
+    at runAndTransformResultsToJestFormat (C:\Users\Paul\OneDrive\Desktop\flexible-leaves-web\node_modules\jest-circus\build\legacy-code-todo-rewrite\jestAdapterInit.js:122:21)
+    at jestAdapter (C:\Users\Paul\OneDrive\Desktop\flexible-leaves-web\node_modules\jest-circus\build\legacy-code-todo-rewrite\jestAdapter.js:65:21)
+    at runTestInternal (C:\Users\Paul\OneDrive\Desktop\flexible-leaves-web\node_modules\jest-runner\build\runTest.js:277:22)
+    at runTest (C:\Users\Paul\OneDrive\Desktop\flexible-leaves-web\node_modules\jest-runner\build\runTest.js:333:38)</failure>
     </testcase>
     <testcase classname="SignupForm displays error message when email is not provided" name="SignupForm displays error message when email is not provided" time="0">
       <skipped/>

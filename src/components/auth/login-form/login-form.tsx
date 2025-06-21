@@ -83,7 +83,7 @@ export default function LoginForm({ onSubmit }: LoginFormProps) {
                         </Link>
                     </span>
                 </div>
-                <MediaOptions />
+                <MediaOptions isLogin={true}/>
             </Card>
         </Container>
     );
