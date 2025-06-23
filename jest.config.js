@@ -27,7 +27,7 @@ const customJestConfig = {
     },
     testEnvironment: 'jest-fixed-jsdom',
     coverageReporters: ["lcov", "html", "text"],
-    coverageDirectory: "test-report/coverage",
+    coverageDirectory: "coverage",
     collectCoverageFrom: ["src/**/*.tsx", "src/**/*.ts"],
     coveragePathIgnorePatterns: ["index.tsx"],
     reporters: [
@@ -35,10 +35,10 @@ const customJestConfig = {
         ["./node_modules/jest-html-reporter", {
             pageTitle: "Test Report",
             includeFailureMsg: false,
-            outputPath: "test-report/results/index.html",
+            outputPath: "coverage/reports/index.html",
         }],
         ['jest-junit', {
-            outputDirectory: 'test-report/results',
+            outputDirectory: 'coverage/reports',
             outputName: 'report.xml'
         }]
     ],

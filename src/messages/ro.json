@@ -104,7 +104,8 @@
                 "passwordRequired": "Parola este obligatorie",
                 "passwordRules": "Parola ta trebuie să aibă cel puțin 8 caractere și să conțină cel puțin o literă mică, o literă mare, un simbol și o cifră.",
                 "confirmPasswordRequired": "Confirmarea parolei este obligatorie",
-                "passwordsMismatch": "Parolele nu se potrivesc"
+                "passwordsMismatch": "Parolele nu se potrivesc",
+                "termsRequired": "Trebuie să accepți termenii și condițiile."
             },
             "buttons": {
                 "signUp": "Înregistrează-te"
@@ -121,6 +122,10 @@
             "login-with-github": "Autentificare cu GitHub",
             "signup-with-google": "Înregistrare cu Google",
             "signup-with-github": "Înregistrare cu GitHub"
+        },        
+        "terms": {
+           "agreement": "Am citit și sunt de acord cu <termsLink>termenii și condițiile</termsLink>.",
+            "termsAndConditions": "terms and conditions"
         }
     },
     "manifest": {

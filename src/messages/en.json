@@ -104,7 +104,8 @@
                 "passwordRequired": "Password is required",
                 "passwordRules": "Your password should be at least 8 characters long and it should contain at least one lowercase character, one uppercase character, one symbol, and one number.",
                 "confirmPasswordRequired": "Confirming your password is required",
-                "passwordsMismatch": "Passwords do not match"
+                "passwordsMismatch": "Passwords do not match",
+                "termsRequired": "You must accept the terms and conditions."
             },
             "buttons": {
                 "signUp": "Sign up"
@@ -121,6 +122,10 @@
             "login-with-github": "Login with GitHub",
             "signup-with-google": "Sign up with Google",
             "signup-with-github": "Sign up with GitHub"
+        },
+        "terms": {
+            "agreement": "I have read and I agree to the <termsLink>terms and conditions</termsLink>.",
+            "termsAndConditions": "termenii și condițiile"
         }
     },
     "manifest": {

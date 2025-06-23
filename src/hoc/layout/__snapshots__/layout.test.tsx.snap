@@ -1,0 +1,40 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Layout renders correctly 1`] = `
+<div
+  className="wrapper"
+>
+  <div
+    className="logo"
+  >
+    <img
+      alt="Company Logo"
+      className="image"
+      data-nimg="1"
+      decoding="async"
+      height={250}
+      onError={[Function]}
+      onLoad={[Function]}
+      src="assets/images/dandelion.svg"
+      style={
+        {
+          "color": "transparent",
+        }
+      }
+      width={100}
+    />
+  </div>
+  <h1
+    className="title"
+  />
+  <div
+    className="wrapper2"
+  >
+    <div
+      data-testid="text"
+    >
+      text
+    </div>
+  </div>
+</div>
+`;

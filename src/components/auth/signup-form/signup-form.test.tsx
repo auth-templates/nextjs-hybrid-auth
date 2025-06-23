@@ -1,6 +1,5 @@
 import userEvent from '@testing-library/user-event';
 import SignupForm from './signup-form';
-import mockRouter from 'next-router-mock';
 import { render, screen, waitFor } from '@/test-utils';
 
 jest.mock('next/router', () => jest.requireActual('next-router-mock'));   
@@ -12,7 +11,7 @@ describe("SignupForm", () => {
                 onSubmit={jest.fn()}
             />,
             {
-                pickedMessages: ['forms.register']
+                pickedMessages: ['forms.register', 'forms.terms', 'forms.social-auth']
             }
         );
 
@@ -25,87 +24,65 @@ describe("SignupForm", () => {
         const confirmPassword = screen.getByLabelText('Confirm password:');
         expect(confirmPassword).toBeInTheDocument();
         expect(confirmPassword).toHaveAttribute('type', 'password');
-        const loginButton = screen.getByRole('button', { name: 'Sign up'});
-        expect(loginButton).toBeInTheDocument();
-        expect(loginButton).toHaveAttribute('type', 'submit');
+        const signupButton = screen.getByRole('button', { name: 'Sign up'});
+        expect(signupButton).toBeInTheDocument();
+        expect(signupButton).toHaveAttribute('type', 'submit');
         expect(screen.getByText(/Already have an account?/)).toBeInTheDocument();
         const linkSignUp = screen.getByRole('link', {name: 'Login'});
         expect(linkSignUp).toBeInTheDocument();
         expect(linkSignUp).toHaveAttribute('href', '/login');
-        expect(screen.getByRole('link', {name: /Login with Github/})).toBeInTheDocument();
-        expect(screen.getByRole('link', {name: /Login with Google/})).toBeInTheDocument();
+        expect(screen.getByRole('link', {name: /Sign up with GitHub/})).toBeInTheDocument();
+        expect(screen.getByRole('link', {name: /Sign up with Google/})).toBeInTheDocument();
     });
 
-    it('displays error message when email is not provided', async () => {
-        render(
+    it('displays errors when fields do not have values', async () => {
+       render(
             <SignupForm 
                 onSubmit={jest.fn()}
             />,
             {
-                pickedMessages: ['forms.register']
+                pickedMessages: ['forms.register', 'forms.terms', 'forms.social-auth']
             }
         );
 
-        await userEvent.click(screen.getByRole('button', { name: 'Login'}));
-    
-        await waitFor(() => {
-            expect(screen.getByText('Email is required')).toBeInTheDocument();
-        })
-    });
-    
-    it('displays error message when password is not provided', async () => {
-        render(
-            <SignupForm 
-                onSubmit={jest.fn()}
-            />,
-            {
-                pickedMessages: ['forms.register']
-            }
-        );
+        await userEvent.click(await screen.findByRole('button', { name: 'Sign up'}));
 
-        await userEvent.click(screen.getByRole('button', { name: 'Login'}));
         await waitFor(() => {
-            expect(screen.getByText('Password is required')).toBeInTheDocument();
+            expect(screen.getByText('Your password should be at least 8 characters long and it should contain at least one lowercase character, one uppercase character, one symbol, and one number.')).toBeInTheDocument();
+            expect(screen.getByText('You must accept the terms and conditions.')).toBeInTheDocument();
+            expect(screen.getByText('Invalid email address')).toBeInTheDocument();
         })
     });
 
-    it('displays error message when confirm password is not provided', async () => {
-        render(
-            <SignupForm 
-                onSubmit={jest.fn()}
-            />,
-            {
-                pickedMessages: ['forms.register']
-            }
-        );
-
-        await userEvent.click(screen.getByRole('button', { name: 'Login'}));
-        await waitFor(() => {
-            expect(screen.getByText('Confirming your password is required')).toBeInTheDocument();
-        })
-    });
-
-    it('makes a redirect to dashboard page after successful login', async () => {
-        mockRouter.push("/signup");
+    it('calls onSubmit with the gathered data', async () => {
+        const onSubmit = jest.fn();
 
         render(
             <SignupForm 
-                onSubmit={jest.fn()}
+                onSubmit={onSubmit}
             />,
             {
-                pickedMessages: ['forms.register']
+                pickedMessages: ['forms.register', 'forms.terms', 'forms.social-auth']
             }
         );
+
+        const data = {
+            email: 'user@email.com',
+            password: "Passw!or34d",
+            termsAccepted: true
+        }
   
-        await userEvent.type(screen.getByLabelText('Email:'), "user@gmail.com");
-        await userEvent.type(screen.getByLabelText('Password:'), "Passw!or34d");
-        await userEvent.type(screen.getByLabelText('Confirm password:'), "Passw!or34d");
-        await userEvent.click(screen.getByRole('button', { name: 'Login'}));
+        await userEvent.type(screen.getByLabelText('Email:'), data.email);
+        await userEvent.type(screen.getByLabelText('Password:'), data.password);
+        await userEvent.type(screen.getByLabelText('Confirm password:'), data.password);
+        await userEvent.click(screen.getByRole('checkbox'));
+        
+        await userEvent.click(screen.getByRole('button', { name: 'Sign up'}));
+
+        expect(screen.getByRole('checkbox')).toBeChecked();
+
         await waitFor(() => {
-            expect(mockRouter).toMatchObject({ 
-                asPath: "/dashboard",
-                pathname: "/dashboard",
-            });
+            expect(onSubmit).toHaveBeenCalledWith(data);
         })
     }, 10000);
 
@@ -115,12 +92,12 @@ describe("SignupForm", () => {
                 onSubmit={jest.fn()}
             />,
             {
-                pickedMessages: ['forms.register']
+                pickedMessages: ['forms.register', 'forms.terms', 'forms.social-auth']
             }
         );
 
         await userEvent.type(screen.getByLabelText('Email:'), "user@gmail");
-        await userEvent.click(screen.getByRole('button', { name: 'Login'}));
+        await userEvent.click(screen.getByRole('button', { name: 'Sign up'}));
     
         expect(await screen.findByText('Invalid email address')).toBeInTheDocument();
     });
@@ -131,30 +108,34 @@ describe("SignupForm", () => {
                 onSubmit={jest.fn()}
             />,
             {
-                pickedMessages: ['forms.register']
+                pickedMessages: ['forms.register', 'forms.terms', 'forms.social-auth']
             }
         );
 
         await userEvent.type(screen.getByLabelText('Password:'), "111");
-        await userEvent.click(screen.getByRole('button', { name: 'Login'}));
+        await userEvent.click(screen.getByRole('button', { name: 'Sign up'}));
     
-        expect(await screen.findByText(PasswordRulesText)).toBeInTheDocument();
+        expect(screen.getByText('Your password should be at least 8 characters long and it should contain at least one lowercase character, one uppercase character, one symbol, and one number.')).toBeInTheDocument();
     });
 
-    it('displays error message when confirm password do not match password', async () => {
+    it('displays error message when passwords do not match', async () => {
         render(
             <SignupForm 
                 onSubmit={jest.fn()}
             />,
             {
-                pickedMessages: ['forms.register']
+                pickedMessages: ['forms.register', 'forms.terms', 'forms.social-auth']
             }
         );
 
+        await userEvent.type(screen.getByLabelText('Email:'), "user@gmail.com");
         await userEvent.type(screen.getByLabelText('Password:'), "Passw!or34d");
-        await userEvent.type(screen.getByLabelText('Confirm password:'), "Passw!or34");
-        await userEvent.click(screen.getByRole('button', { name: 'Login'}));
-    
-        expect(await screen.findByText("Passwords do no match")).toBeInTheDocument();
+        await userEvent.type(screen.getByLabelText('Confirm password:'), "Pass");
+
+        await userEvent.click(screen.getByRole('button', { name: 'Sign up'}));
+        
+        await waitFor(() => {
+            expect(screen.getByText('Passwords do not match')).toBeInTheDocument();
+        })
     });
 });
