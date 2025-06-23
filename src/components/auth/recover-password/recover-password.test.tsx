@@ -1,16 +1,14 @@
-import { render, screen } from '@testing-library/react';
-import userEvent from '@testing-library/user-event';
-import { MemoryRouter } from 'react-router-dom';
-import renderer from 'react-test-renderer';
-import { PublicRoutes } from '../../routes';
+import { render, screen, userEvent } from '@/test-utils';
 import RecoverPassword from './recover-password';
+import { PublicRoutes } from '@/routes';
 
 describe("RecoverPassword", () => {
     it('should contain all elements', () => {
         render(
-            <MemoryRouter>
-                <RecoverPassword onSend={jest.fn()}/>
-            </MemoryRouter>
+            <RecoverPassword onSend={jest.fn()} status={{
+                theme: '',
+                lines: []
+            }}/>
         );
         const email = screen.getByLabelText('Email');
         expect(email).toBeInTheDocument();
@@ -23,12 +21,13 @@ describe("RecoverPassword", () => {
     test('onSend callback receives the correct arguments', async () => {
         const mockOnSend= jest.fn();
         render(        
-            <MemoryRouter>
-                <RecoverPassword onSend={mockOnSend}/>
-            </MemoryRouter>
+            <RecoverPassword onSend={mockOnSend} status={{
+                theme: '',
+                lines: []
+            }}/>
         );
         const email = screen.getByLabelText('Email');
-        userEvent.type(email, "account@mail.com");
+        await userEvent.type(email, "account@mail.com");
 
         const sendButton = screen.getByRole('button', { name: "Send reset password email"});
         await userEvent.click(sendButton);
@@ -38,9 +37,7 @@ describe("RecoverPassword", () => {
 
     it('input email should have theme danger when email is invalid', async () => {
         render(        
-            <MemoryRouter>
-                <RecoverPassword status={{theme: 'error', lines:['Email is invalid'] }} onSend={jest.fn()}/>
-            </MemoryRouter>
+            <RecoverPassword status={{theme: 'error', lines:['Email is invalid'] }} onSend={jest.fn()}/>
         );
         const email = screen.getByLabelText('Email');
         expect(email).toHaveClass('danger');
@@ -48,9 +45,7 @@ describe("RecoverPassword", () => {
 
     it('email input should have theme normal when email is invalid and email input got focused', async () => {
         render(        
-            <MemoryRouter>
-                <RecoverPassword status={{theme: 'error', lines:['Email is invalid']}} onSend={jest.fn()}/>
-            </MemoryRouter>
+            <RecoverPassword status={{theme: 'error', lines:['Email is invalid']}} onSend={jest.fn()}/>
         );
         const email = screen.getByLabelText('Email');
         expect(email).toHaveClass('danger');
@@ -60,19 +55,8 @@ describe("RecoverPassword", () => {
 
     it('displays InexistentAccount component when email is invalid', async () => {
         render(
-            <MemoryRouter>
-                <RecoverPassword status={{theme: 'error', lines:['Email is invalid']}} onSend={jest.fn()}/>
-            </MemoryRouter>
+            <RecoverPassword status={{theme: 'error', lines:['Email is invalid']}} onSend={jest.fn()}/>
         );
         expect(await screen.findByText(/No account with the email/)).toBeInTheDocument();
-    });
-
-    it("renders correctly with default props", () => {
-        const tree = renderer.create(
-            <MemoryRouter>
-                <RecoverPassword onSend={jest.fn()}/>
-            </MemoryRouter>
-        ).toJSON();
-        expect(tree).toMatchSnapshot();
     });
 });

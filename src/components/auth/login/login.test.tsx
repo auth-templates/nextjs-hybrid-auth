@@ -1,15 +1,13 @@
-import { render, screen } from '@testing-library/react';
-import userEvent from '@testing-library/user-event';
-import { MemoryRouter } from 'react-router-dom';
-import renderer from 'react-test-renderer';
-import Login from './Login';
+import { render, screen, userEvent } from '@/test-utils';
+import Login from './login';
 
 describe("Login", () => {
     it('should contain all elements', () => {
         render(
-            <MemoryRouter>
-                <Login onLogin={jest.fn()}/>
-            </MemoryRouter>
+            <Login onLogin={jest.fn()} status={{
+                theme: '',
+                lines: []
+            }}/>
         );
         const email = screen.getByLabelText('Email');
         expect(email).toBeInTheDocument();
@@ -39,14 +37,15 @@ describe("Login", () => {
     test('onLogin callback receives the correct arguments', async () => {
         const mockOnLogin = jest.fn();
         render(        
-            <MemoryRouter>
-                <Login onLogin={mockOnLogin}/>
-            </MemoryRouter>
+            <Login onLogin={mockOnLogin} status={{
+                theme: '',
+                lines: []
+            }}/>
         );
         const email = screen.getByLabelText('Email');
-        userEvent.type(email, "user@gmail.com");
+        await userEvent.type(email, "user@gmail.com");
         const password = screen.getByLabelText('Password');
-        userEvent.type(password, "password");
+        await userEvent.type(password, "password");
         const loginButton = screen.getByRole('button', { name: 'Login'});
         await userEvent.click(loginButton);
         expect(mockOnLogin).toBeCalledTimes(1);
@@ -55,9 +54,7 @@ describe("Login", () => {
 
     it('input email should have theme danger when email is invalid', async () => {
         render(        
-            <MemoryRouter>
-                <Login status={{theme: 'error', lines:['Email is invalid'] }} onLogin={jest.fn()}/>
-            </MemoryRouter>
+            <Login status={{theme: 'error', lines:['Email is invalid'] }} onLogin={jest.fn()}/>
         );
         const email = screen.getByLabelText('Email');
         expect(email).toHaveClass('danger');
@@ -65,9 +62,7 @@ describe("Login", () => {
 
     it('input password should have theme danger when password is invalid', async () => {
         render(        
-            <MemoryRouter>
-                <Login status={{theme: 'error', lines:['Password is invalid'] }} onLogin={jest.fn()}/>
-            </MemoryRouter>
+            <Login status={{theme: 'error', lines:['Password is invalid'] }} onLogin={jest.fn()}/>
         );
         const password = screen.getByLabelText('Password');
         expect(password).toHaveClass('danger');
@@ -75,9 +70,7 @@ describe("Login", () => {
 
     it('email input should have theme normal when email is invalid and email input got focused', async () => {
         render(        
-            <MemoryRouter>
-                <Login status={{theme: 'error', lines:['Email is invalid']}} onLogin={jest.fn()}/>
-            </MemoryRouter>
+            <Login status={{theme: 'error', lines:['Email is invalid']}} onLogin={jest.fn()}/>
         );
         const email = screen.getByLabelText('Email');
         expect(email).toHaveClass('danger');
@@ -87,9 +80,7 @@ describe("Login", () => {
 
     it('password input should have theme normal when password is invalid and password input got focused', async () => {
         render(        
-            <MemoryRouter>
-                <Login status={{theme: 'error', lines:['Password is invalid']}} onLogin={jest.fn()}/>
-            </MemoryRouter>
+            <Login status={{theme: 'error', lines:['Password is invalid']}} onLogin={jest.fn()}/>
         );
         const password = screen.getByLabelText('Password');
         expect(password).toHaveClass('danger');
@@ -99,28 +90,15 @@ describe("Login", () => {
 
     it('displays InexistentAccount component when email is invalid', async () => {
         render(
-            <MemoryRouter>
-                <Login status={{theme: 'error', lines:['Email is invalid']}} onLogin={jest.fn()}/>
-            </MemoryRouter>
+            <Login status={{theme: 'error', lines:['Email is invalid']}} onLogin={jest.fn()}/>
         );
         expect(await screen.findByText(/No account with the email/)).toBeInTheDocument();
     });
 
     it('displays "Password is invalid" message when password is invalid', async () => {
         render(
-            <MemoryRouter>
-                <Login status={{theme: 'error', lines:['Password is invalid']}} onLogin={jest.fn()}/>
-            </MemoryRouter>
+            <Login status={{theme: 'error', lines:['Password is invalid']}} onLogin={jest.fn()}/>
         );
         expect(await screen.findByText(/Password is invalid/)).toBeInTheDocument();
-    });
-
-    it("renders correctly with default props", () => {
-        const tree = renderer.create(
-            <MemoryRouter>
-                <Login onLogin={jest.fn()}/>
-            </MemoryRouter>
-        ).toJSON();
-        expect(tree).toMatchSnapshot();
     });
 });

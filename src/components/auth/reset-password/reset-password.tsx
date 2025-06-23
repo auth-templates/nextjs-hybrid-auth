@@ -1,12 +1,10 @@
 import classes from './reset-password.module.css';
-import { validatePassword, PasswordRulesText } from '../../../services/password-rules';
+import { validatePassword } from '../../../services/password-rules';
 import React, { useEffect, useState } from 'react';
-import CaptchaContainer from '../captcha';
 import PasswordUpdated from '../password-updated';
 import ResetPasswordMailExpired from '../reset-password-email-expired';
-import SmallLoader from '../../small-loader';
 import MessageBox from '../../message-box';
-import { Button, PasswordInput } from '@mantine/core';
+import { Button, Loader, PasswordInput } from '@mantine/core';
 
 const Errors = {
     passwordMissmatch: 'Passwords do not match'
@@ -97,14 +95,14 @@ export default function ResetPassword({status, onReset}: ResetPasswordProps) {
                                 onFocus={handleFocus}
                             />
                         </div>
-                        <CaptchaContainer />
+                        {/* <CaptchaContainer /> */}
                         { 
                             statusData && <MessageBox data={statusData}/> 
                         }
                         { 
                             pending
                                 ?
-                                    <SmallLoader className={classes.smallLoader} />
+                                    <Loader />
                                 :
                                     <Button type='submit' className={classes.resetButton}>Reset password</Button> 
                         }

@@ -2,11 +2,8 @@ import Link from 'next/link';
 import React, { useRef, useState } from 'react';
 import classes from './login.module.css';
 import classNames from 'classnames';
-import MessageBox from '../../message-box';
-import SmallLoader from '../../small-loader';
-import InexistentAccount from '../inexistent-account';
 import { PublicRoutes } from '../../../routes';
-import { Button, PasswordInput, TextInput } from '@mantine/core';
+import { Button, Loader, PasswordInput, TextInput } from '@mantine/core';
 import { useForm } from '@mantine/form';
 import { Dictionary } from '@/dictionary';
 
@@ -68,7 +65,7 @@ export default function Login({onLogin}: LoginProps) {
                 <div className={classes.subgroup}>
                     { 
                         pending ? ( 
-                            <SmallLoader /> 
+                            <Loader /> 
                         ) : (
                             <Button type='submit' className={classes.loginButton}>Login</Button>
                         )

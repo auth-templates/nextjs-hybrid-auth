@@ -1,5 +1,4 @@
-import { render, screen, waitFor } from '@testing-library/react';
-import userEvent from '@testing-library/user-event';
+import { render, screen, waitFor, userEvent } from '@/test-utils';
 import LoginForm from './login-form';
 import { MantineProvider } from '@mantine/core';
 import mockRouter from 'next-router-mock';
@@ -11,7 +10,9 @@ describe("LoginForm", () => {
     it('should contain all elements', () => {
         render(
             <MantineProvider>
-                <LoginForm />
+                <LoginForm onSubmit={function (data: any): void {
+                    throw new Error('Function not implemented.');
+                } } />
             </MantineProvider>
         );
 
@@ -39,7 +40,9 @@ describe("LoginForm", () => {
     it('displays error message when email is not provided', async () => {
         render(        
             <MantineProvider>
-                <LoginForm />
+                <LoginForm onSubmit={function (data: any): void {
+                    throw new Error('Function not implemented.');
+                } } />
             </MantineProvider>
         );
 
@@ -53,7 +56,9 @@ describe("LoginForm", () => {
     it('displays error message when password is not provided', async () => {
         render(        
             <MantineProvider>
-                <LoginForm />
+                <LoginForm onSubmit={function (data: any): void {
+                    throw new Error('Function not implemented.');
+                } } />
             </MantineProvider>
         );
 
@@ -69,7 +74,9 @@ describe("LoginForm", () => {
 
         render(        
             <MantineProvider>
-                <LoginForm />
+                <LoginForm onSubmit={function (data: any): void {
+                    throw new Error('Function not implemented.');
+                } } />
             </MantineProvider>
         );
   
@@ -96,7 +103,9 @@ describe("LoginForm", () => {
     it('displays error message when email is invalid', async () => {
         render(        
             <MantineProvider>
-                <LoginForm />
+                <LoginForm onSubmit={function (data: any): void {
+                    throw new Error('Function not implemented.');
+                } } />
             </MantineProvider>
         );
 

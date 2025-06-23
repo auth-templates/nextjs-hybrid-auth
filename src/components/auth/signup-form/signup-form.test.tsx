@@ -1,6 +1,5 @@
-import userEvent from '@testing-library/user-event';
 import SignupForm from './signup-form';
-import { render, screen, waitFor } from '@/test-utils';
+import { render, screen, waitFor, userEvent } from '@/test-utils';
 
 jest.mock('next/router', () => jest.requireActual('next-router-mock'));   
 

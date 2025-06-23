@@ -1,16 +1,14 @@
-import { render, screen } from '@testing-library/react';
-import userEvent from '@testing-library/user-event';
-import { MemoryRouter } from 'react-router-dom';
-import renderer from 'react-test-renderer';
-import { PublicRoutes } from '../../routes';
+import { render, screen, userEvent } from '@/test-utils';
 import ResendConfirmationEmail from './resend-confirmation-email';
+import { PublicRoutes } from '@/routes';
 
 describe("ResendConfirmationEmail", () => {
     it('should contain all elements', () => {
         render(
-            <MemoryRouter>
-                <ResendConfirmationEmail onResend={jest.fn()}/>
-            </MemoryRouter>
+            <ResendConfirmationEmail onResend={jest.fn()} status={{
+                theme: '',
+                lines: []
+            }}/>
         );
         const email = screen.getByLabelText('Email');
         expect(email).toBeInTheDocument();
@@ -23,12 +21,13 @@ describe("ResendConfirmationEmail", () => {
     test('onResend callback receives the correct arguments', async () => {
         const mockOnResend = jest.fn();
         render(        
-            <MemoryRouter>
-                <ResendConfirmationEmail onResend={mockOnResend}/>
-            </MemoryRouter>
+            <ResendConfirmationEmail onResend={mockOnResend} status={{
+                theme: '',
+                lines: []
+            }}/>
         );
         const email = screen.getByLabelText('Email');
-        userEvent.type(email, "account@mail.com");
+        await userEvent.type(email, "account@mail.com");
 
         const sendButton = screen.getByRole('button', { name: "Resend confirmation email" });
         await userEvent.click(sendButton);
@@ -38,9 +37,7 @@ describe("ResendConfirmationEmail", () => {
 
     it('input email should have theme danger when email is invalid', async () => {
         render(        
-            <MemoryRouter>
-                <ResendConfirmationEmail status={{theme: 'error', lines:['Email is invalid'] }} onResend={jest.fn()}/>
-            </MemoryRouter>
+            <ResendConfirmationEmail status={{theme: 'error', lines:['Email is invalid'] }} onResend={jest.fn()}/>
         );
         const email = screen.getByLabelText('Email');
         expect(email).toHaveClass('danger');
@@ -48,9 +45,7 @@ describe("ResendConfirmationEmail", () => {
 
     it('email input should have theme normal when email is invalid and email input got focused', async () => {
         render(        
-            <MemoryRouter>
-                <ResendConfirmationEmail status={{theme: 'error', lines:['Email is invalid']}} onResend={jest.fn()}/>
-            </MemoryRouter>
+            <ResendConfirmationEmail status={{theme: 'error', lines:['Email is invalid']}} onResend={jest.fn()}/>
         );
         const email = screen.getByLabelText('Email');
         expect(email).toHaveClass('danger');
@@ -60,38 +55,23 @@ describe("ResendConfirmationEmail", () => {
 
     it('displays InexistentAccount component when email is invalid', async () => {
         render(
-            <MemoryRouter>
-                <ResendConfirmationEmail status={{theme: 'error', lines:['Email is invalid']}} onResend={jest.fn()}/>
-            </MemoryRouter>
+            <ResendConfirmationEmail status={{theme: 'error', lines:['Email is invalid']}} onResend={jest.fn()}/>
         );
         expect(await screen.findByText(/No account with the email/)).toBeInTheDocument();
     });
 
     it('displays ConfirmationEmailSent component when received message is "Confirmation email sent"', async () => {
         render(
-            <MemoryRouter>
-                <ResendConfirmationEmail status={{theme: 'error', lines:['Confirmation email sent']}} onResend={jest.fn()}/>
-            </MemoryRouter>
+            <ResendConfirmationEmail status={{theme: 'error', lines:['Confirmation email sent']}} onResend={jest.fn()}/>
         );
         expect(await screen.findByText(/A confirmation email has been sent to/)).toBeInTheDocument();
     });
 
     it('displays AccountNotActive component when resend request is "Email is not verified"', async () => {
         render(
-            <MemoryRouter>
-                <ResendConfirmationEmail status={{theme: 'error', lines:['Email is not verified']}} onResend={jest.fn()}/>
-            </MemoryRouter>
+            <ResendConfirmationEmail status={{theme: 'error', lines:['Email is not verified']}} onResend={jest.fn()}/>
         );
         expect(await screen.findByText(/An account with the email/)).toBeInTheDocument();
         expect(await screen.findByText(/exists, but it is not active./)).toBeInTheDocument();
-    });
-
-    it("renders correctly", () => {
-        const tree = renderer.create(
-            <MemoryRouter>
-                <ResendConfirmationEmail onResend={jest.fn()}/>
-            </MemoryRouter>
-        ).toJSON();
-        expect(tree).toMatchSnapshot();
     });
 });

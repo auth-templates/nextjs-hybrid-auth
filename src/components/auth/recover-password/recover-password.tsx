@@ -2,11 +2,10 @@ import React, { useEffect, useRef, useState } from 'react';
 import classes from './recover-password.module.css';
 import classNames from 'classnames';
 import MessageBox from '../../message-box';
-import SmallLoader from '../../small-loader';
 import InexistentAccount from '../inexistent-account';
 import ResetPasswordEmailSent from '../reset-password-email-sent';
 import AccountNotActive from '../account-not-active';
-import { Button, Input } from '@mantine/core';
+import { Button, Input, Loader } from '@mantine/core';
 import Link from 'next/link';
 
 type RecoverPasswordProps = {
@@ -85,7 +84,7 @@ const RecoverPassword = ({status, onSend}: RecoverPasswordProps) => {
                                     { 
                                         pending 
                                             ? 
-                                                <SmallLoader /> 
+                                                <Loader /> 
                                             :
                                                 <Button type='submit' className={classes.sendButton}>Send reset password email</Button>
                                     }

@@ -1,9 +1,9 @@
 import classes from './verify-account.module.css';
 import React, { useEffect, useState } from 'react';
-import SmallLoader from '../../small-loader';
 import MessageBox from '../../message-box';
 import ConfirmationEmailExpired from '../confirmation-email-expired';
 import AccountVerified from '../account-verified';
+import { Loader } from '@mantine/core';
 
 type VerifyAccountProps = {
     status: {
@@ -37,7 +37,7 @@ export default function VerifyAccount({status}: VerifyAccountProps) {
             {
                 pending 
                     ?
-                        <SmallLoader className={classes.smallLoader} />
+                        <Loader />
                     :
                 accountVerified 
                     ?

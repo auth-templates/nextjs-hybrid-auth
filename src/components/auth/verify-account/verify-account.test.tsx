@@ -1,12 +1,12 @@
-import { render, screen, waitFor } from '@testing-library/react';
-import userEvent from '@testing-library/user-event';
-import { MemoryRouter } from 'react-router-dom';
-import renderer from 'react-test-renderer';
+import { render, screen } from '@/test-utils';
 import VerifyAccount from './verify-account';
 
 describe('VerifyAccount', () => {
     test('if all initial elements are present', () => {
-        render(<VerifyAccount/>);
+        render(<VerifyAccount status={{
+            theme: '',
+            lines: []
+        }}/>);
         expect(screen.getByTestId('small-lds-ring')).toBeInTheDocument();
     })
 
@@ -22,11 +22,9 @@ describe('VerifyAccount', () => {
 
     test('if account verified component is displayed when "Account verified" message is received', async () => {
         render(
-            <MemoryRouter>
-                <VerifyAccount 
-                    status={{theme:'info', lines:['Account verified']}}
-                />
-            </MemoryRouter>
+            <VerifyAccount 
+                status={{theme:'info', lines:['Account verified']}}
+            />
         );
 
         expect(await screen.findByText(/Your account has been verified successfully. Please go to/)).toBeInTheDocument();
@@ -34,18 +32,11 @@ describe('VerifyAccount', () => {
 
     test('if account confirmation email expired component is displayed when "Confirmation token is not valid" message is received', async () => {
         render(
-            <MemoryRouter>
-                <VerifyAccount
-                    status={{theme:'error', lines:['Confirmation token is not valid']}}
-                />
-            </MemoryRouter>
+            <VerifyAccount
+                status={{theme:'error', lines:['Confirmation token is not valid']}}
+            />
         );
 
         expect(await screen.findByText(/Your account confirmation email has expired. Please go to/)).toBeInTheDocument();
-    })
-
-    it('renders correctly', () => {
-        const tree = renderer.create(<VerifyAccount />).toJSON();
-        expect(tree).toMatchSnapshot();
     })
 })

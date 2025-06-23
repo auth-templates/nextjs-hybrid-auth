@@ -3,12 +3,11 @@ import classes from './resend-confirmation-email.module.css';
 import Link from 'next/link';
 import classNames from 'classnames';
 import MessageBox from '../../message-box';
-import SmallLoader from '../../small-loader';
 import InexistentAccount from '../inexistent-account';
 import ConfirmationEmailSent from '../confirmation-email-sent';
 import AccountNotActive from '../account-not-active';
 import { PublicRoutes } from '../../../routes';
-import { Button, Input } from '@mantine/core';
+import { Button, Input, Loader } from '@mantine/core';
 
 type ResendConfirmationEmail = {
     onResend: (data: {email: string}) => void,
@@ -86,7 +85,7 @@ export default function ResendConfirmationEmail({status, onResend}: ResendConfir
                                     { 
                                         pending 
                                             ? 
-                                                <SmallLoader /> 
+                                                <Loader /> 
                                             :
                                                 <Button type='submit' className={classes.sendButton}>Resend confirmation email</Button>
                                     }
