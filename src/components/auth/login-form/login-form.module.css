@@ -31,6 +31,10 @@
   flex-direction: column;
 }
 
+.messageBox {
+    margin-bottom: 10px;
+}
+
 .emailField,
 .passwordField {
   margin-bottom: 1rem;

@@ -1,29 +1,66 @@
-import classes from './message-box.module.css';
+import { Alert, Text, AlertProps } from '@mantine/core';
+import { useState } from 'react';
+import styles from './message-box.module.css';
+import { ValidationErrorItem } from '@/api/generated';
 
-const MessageTypes = {
-    error: classes.error,
-    info: classes.info,
-    warning: classes.warning
+export type Message = {
+    message?: string
+    type?: 'info' | 'error';
 }
 
-type MessageBoxProps = {
-    data: {
-        theme: string, 
-        lines: string[]
-    },
-    ariaLive?: string
+type MessageBoxProps = AlertProps & {
+  message: Message | ValidationErrorItem[];
+  type?: 'info' | 'error' | 'warning';
+  onClose?: () => void;
 }
 
-export default function MessageBox({data = {theme: 'info', lines: [] }, ariaLive = "assertive", ...rest}: MessageBoxProps) {
-    return (
-        <ul 
-            {...rest}
-            role="alert"
-            aria-live={ariaLive ?? "assertive"}
-            className={(MessageTypes as any)[data.theme]}>
-            {
-                data.lines.map((line, index) => <li key={index} tabIndex={0}>{line}</li>)
-            }
+export default function MessageBox({ message, type = 'info', onClose, className, ...rest }: MessageBoxProps) {
+  const [visible, setVisible] = useState(true);
+
+  if (!visible) return null;
+
+  // Map 'warning' to a Mantine-supported color or fallback to 'yellow'
+  const colorMap: Record<string, string> = {
+    error: 'red',
+    info: 'blue',
+    warning: 'yellow',
+  };
+
+  const color = colorMap[type] || 'blue';
+
+  const handleClose = () => {
+    setVisible(false);
+    onClose?.();
+  };
+
+  const renderMessages = () => {
+    if (Array.isArray(message)) {
+      return (
+        <ul className={styles.messageList}>
+          {message.map((item, idx) => (
+            <li key={idx}>
+              <Text size="sm">{item.message}</Text>
+            </li>
+          ))}
         </ul>
+      );
+    }
+    return (
+        <Text size="sm">{message.message}</Text>
     );
+  };
+
+  return (
+    <Alert
+      color={color}
+      radius="md"
+      p="md"
+      icon={null}
+      withCloseButton
+      onClose={handleClose}
+      {...rest}
+    >
+      {renderMessages()}
+    </Alert>
+  );
 }

@@ -13,7 +13,7 @@ export const handlers = [
             );
         }
 
-        if( email === 'invalidaccount@mail.com') {
+        if( email === 'message') {
             return HttpResponse.json(
                 {
                     message: 'Email is invalid',

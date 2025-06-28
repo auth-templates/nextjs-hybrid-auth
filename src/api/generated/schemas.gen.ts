@@ -51,7 +51,7 @@ export const ConfirmRecover2FARequestSchema = {
 
 export const SignupRequestSchema = {
   type: "object",
-  required: ["firstName", "lastName", "email", "password"],
+  required: ["email", "password", "termsAccepted"],
   properties: {
     firstName: {
       type: "string",
@@ -69,6 +69,10 @@ export const SignupRequestSchema = {
       type: "string",
       example: "$SuperSecurePassword123",
     },
+    termsAccepted: {
+      type: "boolean",
+      example: true,
+    },
   },
 } as const;
 
@@ -83,6 +87,17 @@ export const LoginRequestSchema = {
     password: {
       type: "string",
       example: "$SuperSecurePassword45",
+    },
+  },
+} as const;
+
+export const Verify2FARequestSchema = {
+  type: "object",
+  required: ["code"],
+  properties: {
+    code: {
+      type: "string",
+      example: "123456",
     },
   },
 } as const;

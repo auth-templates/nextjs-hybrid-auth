@@ -1,67 +1,77 @@
 'use client';
+
 import styles from './login-form.module.css';
-import { TextInput, Container, Card, Button, Notification, PasswordInput, Title } from '@mantine/core';
+import {
+    TextInput,
+    Container,
+    Card,
+    Button,
+    PasswordInput
+} from '@mantine/core';
+import { useForm } from '@mantine/form';
 import Link from 'next/link';
 import { useId, useState } from 'react';
-import { useForm } from 'react-hook-form';
-import { login as apiLogin } from '@/api/client/auth';
-import Router from 'next/router';
 import MediaOptions from '../media-options';
-import CustomToastContainer from '@/components/custom-toast-container';
 import { useTranslations } from 'next-intl';
+import MessageBox, { Message } from '@/components/message-box';
+import { ValidationErrorItem } from '@/api/generated';
+import CustomLoadingOverlay from '../custom-loading-overlay';
 
 type LoginFormProps = {
-    onSubmit: (data: any) => void,
-}
+    onSubmit: (data: any) => void;
+    loading?: boolean;
+    message?: Message | ValidationErrorItem[] | null;
+};
 
-export default function LoginForm({ onSubmit }: LoginFormProps) {
+export default function LoginForm({ onSubmit, loading, message }: LoginFormProps) {
+    const [loadingInProgress, setLoading] = useState(loading);
     const t = useTranslations('forms.login');
 
     const emailInputId = useId();
     const passwordInputId = useId();
-    const [error, setError] = useState<string | null>(null);
 
-    const {
-        register,
-        handleSubmit,
-        formState: { errors },
-    } = useForm({
-        defaultValues: {
+    const form = useForm({
+        initialValues: {
             email: '',
             password: '',
+        },
+
+        validate: {
+            email: (value) =>
+                !value
+                    ? t('validation.emailRequired')
+                    : !/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i.test(value)
+                        ? t('validation.invalidEmail')
+                        : null,
+            password: (value) => (!value ? t('validation.passwordRequired') : null),
         },
     });
 
     return (
         <Container className={styles.container}>
-            <Card className={styles.card}>
-                <form onSubmit={handleSubmit(onSubmit)} className={styles.form}>
+            <Card className={styles.card} pos="relative">
+                <CustomLoadingOverlay
+                    visible={loading}
+                    onTransitionStart={() => setLoading(true)}
+                    onTransitionEnd={() => setLoading(false)}
+                />
+                <form onSubmit={form.onSubmit(onSubmit)} className={styles.form}>
                     <TextInput
-                        {...register('email', {
-                            required: t('validation.emailRequired'),
-                            pattern: {
-                                value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
-                                message: t('validation.invalidEmail'),
-                            },
-                        })}
                         id={emailInputId}
                         label={t('labels.email')}
                         type="email"
                         withAsterisk={false}
                         placeholder={t('placeholders.email')}
                         className={styles.emailField}
-                        error={errors.email?.message}
+                        {...form.getInputProps('email')}
                     />
                     <PasswordInput
-                        {...register('password', {
-                            required: t('validation.passwordRequired'),
-                        })}
                         id={passwordInputId}
                         label={t('labels.password')}
                         withAsterisk={false}
                         placeholder={t('placeholders.password')}
                         className={styles.passwordField}
-                        error={errors.password?.message}
+                        {...form.getInputProps('password')}
                     />
                     <div className={styles.formLink}>
                         <span>
@@ -70,7 +80,9 @@ export default function LoginForm({ onSubmit }: LoginFormProps) {
                             </Link>
                         </span>
                     </div>
-                    <CustomToastContainer containerId="login-toast-container" />
+                    {message && !loadingInProgress && (
+                        <MessageBox message={message} classNames={{ root: styles.messageBox }} />
+                    )}
                     <Button fullWidth type="submit">
                         {t('buttons.login')}
                     </Button>
@@ -83,7 +95,7 @@ export default function LoginForm({ onSubmit }: LoginFormProps) {
                         </Link>
                     </span>
                 </div>
-                <MediaOptions isLogin={true}/>
+                <MediaOptions isLogin={true} />
             </Card>
         </Container>
     );

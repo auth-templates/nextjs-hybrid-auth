@@ -14,6 +14,8 @@ import {
   postAuthRefresh,
   postAuthResetPasswordRequest,
   postAuthResetPassword,
+  postAuthAcceptTerms,
+  postAuthVerify2Fa,
   getCsrfToken,
 } from "../sdk.gen";
 import {
@@ -46,6 +48,12 @@ import type {
   PostAuthResetPasswordData,
   PostAuthResetPasswordError,
   PostAuthResetPasswordResponse,
+  PostAuthAcceptTermsData,
+  PostAuthAcceptTermsError,
+  PostAuthAcceptTermsResponse,
+  PostAuthVerify2FaData,
+  PostAuthVerify2FaError,
+  PostAuthVerify2FaResponse,
   GetCsrfTokenData,
 } from "../types.gen";
 import { client as _heyApiClient } from "../client.gen";
@@ -664,6 +672,112 @@ export const postAuthResetPasswordMutation = (
   > = {
     mutationFn: async (localOptions) => {
       const { data } = await postAuthResetPassword({
+        ...options,
+        ...localOptions,
+        throwOnError: true,
+      });
+      return data;
+    },
+  };
+  return mutationOptions;
+};
+
+export const postAuthAcceptTermsQueryKey = (
+  options?: Options<PostAuthAcceptTermsData>,
+) => createQueryKey("postAuthAcceptTerms", options);
+
+/**
+ * Accept Terms of Service
+ * Marks the user's Terms of Service as accepted. Requires a valid session and refresh token. A new access token is issued with updated claims and sent via an HTTP-only cookie.
+ */
+export const postAuthAcceptTermsOptions = (
+  options?: Options<PostAuthAcceptTermsData>,
+) => {
+  return queryOptions({
+    queryFn: async ({ queryKey, signal }) => {
+      const { data } = await postAuthAcceptTerms({
+        ...options,
+        ...queryKey[0],
+        signal,
+        throwOnError: true,
+      });
+      return data;
+    },
+    queryKey: postAuthAcceptTermsQueryKey(options),
+  });
+};
+
+/**
+ * Accept Terms of Service
+ * Marks the user's Terms of Service as accepted. Requires a valid session and refresh token. A new access token is issued with updated claims and sent via an HTTP-only cookie.
+ */
+export const postAuthAcceptTermsMutation = (
+  options?: Partial<Options<PostAuthAcceptTermsData>>,
+): UseMutationOptions<
+  PostAuthAcceptTermsResponse,
+  PostAuthAcceptTermsError,
+  Options<PostAuthAcceptTermsData>
+> => {
+  const mutationOptions: UseMutationOptions<
+    PostAuthAcceptTermsResponse,
+    PostAuthAcceptTermsError,
+    Options<PostAuthAcceptTermsData>
+  > = {
+    mutationFn: async (localOptions) => {
+      const { data } = await postAuthAcceptTerms({
+        ...options,
+        ...localOptions,
+        throwOnError: true,
+      });
+      return data;
+    },
+  };
+  return mutationOptions;
+};
+
+export const postAuthVerify2FaQueryKey = (
+  options: Options<PostAuthVerify2FaData>,
+) => createQueryKey("postAuthVerify2Fa", options);
+
+/**
+ * Verify Two-Factor Authentication Code
+ * Verifies a 2FA code provided by the user during login. Requires an active session.
+ */
+export const postAuthVerify2FaOptions = (
+  options: Options<PostAuthVerify2FaData>,
+) => {
+  return queryOptions({
+    queryFn: async ({ queryKey, signal }) => {
+      const { data } = await postAuthVerify2Fa({
+        ...options,
+        ...queryKey[0],
+        signal,
+        throwOnError: true,
+      });
+      return data;
+    },
+    queryKey: postAuthVerify2FaQueryKey(options),
+  });
+};
+
+/**
+ * Verify Two-Factor Authentication Code
+ * Verifies a 2FA code provided by the user during login. Requires an active session.
+ */
+export const postAuthVerify2FaMutation = (
+  options?: Partial<Options<PostAuthVerify2FaData>>,
+): UseMutationOptions<
+  PostAuthVerify2FaResponse,
+  PostAuthVerify2FaError,
+  Options<PostAuthVerify2FaData>
+> => {
+  const mutationOptions: UseMutationOptions<
+    PostAuthVerify2FaResponse,
+    PostAuthVerify2FaError,
+    Options<PostAuthVerify2FaData>
+  > = {
+    mutationFn: async (localOptions) => {
+      const { data } = await postAuthVerify2Fa({
         ...options,
         ...localOptions,
         throwOnError: true,

@@ -54,9 +54,9 @@ export default function SignupForm({ onSubmit, errorMesage }: SignupFormProps) {
   }, [errorMesage]);
 
   const callSubmit = async (values: typeof form.values) => {
-    const { email, password, termsAccepted } = values;
+    const { email, password, confirmPassword, termsAccepted } = values;
     try {
-      onSubmit({ email, password, termsAccepted } as any);
+      onSubmit({ email, password, termsAccepted });
     } catch (error: any) {
       setError(error);
     }

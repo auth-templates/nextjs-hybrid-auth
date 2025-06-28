@@ -18,15 +18,20 @@ export type ConfirmRecover2FaRequest = {
 };
 
 export type SignupRequest = {
-  firstName: string;
-  lastName: string;
+  firstName?: string;
+  lastName?: string;
   email: string;
   password: string;
+  termsAccepted: boolean;
 };
 
 export type LoginRequest = {
   email: string;
   password: string;
+};
+
+export type Verify2FaRequest = {
+  code: string;
 };
 
 export type VerifyTokenRequest = {
@@ -394,6 +399,76 @@ export type PostAuthResetPasswordResponses = {
 
 export type PostAuthResetPasswordResponse =
   PostAuthResetPasswordResponses[keyof PostAuthResetPasswordResponses];
+
+export type PostAuthAcceptTermsData = {
+  body?: never;
+  path?: never;
+  query?: never;
+  url: "/auth/accept-terms";
+};
+
+export type PostAuthAcceptTermsErrors = {
+  /**
+   * Unauthorized - session missing or expired.
+   */
+  401: ErrorResponse;
+  /**
+   * Invalid or missing refresh token.
+   */
+  403: ErrorResponse;
+  /**
+   * Server error during terms acceptance or token generation.
+   */
+  500: ErrorResponse;
+};
+
+export type PostAuthAcceptTermsError =
+  PostAuthAcceptTermsErrors[keyof PostAuthAcceptTermsErrors];
+
+export type PostAuthAcceptTermsResponses = {
+  /**
+   * Terms accepted successfully. New access token set in cookie.
+   */
+  204: void;
+};
+
+export type PostAuthAcceptTermsResponse =
+  PostAuthAcceptTermsResponses[keyof PostAuthAcceptTermsResponses];
+
+export type PostAuthVerify2FaData = {
+  body: Verify2FaRequest;
+  path?: never;
+  query?: never;
+  url: "/auth/verify-2fa";
+};
+
+export type PostAuthVerify2FaErrors = {
+  /**
+   * Invalid or expired 2FA code.
+   */
+  400: ErrorResponse;
+  /**
+   * Unauthorized - session missing or expired.
+   */
+  401: ErrorResponse;
+  /**
+   * Server error during 2FA verification.
+   */
+  500: ErrorResponse;
+};
+
+export type PostAuthVerify2FaError =
+  PostAuthVerify2FaErrors[keyof PostAuthVerify2FaErrors];
+
+export type PostAuthVerify2FaResponses = {
+  /**
+   * 2FA verification successful. Session updated and access token issued.
+   */
+  200: User;
+};
+
+export type PostAuthVerify2FaResponse =
+  PostAuthVerify2FaResponses[keyof PostAuthVerify2FaResponses];
 
 export type GetCsrfTokenData = {
   body?: never;

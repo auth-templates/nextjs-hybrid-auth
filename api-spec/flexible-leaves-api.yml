@@ -263,6 +263,85 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ErrorResponse'
+  /auth/accept-terms:
+    post:
+      summary: Accept Terms of Service
+      description: >-
+        Marks the user's Terms of Service as accepted. Requires a valid session
+        and refresh token. A new access token is issued with updated claims and
+        sent via an HTTP-only cookie.
+      responses:
+        '204':
+          description: Terms accepted successfully. New access token set in cookie.
+          headers:
+            Set-Cookie:
+              description: HTTP-only cookie containing a new access token.
+              schema:
+                type: string
+        '401':
+          description: Unauthorized - session missing or expired.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '403':
+          description: Invalid or missing refresh token.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '500':
+          description: Server error during terms acceptance or token generation.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+  /auth/verify-2fa:
+    post:
+      summary: Verify Two-Factor Authentication Code
+      description: >-
+        Verifies a 2FA code provided by the user during login. Requires an
+        active session.
+      security:
+        - cookieAuth: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Verify2FARequest'
+      responses:
+        '200':
+          description: >-
+            2FA verification successful. Session updated and access token
+            issued.
+          headers:
+            Set-Cookie:
+              description: HTTP-only cookie containing the access token.
+              schema:
+                type: string
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/User'
+        '400':
+          description: Invalid or expired 2FA code.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '401':
+          description: Unauthorized - session missing or expired.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '500':
+          description: Server error during 2FA verification.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
   /csrf-token:
     get:
       summary: Get CSRF token
@@ -328,10 +407,9 @@ components:
     SignupRequest:
       type: object
       required:
-        - firstName
-        - lastName
         - email
         - password
+        - termsAccepted
       properties:
         firstName:
           type: string
@@ -345,6 +423,9 @@ components:
         password:
           type: string
           example: $SuperSecurePassword123
+        termsAccepted:
+          type: boolean
+          example: true
     LoginRequest:
       type: object
       required:
@@ -357,6 +438,14 @@ components:
         password:
           type: string
           example: $SuperSecurePassword45
+    Verify2FARequest:
+      type: object
+      required:
+        - code
+      properties:
+        code:
+          type: string
+          example: '123456'
     VerifyTokenRequest:
       type: object
       required:

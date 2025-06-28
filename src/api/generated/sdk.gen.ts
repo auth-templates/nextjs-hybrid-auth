@@ -42,11 +42,20 @@ import type {
   PostAuthResetPasswordData,
   PostAuthResetPasswordResponses,
   PostAuthResetPasswordErrors,
+  PostAuthAcceptTermsData,
+  PostAuthAcceptTermsResponses,
+  PostAuthAcceptTermsErrors,
+  PostAuthVerify2FaData,
+  PostAuthVerify2FaResponses,
+  PostAuthVerify2FaErrors,
   GetCsrfTokenData,
   GetCsrfTokenResponses,
 } from "./types.gen";
 import { client as _heyApiClient } from "./client.gen";
-import { postAuthLoginResponseTransformer } from "./transformers.gen";
+import {
+  postAuthLoginResponseTransformer,
+  postAuthVerify2FaResponseTransformer,
+} from "./transformers.gen";
 
 export type Options<
   TData extends TDataShape = TDataShape,
@@ -296,6 +305,45 @@ export const postAuthResetPassword = <ThrowOnError extends boolean = false>(
     ThrowOnError
   >({
     url: "/auth/reset-password",
+    ...options,
+    headers: {
+      "Content-Type": "application/json",
+      ...options.headers,
+    },
+  });
+};
+
+/**
+ * Accept Terms of Service
+ * Marks the user's Terms of Service as accepted. Requires a valid session and refresh token. A new access token is issued with updated claims and sent via an HTTP-only cookie.
+ */
+export const postAuthAcceptTerms = <ThrowOnError extends boolean = false>(
+  options?: Options<PostAuthAcceptTermsData, ThrowOnError>,
+) => {
+  return (options?.client ?? _heyApiClient).post<
+    PostAuthAcceptTermsResponses,
+    PostAuthAcceptTermsErrors,
+    ThrowOnError
+  >({
+    url: "/auth/accept-terms",
+    ...options,
+  });
+};
+
+/**
+ * Verify Two-Factor Authentication Code
+ * Verifies a 2FA code provided by the user during login. Requires an active session.
+ */
+export const postAuthVerify2Fa = <ThrowOnError extends boolean = false>(
+  options: Options<PostAuthVerify2FaData, ThrowOnError>,
+) => {
+  return (options.client ?? _heyApiClient).post<
+    PostAuthVerify2FaResponses,
+    PostAuthVerify2FaErrors,
+    ThrowOnError
+  >({
+    responseTransformer: postAuthVerify2FaResponseTransformer,
+    url: "/auth/verify-2fa",
     ...options,
     headers: {
       "Content-Type": "application/json",

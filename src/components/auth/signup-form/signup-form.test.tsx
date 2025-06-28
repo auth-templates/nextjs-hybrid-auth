@@ -1,8 +1,6 @@
 import SignupForm from './signup-form';
 import { render, screen, waitFor, userEvent } from '@/test-utils';
 
-jest.mock('next/router', () => jest.requireActual('next-router-mock'));   
-
 describe("SignupForm", () => {
     it('should contain all elements', () => {
         render(
