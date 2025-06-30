@@ -14,16 +14,15 @@ import { useId, useState } from 'react';
 import MediaOptions from '../media-options';
 import { useTranslations } from 'next-intl';
 import MessageBox, { Message } from '@/components/message-box';
-import { ValidationErrorItem } from '@/api/generated';
 import CustomLoadingOverlay from '../custom-loading-overlay';
 
 type LoginFormProps = {
     onSubmit: (data: any) => void;
     loading?: boolean;
-    message?: Message | ValidationErrorItem[] | null;
+    messages?: Message[];
 };
 
-export default function LoginForm({ onSubmit, loading, message }: LoginFormProps) {
+export default function LoginForm({ onSubmit, loading, messages }: LoginFormProps) {
     const [loadingInProgress, setLoading] = useState(loading);
     const t = useTranslations('forms.login');
 
@@ -80,8 +79,8 @@ export default function LoginForm({ onSubmit, loading, message }: LoginFormProps
                             </Link>
                         </span>
                     </div>
-                    {message && !loadingInProgress && (
-                        <MessageBox message={message} classNames={{ root: styles.messageBox }} />
+                    {messages && !loadingInProgress && (
+                        <MessageBox messages={messages} className={styles.messageBox} />
                     )}
                     <Button fullWidth type="submit">
                         {t('buttons.login')}

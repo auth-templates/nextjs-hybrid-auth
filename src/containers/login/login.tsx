@@ -7,10 +7,10 @@ import { postAuthLoginMutation } from '@/api/generated/@tanstack/react-query.gen
 import { LoginRequest } from '@/api/generated';
 
 export default function LoginContainer() {
-    const { data, error:message, mutate, isPending } = useMutation({...postAuthLoginMutation()});
+    const { data, error: error, mutate, isPending } = useMutation({...postAuthLoginMutation()});
     
     console.log("data", data);
-    console.log("error", message);
+    console.log("error", error?.messages);
 
     const handleLogin = async (data: LoginRequest) => {
         mutate({
@@ -27,7 +27,7 @@ export default function LoginContainer() {
         <LoginForm 
             onSubmit={handleLogin} 
             loading={isPending} 
-            message={message}
+            messages={error?.messages}
         />
     )
 }

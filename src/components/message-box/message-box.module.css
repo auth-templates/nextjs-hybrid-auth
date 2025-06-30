@@ -1,44 +1,16 @@
-.alertBox {
-  background-color: var(--color-surface);
-  border: 1px solid var(--color-primary);
-  border-radius: var(--border-radius);
-  padding: 1rem 1.25rem; /* inlined --message-box-padding */
-  box-shadow: var(--shadow1);
-  gap: 0.75rem; /* inlined --message-box-gap */
-  color: var(--color-text-primary);
+.root {
+	border: 1px solid var(--color-primary);
+	border-radius: var(--border-radius);
+	box-shadow: var(--shadow1);
+	/* background-color: var(--color-surface); */
+	color: var(--color-text-primary);
+	padding: 10px 14px;
 }
 
-/* Error type overrides */
-.alertBox.error {
-  border-color: var(--color-alert);
-  background-color: var(--color-surface);
-}
-
-/* Warning type overrides */
-.alertBox.warning {
-  border-color: var(--color-accent);
-}
-
-/* Message list styling */
 .messageList {
-  margin: 0;
-  padding-left: 1.25rem; /* inlined --message-box-list-padding-left */
-  list-style-type: disc;
+	list-style-type: disc;
 }
 
-/* Close button styling */
-.closeButton {
-  cursor: pointer;
-  background: transparent;
-  border: none;
-  padding: 0.25rem;
-  border-radius: 50%;
-  transition: background-color 0.2s ease, color 0.2s ease;
-}
-
-.closeButton:hover,
-.closeButton:focus {
-  background-color: #d9a89a; /* inlined --message-box-close-hover-bg */
-  color: var(--color-text-primary); /* kept as is, since it's a root variable */
-  outline: none;
+.messageList li {
+	color: var(--color-text-primary);
 }

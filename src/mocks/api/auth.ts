@@ -25,7 +25,7 @@ export const handlers = [
         if( email === 'invalidpassword@mail.com') {
             return HttpResponse.json(
             {
-                message: 'Password is invalid',
+                messages: [{text: "Some dummy text 1", severity: 'error'}, {text: "Some dummy text 2", severity: 'info'}],
             },
             { status: 400 }
             )

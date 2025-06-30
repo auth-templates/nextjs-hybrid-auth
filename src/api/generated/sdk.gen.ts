@@ -75,8 +75,8 @@ export type Options<
 };
 
 /**
- * Generates QR code and temporary secret for 2FA setup
- * Initiates the 2FA setup process by generating a QR code and a temporary secret for a TOTP app like Google Authenticator.
+ * Initialize 2FA Setup
+ * Generates a QR code and a temporary secret to start the two-factor authentication setup process.
  */
 export const post2FaSetup = <ThrowOnError extends boolean = false>(
   options?: Options<Post2FaSetupData, ThrowOnError>,
@@ -92,8 +92,8 @@ export const post2FaSetup = <ThrowOnError extends boolean = false>(
 };
 
 /**
- * Verifies the 2FA setup code
- * Verifies the TOTP code to confirm 2FA setup with an authenticator app.
+ * Verify 2FA Setup Code
+ * Verifies the TOTP code to confirm two-factor authentication setup.
  */
 export const post2FaVerifySetup = <ThrowOnError extends boolean = false>(
   options: Options<Post2FaVerifySetupData, ThrowOnError>,
@@ -113,8 +113,8 @@ export const post2FaVerifySetup = <ThrowOnError extends boolean = false>(
 };
 
 /**
- * Disables 2FA
- * Disables two-factor authentication for the current user and deletes the 2FA secret from the database.
+ * Disable Two-Factor Authentication
+ * Disables 2FA for the current user and removes the 2FA secret.
  */
 export const delete2FaDisable = <ThrowOnError extends boolean = false>(
   options?: Options<Delete2FaDisableData, ThrowOnError>,
@@ -130,8 +130,8 @@ export const delete2FaDisable = <ThrowOnError extends boolean = false>(
 };
 
 /**
- * Request email-based 2FA reset
- * Requests a recovery process for users who are locked out due to losing access to their 2FA device (phone).
+ * Request 2FA Recovery
+ * Sends a recovery email to users who lost access to their 2FA device.
  */
 export const post2FaRecover = <ThrowOnError extends boolean = false>(
   options: Options<Post2FaRecoverData, ThrowOnError>,
@@ -151,8 +151,8 @@ export const post2FaRecover = <ThrowOnError extends boolean = false>(
 };
 
 /**
- * Confirm 2FA reset
- * Confirms the reset process for 2FA by verifying the token sent to the user's email.
+ * Confirm 2FA Recovery
+ * Confirms 2FA reset by verifying the recovery token sent via email.
  */
 export const post2FaConfirmRecover = <ThrowOnError extends boolean = false>(
   options: Options<Post2FaConfirmRecoverData, ThrowOnError>,
@@ -316,6 +316,7 @@ export const postAuthResetPassword = <ThrowOnError extends boolean = false>(
 /**
  * Accept Terms of Service
  * Marks the user's Terms of Service as accepted. Requires a valid session and refresh token. A new access token is issued with updated claims and sent via an HTTP-only cookie.
+ *
  */
 export const postAuthAcceptTerms = <ThrowOnError extends boolean = false>(
   options?: Options<PostAuthAcceptTermsData, ThrowOnError>,

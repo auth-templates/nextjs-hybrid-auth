@@ -1,66 +1,71 @@
-import { Alert, Text, AlertProps } from '@mantine/core';
+import { Alert, Text, AlertProps, List } from '@mantine/core';
 import { useState } from 'react';
 import styles from './message-box.module.css';
-import { ValidationErrorItem } from '@/api/generated';
+import classNames from 'classnames';
 
 export type Message = {
-    message?: string
-    type?: 'info' | 'error';
-}
+  text: string;
+  severity?: 'error' | 'warning' | 'info' | 'success';
+};
 
 type MessageBoxProps = AlertProps & {
-  message: Message | ValidationErrorItem[];
-  type?: 'info' | 'error' | 'warning';
+  /** One or more messages to display */
+  messages: Message[];
+  /** Overall Alert color (defaults to highest‑priority in messages, or 'info') */
+  alertSeverity?: 'error' | 'warning' | 'info' | 'success';
   onClose?: () => void;
-}
+};
 
-export default function MessageBox({ message, type = 'info', onClose, className, ...rest }: MessageBoxProps) {
+export default function MessageBox({
+  messages,
+  alertSeverity,
+  onClose,
+  className,
+  ...rest
+}: MessageBoxProps) {
   const [visible, setVisible] = useState(true);
-
   if (!visible) return null;
 
-  // Map 'warning' to a Mantine-supported color or fallback to 'yellow'
+  // map our severities to Mantine colors
   const colorMap: Record<string, string> = {
     error: 'red',
-    info: 'blue',
     warning: 'yellow',
+    info: 'blue',
+    success: 'green',
   };
 
-  const color = colorMap[type] || 'blue';
+  // determine overall color: explicit prop > first message severity > 'info'
+  const overall = alertSeverity
+    ?? messages[0]?.severity
+    ?? 'info';
+  const alertColor = colorMap[overall] || 'blue';
 
   const handleClose = () => {
     setVisible(false);
     onClose?.();
   };
 
-  const renderMessages = () => {
-    if (Array.isArray(message)) {
-      return (
-        <ul className={styles.messageList}>
-          {message.map((item, idx) => (
-            <li key={idx}>
-              <Text size="sm">{item.message}</Text>
-            </li>
-          ))}
-        </ul>
-      );
-    }
-    return (
-        <Text size="sm">{message.message}</Text>
-    );
-  };
-
   return (
     <Alert
-      color={color}
+      color={alertColor}
       radius="md"
-      p="md"
-      icon={null}
       withCloseButton
       onClose={handleClose}
+      classNames={{ root: classNames(styles.root, className) }}
       {...rest}
     >
-      {renderMessages()}
+      <List size="sm" spacing="xs" classNames={{ root: styles.messageList }}>
+        {messages.map((item, idx) => {
+          const itemColor = colorMap[item.severity ?? overall] || alertColor;
+          return (
+            <List.Item key={idx}>
+              <Text size="sm" c={itemColor}>
+                {item.text}
+              </Text>
+            </List.Item>
+          );
+        })}
+      </List>
     </Alert>
   );
 }

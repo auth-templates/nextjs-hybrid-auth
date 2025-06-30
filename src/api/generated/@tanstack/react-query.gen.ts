@@ -18,21 +18,29 @@ import {
   postAuthVerify2Fa,
   getCsrfToken,
 } from "../sdk.gen";
-import {
-  queryOptions,
-  type UseMutationOptions,
-  type DefaultError,
-} from "@tanstack/react-query";
+import { queryOptions, type UseMutationOptions } from "@tanstack/react-query";
 import type {
   Post2FaSetupData,
+  Post2FaSetupError,
   Post2FaSetupResponse,
   Post2FaVerifySetupData,
+  Post2FaVerifySetupError,
+  Post2FaVerifySetupResponse,
   Delete2FaDisableData,
+  Delete2FaDisableError,
+  Delete2FaDisableResponse,
   Post2FaRecoverData,
+  Post2FaRecoverError,
+  Post2FaRecoverResponse,
   Post2FaConfirmRecoverData,
+  Post2FaConfirmRecoverError,
+  Post2FaConfirmRecoverResponse,
   PostAuthSignupData,
   PostAuthSignupError,
+  PostAuthSignupResponse,
   PostAuthVerifySignupData,
+  PostAuthVerifySignupError,
+  PostAuthVerifySignupResponse,
   PostAuthLoginData,
   PostAuthLoginError,
   PostAuthLoginResponse,
@@ -96,8 +104,8 @@ export const post2FaSetupQueryKey = (options?: Options<Post2FaSetupData>) =>
   createQueryKey("post2FaSetup", options);
 
 /**
- * Generates QR code and temporary secret for 2FA setup
- * Initiates the 2FA setup process by generating a QR code and a temporary secret for a TOTP app like Google Authenticator.
+ * Initialize 2FA Setup
+ * Generates a QR code and a temporary secret to start the two-factor authentication setup process.
  */
 export const post2FaSetupOptions = (options?: Options<Post2FaSetupData>) => {
   return queryOptions({
@@ -115,19 +123,19 @@ export const post2FaSetupOptions = (options?: Options<Post2FaSetupData>) => {
 };
 
 /**
- * Generates QR code and temporary secret for 2FA setup
- * Initiates the 2FA setup process by generating a QR code and a temporary secret for a TOTP app like Google Authenticator.
+ * Initialize 2FA Setup
+ * Generates a QR code and a temporary secret to start the two-factor authentication setup process.
  */
 export const post2FaSetupMutation = (
   options?: Partial<Options<Post2FaSetupData>>,
 ): UseMutationOptions<
   Post2FaSetupResponse,
-  DefaultError,
+  Post2FaSetupError,
   Options<Post2FaSetupData>
 > => {
   const mutationOptions: UseMutationOptions<
     Post2FaSetupResponse,
-    DefaultError,
+    Post2FaSetupError,
     Options<Post2FaSetupData>
   > = {
     mutationFn: async (localOptions) => {
@@ -147,8 +155,8 @@ export const post2FaVerifySetupQueryKey = (
 ) => createQueryKey("post2FaVerifySetup", options);
 
 /**
- * Verifies the 2FA setup code
- * Verifies the TOTP code to confirm 2FA setup with an authenticator app.
+ * Verify 2FA Setup Code
+ * Verifies the TOTP code to confirm two-factor authentication setup.
  */
 export const post2FaVerifySetupOptions = (
   options: Options<Post2FaVerifySetupData>,
@@ -168,19 +176,19 @@ export const post2FaVerifySetupOptions = (
 };
 
 /**
- * Verifies the 2FA setup code
- * Verifies the TOTP code to confirm 2FA setup with an authenticator app.
+ * Verify 2FA Setup Code
+ * Verifies the TOTP code to confirm two-factor authentication setup.
  */
 export const post2FaVerifySetupMutation = (
   options?: Partial<Options<Post2FaVerifySetupData>>,
 ): UseMutationOptions<
-  unknown,
-  DefaultError,
+  Post2FaVerifySetupResponse,
+  Post2FaVerifySetupError,
   Options<Post2FaVerifySetupData>
 > => {
   const mutationOptions: UseMutationOptions<
-    unknown,
-    DefaultError,
+    Post2FaVerifySetupResponse,
+    Post2FaVerifySetupError,
     Options<Post2FaVerifySetupData>
   > = {
     mutationFn: async (localOptions) => {
@@ -196,15 +204,19 @@ export const post2FaVerifySetupMutation = (
 };
 
 /**
- * Disables 2FA
- * Disables two-factor authentication for the current user and deletes the 2FA secret from the database.
+ * Disable Two-Factor Authentication
+ * Disables 2FA for the current user and removes the 2FA secret.
  */
 export const delete2FaDisableMutation = (
   options?: Partial<Options<Delete2FaDisableData>>,
-): UseMutationOptions<unknown, DefaultError, Options<Delete2FaDisableData>> => {
+): UseMutationOptions<
+  Delete2FaDisableResponse,
+  Delete2FaDisableError,
+  Options<Delete2FaDisableData>
+> => {
   const mutationOptions: UseMutationOptions<
-    unknown,
-    DefaultError,
+    Delete2FaDisableResponse,
+    Delete2FaDisableError,
     Options<Delete2FaDisableData>
   > = {
     mutationFn: async (localOptions) => {
@@ -223,8 +235,8 @@ export const post2FaRecoverQueryKey = (options: Options<Post2FaRecoverData>) =>
   createQueryKey("post2FaRecover", options);
 
 /**
- * Request email-based 2FA reset
- * Requests a recovery process for users who are locked out due to losing access to their 2FA device (phone).
+ * Request 2FA Recovery
+ * Sends a recovery email to users who lost access to their 2FA device.
  */
 export const post2FaRecoverOptions = (options: Options<Post2FaRecoverData>) => {
   return queryOptions({
@@ -242,15 +254,19 @@ export const post2FaRecoverOptions = (options: Options<Post2FaRecoverData>) => {
 };
 
 /**
- * Request email-based 2FA reset
- * Requests a recovery process for users who are locked out due to losing access to their 2FA device (phone).
+ * Request 2FA Recovery
+ * Sends a recovery email to users who lost access to their 2FA device.
  */
 export const post2FaRecoverMutation = (
   options?: Partial<Options<Post2FaRecoverData>>,
-): UseMutationOptions<unknown, DefaultError, Options<Post2FaRecoverData>> => {
+): UseMutationOptions<
+  Post2FaRecoverResponse,
+  Post2FaRecoverError,
+  Options<Post2FaRecoverData>
+> => {
   const mutationOptions: UseMutationOptions<
-    unknown,
-    DefaultError,
+    Post2FaRecoverResponse,
+    Post2FaRecoverError,
     Options<Post2FaRecoverData>
   > = {
     mutationFn: async (localOptions) => {
@@ -270,8 +286,8 @@ export const post2FaConfirmRecoverQueryKey = (
 ) => createQueryKey("post2FaConfirmRecover", options);
 
 /**
- * Confirm 2FA reset
- * Confirms the reset process for 2FA by verifying the token sent to the user's email.
+ * Confirm 2FA Recovery
+ * Confirms 2FA reset by verifying the recovery token sent via email.
  */
 export const post2FaConfirmRecoverOptions = (
   options: Options<Post2FaConfirmRecoverData>,
@@ -291,19 +307,19 @@ export const post2FaConfirmRecoverOptions = (
 };
 
 /**
- * Confirm 2FA reset
- * Confirms the reset process for 2FA by verifying the token sent to the user's email.
+ * Confirm 2FA Recovery
+ * Confirms 2FA reset by verifying the recovery token sent via email.
  */
 export const post2FaConfirmRecoverMutation = (
   options?: Partial<Options<Post2FaConfirmRecoverData>>,
 ): UseMutationOptions<
-  unknown,
-  DefaultError,
+  Post2FaConfirmRecoverResponse,
+  Post2FaConfirmRecoverError,
   Options<Post2FaConfirmRecoverData>
 > => {
   const mutationOptions: UseMutationOptions<
-    unknown,
-    DefaultError,
+    Post2FaConfirmRecoverResponse,
+    Post2FaConfirmRecoverError,
     Options<Post2FaConfirmRecoverData>
   > = {
     mutationFn: async (localOptions) => {
@@ -347,12 +363,12 @@ export const postAuthSignupOptions = (options: Options<PostAuthSignupData>) => {
 export const postAuthSignupMutation = (
   options?: Partial<Options<PostAuthSignupData>>,
 ): UseMutationOptions<
-  unknown,
+  PostAuthSignupResponse,
   PostAuthSignupError,
   Options<PostAuthSignupData>
 > => {
   const mutationOptions: UseMutationOptions<
-    unknown,
+    PostAuthSignupResponse,
     PostAuthSignupError,
     Options<PostAuthSignupData>
   > = {
@@ -400,13 +416,13 @@ export const postAuthVerifySignupOptions = (
 export const postAuthVerifySignupMutation = (
   options?: Partial<Options<PostAuthVerifySignupData>>,
 ): UseMutationOptions<
-  unknown,
-  DefaultError,
+  PostAuthVerifySignupResponse,
+  PostAuthVerifySignupError,
   Options<PostAuthVerifySignupData>
 > => {
   const mutationOptions: UseMutationOptions<
-    unknown,
-    DefaultError,
+    PostAuthVerifySignupResponse,
+    PostAuthVerifySignupError,
     Options<PostAuthVerifySignupData>
   > = {
     mutationFn: async (localOptions) => {
@@ -689,6 +705,7 @@ export const postAuthAcceptTermsQueryKey = (
 /**
  * Accept Terms of Service
  * Marks the user's Terms of Service as accepted. Requires a valid session and refresh token. A new access token is issued with updated claims and sent via an HTTP-only cookie.
+ *
  */
 export const postAuthAcceptTermsOptions = (
   options?: Options<PostAuthAcceptTermsData>,
@@ -710,6 +727,7 @@ export const postAuthAcceptTermsOptions = (
 /**
  * Accept Terms of Service
  * Marks the user's Terms of Service as accepted. Requires a valid session and refresh token. A new access token is issued with updated claims and sent via an HTTP-only cookie.
+ *
  */
 export const postAuthAcceptTermsMutation = (
   options?: Partial<Options<PostAuthAcceptTermsData>>,
