@@ -1,21 +1,26 @@
 'use client'
 
 import LoginForm from '@/components/auth/login-form';
-import { getCsrfToken } from '@/api/client/csrf';
 import { useMutation } from '@tanstack/react-query';
 import { postAuthLoginMutation } from '@/api/generated/@tanstack/react-query.gen';
-import { LoginRequest } from '@/api/generated';
+import { getCsrfToken, LoginRequest } from '@/api/generated';
+import { useEffect } from 'react';
+import { useRouter } from '@/i18n/navigation';
 
 export default function LoginContainer() {
-    const { data, error: error, mutate, isPending } = useMutation({...postAuthLoginMutation()});
+    const router = useRouter()
+    const { data, error, status, mutate, isPending } = useMutation({...postAuthLoginMutation()});
     
-    console.log("data", data);
-    console.log("error", error?.messages);
+    useEffect(() => {
+        if ( status === 'success' ) {
+            router.replace("http://localhost:3000/dashboard");
+        }
+    }, [status])
 
     const handleLogin = async (data: LoginRequest) => {
         mutate({
             headers: {
-                'x-csrf-token': await getCsrfToken(),
+                'x-csrf-token': (await getCsrfToken()).data?.csrfToken,
             },
             body: {
                 ...data

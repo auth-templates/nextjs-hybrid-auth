@@ -8,7 +8,10 @@ export default defineConfig({
     path: './src/api/generated',
   },
   plugins: [
-    '@hey-api/client-fetch',
+    {
+        name:'@hey-api/client-fetch',
+        runtimeConfigPath: './fetch-client-config.ts' // custom configuration
+    },
     '@hey-api/schemas',
     {
       dates: true,

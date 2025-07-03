@@ -507,11 +507,44 @@ export type PostAuthVerify2FaResponses = {
 export type PostAuthVerify2FaResponse =
   PostAuthVerify2FaResponses[keyof PostAuthVerify2FaResponses];
 
+export type GetAuthSessionData = {
+  body?: never;
+  path?: never;
+  query?: never;
+  url: "/auth/session";
+};
+
+export type GetAuthSessionErrors = {
+  /**
+   * Unauthorized - session missing or expired.
+   */
+  401: ApiMessageResponse;
+  /**
+   * Server error retrieving session.
+   */
+  500: ApiMessageResponse;
+};
+
+export type GetAuthSessionError =
+  GetAuthSessionErrors[keyof GetAuthSessionErrors];
+
+export type GetAuthSessionResponses = {
+  /**
+   * Current user session retrieved successfully.
+   */
+  200: {
+    user?: User;
+  };
+};
+
+export type GetAuthSessionResponse =
+  GetAuthSessionResponses[keyof GetAuthSessionResponses];
+
 export type GetCsrfTokenData = {
   body?: never;
   path?: never;
   query?: never;
-  url: "/csrf-token";
+  url: "/csrf/token";
 };
 
 export type GetCsrfTokenResponses = {

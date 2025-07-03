@@ -3,6 +3,7 @@
 import type {
   PostAuthLoginResponse,
   PostAuthVerify2FaResponse,
+  GetAuthSessionResponse,
 } from "./types.gen";
 
 const userSchemaResponseTransformer = (data: any) => {
@@ -23,5 +24,14 @@ export const postAuthVerify2FaResponseTransformer = async (
   data: any,
 ): Promise<PostAuthVerify2FaResponse> => {
   data = userSchemaResponseTransformer(data);
+  return data;
+};
+
+export const getAuthSessionResponseTransformer = async (
+  data: any,
+): Promise<GetAuthSessionResponse> => {
+  if (data.user) {
+    data.user = userSchemaResponseTransformer(data.user);
+  }
   return data;
 };

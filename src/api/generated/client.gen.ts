@@ -7,6 +7,7 @@ import {
   createClient,
   createConfig,
 } from "@hey-api/client-fetch";
+import { createClientConfig } from "../../../fetch-client-config";
 
 /**
  * The `createClientConfig()` function will be called on client initialization
@@ -22,7 +23,9 @@ export type CreateClientConfig<T extends DefaultClientOptions = ClientOptions> =
   ) => Config<Required<DefaultClientOptions> & T>;
 
 export const client = createClient(
-  createConfig<ClientOptions>({
-    baseUrl: "http://localhost:3000",
-  }),
+  createClientConfig(
+    createConfig<ClientOptions>({
+      baseUrl: "http://localhost:3000",
+    }),
+  ),
 );

@@ -48,6 +48,9 @@ import type {
   PostAuthVerify2FaData,
   PostAuthVerify2FaResponses,
   PostAuthVerify2FaErrors,
+  GetAuthSessionData,
+  GetAuthSessionResponses,
+  GetAuthSessionErrors,
   GetCsrfTokenData,
   GetCsrfTokenResponses,
 } from "./types.gen";
@@ -55,6 +58,7 @@ import { client as _heyApiClient } from "./client.gen";
 import {
   postAuthLoginResponseTransformer,
   postAuthVerify2FaResponseTransformer,
+  getAuthSessionResponseTransformer,
 } from "./transformers.gen";
 
 export type Options<
@@ -354,6 +358,24 @@ export const postAuthVerify2Fa = <ThrowOnError extends boolean = false>(
 };
 
 /**
+ * Get current user session
+ * Returns the authenticated user's session information. Requires an active session.
+ */
+export const getAuthSession = <ThrowOnError extends boolean = false>(
+  options?: Options<GetAuthSessionData, ThrowOnError>,
+) => {
+  return (options?.client ?? _heyApiClient).get<
+    GetAuthSessionResponses,
+    GetAuthSessionErrors,
+    ThrowOnError
+  >({
+    responseTransformer: getAuthSessionResponseTransformer,
+    url: "/auth/session",
+    ...options,
+  });
+};
+
+/**
  * Get CSRF token
  * Returns a CSRF token and sets a cookie named `XSRF-TOKEN`.<br>
  * Include the returned token in the `x-csrf-token` header of all write (POST, PUT, PATCH, DELETE) requests.<br>
@@ -368,7 +390,7 @@ export const getCsrfToken = <ThrowOnError extends boolean = false>(
     unknown,
     ThrowOnError
   >({
-    url: "/csrf-token",
+    url: "/csrf/token",
     ...options,
   });
 };

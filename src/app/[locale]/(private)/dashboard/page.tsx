@@ -1,3 +1,4 @@
+import LogoutContainer from "@/containers/logout";
 import { LocaleParams } from "@/types/global";
 import { Button } from "@mantine/core";
 import { Locale } from "next-intl";
@@ -26,7 +27,7 @@ export default function Dashboard({params}: Props) {
 
     return (
         <div>
-            <Button>Logout</Button>
+            <LogoutContainer/>
         </div>
     );
 }

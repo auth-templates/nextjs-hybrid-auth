@@ -16,6 +16,7 @@ import {
   postAuthResetPassword,
   postAuthAcceptTerms,
   postAuthVerify2Fa,
+  getAuthSession,
   getCsrfToken,
 } from "../sdk.gen";
 import { queryOptions, type UseMutationOptions } from "@tanstack/react-query";
@@ -62,6 +63,7 @@ import type {
   PostAuthVerify2FaData,
   PostAuthVerify2FaError,
   PostAuthVerify2FaResponse,
+  GetAuthSessionData,
   GetCsrfTokenData,
 } from "../types.gen";
 import { client as _heyApiClient } from "../client.gen";
@@ -804,6 +806,30 @@ export const postAuthVerify2FaMutation = (
     },
   };
   return mutationOptions;
+};
+
+export const getAuthSessionQueryKey = (options?: Options<GetAuthSessionData>) =>
+  createQueryKey("getAuthSession", options);
+
+/**
+ * Get current user session
+ * Returns the authenticated user's session information. Requires an active session.
+ */
+export const getAuthSessionOptions = (
+  options?: Options<GetAuthSessionData>,
+) => {
+  return queryOptions({
+    queryFn: async ({ queryKey, signal }) => {
+      const { data } = await getAuthSession({
+        ...options,
+        ...queryKey[0],
+        signal,
+        throwOnError: true,
+      });
+      return data;
+    },
+    queryKey: getAuthSessionQueryKey(options),
+  });
 };
 
 export const getCsrfTokenQueryKey = (options?: Options<GetCsrfTokenData>) =>
