@@ -5,7 +5,7 @@ export async function fetchWithNoCache(...args: Parameters<typeof fetch>) {
     let [url, options] = args;
     options = {
         ...options,
-        cache: 'no-cache',
+        cache: 'no-store',
     }
     return fetch(url, options);
 }

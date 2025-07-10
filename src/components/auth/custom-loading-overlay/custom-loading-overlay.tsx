@@ -6,7 +6,7 @@ type AppLoadingOverlayProps = LoadingOverlayProps & {
   zIndex?: number;
 };
 
-export default function CustomLoadingOverlay({ visible, zIndex = 1000, ...rest }: AppLoadingOverlayProps) {
+export function CustomLoadingOverlay({ visible, zIndex = 1000, ...rest }: AppLoadingOverlayProps) {
   const colorScheme = useColorScheme();
    
   const overlayColor = colorScheme === 'dark'

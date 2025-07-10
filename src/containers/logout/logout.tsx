@@ -6,7 +6,7 @@ import { getCsrfToken } from '@/api/generated';
 import { useEffect, useState } from 'react';
 import { useRouter } from '@/i18n/navigation';
 import { Box, Button } from '@mantine/core';
-import CustomLoadingOverlay from '@/components/auth/custom-loading-overlay';
+import { CustomLoadingOverlay } from '@/components/auth/custom-loading-overlay';
 
 export default function LogoutContainer() {
      const [loadingInProgress, setLoading] = useState(false);
@@ -22,7 +22,7 @@ export default function LogoutContainer() {
     const handleLogout = async () => {
         mutate({
             headers: {
-                'x-csrf-token': (await getCsrfToken({cache: 'no-cache'})).data?.csrfToken,
+                'x-csrf-token': (await getCsrfToken({cache: 'no-store'})).data?.csrfToken,
             }
         });
     }

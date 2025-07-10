@@ -17,7 +17,7 @@ async function refreshToken(): Promise<void> {
     isRefreshing = true;
 
     try {
-        const csrfToken = (await getCsrfToken({ cache: 'no-cache' })).data?.csrfToken;
+        const csrfToken = (await getCsrfToken({ cache: 'no-store' })).data?.csrfToken;
         const headers: HeadersInit = csrfToken ? { 'x-csrf-token': csrfToken } : {};
 
         const response = await fetch(`${BASE_SERVER_URL}/auth/refresh`, {

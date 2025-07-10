@@ -14,10 +14,12 @@ import { useId, useState } from 'react';
 import MediaOptions from '../media-options';
 import { useTranslations } from 'next-intl';
 import MessageBox, { Message } from '@/components/message-box';
-import CustomLoadingOverlay from '../custom-loading-overlay';
+import { CustomLoadingOverlay } from '@/components/auth/custom-loading-overlay';
+import { LoginRequest } from '@/api/generated';
+import { PublicRoutes } from '@/routes';
 
 type LoginFormProps = {
-    onSubmit: (data: any) => void;
+    onSubmit: (data: LoginRequest) => void;
     loading?: boolean;
     messages?: Message[];
 };
@@ -74,7 +76,7 @@ export default function LoginForm({ onSubmit, loading, messages }: LoginFormProp
                     />
                     <div className={styles.formLink}>
                         <span>
-                            <Link href="/recover-password" className={styles.forgotPassword}>
+                            <Link href={PublicRoutes.recoverPassword} className={styles.forgotPassword}>
                                 {t('links.forgotPassword')}
                             </Link>
                         </span>
@@ -89,7 +91,7 @@ export default function LoginForm({ onSubmit, loading, messages }: LoginFormProp
                 <div className={styles.formLink}>
                     <span>
                         {t('prompts.noAccount')}{' '}
-                        <Link href="/signup" className={styles.signupLink}>
+                        <Link href={PublicRoutes.register} className={styles.signupLink}>
                             {t('links.signUp')}
                         </Link>
                     </span>

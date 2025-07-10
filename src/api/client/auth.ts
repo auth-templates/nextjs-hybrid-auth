@@ -5,7 +5,7 @@ export async function login(data: {email:string, password:string}, csrfToken: st
     try {
         // const response = await fetchWithRedirect(`${process.env.NEXT_PUBLIC_API_BASE_PATH}/auth/login`, {
         //     method: 'POST',
-        //     cache: 'no-cache', 
+        //     cache: 'no-store', 
         //     headers: {
         //         'X-CSRF-Token': csrfToken,
         //         'Content-Type': 'application/json'
@@ -26,7 +26,7 @@ export async function register(data: any) {
     try {
         const response = await fetch(`${process.env.NEXT_PUBLIC_API_BASE_PATH}/auth/register`, {
             method: 'POST',
-            cache: 'no-cache', 
+            cache: 'no-store', 
             headers: {
                 'Content-Type': 'application/json'
             },
@@ -45,7 +45,7 @@ export async function recoverPassword(data: any) {
     try {
         const response = await fetch(`${process.env.NEXT_PUBLIC_API_BASE_PATH}/auth/recover-password`, {
             method: 'POST',
-            cache: 'no-cache', 
+            cache: 'no-store', 
             headers: {
                 'Content-Type': 'application/json'
             },
@@ -65,7 +65,7 @@ export async function resendConfirmationEmail(data: any) {
     try {
         const response = await fetch(`${process.env.NEXT_PUBLIC_API_BASE_PATH}/auth/resend-confirmation-email`, {
             method: 'POST',
-            cache: 'no-cache', 
+            cache: 'no-store', 
             headers: {
                 'Content-Type': 'application/json'
             },
@@ -84,7 +84,7 @@ export async function resetPassword(data: any) {
     try {
         const response = await fetch(`${process.env.NEXT_PUBLIC_API_BASE_PATH}/auth/reset-password`, {
             method: 'POST',
-            cache: 'no-cache', 
+            cache: 'no-store', 
             headers: {
                 'Content-Type': 'application/json'
             },
@@ -103,7 +103,7 @@ export async function verifyAccount(data: any) {
     try {
         const response = await fetch(`${process.env.NEXT_PUBLIC_API_BASE_PATH}/auth/verify-account`, {
             method: 'POST',
-            cache: 'no-cache', 
+            cache: 'no-store', 
             headers: {
                 'Content-Type': 'application/json'
             },

@@ -40,35 +40,6 @@
   margin-bottom: 1rem;
 }
 
-/* Notification (if reused later) */
-.notification {
-  width: 100%;
-  background-color: var(--color-alert);
-  border-radius: var(--border-radius);
-  box-shadow: var(--shadow2);
-  padding: 0.8rem 1rem;
-  font-size: 0.95rem;
-  margin-bottom: 1rem;
-}
-
-.notificationBody {
-  color: var(--color-secondary);
-}
-
-.notificationDescription {
-  color: var(--color-secondary);
-}
-
-.notificationCloseButton {
-  color: var(--color-secondary);
-  border: 1px solid var(--color-secondary);
-  transition: color 0.3s ease;
-}
-
-.notificationCloseButton:hover {
-  color: var(--color-background);
-}
-
 /* Forgot / Signup links */
 .formLink {
   text-align: center;

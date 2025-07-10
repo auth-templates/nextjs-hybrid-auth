@@ -6,6 +6,7 @@ import { postAuthLoginMutation } from '@/api/generated/@tanstack/react-query.gen
 import { getCsrfToken, LoginRequest } from '@/api/generated';
 import { useEffect } from 'react';
 import { useRouter } from '@/i18n/navigation';
+import { PrivateRoutes } from '@/routes';
 
 export default function LoginContainer() {
     const router = useRouter()
@@ -13,14 +14,14 @@ export default function LoginContainer() {
     
     useEffect(() => {
         if ( status === 'success' ) {
-            router.replace("http://localhost:3000/dashboard");
+            router.replace(PrivateRoutes.dashboard);
         }
     }, [status])
 
     const handleLogin = async (data: LoginRequest) => {
         mutate({
             headers: {
-                'x-csrf-token': (await getCsrfToken()).data?.csrfToken,
+                'x-csrf-token': (await getCsrfToken({ cache: 'no-store' })).data?.csrfToken,
             },
             body: {
                 ...data
