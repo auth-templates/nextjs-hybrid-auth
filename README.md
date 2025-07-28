@@ -1,5 +1,6 @@
-# Flexible Leaves
-Flexible Leaves Web App is user-friendly app designed to simplify holiday planning and leave management.
+# Frontend Architecture for Hybrid Session + JWT Auth API
+
+This frontend is built to interface with a secure backend that employs a hybrid authentication model, combining server-side sessions and JWT-based access control. It ensures strong security (via HTTP-only cookies) while allowing a responsive, stateless experience on the frontend using Next.js.
 
 #### App Router setup with i18n routing
 [Documentation](https://next-intl.dev/docs/getting-started/app-router/with-i18n-routing)
