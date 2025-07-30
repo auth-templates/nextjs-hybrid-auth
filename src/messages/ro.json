@@ -34,7 +34,7 @@
         },
         "resend-activation-email": {
             "title": "Solicitați un Nou Email de Activare",
-            "subtitle": "Dacă nu ați primit emailul de activare, puteți solicita unul nou aici."
+            "subtitle": "Dacă nu ați primit email-ul de activare, puteți solicita unul nou aici."
         },
         "send-reset-password-email": {
             "title": "Solicitare Resetare Parolă",
@@ -72,7 +72,7 @@
                 "password": "Introdu parola ta"
             },
             "validation": {
-                "emailRequired": "Emailul este obligatoriu",
+                "emailRequired": "Email-ul este obligatoriu",
                 "invalidEmail": "Adresă de email invalidă",
                 "passwordRequired": "Parola este obligatorie"
             },
@@ -99,7 +99,7 @@
                 "confirmPassword": "Reintrodu parola"
             },
             "validation": {
-                "emailRequired": "Emailul este obligatoriu",
+                "emailRequired": "Email-ul este obligatoriu",
                 "invalidEmail": "Adresă de email invalidă",
                 "passwordRequired": "Parola este obligatorie",
                 "passwordRules": "Parola ta trebuie să aibă cel puțin 8 caractere și să conțină cel puțin o literă mică, o literă mare, un simbol și o cifră.",
@@ -116,6 +116,36 @@
             "prompts": {
                 "haveAccount": "Ai deja un cont?"
             }
+        },
+        "request_password_reset": {
+            "validation": {
+                "emailRequired": "Email-ul este necesar"
+            },
+            "labels": {
+                "email": "Email"
+            },
+            "placeholders": {
+                "email": "Introduceți email-ul"
+            },
+            "buttons": {
+                "send_password_reset_email": "Trimite email-ul pentru resetarea parolei"
+            },
+            "back_to_sign_in": "sau întoarceți-vă la pagina de <loginLink>Autentificare</loginLink>."
+        },
+        "request_confirmation_email": {
+            "validation": {
+                "emailRequired": "Email-ul este necesar"
+            },
+            "labels": {
+                "email": "Email"
+            },
+            "placeholders": {
+                "email": "Introduceți email-ul"
+            },
+            "buttons": {
+                "resend_confirmation_email": "Retrimite email-ul de confirmare"
+            },
+            "back_to_sign_in": "sau întoarceți-vă la pagina de <loginLink>Autentificare</loginLink>."
         },
         "social-auth": {
             "login-with-google": "Autentificare cu Google",

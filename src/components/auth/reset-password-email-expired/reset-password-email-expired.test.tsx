@@ -9,7 +9,7 @@ describe("ResetPasswordEmailExpired", () => {
         );
 
         expect(screen.getByText(/Your reset password email has expired. Please go to/)).toBeInTheDocument(); 
-        expect(screen.getByRole('link', {name: 'Forgot password'})).toHaveAttribute('href', PublicRoutes.recoverPassword);
+        expect(screen.getByRole('link', {name: 'Forgot password'})).toHaveAttribute('href', PublicRoutes.requestPasswordReset);
         expect(screen.getByText(/page in order to send a new mail./)).toBeInTheDocument();
     });
 });

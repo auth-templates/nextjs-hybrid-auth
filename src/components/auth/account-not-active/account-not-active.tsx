@@ -12,8 +12,8 @@ export default function AccountNotActive({email}: AccountNotActiveProps) {
             An account with the email <div className={classes.email}>{email}</div> exists, but it is not active.
             Check your inbox for the confirmation email or please go to 
             <Link 
-                href={`${PublicRoutes.resendConfirmationEmail}?email=${email}`} 
-                as={PublicRoutes.resendConfirmationEmail}
+                href={`${PublicRoutes.requestConfirmationEmail}?email=${email}`} 
+                as={PublicRoutes.requestConfirmationEmail}
             > 
                 Resend confirmation email 
             </Link> 

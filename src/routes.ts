@@ -7,8 +7,8 @@ export const PrivateRoutes = {
 export const PublicRoutes = {
     login: '/login',
     register: '/register',
-    recoverPassword: '/recover-password',
-    resendConfirmationEmail: '/resend-confirmation-email',
+    requestPasswordReset: '/request-password-reset',
+    requestConfirmationEmail: '/request-confirmation-email',
     resetPassword: '/reset-password/:token',
     verifyAccount: '/verify-account/:token',
     twoStep: '/two-step',

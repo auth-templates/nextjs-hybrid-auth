@@ -1,4 +1,4 @@
-import RequestPasswordResetContainer from "@/containers/request-password-reset";
+import RecoverPasswordRequestContainer from "@/containers/request-password-reset";
 import AuthLayout from "@/hoc/auth-layout";
 import { LocaleParams } from "@/types/global";
 import { Locale, useTranslations } from "next-intl";
@@ -19,7 +19,7 @@ type Props = {
     params: Promise<{ locale: Locale }>;
 };
 
-export default function SendResetPasswordEmailPage({ params }: Props) {
+export default function RequestPasswordResetPage({ params }: Props) {
     const { locale } = use(params);
     const t = useTranslations('pages.send-reset-password-email');
 
@@ -31,7 +31,7 @@ export default function SendResetPasswordEmailPage({ params }: Props) {
             title={t('title')}
             subtitle={t('subtitle')}
         >
-            <RequestPasswordResetContainer />
+            <RecoverPasswordRequestContainer />
         </AuthLayout>
     );
 }

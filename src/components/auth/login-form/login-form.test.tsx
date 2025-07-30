@@ -21,7 +21,7 @@ describe("LoginForm", () => {
         expect(loginButton).toHaveAttribute('type', 'submit');
         const linkForgotPassword = screen.getByRole('link', {name: 'Forgot password?'});
         expect(linkForgotPassword).toBeInTheDocument();
-        expect(linkForgotPassword).toHaveAttribute('href', '/recover-password');
+        expect(linkForgotPassword).toHaveAttribute('href', '/request-password-reset');
         expect(screen.getByText(/Don't have an account?/)).toBeInTheDocument();
         const linkSignUp = screen.getByRole('link', {name: 'Sign up'});
         expect(linkSignUp).toBeInTheDocument();

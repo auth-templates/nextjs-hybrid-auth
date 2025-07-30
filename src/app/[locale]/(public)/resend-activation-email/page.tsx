@@ -1,4 +1,4 @@
-import ResendConfirmationEmailContainer from "@/containers/resend-confirmation-email/resend-confirmation-email";
+import ResendConfirmationEmailContainer from "@/containers/request-confirmation-email";
 import AuthLayout from "@/hoc/auth-layout";
 import { LocaleParams } from "@/types/global";
 import { Locale, useTranslations } from "next-intl";

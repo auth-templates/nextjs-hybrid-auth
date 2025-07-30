@@ -1,39 +1,36 @@
 'use client';
 
 import VerifyAccount from '../../components/auth/verify-account';
-import { verifyAccount } from '../../api/client/auth';
-import useCsrfToken from '../../hooks/use-csrf-token';
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 import { useParams } from 'next/navigation';
+import { useMutation } from '@tanstack/react-query';
+import { getCsrfToken, VerifyTokenRequest } from '@/api/generated';
+import { postAuthVerifySignupMutation } from '@/api/generated/@tanstack/react-query.gen';
 
-const VerifyAccountContainer = () => {
-    const { token } = useParams();
-    const getCsrfToken = useCsrfToken();
-    const [ status, setStatus ] = useState();
+export default function VerifyAccountContainer() {
+    const { token } = useParams<{token: string}>();
+    const { data, error, mutate, status, isPending } = useMutation({
+		...postAuthVerifySignupMutation(),
+	})
 
     useEffect(() => {
-        verify({token});
+        verify({token: token});
     }, [token])
 
-    const verify = async (data: any) => {
-        const response = await verifyAccount({...data, csrfToken: await getCsrfToken()});
-        try {
-            if( response.ok ) {
-                setStatus({ theme: 'info', lines: [ 'Account verified' ] });
-            } else {
-                const { message } = await response.json();
-                setStatus({theme: 'error', lines: [message]});
+    const verify = async (data: VerifyTokenRequest) => {
+        mutate({
+            headers: {
+                'x-csrf-token': (await getCsrfToken({ cache: 'no-store' })).data?.csrfToken,
+            },
+            body: {
+                ...data
             }
-        } catch (error) {
-            setStatus({theme: 'error', lines: [ 'Failed verify account. Please try again!' ]});
-        }
+        })
     }
 
     return (
         <>
-            <VerifyAccount status={status}/>
+            <VerifyAccount messages={error?.messages} />
         </>
     )
 }
-
-export default VerifyAccountContainer;

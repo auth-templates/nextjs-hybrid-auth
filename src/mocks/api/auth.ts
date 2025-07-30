@@ -94,7 +94,7 @@ export const handlers = [
 
         return new HttpResponse(null, { status: 204 });
     }),
-    http.post('/auth/recover-password',  async ({ request }) => {
+    http.post('/auth/request-password-reset',  async ({ request }) => {
         const { email, csrfToken} = await request.json() as any;
       
         if( email === 'inexistentaccount@mail.com') {

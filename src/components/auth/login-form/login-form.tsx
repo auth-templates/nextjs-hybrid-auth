@@ -76,7 +76,7 @@ export default function LoginForm({ onSubmit, loading, messages }: LoginFormProp
                     />
                     <div className={styles.formLink}>
                         <span>
-                            <Link href={PublicRoutes.recoverPassword} className={styles.forgotPassword}>
+                            <Link href={PublicRoutes.requestPasswordReset} className={styles.forgotPassword}>
                                 {t('links.forgotPassword')}
                             </Link>
                         </span>

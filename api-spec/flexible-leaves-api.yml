@@ -1,592 +1,151 @@
-openapi: 3.0.0
-info:
-  title: Flexible Leaves API
-  version: 1.0.0
-  description: API Description for leave management app
+openapi: 3.0.3
 servers:
-  - url: http://localhost:3000
-paths:
-  /2fa/setup:
-    post:
-      summary: Initialize 2FA Setup
-      description: >-
-        Generates a QR code and a temporary secret to start the two-factor
-        authentication setup process.
-      security:
-        - bearerAuth: []
-      responses:
-        '200':
-          description: 2FA setup initialized with QR code and secret.
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/TwoFASetupResponse'
-        '401':
-          description: Unauthorized - Missing or invalid authentication token.
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ApiMessageResponse'
-  /2fa/verify-setup:
-    post:
-      summary: Verify 2FA Setup Code
-      description: Verifies the TOTP code to confirm two-factor authentication setup.
-      security:
-        - bearerAuth: []
-      requestBody:
-        required: true
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/Verify2FACodeRequest'
-      responses:
-        '200':
-          description: Two-factor authentication enabled successfully.
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ApiMessageResponse'
-        '400':
-          description: Invalid two-factor authentication code.
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ApiMessageResponse'
-        '401':
-          description: Unauthorized - Missing or invalid authentication token.
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ApiMessageResponse'
-  /2fa/disable:
-    delete:
-      summary: Disable Two-Factor Authentication
-      description: Disables 2FA for the current user and removes the 2FA secret.
-      security:
-        - bearerAuth: []
-      responses:
-        '200':
-          description: Two-factor authentication disabled successfully.
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ApiMessageResponse'
-        '400':
-          description: Failed to disable two-factor authentication.
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ApiMessageResponse'
-        '401':
-          description: Unauthorized - Missing or invalid authentication token.
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ApiMessageResponse'
-  /2fa/recover:
-    post:
-      summary: Request 2FA Recovery
-      description: Sends a recovery email to users who lost access to their 2FA device.
-      requestBody:
-        required: true
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/Recover2FARequest'
-      responses:
-        '200':
-          description: Recovery email sent successfully.
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ApiMessageResponse'
-        '400':
-          description: Invalid email or request.
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ApiMessageResponse'
-        '404':
-          description: User not found.
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ApiMessageResponse'
-  /2fa/confirm-recover:
-    post:
-      summary: Confirm 2FA Recovery
-      description: Confirms 2FA reset by verifying the recovery token sent via email.
-      requestBody:
-        required: true
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/ConfirmRecover2FARequest'
-      responses:
-        '200':
-          description: Two-factor authentication recovery confirmed.
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ApiMessageResponse'
-        '400':
-          description: Invalid or expired recovery token.
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ApiMessageResponse'
-        '401':
-          description: Unauthorized - Missing or invalid authentication token.
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ApiMessageResponse'
-  /auth/signup:
-    post:
-      summary: User Signup
-      description: Registers a new user and saves them to the database with admin role.
-      requestBody:
-        required: true
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/SignupRequest'
-      responses:
-        '200':
-          description: User successfully registered.
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ApiMessageResponse'
-              example:
-                messages:
-                  - text: User created successfully.
-                    severity: success
-        '500':
-          description: Server error during signup.
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ApiMessageResponse'
-              example:
-                messages:
-                  - text: Internal server error
-                    severity: error
-  /auth/verify-signup:
-    post:
-      summary: Verify Signup Token
-      description: Verifies a user's signup token and activates their account.
-      requestBody:
-        required: true
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/VerifyTokenRequest'
-      responses:
-        '200':
-          description: Token verified and user activated.
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ApiMessageResponse'
-              example:
-                messages:
-                  - text: Signup verified successfully.
-                    severity: success
-        '400':
-          description: Invalid or expired token.
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ApiMessageResponse'
-              example:
-                messages:
-                  - text: Invalid or expired verification token.
-                    severity: error
-        '404':
-          description: User not found.
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ApiMessageResponse'
-              example:
-                messages:
-                  - text: User not found.
-                    severity: error
-        '500':
-          description: Server error during verification.
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ApiMessageResponse'
-              example:
-                messages:
-                  - text: Internal server error
-                    severity: error
-  /auth/login:
-    post:
-      summary: User Login
-      description: >-
-        Generates a session token for the user and sets it in an HTTP-only
-        cookie.
-      requestBody:
-        required: true
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/LoginRequest'
-      responses:
-        '200':
-          description: >-
-            Login successful, session token set in cookie and user info
-            returned.
-          headers:
-            Set-Cookie:
-              description: HTTP-only session cookie containing the session token.
-              schema:
-                type: string
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/User'
-        '400':
-          description: Validation errors in login data.
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ApiMessageResponse'
-              example:
-                messages:
-                  - text: Password must contain at least one uppercase letter
-                    severity: error
-        '401':
-          description: Incorrect email or password.
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ApiMessageResponse'
-              example:
-                messages:
-                  - text: Incorrect email or password.
-                    severity: error
-        '500':
-          description: Server error during login.
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ApiMessageResponse'
-              example:
-                messages:
-                  - text: Internal server error
-                    severity: error
-  /auth/logout:
-    post:
-      summary: User Logout
-      description: Logs out the user by deleting the session cookie.
-      responses:
-        '204':
-          description: Logout successful, session cookie deleted.
-        '500':
-          description: Server error during logout.
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ApiMessageResponse'
-              example:
-                messages:
-                  - text: Internal server error
-                    severity: error
-  /auth/refresh:
-    post:
-      summary: Refresh Access Token
-      description: >-
-        Refreshes the access token using a valid refresh token stored in
-        cookies. Requires authentication.
-      responses:
-        '204':
-          description: Access token refreshed successfully. No content returned.
-        '403':
-          description: Invalid or missing refresh token.
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ApiMessageResponse'
-              example:
-                messages:
-                  - text: Invalid or missing refresh token.
-                    severity: error
-        '500':
-          description: Server error during token refresh.
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ApiMessageResponse'
-              example:
-                messages:
-                  - text: Internal server error
-                    severity: error
-  /auth/reset-password/request:
-    post:
-      summary: Initiate Password Reset
-      description: >-
-        Sends a password reset email to the given email address. Always responds
-        with 204 to avoid revealing user existence.
-      requestBody:
-        required: true
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/ResetPasswordRequest'
-      responses:
-        '200':
-          description: Password reset not allowed (e.g., user inactive).
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ApiMessageResponse'
-              example:
-                messages:
-                  - text: Password reset not allowed.
-                    severity: warning
-        '204':
-          description: Password reset email sent if user exists and is active.
-        '500':
-          description: Server error during password reset.
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ApiMessageResponse'
-              example:
-                messages:
-                  - text: Internal server error
-                    severity: error
-  /auth/reset-password:
-    post:
-      summary: Complete Password Reset
-      description: Resets the user's password using a valid reset token and a new password.
-      requestBody:
-        required: true
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/ConfirmResetPasswordRequest'
-      responses:
-        '204':
-          description: Password successfully reset.
-        '400':
-          description: Invalid or expired token, or invalid password format.
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ApiMessageResponse'
-              example:
-                messages:
-                  - text: Invalid or expired reset token, or invalid password.
-                    severity: error
-        '500':
-          description: Server error during password reset.
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ApiMessageResponse'
-              example:
-                messages:
-                  - text: Internal server error
-                    severity: error
-  /auth/accept-terms:
-    post:
-      summary: Accept Terms of Service
-      description: >
-        Marks the user's Terms of Service as accepted. Requires a valid session
-        and refresh token. A new access token is issued with updated claims and
-        sent via an HTTP-only cookie.
-      responses:
-        '204':
-          description: Terms accepted successfully. New access token set in cookie.
-          headers:
-            Set-Cookie:
-              description: HTTP-only cookie containing a new access token.
-              schema:
-                type: string
-        '401':
-          description: Unauthorized - session missing or expired.
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ApiMessageResponse'
-              example:
-                messages:
-                  - text: 'Unauthorized: session missing or expired.'
-                    severity: error
-        '403':
-          description: Invalid or missing refresh token.
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ApiMessageResponse'
-              example:
-                messages:
-                  - text: Invalid or missing refresh token.
-                    severity: error
-        '500':
-          description: Server error during terms acceptance or token generation.
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ApiMessageResponse'
-              example:
-                messages:
-                  - text: Internal server error
-                    severity: error
-  /auth/verify-2fa:
-    post:
-      summary: Verify Two-Factor Authentication Code
-      description: >-
-        Verifies a 2FA code provided by the user during login. Requires an
-        active session.
-      security:
-        - cookieAuth: []
-      requestBody:
-        required: true
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/Verify2FARequest'
-      responses:
-        '200':
-          description: >-
-            2FA verification successful. Session updated and access token
-            issued.
-          headers:
-            Set-Cookie:
-              description: HTTP-only cookie containing the access token.
-              schema:
-                type: string
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/User'
-        '400':
-          description: Invalid or expired 2FA code.
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ApiMessageResponse'
-              example:
-                messages:
-                  - text: Invalid or expired two-factor authentication code.
-                    severity: error
-        '401':
-          description: Unauthorized - session missing or expired.
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ApiMessageResponse'
-              example:
-                messages:
-                  - text: 'Unauthorized: session missing or expired.'
-                    severity: error
-        '500':
-          description: Server error during 2FA verification.
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ApiMessageResponse'
-              example:
-                messages:
-                  - text: Internal server error
-                    severity: error
-  /auth/session:
-    get:
-      summary: Get current user session
-      description: >-
-        Returns the authenticated user's session information. Requires an active
-        session.
-      security:
-        - cookieAuth: []
-      responses:
-        '200':
-          description: Current user session retrieved successfully.
-          content:
-            application/json:
-              schema:
-                type: object
-                properties:
-                  user:
-                    $ref: '#/components/schemas/User'
-        '401':
-          description: Unauthorized - session missing or expired.
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ApiMessageResponse'
-              example:
-                messages:
-                  - text: 'Unauthorized: session missing or expired.'
-                    severity: error
-        '500':
-          description: Server error retrieving session.
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ApiMessageResponse'
-              example:
-                messages:
-                  - text: Internal server error
-                    severity: error
-  /csrf/token:
-    get:
-      summary: Get CSRF token
-      tags:
-        - Security
-      description: >
-        Returns a CSRF token and sets a cookie named `XSRF-TOKEN`.<br>
+  - url: http://localhost:3001
+info:
+  title: Hybrid Session + JWT Auth API
+  version: 1.0.0
+  description: >
+    This API uses a hybrid authentication approach combining Express server-side
+    sessions and JWT-based access control, with all credentials stored in
+    HTTP-only cookies. This approach ensures security while allowing stateless
+    validation for route access.
 
-        Include the returned token in the `x-csrf-token` header of all write
-        (POST, PUT, PATCH, DELETE) requests.<br>
+    ## 🔐 Authentication Model
 
-        This protects against Cross-Site Request Forgery attacks by validating
-        state-changing requests.
-      responses:
-        '200':
-          description: CSRF token returned successfully.
-          headers:
-            Set-Cookie:
-              description: Cookie named `XSRF-TOKEN` containing the token.
-              schema:
-                type: string
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/CsrfTokenResponse'
+    - `connect.sid`: Express session ID (server-side session store) -
+    `access_token`: Short-lived JWT used for access control in frontend
+    middleware (Next.js) - `refresh_token`: Used to renew the access token via
+    `/auth/token`
+
+    ### Access Patterns
+
+    - All **authenticated API requests** require both:
+      - `connect.sid`
+      - `access_token`
+
+    - The **token refresh** flow (`POST /auth/token`) requires:
+      - `connect.sid`
+      - `refresh_token`
+
+    All tokens are stored in secure cookies and are automatically included in
+    browser requests when the frontend and backend share the same origin.
+
+    When the frontend and backend are hosted on **different origins** (e.g.,
+    different ports or domains),   the frontend **must** configure requests to
+    include credentials by setting `credentials: 'include'`   (in `fetch`) or
+    `withCredentials: true` (in Axios or XHR). Additionally, the backend must
+    allow credentialed   CORS requests via appropriate headers
+    (`Access-Control-Allow-Credentials: true` and matching
+    `Access-Control-Allow-Origin`).
+
+    ## ⚠️ Limitations of OpenAPI & Swagger UI
+
+    - OpenAPI 3.0 supports requiring multiple security schemes simultaneously
+      (e.g., session cookie AND access token) by combining them in a single
+      security object. However, some tools or generators may have limited
+      support for this pattern.
+
+    - Swagger UI does not support setting multiple cookies through the
+      "Authorize" button, nor does it send cookies during "Try it out"
+      unless your frontend is hosted on the **same origin** and the browser
+      has valid cookies set.
+
+    - For this reason, Swagger UI's "Try it out" cannot simulate authenticated
+      requests correctly unless your app:
+        1. Runs on the same origin as the API
+        2. Has cookies already set by prior login (via browser)
+
+    ## 🧰 Purpose of this OpenAPI File
+
+    This OpenAPI schema is not intended for interactive use in Swagger UI.
+
+    Instead, it is used as input for **@7nohe/openapi-react-query-codegen** to
+    generate:
+      - Typed React hooks for `react-query`
+      - Request/response type definitions
+      - A type-safe frontend API layer
+
+    By using this OpenAPI file, the frontend can safely call authenticated
+    endpoints, as long as cookies are properly sent by the browser —  
+    automatically on same-origin requests, or via `credentials: 'include'`   on
+    cross-origin requests with CORS properly configured on the backend.
 components:
-  schemas:
-    Message:
-      type: object
-      properties:
-        text:
-          type: string
-          example: Operation completed successfully.
-        severity:
-          type: string
-          enum:
-            - error
-            - warning
-            - info
-            - success
-          example: success
-      required:
-        - text
-        - severity
-    ApiMessageResponse:
-      type: object
-      properties:
+  securitySchemes:
+    SessionCookieAuth:
+      type: apiKey
+      in: cookie
+      name: connect.sid
+      description: Session ID cookie, manages session validity.
+    AccessTokenCookieAuth:
+      type: apiKey
+      in: cookie
+      name: access_token
+      description: JWT access token cookie, used for access control in frontend middleware.
+    RefreshTokenCookieAuth:
+      type: apiKey
+      in: cookie
+      name: refresh_token
+      description: >-
+        JWT refresh token cookie, used to issue new access tokens via
+        `/auth/refresh`.
+  parameters:
+    XCsrfTokenHeader:
+      name: x-csrf-token
+      in: header
+      description: CSRF token required for POST requests
+      required: true
+      schema:
+        type: string
+  responses:
+    UnauthorizedErrors:
+      description: Authentication errors
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ApiMessageResponse'
+          examples:
+            SessionInvalidOrExpired:
+              $ref: '#/components/examples/SessionInvalidOrExpired'
+            AccessTokenMissing:
+              $ref: '#/components/examples/AccessTokenMissing'
+            AccessTokenExpired:
+              $ref: '#/components/examples/AccessTokenExpired'
+    InternalServerError:
+      description: Internal server error
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ApiMessageResponse'
+          example:
+            messages:
+              - text: >-
+                  An unexpected error occurred. Please try again later or
+                  contact support.
+                severity: error
+            code: INTERNAL_SERVER_ERROR
+  examples:
+    SessionInvalidOrExpired:
+      summary: Session invalid or expired
+      value:
         messages:
-          type: array
-          items:
-            $ref: '#/components/schemas/Message'
-      required:
-        - messages
+          - text: Session invalid or expired
+            severity: error
+        code: SESSION_INVALID_OR_EXPIRED
+    AccessTokenMissing:
+      summary: Access token missing
+      value:
+        messages:
+          - text: Access token missing
+            severity: error
+        code: ACCESS_TOKEN_MISSING
+    AccessTokenExpired:
+      summary: Access token expired
+      value:
+        messages:
+          - text: Access token expired
+            severity: error
+        code: ACCESS_TOKEN_EXPIRED
+  schemas:
     TwoFASetupResponse:
       type: object
       properties:
@@ -644,6 +203,14 @@ components:
         termsAccepted:
           type: boolean
           example: true
+    VerifyTokenRequest:
+      type: object
+      required:
+        - token
+      properties:
+        token:
+          type: string
+          example: signup-verification-token-here
     LoginRequest:
       type: object
       required:
@@ -656,42 +223,6 @@ components:
         password:
           type: string
           example: $SuperSecurePassword45
-    Verify2FARequest:
-      type: object
-      required:
-        - code
-      properties:
-        code:
-          type: string
-          example: '123456'
-    VerifyTokenRequest:
-      type: object
-      required:
-        - token
-      properties:
-        token:
-          type: string
-          example: signup-verification-token-here
-    ResetPasswordRequest:
-      type: object
-      required:
-        - userEmail
-      properties:
-        userEmail:
-          type: string
-          example: user@example.com
-    ConfirmResetPasswordRequest:
-      type: object
-      required:
-        - token
-        - newPassword
-      properties:
-        token:
-          type: string
-          example: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...
-        newPassword:
-          type: string
-          example: StrongNewPassword!2025
     User:
       type: object
       properties:
@@ -723,10 +254,1021 @@ components:
           type: string
           nullable: true
           example: active
+    ResendActivationEmailRequest:
+      type: object
+      required:
+        - userEmail
+      properties:
+        userEmail:
+          type: string
+          format: email
+          example: user@example.com
+    ResetPasswordRequest:
+      type: object
+      required:
+        - userEmail
+      properties:
+        userEmail:
+          type: string
+          example: user@example.com
+    ConfirmResetPasswordRequest:
+      type: object
+      required:
+        - token
+        - newPassword
+      properties:
+        token:
+          type: string
+          example: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...
+        newPassword:
+          type: string
+          example: StrongNewPassword!2025
+    Verify2FARequest:
+      type: object
+      required:
+        - code
+      properties:
+        code:
+          type: string
+          example: '123456'
     CsrfTokenResponse:
       type: object
       properties:
         csrfToken:
           type: string
           example: abc123csrfTOKEN456xyz
+    Message:
+      type: object
+      required:
+        - text
+        - severity
+      properties:
+        text:
+          type: string
+          example: Two-factor authentication enabled successfully.
+        severity:
+          type: string
+          enum:
+            - error
+            - warning
+            - info
+            - success
+          example: success
+    ApiMessageResponse:
+      type: object
+      required:
+        - messages
+      properties:
+        code:
+          $ref: '#/components/schemas/StatusCode'
+        messages:
+          type: array
+          items:
+            $ref: '#/components/schemas/Message'
+    StatusCode:
+      type: string
+      description: >
+        Application-level status codes used to represent the outcome of various
+        operations, including errors, success signals, and conditions requiring
+        user interaction. These codes are designed for programmatic handling by
+        frontend or client logic.
+      enum:
+        - ACCESS_TOKEN_MISSING
+        - ACCESS_TOKEN_EXPIRED
+        - ACCESS_TOKEN_INVALID
+        - REFRESH_TOKEN_INVALID
+        - SOCIAL_LOGIN_REQUIRED
+        - SIGNUP_TOKEN_INVALID
+        - SIGNUP_TOKEN_EXPIRED
+        - SIGNUP_TOKEN_ALREADY_USED
+        - USER_NOT_FOUND
+        - EMAIL_ALREADY_IN_USE
+        - VERIFICATION_FAILED
+        - EMAIL_VERIFICATION_SEND_FAILED
+        - EMAIL_PASSWORD_RESET_SEND_FAILED
+        - PASSWORD_RESET_FAILED
+        - INVALID_CREDENTIALS
+        - SESSION_INVALID_OR_EXPIRED
+        - TERMS_ACCEPTANCE_REQUIRED
+        - TWO_FA_RECOVERY_TOKEN_INVALID
+        - TWO_FA_RECOVERY_TOKEN_EXPIRED
+        - TWO_FA_RECOVERY_TOKEN_ALREADY_USED
+        - TWO_FA_SETUP_SUCCESS
+        - TWO_FA_VERIFICATION_NOT_PENDING
+        - TWO_FA_VERIFICATION_FAILED
+        - TWO_FA_RECOVERY_NOT_INITIATED
+        - TWO_FA_VERIFICATION_REQUIRED
+        - TWO_FA_NOT_CONFIGURED
+        - TWO_FA_VERIFICATION_CODE_INVALID
+        - TWO_FA_SETUP_INVALID
+        - EMAIL_TWO_FA_RECOVERY_SEND_FAILED
+        - TWO_FA_RECOVERY_FAILED
+        - PASSWORD_RESET_NOT_INITIATED
+        - PASSWORD_RESET_TOKEN_INVALID
+        - PASSWORD_RESET_TOKEN_EXPIRED
+        - PASSWORD_RESET_TOKEN_ALREADY_USED
+        - CSRF_TOKEN_INVALID
+        - INTERNAL_SERVER_ERROR
+        - TERMS_ALREADY_ACCEPTED
+        - CONFIRMATION_EMAIL_SENT_IF_NEEDED
+security:
+  - SessionCookieAuth: []
+    AccessTokenCookieAuth: []
+paths:
+  /2fa/setup:
+    parameters:
+      - $ref: '#/components/parameters/XCsrfTokenHeader'
+    post:
+      summary: Initialize 2FA Setup
+      description: >-
+        Generates a QR code and a temporary secret to start the two-factor
+        authentication setup process.
+      tags:
+        - Two Factor Authentication
+      security:
+        - bearerAuth: []
+      responses:
+        '200':
+          description: 2FA setup initialized with QR code and secret.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TwoFASetupResponse'
+        '401':
+          $ref: '#/components/responses/UnauthorizedErrors'
+        '500':
+          $ref: '#/components/responses/InternalServerError'
+  /2fa/verify-setup:
+    parameters:
+      - $ref: '#/components/parameters/XCsrfTokenHeader'
+    post:
+      summary: Verify 2FA Setup Code
+      description: Verifies the TOTP code to confirm two-factor authentication setup.
+      tags:
+        - Two Factor Authentication
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Verify2FACodeRequest'
+      responses:
+        '200':
+          description: Two-factor authentication enabled successfully.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiMessageResponse'
+              example:
+                messages:
+                  - text: Two-factor authentication has been successfully verified.
+                    severity: info
+                code: TWO_FA_SETUP_SUCCESS
+        '400':
+          description: Invalid two-factor authentication code.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiMessageResponse'
+              examples:
+                TwoFaFormatError:
+                  summary: The 2FA code format is not valid
+                  value:
+                    messages:
+                      - text: The 2FA code must be a 6-digit number.
+                        severity: error
+                TwoFaSetupError:
+                  summary: The 2FA setup is expired or no longer valid
+                  value:
+                    messages:
+                      - text: >-
+                          Your 2FA setup has expired or is no longer valid.
+                          Please try setting it up again.
+                        severity: error
+                    code: TWO_FA_SETUP_INVALID
+                TwoFaVerificationCodeInvalid:
+                  summary: The 2FA code is invalid
+                  value:
+                    messages:
+                      - text: >-
+                          The verification code you entered is invalid. Please
+                          try again.
+                        severity: error
+                    code: TWO_FA_VERIFICATION_CODE_INVALID
+        '401':
+          $ref: '#/components/responses/UnauthorizedErrors'
+        '500':
+          $ref: '#/components/responses/InternalServerError'
+  /2fa/disable:
+    parameters:
+      - $ref: '#/components/parameters/XCsrfTokenHeader'
+    delete:
+      summary: Disable Two-Factor Authentication
+      description: Disables 2FA for the current user and removes the 2FA secret.
+      tags:
+        - Two Factor Authentication
+      security:
+        - bearerAuth: []
+      responses:
+        '204':
+          description: Two-factor authentication disabled successfully.
+        '401':
+          $ref: '#/components/responses/UnauthorizedErrors'
+        '500':
+          $ref: '#/components/responses/InternalServerError'
+  /2fa/recover:
+    parameters:
+      - $ref: '#/components/parameters/XCsrfTokenHeader'
+    post:
+      summary: Request 2FA Recovery
+      description: Sends a recovery email to users who lost access to their 2FA device.
+      security: []
+      tags:
+        - Two Factor Authentication
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Recover2FARequest'
+      responses:
+        '200':
+          description: >-
+            Two Factor Recovery email was sent or not depending on the user's
+            state.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiMessageResponse'
+              example:
+                messages:
+                  - text: >-
+                      Two-step verification recovery could not be initiated.
+                      Please contact support if the issue persists.
+                    severity: error
+                code: TWO_FA_RECOVERY_NOT_INITIATED
+        '204':
+          description: Recovery email sent successfully.
+        '400':
+          description: Bad request (e.g. invalid email format)
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiMessageResponse'
+              example:
+                messages:
+                  - text: Invalid email address
+                    severity: error
+        '401':
+          description: When user is not found in database
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiMessageResponse'
+              example:
+                messages:
+                  - text: >-
+                      Failed to send the two-factor authentication recovery
+                      email. Please try again later or contact support.
+                    severity: error
+                code: EMAIL_TWO_FA_RECOVERY_SEND_FAILED
+        '500':
+          $ref: '#/components/responses/InternalServerError'
+  /2fa/confirm-recover:
+    parameters:
+      - $ref: '#/components/parameters/XCsrfTokenHeader'
+    post:
+      summary: Confirm 2FA Recovery
+      description: Confirms 2FA reset by verifying the recovery token sent via email.
+      security: []
+      tags:
+        - Two Factor Authentication
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ConfirmRecover2FARequest'
+      responses:
+        '204':
+          description: Two-factor authentication recovery confirmed.
+        '400':
+          description: One or more fields contain invalid input values.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiMessageResponse'
+              examples:
+                TwoFaRecoveryTokenInvalid:
+                  summary: Two-factor recover token is invalid
+                  value:
+                    messages:
+                      - text: >-
+                          The verification link is invalid or no longer
+                          available. Please check the link or request a new one.
+                        severity: error
+                    code: TWO_FA_RECOVERY_TOKEN_INVALID
+                TwoFaRecoveryTokenExpired:
+                  summary: Two-factor recover token is expired
+                  value:
+                    messages:
+                      - text: >-
+                          Your verification link has expired. Please request a
+                          new one to continue.
+                        severity: error
+                    code: TWO_FA_RECOVERY_TOKEN_EXPIRED
+                TwoFaRecoveryTokenAlreadyUsed:
+                  summary: Two-factor recover token is already used
+                  value:
+                    messages:
+                      - text: >-
+                          This verification link has already been used. If you
+                          haven’t completed your signup, request a new link.
+                        severity: error
+                    code: TWO_FA_RECOVERY_TOKEN_ALREADY_USED
+        '401':
+          description: When user is not found in database
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiMessageResponse'
+              example:
+                messages:
+                  - text: >-
+                      Two-factor authentication recovery failed. Please try
+                      again later or contact support.
+                    severity: error
+                code: PASSWORD_RESET_FAILED
+        '500':
+          $ref: '#/components/responses/InternalServerError'
+  /auth/signup:
+    parameters:
+      - $ref: '#/components/parameters/XCsrfTokenHeader'
+    post:
+      summary: User Signup
+      description: Registers a new user and saves them to the database with admin role.
+      security: []
+      tags:
+        - Authentication
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/SignupRequest'
+      responses:
+        '204':
+          description: User successfully registered.
+        '400':
+          description: One or more fields contain invalid input values.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiMessageResponse'
+              examples:
+                MultipleInputValidationErrors:
+                  summary: Multiple input validation errors
+                  value:
+                    messages:
+                      - text: Password must contain at least one digit
+                        severity: error
+                      - text: Password must contain at least one special character
+                        severity: error
+                SingleInputValidationError:
+                  summary: Single input validation errors
+                  value:
+                    messages:
+                      - text: Password must contain at least one special character
+                        severity: error
+        '500':
+          $ref: '#/components/responses/InternalServerError'
+  /auth/verify-signup:
+    parameters:
+      - $ref: '#/components/parameters/XCsrfTokenHeader'
+    post:
+      summary: Verify Signup Token
+      description: Verifies a user's signup token and activates their account.
+      security: []
+      tags:
+        - Authentication
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/VerifyTokenRequest'
+      responses:
+        '204':
+          description: Token verified and user activated.
+        '400':
+          description: One or more fields contain invalid input values.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiMessageResponse'
+              examples:
+                TwoFaSignupTokenInvalid:
+                  summary: Signup verification token is invalid
+                  value:
+                    messages:
+                      - text: >-
+                          The verification link is invalid or no longer
+                          available. Please check the link or request a new one.
+                        severity: error
+                    code: SIGNUP_TOKEN_INVALID
+                TwoFaSignupTokenExpired:
+                  summary: Signup verification token is expired
+                  value:
+                    messages:
+                      - text: >-
+                          Your verification link has expired. Please request a
+                          new one to continue.
+                        severity: error
+                    code: SIGNUP_TOKEN_EXPIRED
+                TwoFaSignupTokenAlreadyUsed:
+                  summary: Signup verification token already used
+                  value:
+                    messages:
+                      - text: >-
+                          This verification link has already been used. If you
+                          haven’t completed your signup, request a new link.
+                        severity: error
+                    code: SIGNUP_TOKEN_ALREADY_USED
+        '401':
+          description: When user is not found in the database
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiMessageResponse'
+              example:
+                messages:
+                  - text: >-
+                      Activation failed. Please contact support if the issue
+                      persists.
+                    severity: error
+                code: VERIFICATION_FAILED
+        '500':
+          $ref: '#/components/responses/InternalServerError'
+  /auth/login:
+    parameters:
+      - $ref: '#/components/parameters/XCsrfTokenHeader'
+    post:
+      summary: User Login
+      description: >-
+        Generates a session token for the user and sets it in an HTTP-only
+        cookie.
+      security: []
+      tags:
+        - Authentication
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/LoginRequest'
+      responses:
+        '200':
+          description: >-
+            Login successful, session token set in cookie and user info
+            returned.
+          headers:
+            Set-Cookie:
+              description: >
+                Multiple HTTP-only cookies set for session and authentication:
+
+                - `connect.sid`: Express session ID (server-side session store)
+
+                - `access_token`: Short-lived JWT for frontend access control
+
+                - `refresh_token`: Token to renew access token via /auth/token
+                endpoint
+              schema:
+                type: string
+              examples:
+                connectSid:
+                  value: >-
+                    connect.sid=s%3Aabc123; HttpOnly; Secure; Path=/;
+                    Max-Age=3600
+                accessToken:
+                  value: >-
+                    access_token=eyJhbGci...; HttpOnly; Secure; Path=/;
+                    Max-Age=900
+                refreshToken:
+                  value: >-
+                    refresh_token=def456; HttpOnly; Secure; Path=/;
+                    Max-Age=604800
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/User'
+        '400':
+          description: Validation errors in login data.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiMessageResponse'
+              example:
+                messages:
+                  - text: Password must contain at least one uppercase letter
+                    severity: error
+        '401':
+          description: Incorrect email or password.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiMessageResponse'
+              example:
+                messages:
+                  - text: Incorrect email or password.
+                    severity: error
+        '500':
+          $ref: '#/components/responses/InternalServerError'
+  /auth/resend-activation-email:
+    parameters:
+      - $ref: '#/components/parameters/XCsrfTokenHeader'
+    post:
+      summary: Resend account activation email
+      description: >
+        Resends an account activation email to the provided email address if the
+        user has not yet verified it. For security reasons, this endpoint
+        returns a generic response regardless of the user's account state.
+      security: []
+      tags:
+        - Authentication
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ResendActivationEmailRequest'
+      responses:
+        '200':
+          description: Confirmation email was resent (or not needed).
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiMessageResponse'
+              example:
+                messages:
+                  - text: >-
+                      If your email still needs to be verified, a confirmation
+                      link has been sent.
+                    severity: info
+        '400':
+          description: Bad request (e.g. invalid email format)
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiMessageResponse'
+              example:
+                messages:
+                  - text: Invalid email address
+                    severity: error
+        '401':
+          description: When user is not found in database
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiMessageResponse'
+              example:
+                messages:
+                  - text: >-
+                      Failed to send the verification email. Please try again
+                      later or contact support.
+                    severity: error
+                code: EMAIL_VERIFICATION_SEND_FAILED
+        '500':
+          $ref: '#/components/responses/InternalServerError'
+  /auth/logout:
+    parameters:
+      - $ref: '#/components/parameters/XCsrfTokenHeader'
+    post:
+      summary: User Logout
+      description: Logs out the user by deleting the session cookie.
+      tags:
+        - Authentication
+      responses:
+        '204':
+          description: Logout successful, session cookie deleted.
+        '401':
+          $ref: '#/components/responses/UnauthorizedErrors'
+        '500':
+          $ref: '#/components/responses/InternalServerError'
+  /auth/refresh:
+    parameters:
+      - $ref: '#/components/parameters/XCsrfTokenHeader'
+    post:
+      summary: Refresh Access Token
+      description: >-
+        Refreshes the access token using a valid refresh token stored in
+        cookies. Requires authentication.
+      security:
+        - SessionCookieAuth: []
+          RefreshTokenCookieAuth: []
+      tags:
+        - Authentication
+      responses:
+        '204':
+          description: Access token refreshed successfully. No content returned.
+        '401':
+          description: Authentication error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiMessageResponse'
+              example:
+                messages:
+                  - text: Session invalid or expired
+                    severity: error
+                code: SESSION_INVALID_OR_EXPIRED
+        '403':
+          description: Invalid or missing refresh token.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiMessageResponse'
+              example:
+                messages:
+                  - text: An unexpected error occurred. Please retry to log in.
+                    severity: error
+                code: REFRESH_TOKEN_INVALID
+        '500':
+          $ref: '#/components/responses/InternalServerError'
+  /auth/reset-password/request:
+    parameters:
+      - $ref: '#/components/parameters/XCsrfTokenHeader'
+    post:
+      summary: Initiate Password Reset
+      description: >-
+        Sends a password reset email to the given email address. Always responds
+        with 204 to avoid revealing user existence.
+      security: []
+      tags:
+        - Authentication
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ResetPasswordRequest'
+      responses:
+        '200':
+          description: Password reset not allowed (e.g., user inactive).
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiMessageResponse'
+              example:
+                messages:
+                  - text: >-
+                      Password reset could not be initiated. Please contact
+                      support if the issue persists.
+                    severity: error
+                code: PASSWORD_RESET_NOT_INITIATED
+        '204':
+          description: Password reset email sent if user exists and is active.
+        '400':
+          description: Bad request (e.g. invalid email format)
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiMessageResponse'
+              example:
+                messages:
+                  - text: Invalid email address
+                    severity: error
+        '401':
+          description: When user is not found in database
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiMessageResponse'
+              example:
+                messages:
+                  - text: >-
+                      Failed to send the password reset verification email.
+                      Please try again later or contact support.
+                    severity: error
+                code: EMAIL_PASSWORD_RESET_SEND_FAILED
+        '500':
+          $ref: '#/components/responses/InternalServerError'
+  /auth/reset-password:
+    parameters:
+      - $ref: '#/components/parameters/XCsrfTokenHeader'
+    post:
+      summary: Complete Password Reset
+      description: Resets the user's password using a valid reset token and a new password.
+      security: []
+      tags:
+        - Authentication
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ConfirmResetPasswordRequest'
+      responses:
+        '200':
+          description: Password reset not allowed (e.g., user inactive).
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiMessageResponse'
+              example:
+                messages:
+                  - text: >-
+                      Password reset could not be initiated. Please contact
+                      support if the issue persists.
+                    severity: error
+                code: PASSWORD_RESET_NOT_INITIATED
+        '204':
+          description: Password successfully reset.
+        '400':
+          description: One or more fields contain invalid input values.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiMessageResponse'
+              examples:
+                MultipleInputValidationErrors:
+                  summary: Multiple input validation errors
+                  value:
+                    messages:
+                      - text: Password must contain at least one digit
+                        severity: error
+                      - text: Password must contain at least one special character
+                        severity: error
+                SingleInputValidationError:
+                  summary: Single input validation errors
+                  value:
+                    messages:
+                      - text: Password must contain at least one special character
+                        severity: error
+                PasswordResetTokenInvalid:
+                  summary: Password reset token is invalid
+                  value:
+                    messages:
+                      - text: >-
+                          The password reset link is invalid or no longer
+                          available. Please request a new link to reset your
+                          password.
+                        severity: error
+                    code: PASSWORD_RESET_TOKEN_INVALID
+                PasswordResetTokenExpired:
+                  summary: Password reset token is expired
+                  value:
+                    messages:
+                      - text: >-
+                          Your password reset link has expired. Please request a
+                          new one to reset your password.
+                        severity: error
+                    code: PASSWORD_RESET_TOKEN_EXPIRED
+                PasswordResetTokenAlreadyUsed:
+                  summary: Password reset token already used
+                  value:
+                    messages:
+                      - text: >-
+                          This password reset link has already been used. If you
+                          still need to reset your password, request a new link.
+                        severity: error
+                    code: PASSWORD_RESET_TOKEN_ALREADY_USED
+        '401':
+          description: When user is not found in the database
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiMessageResponse'
+              example:
+                messages:
+                  - text: >-
+                      Failed to reset the password. Please try again later or
+                      contact support.
+                    severity: error
+                code: PASSWORD_RESET_FAILED
+        '500':
+          $ref: '#/components/responses/InternalServerError'
+  /auth/accept-terms:
+    parameters:
+      - $ref: '#/components/parameters/XCsrfTokenHeader'
+    post:
+      summary: Accept Terms of Service
+      description: >
+        Marks the user's Terms of Service as accepted. Requires a valid session
+        and refresh token. A new access token is issued with updated claims and
+        sent via an HTTP-only cookie.
+      tags:
+        - Authentication
+      responses:
+        '204':
+          description: Terms accepted successfully. New access token set in cookie.
+          headers:
+            Set-Cookie:
+              description: >
+                Multiple HTTP-only cookies set for session and authentication:
+
+                - `connect.sid`: Express session ID (server-side session store)
+
+                - `access_token`: Short-lived JWT for frontend access control
+
+                - `refresh_token`: Token to renew access token via /auth/token
+                endpoint
+              schema:
+                type: string
+              examples:
+                connectSid:
+                  value: >-
+                    connect.sid=s%3Aabc123; HttpOnly; Secure; Path=/;
+                    Max-Age=3600
+                accessToken:
+                  value: >-
+                    access_token=eyJhbGci...; HttpOnly; Secure; Path=/;
+                    Max-Age=900
+                refreshToken:
+                  value: >-
+                    refresh_token=def456; HttpOnly; Secure; Path=/;
+                    Max-Age=604800
+        '401':
+          $ref: '#/components/responses/UnauthorizedErrors'
+        '403':
+          description: Authorization errors.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiMessageResponse'
+              examples:
+                InvalidOrMissingRefreshToken:
+                  summary: Invalid or missing refresh token.
+                  value:
+                    messages:
+                      - text: An unexpected error occurred. Please retry to log in.
+                        severity: error
+                    code: REFRESH_TOKEN_INVALID
+                TermsAlreadyAccepted:
+                  summary: Terms already accepted.
+                  value:
+                    messages:
+                      - text: You have already accepted the terms and conditions.
+                        severity: info
+                    code: TERMS_ALREADY_ACCEPTED
+        '500':
+          $ref: '#/components/responses/InternalServerError'
+  /auth/verify-2fa:
+    parameters:
+      - $ref: '#/components/parameters/XCsrfTokenHeader'
+    post:
+      summary: Verify Two-Factor Authentication Code
+      description: >-
+        Verifies a 2FA code provided by the user during login. Requires an
+        active session.
+      tags:
+        - Authentication
+      security:
+        - cookieAuth: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Verify2FARequest'
+      responses:
+        '200':
+          description: >-
+            2FA verification successful. Session updated and access token
+            issued.
+          headers:
+            Set-Cookie:
+              description: HTTP-only cookie containing the access token.
+              schema:
+                type: string
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/User'
+        '400':
+          description: Invalid or expired 2FA code.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiMessageResponse'
+              example:
+                messages:
+                  - text: >-
+                      The verification code you entered is invalid. Please try
+                      again.
+                    severity: error
+                code: TWO_FA_VERIFICATION_CODE_INVALID
+        '401':
+          description: UnauthorizedErrors errors
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiMessageResponse'
+              examples:
+                SessionInvalidOrExpired:
+                  $ref: '#/components/examples/SessionInvalidOrExpired'
+                AccessTokenMissing:
+                  $ref: '#/components/examples/AccessTokenMissing'
+                AccessTokenExpired:
+                  $ref: '#/components/examples/AccessTokenExpired'
+                TwoFaVerificationFailed:
+                  summary: When user is not found in the database
+                  value:
+                    messages:
+                      - text: >-
+                          Two-factor authentication failed. Please try again or
+                          contact support.
+                        severity: error
+                    code: TWO_FA_VERIFICATION_FAILED
+        '403':
+          description: Authorization errors.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiMessageResponse'
+              examples:
+                InvalidOrMissingRefreshToken:
+                  summary: Invalid or missing refresh token.
+                  value:
+                    messages:
+                      - text: An unexpected error occurred. Please retry to log in.
+                        severity: error
+                    code: REFRESH_TOKEN_INVALID
+                TwoFaVerificationNotConfigured:
+                  summary: Two factor verification is not configured.
+                  value:
+                    messages:
+                      - text: >-
+                          Two-factor authentication is not configured for your
+                          account.
+                        severity: error
+                    code: TWO_FA_NOT_CONFIGURED
+                TwoFaVerificationNotPending:
+                  summary: Two factor verification is not pending.
+                  value:
+                    messages:
+                      - text: Two-factor authentication verification is not pending.
+                        severity: error
+                    code: TWO_FA_VERIFICATION_NOT_PENDING
+        '500':
+          $ref: '#/components/responses/InternalServerError'
+  /auth/session:
+    get:
+      summary: Get current user session
+      description: >-
+        Returns the authenticated user's session information. Requires an active
+        session.
+      tags:
+        - Authentication
+      security:
+        - cookieAuth: []
+      responses:
+        '200':
+          description: Current user session retrieved successfully.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  user:
+                    $ref: '#/components/schemas/User'
+        '401':
+          $ref: '#/components/responses/UnauthorizedErrors'
+        '404':
+          description: User not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiMessageResponse'
+              example:
+                messages:
+                  - text: User not found.
+                    severity: error
+                code: USER_NOT_FOUND
+        '500':
+          $ref: '#/components/responses/InternalServerError'
+  /csrf/token:
+    get:
+      summary: Get CSRF token
+      tags:
+        - Security
+      description: >
+        Returns a CSRF token and sets a cookie named `XSRF-TOKEN`.<br>
+
+        Include the returned token in the `x-csrf-token` header of all write
+        (POST, PUT, PATCH, DELETE) requests.<br>
+
+        This protects against Cross-Site Request Forgery attacks by validating
+        state-changing requests.
+      responses:
+        '200':
+          description: CSRF token returned successfully.
+          headers:
+            Set-Cookie:
+              description: Cookie named `XSRF-TOKEN` containing the token.
+              schema:
+                type: string
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CsrfTokenResponse'
 tags: []

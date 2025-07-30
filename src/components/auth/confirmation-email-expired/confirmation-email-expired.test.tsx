@@ -9,7 +9,7 @@ describe("ConfirmationEmailExpired", () => {
         );
 
         expect(screen.getByText(/Your account confirmation email has expired. Please go to/)).toBeInTheDocument(); 
-        expect(screen.getByRole('link', {name: 'Resend confirmation email'})).toHaveAttribute('href', PublicRoutes.resendConfirmationEmail);
+        expect(screen.getByRole('link', {name: 'Resend confirmation email'})).toHaveAttribute('href', PublicRoutes.requestConfirmationEmail);
         expect(screen.getByText(/page in order to send a new mail./)).toBeInTheDocument();
     });
 });

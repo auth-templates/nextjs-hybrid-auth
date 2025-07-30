@@ -1,4 +1,4 @@
-import RegisterContainer from "@/containers/register";
+import SignupContainer from "@/containers/signup";
 import AuthLayout from "@/hoc/auth-layout";
 import { use } from "react";
 import { Locale, useTranslations } from "next-intl";
@@ -31,7 +31,7 @@ export default function RegisterPage({params}: Props) {
             title={t('title')}
             subtitle={t('subtitle')}
         >
-            <RegisterContainer />
+            <SignupContainer />
         </AuthLayout>
     );
 }
