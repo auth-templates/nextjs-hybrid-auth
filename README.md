@@ -1,7 +1,7 @@
 > ⚠️ **Project Notice**  
 > This project is still under active development and is not yet production-ready. Expect breaking changes and unstable behavior.
 
-# Frontend Architecture for Hybrid Session + JWT Auth API
+# Next.js Frontend for Hybrid Session + JWT Authentication API
 
 This frontend is built to interface with a secure backend that employs a hybrid authentication model, combining server-side sessions and JWT-based access control. It ensures strong security (via HTTP-only cookies) while allowing a responsive, stateless experience on the frontend using Next.js.
 

@@ -64,6 +64,7 @@
     "postcss-preset-mantine": "^1.14.4",
     "postcss-simple-vars": "^7.0.1",
     "prettier": "^3.5.3",
+    "semantic-release": "^24.2.7",
     "sharp": "^0.33.3",
     "typescript": "^5.4.5"
   },
