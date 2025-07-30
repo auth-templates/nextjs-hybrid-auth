@@ -1,7 +1,7 @@
 import { defineConfig } from '@hey-api/openapi-ts';
 
 export default defineConfig({
-  input: './api-spec/flexible-leaves-api.yml',
+  input: './api-spec/express-hybrid-auth-api.yml',
   output: {
     format: 'prettier',
     lint: 'eslint',

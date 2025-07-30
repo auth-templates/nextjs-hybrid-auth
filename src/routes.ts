@@ -1,7 +1,6 @@
 export const PrivateRoutes = {
     dashboard: '/dashboard',
     account: '/account',
-    leaves: '/leaves'
 };
 
 export const PublicRoutes = {
