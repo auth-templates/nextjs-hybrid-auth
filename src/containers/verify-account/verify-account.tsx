@@ -8,29 +8,29 @@ import { getCsrfToken, VerifyTokenRequest } from '@/api/generated';
 import { postAuthVerifySignupMutation } from '@/api/generated/@tanstack/react-query.gen';
 
 export default function VerifyAccountContainer() {
-    const { token } = useParams<{token: string}>();
-    const { data, error, mutate, status, isPending } = useMutation({
+	const { token } = useParams<{ token: string }>();
+	const { data, error, mutate, status, isPending } = useMutation({
 		...postAuthVerifySignupMutation(),
-	})
+	});
 
-    useEffect(() => {
-        verify({token: token});
-    }, [token])
+	useEffect(() => {
+		verify({ token: token });
+	}, [token]);
 
-    const verify = async (data: VerifyTokenRequest) => {
-        mutate({
-            headers: {
-                'x-csrf-token': (await getCsrfToken({ cache: 'no-store' })).data?.csrfToken,
-            },
-            body: {
-                ...data
-            }
-        })
-    }
+	const verify = async (data: VerifyTokenRequest) => {
+		mutate({
+			headers: {
+				'x-csrf-token': (await getCsrfToken({ cache: 'no-store' })).data?.csrfToken,
+			},
+			body: {
+				...data,
+			},
+		});
+	};
 
-    return (
-        <>
-            <VerifyAccount messages={error?.messages} />
-        </>
-    )
+	return (
+		<>
+			<VerifyAccount messages={error?.messages} />
+		</>
+	);
 }

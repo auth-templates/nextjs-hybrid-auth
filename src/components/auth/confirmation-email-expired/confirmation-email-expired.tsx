@@ -3,11 +3,11 @@ import Link from 'next/link';
 import { PublicRoutes } from '../../../routes';
 
 export default function ConfirmationEmailExpired() {
-    return (
-        <div className={classes.confirmationEmailExpired}>
-            Your account confirmation email has expired. Please go to
-            <Link href={PublicRoutes.requestConfirmationEmail}> Resend confirmation email </Link>
-            page in order to send a new mail.
-        </div>
-    )
+	return (
+		<div className={classes.confirmationEmailExpired}>
+			Your account confirmation email has expired. Please go to
+			<Link href={PublicRoutes.requestConfirmationEmail}> Resend confirmation email </Link>
+			page in order to send a new mail.
+		</div>
+	);
 }

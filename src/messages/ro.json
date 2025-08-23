@@ -1,164 +1,164 @@
 {
-    "navigation": {
-        "login": "Autentificare",
-        "home": "Pagina de start",
-        "signout": "Ieșire din cont"
-    },
-    "pages": {
-        "home": {
-            "title": "Demo Autentificare Next.js",
-            "subtitle": "Un demo complet de autentificare folosind Next.js pe frontend și Node.js pe backend, combinând sesiuni cu JWT pentru fluxuri de autentificare sigure și scalabile.",
-            "getStarted": "Începe acum",
-            "whatsInside": "Ce găsești aici",
-            "description": "Această aplicație demo este un exemplu real de implementare a autentificării securizate folosind <strong>Next.js</strong> pe frontend și un <strong>backend Node.js</strong>. Combină <strong>JWT</strong> și <strong>sesiuni</strong> pentru a echilibra API-uri fără stare cu control pe server — ideal pentru dezvoltatorii full-stack care construiesc fluxuri de autentificare gata pentru producție.",
-            "features": {
-                "0": "🔐 Exemple de autentificare, înregistrare, logout și rute protejate folosind <code>Next.js</code>",
-                "1": "🛡️ Model hibrid de autentificare: sesiuni pe server + JWT pentru flexibilitate frontend",
-                "2": "🔄 Stocare sigură a cookie-urilor cu reîmprospătare automată a token-ului și protecție CSRF",
-                "3": "⚙️ API backend de autentificare construit cu <code>Node.js</code> și <code>Express</code>",
-                "4": "📄 Suport SSR cu verificări de sesiune pentru pagini private",
-                "5": "👥 Control bazat pe roluri cu protecții pe frontend și backend"
-            }
-        },
-        "register": {
-            "title": "Creați un Cont Nou",
-            "subtitle": "Înregistrați-vă cu adresa de email pentru a accesa tabloul de bord în siguranță."
-        },
-        "login": {
-            "title": "Conectați-vă la Contul Dvs.",
-            "subtitle": "Vă rugăm să introduceți datele de autentificare pentru a continua."
-        },
-        "reset-password": {
-            "title": "Resetare Parolă",
-            "subtitle": "Stabiliți o parolă nouă pentru a vă recăpăta accesul la cont."
-        },
-        "resend-activation-email": {
-            "title": "Solicitați un Nou Email de Activare",
-            "subtitle": "Dacă nu ați primit email-ul de activare, puteți solicita unul nou aici."
-        },
-        "send-reset-password-email": {
-            "title": "Solicitare Resetare Parolă",
-            "subtitle": "Introduceți adresa de email pentru a primi instrucțiuni de resetare a parolei."
-        },
-        "send-deactivate-2fa-email": {
-            "title": "Solicitare Dezactivare Autentificare în Doi Pași",
-            "subtitle": "Dacă nu mai aveți acces la dispozitivul dvs. 2FA, solicitați dezactivarea autentificării în doi pași pentru a vă recupera accesul."
-        },
-        "verify-account": {
-            "title": "Verificați-vă Contul",
-            "subtitle": "Confirmăm adresa dvs. de email. Vă rugăm să așteptați finalizarea procesului de verificare."
-        },
-        "verify-deactivate-2fa": {
-            "title": "Verificare Dezactivare Autentificare în Doi Pași",
-            "subtitle": "Validăm solicitarea dvs. de a dezactiva autentificarea în doi pași. Vă rugăm să așteptați finalizarea procesului."
-        },
-        "dashboard": {
-            "title": "Tabloul de Bord",
-            "subtitle": "Prezentare generală a contului, activității și informațiilor esențiale."
-        },
-        "not-found": {
-            "title": "Pagina nu a fost găsită",
-            "subtitle": "Vă rugăm să verificați încă o dată bara de adrese a browserului sau să folosiți navigarea pentru a merge la o pagină cunoscută."
-        }
-    },
-    "forms": {
-        "login": {
-            "labels": {
-                "email": "Email:",
-                "password": "Parolă:"
-            },
-            "placeholders": {
-                "email": "Introdu adresa ta de email",
-                "password": "Introdu parola ta"
-            },
-            "validation": {
-                "emailRequired": "Email-ul este obligatoriu",
-                "invalidEmail": "Adresă de email invalidă",
-                "passwordRequired": "Parola este obligatorie"
-            },
-            "links": {
-                "forgotPassword": "Ai uitat parola?",
-                "signUp": "Înregistrează-te"
-            },
-            "buttons": {
-                "login": "Autentificare"
-            },
-            "prompts": {
-                "noAccount": "Nu ai un cont?"
-            }
-        },
-        "register" : {
-            "labels": {
-                "email": "Email:",
-                "password": "Parolă:",
-                "confirmPassword": "Confirmă parola:"
-            },
-            "placeholders": {
-                "email": "Introdu adresa ta de email",
-                "password": "Introdu parola ta",
-                "confirmPassword": "Reintrodu parola"
-            },
-            "validation": {
-                "emailRequired": "Email-ul este obligatoriu",
-                "invalidEmail": "Adresă de email invalidă",
-                "passwordRequired": "Parola este obligatorie",
-                "passwordRules": "Parola ta trebuie să aibă cel puțin 8 caractere și să conțină cel puțin o literă mică, o literă mare, un simbol și o cifră.",
-                "confirmPasswordRequired": "Confirmarea parolei este obligatorie",
-                "passwordsMismatch": "Parolele nu se potrivesc",
-                "termsRequired": "Trebuie să accepți termenii și condițiile."
-            },
-            "buttons": {
-                "signUp": "Înregistrează-te"
-            },
-            "links": {
-                "login": "Autentificare"
-            },
-            "prompts": {
-                "haveAccount": "Ai deja un cont?"
-            }
-        },
-        "request_password_reset": {
-            "validation": {
-                "emailRequired": "Email-ul este necesar"
-            },
-            "labels": {
-                "email": "Email"
-            },
-            "placeholders": {
-                "email": "Introduceți email-ul"
-            },
-            "buttons": {
-                "send_password_reset_email": "Trimite email-ul pentru resetarea parolei"
-            },
-            "back_to_sign_in": "sau întoarceți-vă la pagina de <loginLink>Autentificare</loginLink>."
-        },
-        "request_confirmation_email": {
-            "validation": {
-                "emailRequired": "Email-ul este necesar"
-            },
-            "labels": {
-                "email": "Email"
-            },
-            "placeholders": {
-                "email": "Introduceți email-ul"
-            },
-            "buttons": {
-                "resend_confirmation_email": "Retrimite email-ul de confirmare"
-            },
-            "back_to_sign_in": "sau întoarceți-vă la pagina de <loginLink>Autentificare</loginLink>."
-        },
-        "social-auth": {
-            "login-with-google": "Autentificare cu Google",
-            "login-with-github": "Autentificare cu GitHub",
-            "signup-with-google": "Înregistrare cu Google",
-            "signup-with-github": "Înregistrare cu GitHub"
-        },        
-        "terms": {
-           "agreement": "Am citit și sunt de acord cu <termsLink>termenii și condițiile</termsLink>.",
-            "termsAndConditions": "terms and conditions"
-        }
-    },
-    "manifest": {
-        "name": "Next.js Auth Demo"
-    }
+	"navigation": {
+		"login": "Autentificare",
+		"home": "Pagina de start",
+		"signout": "Ieșire din cont"
+	},
+	"pages": {
+		"home": {
+			"title": "Demo Autentificare Next.js",
+			"subtitle": "Un demo complet de autentificare folosind Next.js pe frontend și Node.js pe backend, combinând sesiuni cu JWT pentru fluxuri de autentificare sigure și scalabile.",
+			"getStarted": "Începe acum",
+			"whatsInside": "Ce găsești aici",
+			"description": "Această aplicație demo este un exemplu real de implementare a autentificării securizate folosind <strong>Next.js</strong> pe frontend și un <strong>backend Node.js</strong>. Combină <strong>JWT</strong> și <strong>sesiuni</strong> pentru a echilibra API-uri fără stare cu control pe server — ideal pentru dezvoltatorii full-stack care construiesc fluxuri de autentificare gata pentru producție.",
+			"features": {
+				"0": "🔐 Exemple de autentificare, înregistrare, logout și rute protejate folosind <code>Next.js</code>",
+				"1": "🛡️ Model hibrid de autentificare: sesiuni pe server + JWT pentru flexibilitate frontend",
+				"2": "🔄 Stocare sigură a cookie-urilor cu reîmprospătare automată a token-ului și protecție CSRF",
+				"3": "⚙️ API backend de autentificare construit cu <code>Node.js</code> și <code>Express</code>",
+				"4": "📄 Suport SSR cu verificări de sesiune pentru pagini private",
+				"5": "👥 Control bazat pe roluri cu protecții pe frontend și backend"
+			}
+		},
+		"register": {
+			"title": "Creați un Cont Nou",
+			"subtitle": "Înregistrați-vă cu adresa de email pentru a accesa tabloul de bord în siguranță."
+		},
+		"login": {
+			"title": "Conectați-vă la Contul Dvs.",
+			"subtitle": "Vă rugăm să introduceți datele de autentificare pentru a continua."
+		},
+		"reset-password": {
+			"title": "Resetare Parolă",
+			"subtitle": "Stabiliți o parolă nouă pentru a vă recăpăta accesul la cont."
+		},
+		"resend-activation-email": {
+			"title": "Solicitați un Nou Email de Activare",
+			"subtitle": "Dacă nu ați primit email-ul de activare, puteți solicita unul nou aici."
+		},
+		"send-reset-password-email": {
+			"title": "Solicitare Resetare Parolă",
+			"subtitle": "Introduceți adresa de email pentru a primi instrucțiuni de resetare a parolei."
+		},
+		"send-deactivate-2fa-email": {
+			"title": "Solicitare Dezactivare Autentificare în Doi Pași",
+			"subtitle": "Dacă nu mai aveți acces la dispozitivul dvs. 2FA, solicitați dezactivarea autentificării în doi pași pentru a vă recupera accesul."
+		},
+		"verify-account": {
+			"title": "Verificați-vă Contul",
+			"subtitle": "Confirmăm adresa dvs. de email. Vă rugăm să așteptați finalizarea procesului de verificare."
+		},
+		"verify-deactivate-2fa": {
+			"title": "Verificare Dezactivare Autentificare în Doi Pași",
+			"subtitle": "Validăm solicitarea dvs. de a dezactiva autentificarea în doi pași. Vă rugăm să așteptați finalizarea procesului."
+		},
+		"dashboard": {
+			"title": "Tabloul de Bord",
+			"subtitle": "Prezentare generală a contului, activității și informațiilor esențiale."
+		},
+		"not-found": {
+			"title": "Pagina nu a fost găsită",
+			"subtitle": "Vă rugăm să verificați încă o dată bara de adrese a browserului sau să folosiți navigarea pentru a merge la o pagină cunoscută."
+		}
+	},
+	"forms": {
+		"login": {
+			"labels": {
+				"email": "Email:",
+				"password": "Parolă:"
+			},
+			"placeholders": {
+				"email": "Introdu adresa ta de email",
+				"password": "Introdu parola ta"
+			},
+			"validation": {
+				"emailRequired": "Email-ul este obligatoriu",
+				"invalidEmail": "Adresă de email invalidă",
+				"passwordRequired": "Parola este obligatorie"
+			},
+			"links": {
+				"forgotPassword": "Ai uitat parola?",
+				"signUp": "Înregistrează-te"
+			},
+			"buttons": {
+				"login": "Autentificare"
+			},
+			"prompts": {
+				"noAccount": "Nu ai un cont?"
+			}
+		},
+		"register": {
+			"labels": {
+				"email": "Email:",
+				"password": "Parolă:",
+				"confirmPassword": "Confirmă parola:"
+			},
+			"placeholders": {
+				"email": "Introdu adresa ta de email",
+				"password": "Introdu parola ta",
+				"confirmPassword": "Reintrodu parola"
+			},
+			"validation": {
+				"emailRequired": "Email-ul este obligatoriu",
+				"invalidEmail": "Adresă de email invalidă",
+				"passwordRequired": "Parola este obligatorie",
+				"passwordRules": "Parola ta trebuie să aibă cel puțin 8 caractere și să conțină cel puțin o literă mică, o literă mare, un simbol și o cifră.",
+				"confirmPasswordRequired": "Confirmarea parolei este obligatorie",
+				"passwordsMismatch": "Parolele nu se potrivesc",
+				"termsRequired": "Trebuie să accepți termenii și condițiile."
+			},
+			"buttons": {
+				"signUp": "Înregistrează-te"
+			},
+			"links": {
+				"login": "Autentificare"
+			},
+			"prompts": {
+				"haveAccount": "Ai deja un cont?"
+			}
+		},
+		"request_password_reset": {
+			"validation": {
+				"emailRequired": "Email-ul este necesar"
+			},
+			"labels": {
+				"email": "Email"
+			},
+			"placeholders": {
+				"email": "Introduceți email-ul"
+			},
+			"buttons": {
+				"send_password_reset_email": "Trimite email-ul pentru resetarea parolei"
+			},
+			"back_to_sign_in": "sau întoarceți-vă la pagina de <loginLink>Autentificare</loginLink>."
+		},
+		"request_confirmation_email": {
+			"validation": {
+				"emailRequired": "Email-ul este necesar"
+			},
+			"labels": {
+				"email": "Email"
+			},
+			"placeholders": {
+				"email": "Introduceți email-ul"
+			},
+			"buttons": {
+				"resend_confirmation_email": "Retrimite email-ul de confirmare"
+			},
+			"back_to_sign_in": "sau întoarceți-vă la pagina de <loginLink>Autentificare</loginLink>."
+		},
+		"social-auth": {
+			"login-with-google": "Autentificare cu Google",
+			"login-with-github": "Autentificare cu GitHub",
+			"signup-with-google": "Înregistrare cu Google",
+			"signup-with-github": "Înregistrare cu GitHub"
+		},
+		"terms": {
+			"agreement": "Am citit și sunt de acord cu <termsLink>termenii și condițiile</termsLink>.",
+			"termsAndConditions": "terms and conditions"
+		}
+	},
+	"manifest": {
+		"name": "Next.js Auth Demo"
+	}
 }

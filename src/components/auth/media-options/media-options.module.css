@@ -1,139 +1,144 @@
 .line {
-  position: relative;
-  height: 1px;
-  width: 100%;
-  background-color: var(--color-primary, #b0b0b0);
-  margin: 1.5rem 0 2rem 0;
-  border-radius: 2px;
+	position: relative;
+	height: 1px;
+	width: 100%;
+	background-color: var(--color-primary, #b0b0b0);
+	margin: 1.5rem 0 2rem 0;
+	border-radius: 2px;
 }
 
 .line::before {
-  content: 'Or';
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  background-color: var(--color-surface, #f9f9f9); /* Slightly tinted fallback for contrast */
-  color: var(--color-text-primary, #333); /* Visible in both modes */
-  font-size: 0.9rem;
-  font-weight: 500;
-  padding: 0 0.75rem;
-  border-radius: 999px;
-  border: 1px solid var(--color-primary, rgba(0, 0, 0, 0.374)); /* subtle separator */
-  box-shadow: 0 1px 5px rgba(0, 0, 0, 0.08); /* light separation glow */
+	content: 'Or';
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	background-color: var(--color-surface, #f9f9f9); /* Slightly tinted fallback for contrast */
+	color: var(--color-text-primary, #333); /* Visible in both modes */
+	font-size: 0.9rem;
+	font-weight: 500;
+	padding: 0 0.75rem;
+	border-radius: 999px;
+	border: 1px solid var(--color-primary, rgba(0, 0, 0, 0.374)); /* subtle separator */
+	box-shadow: 0 1px 5px rgba(0, 0, 0, 0.08); /* light separation glow */
 }
 
 .mediaOptions {
-    width: 100%;
+	width: 100%;
 }
 
 .mediaOption {
-    width: 100%;
+	width: 100%;
 }
 
 .buttonLink {
-    position: relative;
-    width: 100%;
-    margin-top: 16px;
-    border-radius: 6px;
-    display: flex;
+	position: relative;
+	width: 100%;
+	margin-top: 16px;
+	border-radius: 6px;
+	display: flex;
 }
 
-.buttonLinkInner, .buttonLinkLabel {
-    width: 100%;
+.buttonLinkInner,
+.buttonLinkLabel {
+	width: 100%;
 }
 
 .buttonLinkLabel {
-    display: grid;
+	display: grid;
 }
 
 .icon {
-    position: absolute;
-    justify-self: flex-start;
+	position: absolute;
+	justify-self: flex-start;
 }
 
 /* GitHub Button */
 .github {
-    background-color: #24292e;
-    color: #ffffff;
-    border: 1px solid #24292e;
-    transition: background-color 0.2s ease, border-color 0.2s ease;
+	background-color: #24292e;
+	color: #ffffff;
+	border: 1px solid #24292e;
+	transition:
+		background-color 0.2s ease,
+		border-color 0.2s ease;
 }
 
 .github:hover {
-    background-color: #33383d;
-    border-color: #33383d;
+	background-color: #33383d;
+	border-color: #33383d;
 }
 
 @media (prefers-color-scheme: dark) {
-    .github {
-        background-color: var(--color-surface);
-        color: var(--color-text-primary);
-        border: 1px solid var(--color-secondary);
-    }
+	.github {
+		background-color: var(--color-surface);
+		color: var(--color-text-primary);
+		border: 1px solid var(--color-secondary);
+	}
 
-    .github:hover {
-        background-color: #393939;
-        border-color: #aaaaaa;
-    }
+	.github:hover {
+		background-color: #393939;
+		border-color: #aaaaaa;
+	}
 }
 
 /* Google Button */
 .google {
-    background-color: var(--white);
-    color: var(--color-text-primary);
-    border: 1px solid #dcdcdc;
-    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
-    transition: background-color 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+	background-color: var(--white);
+	color: var(--color-text-primary);
+	border: 1px solid #dcdcdc;
+	box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+	transition:
+		background-color 0.2s ease,
+		box-shadow 0.2s ease,
+		border-color 0.2s ease;
 }
 
 .google:hover {
-    background-color: var(--color-surface);
-    border-color: #c6c6c6;
-    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+	background-color: var(--color-surface);
+	border-color: #c6c6c6;
+	box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
 }
 
 .googleLabel {
-    font-weight: 500;
-    opacity: 1;
-    color: var(--color-text-primary);
+	font-weight: 500;
+	opacity: 1;
+	color: var(--color-text-primary);
 }
 
 @media (prefers-color-scheme: dark) {
-    .google {
-        background-color: var(--color-surface);
-        color: var(--color-text-primary);
-        border: 1px solid var(--color-secondary);
-        box-shadow: 0 1px 2px rgba(255, 255, 255, 0.05);
-    }
+	.google {
+		background-color: var(--color-surface);
+		color: var(--color-text-primary);
+		border: 1px solid var(--color-secondary);
+		box-shadow: 0 1px 2px rgba(255, 255, 255, 0.05);
+	}
 
-    .google:hover {
-        background-color: #393939;
-        border-color: #aaaaaa;
-        box-shadow: 0 2px 6px rgba(255, 255, 255, 0.1);
-    }
+	.google:hover {
+		background-color: #393939;
+		border-color: #aaaaaa;
+		box-shadow: 0 2px 6px rgba(255, 255, 255, 0.1);
+	}
 
-    .googleLabel {
-        color: var(--color-text-primary);
-    }
+	.googleLabel {
+		color: var(--color-text-primary);
+	}
 }
 
-
 @media screen and (max-width: 350px) {
-    .icon  {
-        position: relative;
-    }
+	.icon {
+		position: relative;
+	}
 
-    .buttonLink {
-        height: fit-content;
-    }
+	.buttonLink {
+		height: fit-content;
+	}
 
-    .buttonLinkLabel{
-        padding: 4px;
-        display: flex;
-        gap: 4px;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-    }
+	.buttonLinkLabel {
+		padding: 4px;
+		display: flex;
+		gap: 4px;
+		flex-direction: column;
+		align-items: center;
+		justify-content: center;
+	}
 }

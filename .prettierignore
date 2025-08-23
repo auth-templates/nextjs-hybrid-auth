@@ -1,0 +1,9 @@
+node_modules
+dist
+build
+src/api/generated
+api-spec
+.husky
+coverage
+README.md
+LICENSE

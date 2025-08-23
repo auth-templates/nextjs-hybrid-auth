@@ -7,9 +7,9 @@ import { getCsrfToken } from '@/api/generated';
 import { postAuthResendActivationEmailMutation } from '@/api/generated/@tanstack/react-query.gen';
 
 export default function ResendConfirmationEmailContainer() {
-    const { data, error, mutate, status, isPending } = useMutation({
+	const { data, error, mutate, status, isPending } = useMutation({
 		...postAuthResendActivationEmailMutation(),
-	})
+	});
 
 	const onSend = async (data: any) => {
 		mutate({
@@ -19,22 +19,16 @@ export default function ResendConfirmationEmailContainer() {
 			body: {
 				...data,
 			},
-		})
-	}
+		});
+	};
 
-    return (
-        <>
-            {
-                status === 'success' ? (
-                    <ConfirmationEmailSent email={email.current as string} />
-                ) : (
-                    <RequestConfirmationEmailForm
-                        loading={isPending} 
-                        onSubmit={onSend} 
-                        messages={error?.messages}
-                    />
-                )
-            }
-        </>
-    )
+	return (
+		<>
+			{status === 'success' ? (
+				<ConfirmationEmailSent email={email.current as string} />
+			) : (
+				<RequestConfirmationEmailForm loading={isPending} onSubmit={onSend} messages={error?.messages} />
+			)}
+		</>
+	);
 }

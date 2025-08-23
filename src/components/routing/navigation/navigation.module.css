@@ -1,63 +1,62 @@
 .navbar {
-    box-sizing: border-box;
-    top: 0px;
-    position: sticky;
-    width: 100%;
-    height: var(--navbarHeight);
-    min-height: var(--navbarHeight);
-    display: grid;
-    grid-template-columns: fit-content fit-content;
-    background-color: var(--black, #61b9e8);
-    box-shadow: 0px 2px 6px var(--shadow-color2);
-    padding: 0px 20px;
-    z-index: 1;
-    grid-row: 1;
+	box-sizing: border-box;
+	top: 0px;
+	position: sticky;
+	width: 100%;
+	height: var(--navbarHeight);
+	min-height: var(--navbarHeight);
+	display: grid;
+	grid-template-columns: fit-content fit-content;
+	background-color: var(--black, #61b9e8);
+	box-shadow: 0px 2px 6px var(--shadow-color2);
+	padding: 0px 20px;
+	z-index: 1;
+	grid-row: 1;
 }
 
 .appInfo {
-    display: flex;
-    gap: 5px;
-    grid-column: 1;
-    align-items: center;
-    justify-content: flex-start;
+	display: flex;
+	gap: 5px;
+	grid-column: 1;
+	align-items: center;
+	justify-content: flex-start;
 }
 
 .logo {
-    width: 1.5em;
-    height: 1.5em;
-    color: white;
-    display: inline-block;
+	width: 1.5em;
+	height: 1.5em;
+	color: white;
+	display: inline-block;
 }
 
 .appName {
-    color: white;
-    font-size: large;
-    font-weight: 200;
-    white-space: nowrap;
+	color: white;
+	font-size: large;
+	font-weight: 200;
+	white-space: nowrap;
 }
 
-.user  {
-    display: flex;
-    gap: 18px;
-    grid-column: 2;
-    align-items: center;
-    justify-content: flex-end;
+.user {
+	display: flex;
+	gap: 18px;
+	grid-column: 2;
+	align-items: center;
+	justify-content: flex-end;
 }
 
+@media only screen and (max-width: 550px) {
+	.navbar {
+		grid-template-columns: 1fr;
+		grid-template-rows: fit-content fit-content;
+		height: fit-content;
+		padding: 10px;
+		gap: 10px;
+	}
 
-@media only screen and (max-width: 550px) { 
-    .navbar {
-        grid-template-columns: 1fr;
-        grid-template-rows: fit-content fit-content;
-        height: fit-content;
-        padding: 10px;
-        gap: 10px;
-    }
-
-    .user {
-        grid-column: 1;
-        grid-row: 2;
-        align-items: center;
-        justify-content: center;
-    }
+	.user {
+		grid-column: 1;
+		grid-row: 2;
+		align-items: center;
+		justify-content: center;
+	}
 }

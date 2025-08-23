@@ -11,103 +11,101 @@
     Secondary Text    #6E7E85 (Soft Gray)      #B0B0B0 (Light Gray)     Secondary text
 */
 
-:root { 
-    --font-family: Nunito, Lato, -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
+:root {
+	--font-family:
+		Nunito, Lato, -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell',
+		'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
 
-    /* Gradient colors */
-    --gradient-start: #F5F5DC; /* Cream */
-    --gradient-end: #003366;   /* Deep Navy Blue */
+	/* Gradient colors */
+	--gradient-start: #f5f5dc; /* Cream */
+	--gradient-end: #003366; /* Deep Navy Blue */
 
-    --color-primary: #003366; /* Navy Blue for main interactive elements */
-    --color-secondary: #F5F5DC; /* Cream for less prominent elements */
-    --color-background: transparent;
-    --color-footer: #FEFAF6; /* Soft Off-White for the main application area */
-    --color-surface: #EADBC8; /* Light Beige for cards, panels, or elevated elements */
-    --color-accent: #DC143C; /* Crimson for highlights, borders, or decorative details */
-    --color-alert: #CB6040; /* Deep Coral for warnings, errors, or important notifications */
-    --color-text-primary: #333333; /* Dark Gray for primary text for high-contrast readability */
-    --color-text-secondary: #666666; /* Medium Gray for secondary text for a softer look */
+	--color-primary: #003366; /* Navy Blue for main interactive elements */
+	--color-secondary: #f5f5dc; /* Cream for less prominent elements */
+	--color-background: transparent;
+	--color-footer: #fefaf6; /* Soft Off-White for the main application area */
+	--color-surface: #eadbc8; /* Light Beige for cards, panels, or elevated elements */
+	--color-accent: #dc143c; /* Crimson for highlights, borders, or decorative details */
+	--color-alert: #cb6040; /* Deep Coral for warnings, errors, or important notifications */
+	--color-text-primary: #333333; /* Dark Gray for primary text for high-contrast readability */
+	--color-text-secondary: #666666; /* Medium Gray for secondary text for a softer look */
 
-    --color-danger-background: var(--color-alert); /* Danger background */
-    --color-danger-border: #C63929; /* Darker red for danger inputs */
-    --color-default-background: #FEFAF6; /* Default input background */
-    --color-default-border: #003366; /* Navy border color for default inputs */
-    --color-disabled-background: #E0E0E0; /* Background color for disabled inputs */
-    --color-disabled-text: var(--color-text-secondary); /* Text color for disabled inputs */
-    --color-disabled-border: #C0C0C0; /* Light gray border color for disabled inputs */
-    --color-hover-danger: #e07c5c; /* Darker shade for danger hover state */
-    --color-hover-default: #00549F; /* Darker shade for primary hover state */
-    
-    --color-text-link: #0171d3;
+	--color-danger-background: var(--color-alert); /* Danger background */
+	--color-danger-border: #c63929; /* Darker red for danger inputs */
+	--color-default-background: #fefaf6; /* Default input background */
+	--color-default-border: #003366; /* Navy border color for default inputs */
+	--color-disabled-background: #e0e0e0; /* Background color for disabled inputs */
+	--color-disabled-text: var(--color-text-secondary); /* Text color for disabled inputs */
+	--color-disabled-border: #c0c0c0; /* Light gray border color for disabled inputs */
+	--color-hover-danger: #e07c5c; /* Darker shade for danger hover state */
+	--color-hover-default: #00549f; /* Darker shade for primary hover state */
 
+	--color-text-link: #0171d3;
 
-
-    --red:red;
-    --black: #000000;
-    --color-active: rgb(49, 124, 172);
-    --font-size: 16px;
-    --color-list-item: #16abff33;
-    --max-width: 1100px;
-    --border-radius: 12px;
-    --blue: rgb(49, 124, 172);
-    --white: white;
-    --shadow-color1: rgba(2, 11, 21, 0.24);
-    --shadow-color2: rgba(149, 157, 165, 0.2);
-    --shadow1: var(--shadow-color1) 0px 8px 24px;
-    --shadow2: var(--shadow-color2) 0px 8px 24px;
-    --navbarHeight: 50px;
-    --navbarHeight: 50px;
+	--red: red;
+	--black: #000000;
+	--color-active: rgb(49, 124, 172);
+	--font-size: 16px;
+	--color-list-item: #16abff33;
+	--max-width: 1100px;
+	--border-radius: 12px;
+	--blue: rgb(49, 124, 172);
+	--white: white;
+	--shadow-color1: rgba(2, 11, 21, 0.24);
+	--shadow-color2: rgba(149, 157, 165, 0.2);
+	--shadow1: var(--shadow-color1) 0px 8px 24px;
+	--shadow2: var(--shadow-color2) 0px 8px 24px;
+	--navbarHeight: 50px;
+	--navbarHeight: 50px;
 }
 
 @media (prefers-color-scheme: dark) {
-    :root {
-        --gradient-start: #003366; /* Deep Navy Blue */
-        --gradient-end: #1A1A1A;   /* Very Dark Gray */
+	:root {
+		--gradient-start: #003366; /* Deep Navy Blue */
+		--gradient-end: #1a1a1a; /* Very Dark Gray */
 
-        --color-primary: #A7C6DB; /* Lightened Navy for buttons */
-        --color-secondary: #EADBC8; /* Light Beige remains the same */
-        --color-background: transparent; /* Dark blue background color for the main application area */
-        --color-footer: #1C1C1C; /* Dark background color for the footer area */
-        --color-surface: #2A2A2A; /* Surface color for cards, panels, or elevated elements */
-        --color-accent: #DC143C; /* Crimson remains the same */
-        --color-alert: #CB6040; /* Alert color remains the same */
-        --color-text-primary: #E0E0E0; /* Lightened text color for high-contrast readability */
-        --color-text-secondary: #B0B0B0; /* Lightened secondary text color for less prominent text */
+		--color-primary: #a7c6db; /* Lightened Navy for buttons */
+		--color-secondary: #eadbc8; /* Light Beige remains the same */
+		--color-background: transparent; /* Dark blue background color for the main application area */
+		--color-footer: #1c1c1c; /* Dark background color for the footer area */
+		--color-surface: #2a2a2a; /* Surface color for cards, panels, or elevated elements */
+		--color-accent: #dc143c; /* Crimson remains the same */
+		--color-alert: #cb6040; /* Alert color remains the same */
+		--color-text-primary: #e0e0e0; /* Lightened text color for high-contrast readability */
+		--color-text-secondary: #b0b0b0; /* Lightened secondary text color for less prominent text */
 
-        --color-danger-background: var(--color-alert); /* Danger background */
-        --color-danger-border: #C63929; /* Danger border color remains the same */
-        --color-default-background: #333333; /* Darker input background */
-        --color-default-border: var(--color-secondary); /* Lightened border color for default inputs */
-        --color-disabled-background: #444444; /* Background color for disabled inputs */
-        --color-disabled-text: var(--color-text-secondary); /* Text color for disabled inputs */
-        --color-disabled-border: #666666; /* Medium gray border color for disabled inputs */
-        --color-hover-danger: #e07c5c; /* Hover state for danger remains the same */
-        --color-hover-default: #00549F; /* Darker shade for primary hover state */
+		--color-danger-background: var(--color-alert); /* Danger background */
+		--color-danger-border: #c63929; /* Danger border color remains the same */
+		--color-default-background: #333333; /* Darker input background */
+		--color-default-border: var(--color-secondary); /* Lightened border color for default inputs */
+		--color-disabled-background: #444444; /* Background color for disabled inputs */
+		--color-disabled-text: var(--color-text-secondary); /* Text color for disabled inputs */
+		--color-disabled-border: #666666; /* Medium gray border color for disabled inputs */
+		--color-hover-danger: #e07c5c; /* Hover state for danger remains the same */
+		--color-hover-default: #00549f; /* Darker shade for primary hover state */
 
-        --color-text-link: #0171d3;
-    }
+		--color-text-link: #0171d3;
+	}
 
-    html {
-        color-scheme: dark;
-    }
+	html {
+		color-scheme: dark;
+	}
 }
-  
+
 html,
 body {
-    display: grid;
-    margin: 0;
-    font-family: var(--font-family);
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-    color: var(--color-text-primary);
-    background-color: var(--color-footer);
-    background-image: linear-gradient(to right, var(--gradient-start) 0%, var(--gradient-end) 100%);
-    width: 100vw;
-    height: 100vh;
-    max-width: 100vw;
-    max-height: 100vh;
+	display: grid;
+	margin: 0;
+	font-family: var(--font-family);
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+	color: var(--color-text-primary);
+	background-color: var(--color-footer);
+	background-image: linear-gradient(to right, var(--gradient-start) 0%, var(--gradient-end) 100%);
+	width: 100vw;
+	height: 100vh;
+	max-width: 100vw;
+	max-height: 100vh;
 }
 
 /*
@@ -115,24 +113,24 @@ body {
     https://www.digitalocean.com/community/tutorials/css-scrollbars
     
 */
-  
+
 /* Customize CSS Scrollbars for improved styling */
 * {
-    scrollbar-width: thin;
-    scrollbar-color: var(--color-secondary) var(--color-surface); /* For Firefox */
+	scrollbar-width: thin;
+	scrollbar-color: var(--color-secondary) var(--color-surface); /* For Firefox */
 }
 
 /* Works on Chrome, Edge, and Safari */
 *::-webkit-scrollbar {
-    width: 10px;
+	width: 10px;
 }
 
 *::-webkit-scrollbar-track {
-    background: var(--color-surface);
+	background: var(--color-surface);
 }
 
 *::-webkit-scrollbar-thumb {
-    border: 2px solid var(--color-surface);
-    border-radius: 10px;
-    background-color: var(--color-secondary);
+	border: 2px solid var(--color-surface);
+	border-radius: 10px;
+	background-color: var(--color-secondary);
 }

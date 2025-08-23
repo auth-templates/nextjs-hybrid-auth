@@ -1,8 +1,8 @@
 .confirmationEmailExpired {
-    composes: error from '../../message-box/message-box.module.css';
+	composes: error from '../../message-box/message-box.module.css';
 }
 
 .email {
-    display: inline;
-    font-weight: bold;
+	display: inline;
+	font-weight: bold;
 }

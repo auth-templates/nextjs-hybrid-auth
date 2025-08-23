@@ -1,5 +1,5 @@
-import mockRouter from "next-router-mock";
-import { createDynamicRouteParser } from "next-router-mock/dynamic-routes";
+import mockRouter from 'next-router-mock';
+import { createDynamicRouteParser } from 'next-router-mock/dynamic-routes';
 
 // @see: https://github.com/vercel/next.js/discussions/42527#discussioncomment-7234041
 

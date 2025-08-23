@@ -1,73 +1,73 @@
 .container {
-    width: 450px;
-    max-width: min(95vw, 400px);
-    max-width: 450px;
-    margin: 0 auto;
-    font-family: var(--font-family);
-    color: var(--color-text-primary);
+	width: 450px;
+	max-width: min(95vw, 400px);
+	max-width: 450px;
+	margin: 0 auto;
+	font-family: var(--font-family);
+	color: var(--color-text-primary);
 }
 
 .card {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  background-color: var(--color-surface);
-  border-radius: var(--border-radius);
-  box-shadow: var(--shadow1);
-  padding: 2rem;
-  gap: 1rem;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	background-color: var(--color-surface);
+	border-radius: var(--border-radius);
+	box-shadow: var(--shadow1);
+	padding: 2rem;
+	gap: 1rem;
 }
 
 .card h2 {
-  margin: 0;
-  font-size: 1.8rem;
-  font-weight: bold;
-  color: var(--color-primary);
+	margin: 0;
+	font-size: 1.8rem;
+	font-weight: bold;
+	color: var(--color-primary);
 }
 
 .form {
-  width: 100%;
-  display: flex;
-  flex-direction: column;
+	width: 100%;
+	display: flex;
+	flex-direction: column;
 }
 
 .messageBox {
-    margin-bottom: 10px;
+	margin-bottom: 10px;
 }
 
 .emailField,
 .passwordField {
-  margin-bottom: 1rem;
+	margin-bottom: 1rem;
 }
 
 /* Forgot / Signup links */
 .formLink {
-  text-align: center;
-  font-size: 0.95rem;
-  margin-top: 0.5rem;
-  margin-bottom: 0.5rem;
+	text-align: center;
+	font-size: 0.95rem;
+	margin-top: 0.5rem;
+	margin-bottom: 0.5rem;
 }
 
 .formLink span {
-  color: var(--color-text-secondary);
+	color: var(--color-text-secondary);
 }
 
 .signupLink,
 .forgotPassword {
-  color: var(--color-text-link);
-  text-decoration: underline;
-  font-weight: 600;
-  margin-left: 0.3rem;
+	color: var(--color-text-link);
+	text-decoration: underline;
+	font-weight: 600;
+	margin-left: 0.3rem;
 }
 
 .signupLink:hover,
 .forgotPassword:hover {
-  color: var(--color-primary);
+	color: var(--color-primary);
 }
 
 /* Responsive */
 @media (max-width: 500px) {
-  .card {
-    padding: 1.5rem;
-  }
+	.card {
+		padding: 1.5rem;
+	}
 }

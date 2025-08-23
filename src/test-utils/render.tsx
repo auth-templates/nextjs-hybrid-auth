@@ -19,15 +19,17 @@ import { theme } from '@/theme';
  *
  * @returns {ReturnType<typeof testingLibraryRender>} The result of the render, including utility functions from RTL.
  */
-export function render(ui: React.ReactNode, options?: {pickedMessages: string[]}): ReturnType<typeof testingLibraryRender> {
-  return testingLibraryRender(<>{ui}</>, {
-    wrapper: ({ children}: { children: React.ReactNode}) => (
-        <NextIntlClientProvider
-            locale="en"
-            messages={pick(messages, options?.pickedMessages ?? [])}
-        >
-            <MantineProvider theme={theme} env="test">{children}</MantineProvider>
-        </NextIntlClientProvider>
-    ),
-  });
+export function render(
+	ui: React.ReactNode,
+	options?: { pickedMessages: string[] }
+): ReturnType<typeof testingLibraryRender> {
+	return testingLibraryRender(<>{ui}</>, {
+		wrapper: ({ children }: { children: React.ReactNode }) => (
+			<NextIntlClientProvider locale="en" messages={pick(messages, options?.pickedMessages ?? [])}>
+				<MantineProvider theme={theme} env="test">
+					{children}
+				</MantineProvider>
+			</NextIntlClientProvider>
+		),
+	});
 }

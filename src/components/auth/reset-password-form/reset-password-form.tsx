@@ -9,68 +9,62 @@ import { useForm } from '@mantine/form';
 import { validatePassword } from '@/services/password-rules';
 import { CustomLoadingOverlay } from '../custom-loading-overlay';
 
-type ResetPasswordFormProps = { 
-    onSubmit: (data: Omit<ConfirmResetPasswordRequest, "token"> ) => void,
-    loading?: boolean;
-    messages?: Message[];
-}
+type ResetPasswordFormProps = {
+	onSubmit: (data: Omit<ConfirmResetPasswordRequest, 'token'>) => void;
+	loading?: boolean;
+	messages?: Message[];
+};
 
-export default function ResetPasswordForm({onSubmit, loading, messages}: ResetPasswordFormProps) {
-    const [ loadingInProgress, setLoading ] = useState(loading);
-    const t = useTranslations('forms.reset_password');
+export default function ResetPasswordForm({ onSubmit, loading, messages }: ResetPasswordFormProps) {
+	const [loadingInProgress, setLoading] = useState(loading);
+	const t = useTranslations('forms.reset_password');
 
-    const form = useForm({
-        initialValues: {
-            password: '',
-            confirmPassword: ''
-        },
+	const form = useForm({
+		initialValues: {
+			password: '',
+			confirmPassword: '',
+		},
 
-        validate: {
-            password: (value) =>
-                value && validatePassword(value)
-                ? null
-                : t('validation.passwordRules'),
-            confirmPassword: (value, values) => 
-                value === values.password 
-                ? null 
-                : t('validation.passwordsMismatch'),
-        },
-    });
+		validate: {
+			password: (value) => (value && validatePassword(value) ? null : t('validation.passwordRules')),
+			confirmPassword: (value, values) => (value === values.password ? null : t('validation.passwordsMismatch')),
+		},
+	});
 
-    const callSubmit = async (values: typeof form.values) => {
-        const { password } = values;
-        onSubmit({ newPassword: password });
-    };
+	const callSubmit = async (values: typeof form.values) => {
+		const { password } = values;
+		onSubmit({ newPassword: password });
+	};
 
-    return (
-        <div className={styles.resetPassword}>
-            <Card className={styles.card} pos="relative">
-                <CustomLoadingOverlay
-                    visible={loading}
-                    onTransitionStart={() => setLoading(true)}
-                    onTransitionEnd={() => setLoading(false)}
-                />
-                <form className={styles.form} onSubmit={form.onSubmit(callSubmit)}>
-                    <PasswordInput
-                        label={t('labels.password')}
-                        withAsterisk={false}
-                        placeholder={t('placeholders.password')}
-                        className={styles.passwordField}
-                        {...form.getInputProps('password')}
-                    />
-                    <PasswordInput
-                        label={t('labels.confirmPassword')}
-                        withAsterisk={false}
-                        placeholder={t('placeholders.confirmPassword')}
-                        className={styles.confirmPasswordField}
-                        {...form.getInputProps('confirmPassword')}
-                    />
-                    {messages && !loadingInProgress && (
-                        <MessageBox messages={messages} className={styles.messageBox} />
-                    )}
-                    <Button type='submit' className={styles.resetButton}>{t('buttons.reset_password')}</Button> 
-                </form>
-            </Card>
-        </div>
-    )
+	return (
+		<div className={styles.resetPassword}>
+			<Card className={styles.card} pos="relative">
+				<CustomLoadingOverlay
+					visible={loading}
+					onTransitionStart={() => setLoading(true)}
+					onTransitionEnd={() => setLoading(false)}
+				/>
+				<form className={styles.form} onSubmit={form.onSubmit(callSubmit)}>
+					<PasswordInput
+						label={t('labels.password')}
+						withAsterisk={false}
+						placeholder={t('placeholders.password')}
+						className={styles.passwordField}
+						{...form.getInputProps('password')}
+					/>
+					<PasswordInput
+						label={t('labels.confirmPassword')}
+						withAsterisk={false}
+						placeholder={t('placeholders.confirmPassword')}
+						className={styles.confirmPasswordField}
+						{...form.getInputProps('confirmPassword')}
+					/>
+					{messages && !loadingInProgress && <MessageBox messages={messages} className={styles.messageBox} />}
+					<Button type="submit" className={styles.resetButton}>
+						{t('buttons.reset_password')}
+					</Button>
+				</form>
+			</Card>
+		</div>
+	);
 }

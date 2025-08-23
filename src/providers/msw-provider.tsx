@@ -1,9 +1,9 @@
-'use client'
+'use client';
 
-import { Suspense, use } from 'react'
-import { handlers } from '@/mocks/handlers'
+import { Suspense, use } from 'react';
+import { handlers } from '@/mocks/handlers';
 
-const mockingEnabledPromise = Promise.resolve()
+const mockingEnabledPromise = Promise.resolve();
 //   typeof window !== 'undefined'
 //     ? import('@/mocks/browser').then(async ({ worker }) => {
 //         await worker.start({
@@ -21,24 +21,24 @@ const mockingEnabledPromise = Promise.resolve()
 //     : Promise.resolve()
 
 export function MSWProvider({
-  children,
+	children,
 }: Readonly<{
-  children: React.ReactNode
+	children: React.ReactNode;
 }>) {
-  // If MSW is enabled, we need to wait for the worker to start,
-  // so we wrap the children in a Suspense boundary until it's ready.
-  return (
-    <Suspense fallback={null}>
-      <MSWProviderWrapper>{children}</MSWProviderWrapper>
-    </Suspense>
-  )
+	// If MSW is enabled, we need to wait for the worker to start,
+	// so we wrap the children in a Suspense boundary until it's ready.
+	return (
+		<Suspense fallback={null}>
+			<MSWProviderWrapper>{children}</MSWProviderWrapper>
+		</Suspense>
+	);
 }
 
 function MSWProviderWrapper({
-  children,
+	children,
 }: Readonly<{
-  children: React.ReactNode
+	children: React.ReactNode;
 }>) {
-  use(mockingEnabledPromise)
-  return children
+	use(mockingEnabledPromise);
+	return children;
 }
