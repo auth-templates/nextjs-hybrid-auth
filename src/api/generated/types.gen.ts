@@ -769,5 +769,5 @@ export type GetCsrfTokenResponses = {
 export type GetCsrfTokenResponse = GetCsrfTokenResponses[keyof GetCsrfTokenResponses];
 
 export type ClientOptions = {
-    baseUrl: 'http://localhost:3001' | (string & {});
+    baseUrl: 'http://localhost:3000' | (string & {});
 };

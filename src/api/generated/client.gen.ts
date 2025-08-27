@@ -15,5 +15,5 @@ import { createClientConfig } from '../../../fetch-client-config';
 export type CreateClientConfig<T extends DefaultClientOptions = ClientOptions> = (override?: Config<DefaultClientOptions & T>) => Config<Required<DefaultClientOptions> & T>;
 
 export const client = createClient(createClientConfig(createConfig<ClientOptions>({
-    baseUrl: 'http://localhost:3001'
+    baseUrl: 'http://localhost:3000'
 })));

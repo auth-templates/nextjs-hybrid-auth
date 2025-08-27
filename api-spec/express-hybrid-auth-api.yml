@@ -1,6 +1,6 @@
 openapi: 3.0.3
 servers:
-  - url: http://localhost:3001
+  - url: http://localhost:3000
 info:
   title: Hybrid Session + JWT Auth API
   version: 1.0.0
