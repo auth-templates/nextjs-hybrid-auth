@@ -7,3 +7,6 @@ api-spec
 coverage
 README.md
 LICENSE
+src/tokens/base
+src/tokens/semantic
+src/tokens/generated

@@ -42,11 +42,11 @@
 
 .form {
 	max-width: 480px;
-	background: var(--color-surface);
+	background: var(--color-semantic-surface);
 	padding: 2.5rem 3rem;
 	border-radius: var(--border-radius);
 	box-shadow: var(--shadow1);
-	color: var(--color-text-primary);
+	color: var(--color-semantic-text-primary);
 	display: flex;
 	flex-direction: column;
 	justify-content: center;

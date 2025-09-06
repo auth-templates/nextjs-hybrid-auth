@@ -1,19 +1,19 @@
 .section {
-	color: var(--color-text-primary);
+	color: var(--color-semantic-text-primary);
 }
 .root {
 }
 .label {
-	color: var(--color-text-primary);
+	color: var(--color-semantic-text-primary);
 }
 .required {
-	color: var(--color-text-primary);
+	color: var(--color-semantic-text-primary);
 }
 .description {
-	color: var(--color-text-primary);
+	color: var(--color-semantic-text-primary);
 }
 .error {
-	color: var(--color-accent); /* Border color for danger inputs */
+	color: var(--color-semantic-accent); /* Border color for danger inputs */
 }
 .inputWrapper {
 	border: 0;
@@ -31,7 +31,7 @@
 /* Danger Variant: For critical actions or warnings */
 .input[data-variant='danger'] {
 	background-color: var(--color-danger-background); /* Background for danger inputs */
-	color: var(--color-text-primary); /* Light text for contrast */
+	color: var(--color-semantic-text-primary); /* Light text for contrast */
 	border: 1px solid var(--color-danger-border); /* Border color for danger inputs */
 }
 
@@ -42,7 +42,7 @@
 /* Default Variant: Neutral style for regular inputs */
 .input[data-variant='default'] {
 	background-color: var(--color-default-background); /* Background for default inputs */
-	color: var(--color-text-primary); /* Light text for good contrast */
+	color: var(--color-semantic-text-primary); /* Light text for good contrast */
 	/* border: 1px solid var(--color-default-border); /* Border color for default inputs */
 }
 

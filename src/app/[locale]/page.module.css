@@ -1,5 +1,4 @@
 .layout {
-	font-family: var(--font-family);
 	width: 100%;
 	min-height: 100vh;
 	overflow-x: hidden;
@@ -7,14 +6,13 @@
 
 .top {
 	height: 60vh;
-	background: linear-gradient(to bottom, var(--gradient-start), var(--gradient-end));
+	background: var(--color-semantic-gradient-primary);
 	position: relative;
 	display: flex;
 	justify-content: center;
 	align-items: center;
 	text-align: center;
 	padding: 2rem;
-	color: var(--white);
 }
 
 .heroContent {
@@ -30,14 +28,14 @@
 .subtitle {
 	font-size: 1.2rem;
 	margin-bottom: 2rem;
-	color: var(--color-text-secondary);
+	color: var(--color-semantic-text-secondary);
 }
 
 .button {
 	display: inline-block;
 	padding: 0.75rem 1.5rem;
-	background-color: var(--color-accent);
-	color: var(--white);
+	background-color: var(--color-semantic-accent);
+	color: var(--color-semantic-button-background-primary);
 	border-radius: var(--border-radius);
 	text-decoration: none;
 	font-weight: bold;
@@ -67,5 +65,5 @@
 	background: var(--color-footer);
 	padding: 3rem 2rem;
 	min-height: 40vh;
-	color: var(--color-text-primary);
+	color: var(--color-semantic-text-primary);
 }

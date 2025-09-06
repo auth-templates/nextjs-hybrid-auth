@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import styles from './resend-confirmation-email-form.module.css';
+import styles from './request-confirmation-email-form.module.css';
 import Link from 'next/link';
 import classNames from 'classnames';
 import MessageBox, { Message } from '../../message-box';

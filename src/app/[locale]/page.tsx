@@ -4,6 +4,7 @@ import { LocaleParams } from '@/types/global';
 
 import classes from './page.module.css';
 import { use } from 'react';
+import { Button } from '@mantine/core';
 
 export async function generateMetadata({ params }: LocaleParams) {
 	const { locale } = await params;
@@ -32,9 +33,10 @@ export default function HomePage({ params }: Props) {
 				<div className={classes.heroContent}>
 					<h1 className={classes.title}>{t('title')}</h1>
 					<p className={classes.subtitle}>{t('subtitle')}</p>
-					<a href="/register" className={classes.button}>
+					<Button>Get started</Button>
+					{/* <a href="/register" className={classes.button}>
 						{t('getStarted')}
-					</a>
+					</a> */}
 				</div>
 				<div className={classes.wave}>
 					<svg viewBox="0 0 1440 320" preserveAspectRatio="none">

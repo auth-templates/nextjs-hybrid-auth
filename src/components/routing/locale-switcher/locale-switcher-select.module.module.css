@@ -1,6 +1,6 @@
 .input {
 	background-color: transparent;
-	color: var(--color-text-primary);
+	color: var(--color-semantic-text-primary);
 	border: none;
 }
 
@@ -15,10 +15,10 @@
 
 .option {
 	background-color: transparent;
-	color: var(--color-text-primary);
+	color: var(--color-semantic-text-primary);
 }
 
 .option:hover {
-	color: var(--color-text-primary);
+	color: var(--color-semantic-text-primary);
 	background-color: var(--color-hover-default);
 }

@@ -1,0 +1,113 @@
+import StyleDictionary from 'style-dictionary';
+
+// ---------------------------------------------
+// Header comment for all generated CSS files
+// ---------------------------------------------
+const HEADER_COMMENT = `/**
+* Do not edit directly, this file was auto-generated.
+ */\n\n`;
+
+// ---------------------------------------------
+// Build light theme colors
+// ---------------------------------------------
+const styleDictionaryLight = new StyleDictionary(
+	{
+		source: ['src/tokens/colors/light.json'],
+		platforms: {
+			css: {
+				transformGroup: 'css',
+				buildPath: 'src/tokens/generated/css/',
+				files: [
+					{
+						destination: 'colors-light.css',
+						format: 'css/variables-light',
+						options: {
+							outputReferences: true,
+						},
+					},
+				],
+			},
+		},
+	},
+	{ verbosity: 'verbose' }
+);
+
+// Custom format for light theme variables
+StyleDictionary.hooks.formats['css/variables-light'] = function ({ dictionary, options }) {
+	const tokens = dictionary.allTokens.filter((token) => token.filePath.includes('light'));
+	const variables = tokens
+		.map((token) => {
+			const { name, comment, value } = token;
+			return `    --${name}: ${value};${comment ? ` /* ${comment} */` : ''}`;
+		})
+		.join('\n');
+
+	return `${HEADER_COMMENT}:root {\n${variables}\n}`;
+};
+
+// Build the light theme CSS
+styleDictionaryLight.buildAllPlatforms();
+
+// ---------------------------------------------
+// Build dark theme colors
+// ---------------------------------------------
+const styleDictionaryDark = new StyleDictionary(
+	{
+		source: ['src/tokens/colors/dark.json'],
+		platforms: {
+			css: {
+				transformGroup: 'css',
+				buildPath: 'src/tokens/generated/css/',
+				files: [
+					{
+						destination: 'colors-dark.css',
+						format: 'css/variables-dark',
+						options: {
+							outputReferences: true,
+						},
+					},
+				],
+			},
+		},
+	},
+	{ verbosity: 'verbose' }
+);
+
+// Custom format for dark theme variables (wrapped in media query)
+StyleDictionary.hooks.formats['css/variables-dark'] = function ({ dictionary, options }) {
+	const tokens = dictionary.allTokens.filter((token) => token.filePath.includes('dark'));
+
+	const variables = tokens
+		.map((token) => {
+			const { name, comment, value } = token;
+			return `    --${name}: ${value};${comment ? ` /* ${comment} */` : ''}`;
+		})
+		.join('\n');
+
+	return `${HEADER_COMMENT}@media (prefers-color-scheme: dark) {\n  :root {\n${variables}\n  }\n}`;
+};
+
+// Build the dark theme CSS
+styleDictionaryDark.buildAllPlatforms();
+
+// ---------------------------------------------
+// Build foundation tokens (spacing, radius, breakpoints)
+// ---------------------------------------------
+const foundation = new StyleDictionary({
+	source: ['src/tokens/foundation/*.json'],
+	platforms: {
+		css: {
+			transformGroup: 'css',
+			buildPath: 'src/tokens/generated/css/',
+			files: [
+				{
+					destination: 'foundation.css',
+					format: 'css/variables',
+				},
+			],
+		},
+	},
+});
+
+// Build the foundation CSS
+foundation.buildAllPlatforms();

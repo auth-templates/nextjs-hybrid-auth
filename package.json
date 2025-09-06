@@ -14,7 +14,7 @@
 		"lint": "next lint",
 		"prepare": "npx husky",
 		"start:backend-local": "docker-compose -f .devcontainer/docker-compose.prod.yml down -v && docker-compose -f .devcontainer/docker-compose.prod.yml up -d postgres redis smtp4dev && docker-compose -f .devcontainer/docker-compose.prod.yml run --rm migrate && docker-compose -f .devcontainer/docker-compose.prod.yml up --build -d --remove-orphans api",
-		"generate:tokens": "style-dictionary build --config src/tokens/config.json"
+		"generate:tokens": "tsx src/tokens/build.ts"
 	},
 	"dependencies": {
 		"@edge-csrf/nextjs": "^2.5.3-cloudflare-rc1",
@@ -50,12 +50,15 @@
 		"@testing-library/jest-dom": "^6.6.3",
 		"@testing-library/react": "^16.3.0",
 		"@testing-library/user-event": "^14.6.1",
+		"@types/glob": "^8.1.0",
 		"@types/jest": "^29.5.12",
 		"@types/node": "^20.12.7",
 		"@types/react": "^18.3.3",
 		"@types/react-dom": "^18.3.0",
 		"@types/react-world-flags": "^1.6.0",
 		"dotenv-cli": "^7.4.1",
+		"eslint": "^9.34.0",
+		"glob": "^11.0.3",
 		"jest": "^29.7.0",
 		"jest-fixed-jsdom": "^0.0.2",
 		"jest-html-reporter": "^3.10.2",
@@ -70,6 +73,7 @@
 		"semantic-release": "^24.2.7",
 		"sharp": "^0.33.3",
 		"style-dictionary": "^5.0.2",
+		"tsx": "^4.20.5",
 		"typescript": "^5.4.5"
 	},
 	"msw": {

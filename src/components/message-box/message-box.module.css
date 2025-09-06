@@ -1,9 +1,9 @@
 .root {
-	border: 1px solid var(--color-primary);
+	border: 1px solid var(--color-semantic-text-primary);
 	border-radius: var(--border-radius);
 	box-shadow: var(--shadow1);
-	/* background-color: var(--color-surface); */
-	color: var(--color-text-primary);
+	/* background-color: var(--color-semantic-surface); */
+	color: var(--color-semantic-text-primary);
 	padding: 10px 14px;
 }
 
@@ -12,5 +12,5 @@
 }
 
 .messageList li {
-	color: var(--color-text-primary);
+	color: var(--color-semantic-text-primary);
 }

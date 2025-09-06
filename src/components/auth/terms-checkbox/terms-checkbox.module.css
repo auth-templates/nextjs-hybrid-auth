@@ -3,8 +3,8 @@
 }
 
 .checkboxCheckedInput {
-	border-color: var(--color-primary);
-	background-color: var(--color-primary);
+	border-color: var(--color-semantic-text-primary);
+	background-color: var(--color-semantic-text-primary);
 }
 
 .anchorLink {
@@ -14,5 +14,5 @@
 
 .labelText {
 	font-family: var(--font-family);
-	color: var(--color-text-primary);
+	color: var(--color-semantic-text-primary);
 }

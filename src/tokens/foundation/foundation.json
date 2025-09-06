@@ -1,0 +1,29 @@
+{
+	"borderRadius": {
+		"none": { "value": "0px", "comment": "no rounding" },
+		"sm": { "value": "4px", "comment": "small radius" },
+		"md": { "value": "8px", "comment": "medium radius" },
+		"lg": { "value": "12px", "comment": "large radius" },
+		"xl": { "value": "16px", "comment": "extra large radius" },
+		"2xl": { "value": "24px", "comment": "double extra large radius" },
+		"full": { "value": "9999px", "comment": "fully rounded / pill" }
+	},
+	"breakpoints": {
+		"xs": { "value": "36em", "comment": "~576px" },
+		"sm": { "value": "48em", "comment": "~768px" },
+		"md": { "value": "62em", "comment": "~992px" },
+		"lg": { "value": "75em", "comment": "~1200px" },
+		"xl": { "value": "88em", "comment": "~1408px" }
+	},
+	"spacing": {
+		"0": { "value": "0px", "comment": "no spacing" },
+		"xs": { "value": "4px", "comment": "extra small spacing" },
+		"sm": { "value": "8px", "comment": "small spacing" },
+		"md": { "value": "16px", "comment": "medium spacing" },
+		"lg": { "value": "24px", "comment": "large spacing" },
+		"xl": { "value": "32px", "comment": "extra large spacing" },
+		"2xl": { "value": "40px", "comment": "double extra large spacing" },
+		"3xl": { "value": "48px", "comment": "triple extra large spacing" },
+		"4xl": { "value": "64px", "comment": "quadruple extra large spacing" }
+	}
+}

@@ -1,0 +1,27 @@
+/**
+ * Do not edit directly, this file was auto-generated.
+ */
+
+:root {
+  --border-radius-none: 0px; /** no rounding */
+  --border-radius-sm: 4px; /** small radius */
+  --border-radius-md: 8px; /** medium radius */
+  --border-radius-lg: 12px; /** large radius */
+  --border-radius-xl: 16px; /** extra large radius */
+  --border-radius-2xl: 24px; /** double extra large radius */
+  --border-radius-full: 9999px; /** fully rounded / pill */
+  --breakpoints-xs: 36em; /** ~576px */
+  --breakpoints-sm: 48em; /** ~768px */
+  --breakpoints-md: 62em; /** ~992px */
+  --breakpoints-lg: 75em; /** ~1200px */
+  --breakpoints-xl: 88em; /** ~1408px */
+  --spacing-0: 0px; /** no spacing */
+  --spacing-xs: 4px; /** extra small spacing */
+  --spacing-sm: 8px; /** small spacing */
+  --spacing-md: 16px; /** medium spacing */
+  --spacing-lg: 24px; /** large spacing */
+  --spacing-xl: 32px; /** extra large spacing */
+  --spacing-2xl: 40px; /** double extra large spacing */
+  --spacing-3xl: 48px; /** triple extra large spacing */
+  --spacing-4xl: 64px; /** quadruple extra large spacing */
+}

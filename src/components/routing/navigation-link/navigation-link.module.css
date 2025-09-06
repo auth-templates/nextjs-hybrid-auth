@@ -3,6 +3,6 @@
 	border: 1px solid var(--color-hover-default);
 	border-radius: 4px;
 	text-decoration: none;
-	color: var(--color-text-primary);
+	color: var(--color-semantic-text-primary);
 	background-color: var(--blue);
 }

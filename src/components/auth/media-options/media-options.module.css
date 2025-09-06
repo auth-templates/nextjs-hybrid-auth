@@ -2,7 +2,7 @@
 	position: relative;
 	height: 1px;
 	width: 100%;
-	background-color: var(--color-primary, #b0b0b0);
+	background-color: var(--color-semantic-text-primary, #b0b0b0);
 	margin: 1.5rem 0 2rem 0;
 	border-radius: 2px;
 }
@@ -13,13 +13,13 @@
 	top: 50%;
 	left: 50%;
 	transform: translate(-50%, -50%);
-	background-color: var(--color-surface, #f9f9f9); /* Slightly tinted fallback for contrast */
-	color: var(--color-text-primary, #333); /* Visible in both modes */
+	background-color: var(--color-semantic-surface, #f9f9f9); /* Slightly tinted fallback for contrast */
+	color: var(--color-semantic-text-primary, #333); /* Visible in both modes */
 	font-size: 0.9rem;
 	font-weight: 500;
 	padding: 0 0.75rem;
 	border-radius: 999px;
-	border: 1px solid var(--color-primary, rgba(0, 0, 0, 0.374)); /* subtle separator */
+	border: 1px solid var(--color-semantic-text-primary, rgba(0, 0, 0, 0.374)); /* subtle separator */
 	box-shadow: 0 1px 5px rgba(0, 0, 0, 0.08); /* light separation glow */
 }
 
@@ -70,9 +70,9 @@
 
 @media (prefers-color-scheme: dark) {
 	.github {
-		background-color: var(--color-surface);
-		color: var(--color-text-primary);
-		border: 1px solid var(--color-secondary);
+		background-color: var(--color-semantic-surface);
+		color: var(--color-semantic-text-primary);
+		border: 1px solid var(--color-semantic-secondary);
 	}
 
 	.github:hover {
@@ -84,7 +84,7 @@
 /* Google Button */
 .google {
 	background-color: var(--white);
-	color: var(--color-text-primary);
+	color: var(--color-semantic-text-primary);
 	border: 1px solid #dcdcdc;
 	box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
 	transition:
@@ -94,7 +94,7 @@
 }
 
 .google:hover {
-	background-color: var(--color-surface);
+	background-color: var(--color-semantic-surface);
 	border-color: #c6c6c6;
 	box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
 }
@@ -102,14 +102,14 @@
 .googleLabel {
 	font-weight: 500;
 	opacity: 1;
-	color: var(--color-text-primary);
+	color: var(--color-semantic-text-primary);
 }
 
 @media (prefers-color-scheme: dark) {
 	.google {
-		background-color: var(--color-surface);
-		color: var(--color-text-primary);
-		border: 1px solid var(--color-secondary);
+		background-color: var(--color-semantic-surface);
+		color: var(--color-semantic-text-primary);
+		border: 1px solid var(--color-semantic-secondary);
 		box-shadow: 0 1px 2px rgba(255, 255, 255, 0.05);
 	}
 
@@ -120,7 +120,7 @@
 	}
 
 	.googleLabel {
-		color: var(--color-text-primary);
+		color: var(--color-semantic-text-primary);
 	}
 }
 
