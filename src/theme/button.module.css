@@ -1,0 +1,101 @@
+.root {
+	border-radius: var(--border-radius-md);
+	padding: 8px 12px;
+	font-weight: 600;
+	transition:
+		background-color 0.15s ease,
+		border-color 0.15s ease,
+		color 0.15s ease,
+		box-shadow 0.15s ease;
+	border: 1px solid transparent;
+	background-color: var(--color-semantic-interactive-button-secondary);
+	color: var(--color-semantic-interactive-button-text);
+}
+
+.root:hover {
+	background-color: var(--color-semantic-interactive-button-secondary-hover);
+}
+
+.root:active {
+	background-color: var(--color-semantic-interactive-button-secondary-active);
+}
+
+.root:focus-visible {
+	outline: none;
+	box-shadow: 0 0 0 2px var(--color-semantic-utility-focus-ring);
+}
+
+/* Primary variant */
+.root[data-variant='primary'] {
+	background-color: var(--color-semantic-interactive-button-primary);
+	color: var(--color-semantic-interactive-button-text-primary);
+	border-color: transparent;
+}
+
+.root[data-variant='primary']:hover {
+	background-color: var(--color-semantic-interactive-button-primary-hover);
+}
+
+.root[data-variant='primary']:active {
+	background-color: var(--color-semantic-interactive-button-primary-active);
+}
+
+/* Secondary variant */
+.root[data-variant='secondary'] {
+	background-color: var(--color-semantic-interactive-button-secondary);
+	color: var(--color-semantic-interactive-button-text);
+	border-color: var(--color-semantic-border-medium);
+}
+
+.root[data-variant='secondary']:hover {
+	background-color: var(--color-semantic-interactive-button-secondary-hover);
+}
+
+.root[data-variant='secondary']:active {
+	background-color: var(--color-semantic-interactive-button-secondary-active);
+}
+
+/* Outline variant */
+.root[data-variant='outline'] {
+	background-color: var(--color-semantic-interactive-button-outline);
+	color: var(--color-semantic-interactive-button-text);
+	border-color: var(--color-semantic-border-medium);
+}
+
+.root[data-variant='outline']:hover {
+	background-color: var(--color-semantic-interactive-button-outline-hover);
+}
+
+/* Ghost variant */
+.root[data-variant='ghost'] {
+	background-color: var(--color-semantic-interactive-button-ghost);
+	color: var(--color-semantic-interactive-button-text);
+	border-color: transparent;
+}
+
+.root[data-variant='ghost']:hover {
+	background-color: var(--color-semantic-interactive-button-ghost-hover);
+}
+
+/* Text variant */
+.root[data-variant='text'] {
+	background-color: transparent;
+	color: var(--color-semantic-interactive-button-text);
+	border-color: transparent;
+}
+
+.root[data-variant='text']:hover {
+	color: var(--color-semantic-interactive-button-text-hover);
+	background-color: transparent;
+}
+
+/* Disabled */
+.root[disabled],
+.root[data-disabled='true'] {
+	background-color: var(--color-semantic-interactive-button-disabled);
+	color: var(--color-semantic-interactive-button-disabled-text);
+	border-color: transparent;
+	cursor: not-allowed;
+	opacity: 0.6;
+	box-shadow: none;
+}

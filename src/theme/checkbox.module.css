@@ -1,0 +1,18 @@
+.root {
+	color: var(--color-semantic-text-primary);
+}
+
+.input {
+	border: 1px solid var(--color-semantic-border-medium);
+	border-radius: var(--border-radius-sm);
+	background-color: var(--color-semantic-background-primary);
+}
+
+.input:checked {
+	background-color: var(--color-semantic-brand-primary);
+	border-color: var(--color-semantic-brand-primary);
+}
+
+.label {
+	color: var(--color-semantic-text-secondary);
+}

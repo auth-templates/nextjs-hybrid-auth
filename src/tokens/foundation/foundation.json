@@ -1,29 +1,36 @@
 {
 	"borderRadius": {
 		"none": { "value": "0px", "comment": "no rounding" },
+		"xs": { "value": "2px", "comment": "extra small radius" },
 		"sm": { "value": "4px", "comment": "small radius" },
 		"md": { "value": "8px", "comment": "medium radius" },
 		"lg": { "value": "12px", "comment": "large radius" },
 		"xl": { "value": "16px", "comment": "extra large radius" },
 		"2xl": { "value": "24px", "comment": "double extra large radius" },
+		"3xl": { "value": "32px", "comment": "triple extra large radius" },
 		"full": { "value": "9999px", "comment": "fully rounded / pill" }
 	},
 	"breakpoints": {
-		"xs": { "value": "36em", "comment": "~576px" },
-		"sm": { "value": "48em", "comment": "~768px" },
-		"md": { "value": "62em", "comment": "~992px" },
-		"lg": { "value": "75em", "comment": "~1200px" },
-		"xl": { "value": "88em", "comment": "~1408px" }
+		"xs": { "value": "30em", "comment": "~480px" },
+		"sm": { "value": "40em", "comment": "~640px" },
+		"md": { "value": "48em", "comment": "~768px" },
+		"lg": { "value": "64em", "comment": "~1024px" },
+		"xl": { "value": "80em", "comment": "~1280px" },
+		"2xl": { "value": "96em", "comment": "~1536px" }
 	},
 	"spacing": {
 		"0": { "value": "0px", "comment": "no spacing" },
+		"xxs": { "value": "2px", "comment": "extra extra small spacing" },
 		"xs": { "value": "4px", "comment": "extra small spacing" },
 		"sm": { "value": "8px", "comment": "small spacing" },
-		"md": { "value": "16px", "comment": "medium spacing" },
-		"lg": { "value": "24px", "comment": "large spacing" },
-		"xl": { "value": "32px", "comment": "extra large spacing" },
-		"2xl": { "value": "40px", "comment": "double extra large spacing" },
-		"3xl": { "value": "48px", "comment": "triple extra large spacing" },
-		"4xl": { "value": "64px", "comment": "quadruple extra large spacing" }
+		"md": { "value": "12px", "comment": "medium spacing" },
+		"lg": { "value": "16px", "comment": "large spacing" },
+		"xl": { "value": "24px", "comment": "extra large spacing" },
+		"2xl": { "value": "32px", "comment": "double extra large spacing" },
+		"3xl": { "value": "40px", "comment": "triple extra large spacing" },
+		"4xl": { "value": "48px", "comment": "quadruple extra large spacing" },
+		"5xl": { "value": "64px", "comment": "quintuple extra large spacing" },
+		"6xl": { "value": "80px", "comment": "sextuple extra large spacing" },
+		"7xl": { "value": "96px", "comment": "septuple extra large spacing" }
 	}
 }

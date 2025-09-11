@@ -1,0 +1,19 @@
+.root {
+	background-color: var(--color-semantic-interactive-button-secondary);
+	color: var(--color-semantic-interactive-button-text);
+	border: 1px solid var(--color-semantic-border-medium);
+	border-radius: var(--border-radius-full);
+	padding: 2px 8px;
+	font-weight: 600;
+}
+
+.root[data-variant='outline'] {
+	background-color: transparent;
+	border-color: var(--color-semantic-border-medium);
+}
+
+.root[data-variant='filled'] {
+	background-color: var(--color-semantic-brand-primary);
+	color: var(--color-semantic-text-on-primary);
+	border-color: transparent;
+}

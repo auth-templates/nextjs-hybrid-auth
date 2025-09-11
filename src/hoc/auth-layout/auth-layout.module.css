@@ -1,7 +1,7 @@
 .layout {
 	min-height: calc(100vh - var(--navbarHeight));
-	background: var(--color-background);
-	color: white;
+	background: var(--color-semantic-background-primary);
+	color: var(--color-semantic-text-primary);
 	display: flex;
 	flex-direction: column;
 	min-width: 100%;
@@ -13,8 +13,8 @@
 	display: flex;
 	justify-content: center;
 	align-items: center;
-	gap: 4rem; /* space between hero and form */
-	padding: 0 2rem;
+	gap: var(--spacing-xl); /* space between hero and form */
+	padding: 0 var(--spacing-xl);
 	/* Make sure wave stays at bottom */
 	overflow: visible;
 	box-sizing: border-box;
@@ -26,26 +26,26 @@
 }
 
 .title {
-	font-family: var(--font-family);
 	font-size: 3rem;
 	font-weight: 700;
-	margin-bottom: 1rem;
+	margin-bottom: var(--spacing-md);
 	line-height: 1.1;
 }
 
 .subtitle {
 	font-size: 1.25rem;
 	font-weight: 400;
-	opacity: 0.85;
+	color: var(--color-semantic-text-secondary);
 	line-height: 1.4;
 }
 
 .form {
 	max-width: 480px;
-	background: var(--color-semantic-surface);
-	padding: 2.5rem 3rem;
-	border-radius: var(--border-radius);
-	box-shadow: var(--shadow1);
+	background: var(--color-semantic-surface-card);
+	padding: var(--spacing-2xl) var(--spacing-xl);
+	border-radius: var(--border-radius-lg);
+	box-shadow: var(--color-semantic-shadow-md);
+	border: 1px solid var(--color-semantic-border-divider);
 	color: var(--color-semantic-text-primary);
 	display: flex;
 	flex-direction: column;
@@ -77,8 +77,8 @@
 @media (max-width: 768px) {
 	.top {
 		flex-direction: column;
-		gap: 2rem;
-		padding-bottom: 6rem; /* extra padding so wave doesn't overlap */
+		gap: var(--spacing-lg);
+		padding-bottom: var(--spacing-6xl); /* extra padding so wave doesn't overlap */
 	}
 
 	.hero,

@@ -1,3 +1,32 @@
 .titleRoot {
 	color: var(--color-semantic-text-primary);
+	margin-bottom: var(--spacing-md);
+	font-weight: 700;
+}
+
+.titleRoot[data-variant='secondary'] {
+	color: var(--color-semantic-text-secondary);
+}
+
+.titleRoot[data-variant='tertiary'] {
+	color: var(--color-semantic-text-tertiary);
+}
+
+.titleRoot[data-variant='inverse'] {
+	color: var(--color-semantic-text-inverse);
+}
+
+.titleRoot[data-variant='brand'] {
+	background: var(--color-semantic-gradient-primary);
+	-webkit-background-clip: text;
+	background-clip: text;
+	color: transparent;
+}
+
+.titleRoot[data-align='center'] {
+	text-align: center;
+}
+
+.titleRoot[data-align='right'] {
+	text-align: right;
 }

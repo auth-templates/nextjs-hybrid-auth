@@ -25,10 +25,9 @@
 
 .toastClassname {
 	padding: 5px !important;
-	font-family: var(--font-family);
-	border-radius: 4px;
-	padding: 1rem;
-	box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+	border-radius: var(--border-radius-sm);
+	padding: var(--spacing-md);
+	box-shadow: var(--color-semantic-shadow-md);
 	display: flex;
 	position: relative;
 	width: 100%;
@@ -40,28 +39,28 @@
 }
 
 .root :global(.Toastify__toast-theme--colored.Toastify__toast--default) {
-	background-color: var(--color-semantic-surface);
+	background-color: var(--color-semantic-surface-card);
 	color: var(--color-semantic-text-primary);
 }
 
 .root :global(.Toastify__toast-theme--colored.Toastify__toast--info) {
-	background-color: var(--color-semantic-text-primary); /* Navy Blue */
-	color: var(--color-semantic-secondary); /* Light Cream for text */
+	background-color: var(--color-semantic-status-info);
+	color: var(--color-semantic-text-on-info);
 }
 
 .root :global(.Toastify__toast-theme--colored.Toastify__toast--success) {
-	background-color: var(--color-semantic-secondary); /* Light cream */
-	color: var(--color-semantic-text-primary); /* Dark text for readability */
+	background-color: var(--color-semantic-status-success);
+	color: var(--color-semantic-text-on-success);
 }
 
 .root :global(.Toastify__toast-theme--colored.Toastify__toast--warning) {
-	background-color: var(--color-alert); /* Coral for warning */
-	color: var(--color-semantic-text-primary);
+	background-color: var(--color-semantic-status-warning);
+	color: var(--color-semantic-text-on-warning);
 }
 
 .root :global(.Toastify__toast-theme--colored.Toastify__toast--error) {
-	background-color: var(--color-danger-background); /* Red for error */
-	color: var(--color-semantic-text-primary);
+	background-color: var(--color-semantic-status-error);
+	color: var(--color-semantic-text-on-error);
 }
 
 @keyframes no-animation {

@@ -1,8 +1,8 @@
 .root {
 	padding: 3px 8px;
-	border: 1px solid var(--color-hover-default);
-	border-radius: 4px;
+	border: 1px solid var(--color-semantic-border-medium);
+	border-radius: var(--border-radius-sm);
 	text-decoration: none;
-	color: var(--color-semantic-text-primary);
-	background-color: var(--blue);
+	color: var(--color-semantic-interactive-link-default);
+	background-color: transparent;
 }

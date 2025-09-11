@@ -1,16 +1,17 @@
 .input {
 	background-color: transparent;
 	color: var(--color-semantic-text-primary);
-	border: none;
+	border: 1px solid var(--color-semantic-interactive-input-border);
+	border-radius: var(--border-radius-sm);
 }
 
 .dropdown {
-	background-color: transparent;
-	border-color: var(--color-disabled-background);
+	background-color: var(--color-semantic-surface-dropdown);
+	border-color: var(--color-semantic-border-divider);
 }
 
 .options {
-	background-color: transparent;
+	background-color: var(--color-semantic-surface-dropdown);
 }
 
 .option {
@@ -20,5 +21,5 @@
 
 .option:hover {
 	color: var(--color-semantic-text-primary);
-	background-color: var(--color-hover-default);
+	background-color: var(--color-semantic-background-secondary);
 }

@@ -3,7 +3,6 @@
 	max-width: min(95vw, 400px);
 	max-width: 450px;
 	margin: 0 auto;
-	font-family: var(--font-family);
 	color: var(--color-semantic-text-primary);
 }
 
@@ -11,11 +10,11 @@
 	display: flex;
 	flex-direction: column;
 	align-items: center;
-	background-color: var(--color-semantic-surface);
-	border-radius: var(--border-radius);
-	box-shadow: var(--shadow1);
-	padding: 2rem;
-	gap: 1rem;
+	background-color: var(--color-semantic-surface-card);
+	border-radius: var(--border-radius-lg);
+	box-shadow: var(--color-semantic-shadow-sm);
+	padding: var(--spacing-xl);
+	gap: var(--spacing-md);
 }
 
 .card h2 {
@@ -32,20 +31,20 @@
 }
 
 .messageBox {
-	margin-bottom: 10px;
+	margin-bottom: var(--spacing-sm);
 }
 
 .emailField,
 .passwordField {
-	margin-bottom: 1rem;
+	margin-bottom: var(--spacing-md);
 }
 
 /* Forgot / Signup links */
 .formLink {
 	text-align: center;
 	font-size: 0.95rem;
-	margin-top: 0.5rem;
-	margin-bottom: 0.5rem;
+	margin-top: var(--spacing-xs);
+	margin-bottom: var(--spacing-xs);
 }
 
 .formLink span {
@@ -54,7 +53,7 @@
 
 .signupLink,
 .forgotPassword {
-	color: var(--color-text-link);
+	color: var(--color-semantic-interactive-link-default);
 	text-decoration: underline;
 	font-weight: 600;
 	margin-left: 0.3rem;
@@ -62,12 +61,12 @@
 
 .signupLink:hover,
 .forgotPassword:hover {
-	color: var(--color-semantic-text-primary);
+	color: var(--color-semantic-interactive-link-hover);
 }
 
 /* Responsive */
 @media (max-width: 500px) {
 	.card {
-		padding: 1.5rem;
+		padding: var(--spacing-lg);
 	}
 }

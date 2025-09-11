@@ -1,0 +1,11 @@
+.tooltip {
+	background-color: var(--color-semantic-surface-tooltip);
+	color: var(--color-semantic-text-inverse);
+	border-radius: var(--border-radius-sm);
+	padding: 4px 8px;
+	box-shadow: var(--color-semantic-shadow-sm);
+}
+
+.arrow {
+	background-color: var(--color-semantic-surface-tooltip);
+}

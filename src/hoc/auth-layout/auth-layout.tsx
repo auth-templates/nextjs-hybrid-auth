@@ -19,7 +19,10 @@ export default function AuthLayout({
 				<div className={classes.right}>{children}</div>
 				<div className={classes.wave}>
 					<svg viewBox="0 0 1440 320" preserveAspectRatio="none">
-						<path d="M0,160 C720,320 720,0 1440,160 L1440,320 L0,320 Z" fill="var(--color-footer)" />
+						<path
+							d="M0,160 C720,320 720,0 1440,160 L1440,320 L0,320 Z"
+							fill="var(--color-semantic-background-secondary)"
+						/>
 					</svg>
 				</div>
 			</section>

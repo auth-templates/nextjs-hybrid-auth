@@ -3,13 +3,12 @@
 	flex-direction: row;
 	grid-template-columns: 1fr 1fr;
 	align-items: center;
-	gap: 10px;
+	gap: var(--spacing-sm);
 }
 
 .username {
 	margin: 0px;
-	color: var(--white);
-	font-size: var(--font-size);
+	color: var(--color-semantic-text-primary);
 }
 
 .user {
@@ -23,29 +22,29 @@
 .userIcon {
 	width: 1.5em;
 	height: 1.5em;
-	color: white;
+	color: var(--color-semantic-text-primary);
 }
 
 .downIcon {
-	color: white;
+	color: var(--color-semantic-text-primary);
 }
 
 .loginButton {
 	padding: 3px 8px;
-	border: 1px solid var(--color-hover-default);
-	border-radius: 4px;
+	border: 1px solid var(--color-semantic-border-medium);
+	border-radius: var(--border-radius-sm);
 	text-decoration: none;
-	color: var(--color-semantic-text-primary);
-	background-color: var(--blue);
+	color: var(--color-semantic-interactive-link-default);
+	background-color: transparent;
 }
 
 .homeButton {
 	padding: 3px 8px;
-	border: 1px solid var(--color-hover-default);
-	border-radius: 4px;
+	border: 1px solid var(--color-semantic-border-medium);
+	border-radius: var(--border-radius-sm);
 	text-decoration: none;
-	color: var(--color-semantic-text-primary);
-	background-color: var(--black);
+	color: var(--color-semantic-interactive-link-default);
+	background-color: transparent;
 }
 
 .logoutButton {

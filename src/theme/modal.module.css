@@ -1,0 +1,10 @@
+.root {
+	background-color: var(--color-semantic-surface-modal);
+	color: var(--color-semantic-text-primary);
+	border-radius: var(--border-radius-lg);
+	box-shadow: var(--color-semantic-shadow-lg);
+}
+
+.overlay {
+	background-color: var(--color-semantic-background-overlay);
+}

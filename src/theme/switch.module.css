@@ -1,0 +1,16 @@
+.root {
+	color: var(--color-semantic-text-primary);
+}
+
+.track {
+	background-color: var(--color-semantic-border-medium);
+	border-radius: var(--border-radius-full);
+}
+
+.thumb {
+	background-color: var(--color-semantic-background-primary);
+}
+
+.input:checked + .track {
+	background-color: var(--color-semantic-brand-primary);
+}

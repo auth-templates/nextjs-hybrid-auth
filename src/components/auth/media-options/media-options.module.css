@@ -2,8 +2,8 @@
 	position: relative;
 	height: 1px;
 	width: 100%;
-	background-color: var(--color-semantic-text-primary, #b0b0b0);
-	margin: 1.5rem 0 2rem 0;
+	background-color: var(--color-semantic-border-divider);
+	margin: var(--spacing-lg) 0 var(--spacing-xl) 0;
 	border-radius: 2px;
 }
 
@@ -13,14 +13,14 @@
 	top: 50%;
 	left: 50%;
 	transform: translate(-50%, -50%);
-	background-color: var(--color-semantic-surface, #f9f9f9); /* Slightly tinted fallback for contrast */
-	color: var(--color-semantic-text-primary, #333); /* Visible in both modes */
+	background-color: var(--color-semantic-background-primary);
+	color: var(--color-semantic-text-secondary);
 	font-size: 0.9rem;
 	font-weight: 500;
 	padding: 0 0.75rem;
 	border-radius: 999px;
-	border: 1px solid var(--color-semantic-text-primary, rgba(0, 0, 0, 0.374)); /* subtle separator */
-	box-shadow: 0 1px 5px rgba(0, 0, 0, 0.08); /* light separation glow */
+	border: 1px solid var(--color-semantic-border-default);
+	box-shadow: var(--color-semantic-shadow-sm);
 }
 
 .mediaOptions {
@@ -34,7 +34,7 @@
 .buttonLink {
 	position: relative;
 	width: 100%;
-	margin-top: 16px;
+	margin-top: var(--spacing-md);
 	border-radius: 6px;
 	display: flex;
 }
@@ -55,48 +55,36 @@
 
 /* GitHub Button */
 .github {
-	background-color: #24292e;
-	color: #ffffff;
-	border: 1px solid #24292e;
+	background-color: var(--color-semantic-interactive-button-secondary);
+	color: var(--color-semantic-interactive-button-text);
+	border: 1px solid var(--color-semantic-border-medium);
 	transition:
 		background-color 0.2s ease,
 		border-color 0.2s ease;
 }
 
 .github:hover {
-	background-color: #33383d;
-	border-color: #33383d;
+	background-color: var(--color-semantic-interactive-button-secondary-hover);
+	border-color: var(--color-semantic-interactive-button-secondary-active);
 }
 
-@media (prefers-color-scheme: dark) {
-	.github {
-		background-color: var(--color-semantic-surface);
-		color: var(--color-semantic-text-primary);
-		border: 1px solid var(--color-semantic-secondary);
-	}
-
-	.github:hover {
-		background-color: #393939;
-		border-color: #aaaaaa;
-	}
-}
+/* Theme handles dark mode */
 
 /* Google Button */
 .google {
-	background-color: var(--white);
-	color: var(--color-semantic-text-primary);
-	border: 1px solid #dcdcdc;
-	box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+	background-color: var(--color-semantic-interactive-button-secondary);
+	color: var(--color-semantic-interactive-button-text);
+	border: 1px solid var(--color-semantic-border-medium);
+	box-shadow: var(--color-semantic-shadow-sm);
 	transition:
 		background-color 0.2s ease,
-		box-shadow 0.2s ease,
 		border-color 0.2s ease;
 }
 
 .google:hover {
-	background-color: var(--color-semantic-surface);
-	border-color: #c6c6c6;
-	box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+	background-color: var(--color-semantic-interactive-button-secondary-hover);
+	border-color: var(--color-semantic-interactive-button-secondary-active);
+	box-shadow: var(--color-semantic-shadow-md);
 }
 
 .googleLabel {
@@ -105,24 +93,7 @@
 	color: var(--color-semantic-text-primary);
 }
 
-@media (prefers-color-scheme: dark) {
-	.google {
-		background-color: var(--color-semantic-surface);
-		color: var(--color-semantic-text-primary);
-		border: 1px solid var(--color-semantic-secondary);
-		box-shadow: 0 1px 2px rgba(255, 255, 255, 0.05);
-	}
-
-	.google:hover {
-		background-color: #393939;
-		border-color: #aaaaaa;
-		box-shadow: 0 2px 6px rgba(255, 255, 255, 0.1);
-	}
-
-	.googleLabel {
-		color: var(--color-semantic-text-primary);
-	}
-}
+/* Theme handles dark mode */
 
 @media screen and (max-width: 350px) {
 	.icon {

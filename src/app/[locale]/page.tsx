@@ -33,10 +33,9 @@ export default function HomePage({ params }: Props) {
 				<div className={classes.heroContent}>
 					<h1 className={classes.title}>{t('title')}</h1>
 					<p className={classes.subtitle}>{t('subtitle')}</p>
-					<Button>Get started</Button>
-					{/* <a href="/register" className={classes.button}>
+					<a href="/register" className={classes.button}>
 						{t('getStarted')}
-					</a> */}
+					</a>
 				</div>
 				<div className={classes.wave}>
 					<svg viewBox="0 0 1440 320" preserveAspectRatio="none">

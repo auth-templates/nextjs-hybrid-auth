@@ -1,18 +1,17 @@
 .checkboxRoot {
-	margin: 15px 0px;
+	margin: var(--spacing-sm) 0px;
 }
 
 .checkboxCheckedInput {
-	border-color: var(--color-semantic-text-primary);
-	background-color: var(--color-semantic-text-primary);
+	border-color: var(--color-semantic-brand-primary);
+	background-color: var(--color-semantic-brand-primary);
 }
 
 .anchorLink {
-	color: var(--color-text-link);
+	color: var(--color-semantic-interactive-link-default);
 	text-decoration: underline;
 }
 
 .labelText {
-	font-family: var(--font-family);
 	color: var(--color-semantic-text-primary);
 }

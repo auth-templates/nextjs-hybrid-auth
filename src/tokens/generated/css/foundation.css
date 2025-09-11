@@ -4,24 +4,31 @@
 
 :root {
   --border-radius-none: 0px; /** no rounding */
+  --border-radius-xs: 2px; /** extra small radius */
   --border-radius-sm: 4px; /** small radius */
   --border-radius-md: 8px; /** medium radius */
   --border-radius-lg: 12px; /** large radius */
   --border-radius-xl: 16px; /** extra large radius */
   --border-radius-2xl: 24px; /** double extra large radius */
+  --border-radius-3xl: 32px; /** triple extra large radius */
   --border-radius-full: 9999px; /** fully rounded / pill */
-  --breakpoints-xs: 36em; /** ~576px */
-  --breakpoints-sm: 48em; /** ~768px */
-  --breakpoints-md: 62em; /** ~992px */
-  --breakpoints-lg: 75em; /** ~1200px */
-  --breakpoints-xl: 88em; /** ~1408px */
+  --breakpoints-xs: 30em; /** ~480px */
+  --breakpoints-sm: 40em; /** ~640px */
+  --breakpoints-md: 48em; /** ~768px */
+  --breakpoints-lg: 64em; /** ~1024px */
+  --breakpoints-xl: 80em; /** ~1280px */
+  --breakpoints-2xl: 96em; /** ~1536px */
   --spacing-0: 0px; /** no spacing */
+  --spacing-xxs: 2px; /** extra extra small spacing */
   --spacing-xs: 4px; /** extra small spacing */
   --spacing-sm: 8px; /** small spacing */
-  --spacing-md: 16px; /** medium spacing */
-  --spacing-lg: 24px; /** large spacing */
-  --spacing-xl: 32px; /** extra large spacing */
-  --spacing-2xl: 40px; /** double extra large spacing */
-  --spacing-3xl: 48px; /** triple extra large spacing */
-  --spacing-4xl: 64px; /** quadruple extra large spacing */
+  --spacing-md: 12px; /** medium spacing */
+  --spacing-lg: 16px; /** large spacing */
+  --spacing-xl: 24px; /** extra large spacing */
+  --spacing-2xl: 32px; /** double extra large spacing */
+  --spacing-3xl: 40px; /** triple extra large spacing */
+  --spacing-4xl: 48px; /** quadruple extra large spacing */
+  --spacing-5xl: 64px; /** quintuple extra large spacing */
+  --spacing-6xl: 80px; /** sextuple extra large spacing */
+  --spacing-7xl: 96px; /** septuple extra large spacing */
 }

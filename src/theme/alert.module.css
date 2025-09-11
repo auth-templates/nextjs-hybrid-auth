@@ -1,0 +1,21 @@
+.root {
+	background-color: var(--color-semantic-status-info-light);
+	color: var(--color-semantic-text-primary);
+	border: 1px solid var(--color-semantic-border-default);
+	border-radius: var(--border-radius-md);
+	padding: var(--spacing-md);
+}
+
+.title {
+	color: var(--color-semantic-text-primary);
+	font-weight: 600;
+	margin-bottom: var(--spacing-xs);
+}
+
+.message {
+	color: var(--color-semantic-text-secondary);
+}
+
+.icon {
+	color: var(--color-semantic-status-info);
+}

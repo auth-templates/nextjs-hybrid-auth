@@ -1,10 +1,10 @@
 .root {
-	border: 1px solid var(--color-semantic-text-primary);
-	border-radius: var(--border-radius);
-	box-shadow: var(--shadow1);
-	/* background-color: var(--color-semantic-surface); */
+	border: 1px solid var(--color-semantic-border-default);
+	border-radius: var(--border-radius-sm);
+	box-shadow: var(--color-semantic-shadow-sm);
+	background-color: var(--color-semantic-surface-card);
 	color: var(--color-semantic-text-primary);
-	padding: 10px 14px;
+	padding: var(--spacing-sm) var(--spacing-md);
 }
 
 .messageList {

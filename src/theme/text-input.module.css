@@ -13,7 +13,7 @@
 	color: var(--color-semantic-text-primary);
 }
 .error {
-	color: var(--color-semantic-accent); /* Border color for danger inputs */
+	color: var(--color-semantic-status-error);
 }
 .inputWrapper {
 	border: 0;
@@ -25,40 +25,52 @@
 	transition:
 		background-color 0.2s ease,
 		border-color 0.2s ease;
-	background-color: var(--color-default-background) !important;
+	background-color: var(--color-semantic-interactive-input-background) !important;
+	border: 1px solid var(--color-semantic-interactive-input-border);
+	color: var(--color-semantic-text-primary);
+}
+
+.input::placeholder {
+	color: var(--color-semantic-interactive-input-placeholder);
+}
+
+.input:focus-visible {
+	outline: none;
+	border-color: var(--color-semantic-interactive-input-border-focus);
+	box-shadow: 0 0 0 2px var(--color-semantic-utility-focus-ring);
 }
 
 /* Danger Variant: For critical actions or warnings */
 .input[data-variant='danger'] {
-	background-color: var(--color-danger-background); /* Background for danger inputs */
-	color: var(--color-semantic-text-primary); /* Light text for contrast */
-	border: 1px solid var(--color-danger-border); /* Border color for danger inputs */
+	background-color: var(--color-semantic-status-error-light);
+	color: var(--color-semantic-text-on-error);
+	border: 1px solid var(--color-semantic-interactive-input-border-error);
 }
 
 .input[data-variant='danger']:hover {
-	background-color: var(--color-hover-danger); /* Darker shade of alert color on hover */
+	background-color: var(--color-semantic-status-error-hover);
 }
 
 /* Default Variant: Neutral style for regular inputs */
 .input[data-variant='default'] {
-	background-color: var(--color-default-background); /* Background for default inputs */
-	color: var(--color-semantic-text-primary); /* Light text for good contrast */
-	/* border: 1px solid var(--color-default-border); /* Border color for default inputs */
+	background-color: var(--color-semantic-interactive-input-background);
+	color: var(--color-semantic-text-primary);
+	border: 1px solid var(--color-semantic-interactive-input-border);
 }
 
 .input[data-variant='default']:hover {
-	background-color: var(--color-hover-default); /* Darker background on hover */
+	border-color: var(--color-semantic-interactive-input-border-hover);
 }
 
 /* Disabled Variant: For inputs that are not interactive */
 .input[data-variant='disabled'] {
-	background-color: var(--color-disabled-background); /* Background for disabled inputs */
-	color: var(--color-disabled-text); /* Text color for disabled inputs */
-	border: 1px solid var(--color-disabled-border); /* /* Border color for disabled inputs */
-	cursor: not-allowed; /* Indicates non-interactive state */
-	opacity: 0.6; /* Slightly faded appearance */
+	background-color: var(--color-semantic-interactive-input-background-disabled);
+	color: var(--color-semantic-text-disabled);
+	border: 1px solid var(--color-semantic-border-light);
+	cursor: not-allowed;
+	opacity: 0.6;
 }
 
 .input[data-variant='disabled']:hover {
-	background-color: var(--color-disabled-background); /* No change on hover */
+	background-color: var(--color-semantic-interactive-input-background-disabled);
 }
