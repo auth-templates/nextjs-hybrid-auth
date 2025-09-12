@@ -2,8 +2,7 @@
 * Do not edit directly, this file was auto-generated.
  */
 
-@media (prefers-color-scheme: dark) {
-  :root {
+:root {
     --color-base-blue-50: #f0f4ff;
     --color-base-blue-100: #e0e7ff;
     --color-base-blue-200: #c7d2fe;
@@ -235,5 +234,4 @@
     --color-semantic-utility-highlight: #78350f; /* Highlight background */
     --color-semantic-utility-disabled: #334155; /* Disabled element color */
     --color-semantic-utility-loading: #64748b; /* Loading state color */
-  }
 }

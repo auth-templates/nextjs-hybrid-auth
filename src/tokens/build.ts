@@ -16,7 +16,8 @@ const styleDictionaryLight = new StyleDictionary(
 		platforms: {
 			css: {
 				transformGroup: 'css',
-				buildPath: 'src/tokens/generated/css/',
+				// Output directly to public/tokens
+				buildPath: 'public/tokens/',
 				files: [
 					{
 						destination: 'colors-light.css',
@@ -33,7 +34,7 @@ const styleDictionaryLight = new StyleDictionary(
 );
 
 // Custom format for light theme variables
-StyleDictionary.hooks.formats['css/variables-light'] = function ({ dictionary, options }) {
+StyleDictionary.hooks.formats['css/variables-light'] = function ({ dictionary }) {
 	const tokens = dictionary.allTokens.filter((token) => token.filePath.includes('light'));
 	const variables = tokens
 		.map((token) => {
@@ -57,7 +58,8 @@ const styleDictionaryDark = new StyleDictionary(
 		platforms: {
 			css: {
 				transformGroup: 'css',
-				buildPath: 'src/tokens/generated/css/',
+				// Output directly to public/tokens
+				buildPath: 'public/tokens/',
 				files: [
 					{
 						destination: 'colors-dark.css',
@@ -73,10 +75,9 @@ const styleDictionaryDark = new StyleDictionary(
 	{ verbosity: 'verbose' }
 );
 
-// Custom format for dark theme variables (wrapped in media query)
-StyleDictionary.hooks.formats['css/variables-dark'] = function ({ dictionary, options }) {
+// Custom format for dark theme variables
+StyleDictionary.hooks.formats['css/variables-dark'] = function ({ dictionary }) {
 	const tokens = dictionary.allTokens.filter((token) => token.filePath.includes('dark'));
-
 	const variables = tokens
 		.map((token) => {
 			const { name, comment, value } = token;
@@ -84,7 +85,7 @@ StyleDictionary.hooks.formats['css/variables-dark'] = function ({ dictionary, op
 		})
 		.join('\n');
 
-	return `${HEADER_COMMENT}@media (prefers-color-scheme: dark) {\n  :root {\n${variables}\n  }\n}`;
+	return `${HEADER_COMMENT}:root {\n${variables}\n}`;
 };
 
 // Build the dark theme CSS
@@ -98,7 +99,8 @@ const foundation = new StyleDictionary({
 	platforms: {
 		css: {
 			transformGroup: 'css',
-			buildPath: 'src/tokens/generated/css/',
+			// Output directly to public/tokens
+			buildPath: 'public/tokens/',
 			files: [
 				{
 					destination: 'foundation.css',

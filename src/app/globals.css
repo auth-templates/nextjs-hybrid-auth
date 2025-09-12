@@ -1,11 +1,3 @@
-@import url('../tokens/index.css');
-
-@media (prefers-color-scheme: dark) {
-	html {
-		color-scheme: dark;
-	}
-}
-
 :root {
 	--navbarHeight: 50px;
 }
