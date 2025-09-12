@@ -57,7 +57,6 @@ export default function LoginForm({ onSubmit, loading, messages }: LoginFormProp
 						type="email"
 						withAsterisk={false}
 						placeholder={t('placeholders.email')}
-						className={styles.emailField}
 						{...form.getInputProps('email')}
 					/>
 					<PasswordInput
@@ -65,7 +64,6 @@ export default function LoginForm({ onSubmit, loading, messages }: LoginFormProp
 						label={t('labels.password')}
 						withAsterisk={false}
 						placeholder={t('placeholders.password')}
-						className={styles.passwordField}
 						{...form.getInputProps('password')}
 					/>
 					<div className={styles.formLink}>

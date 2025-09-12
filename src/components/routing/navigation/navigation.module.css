@@ -8,10 +8,17 @@
 	display: grid;
 	grid-template-columns: fit-content fit-content;
 	background-color: var(--color-semantic-background-primary);
-	box-shadow: var(--color-semantic-shadow-sm);
-	padding: 0px 20px;
-	z-index: 1;
+	box-shadow:
+		0 4px 6px -1px rgba(0, 0, 0, 0.1),
+		0 2px 4px -1px rgba(0, 0, 0, 0.06),
+		0 0 0 1px rgba(255, 255, 255, 0.05);
+	padding: 0px var(--spacing-xl);
+	z-index: 1000;
 	grid-row: 1;
+	border-bottom: 1px solid var(--color-semantic-border-divider);
+	backdrop-filter: blur(8px);
+	-webkit-backdrop-filter: blur(8px);
+	transition: box-shadow 0.2s ease;
 }
 
 .appInfo {
@@ -27,13 +34,25 @@
 	height: 1.5em;
 	color: var(--color-semantic-text-primary);
 	display: inline-block;
+	transition:
+		color 0.2s ease,
+		transform 0.2s ease;
+}
+
+.logo:hover {
+	color: var(--color-semantic-interactive-link-hover);
+	transform: scale(1.1);
 }
 
 .appName {
 	color: var(--color-semantic-text-primary);
-	font-size: large;
-	font-weight: 200;
+	font-family: var(--typography-font-family-display);
+	font-size: var(--typography-font-size-lg);
+	font-weight: var(--typography-font-weight-semibold);
+	line-height: var(--typography-line-height-tight);
+	letter-spacing: var(--typography-letter-spacing-tight);
 	white-space: nowrap;
+	transition: color 0.2s ease;
 }
 
 .user {
@@ -49,8 +68,11 @@
 		grid-template-columns: 1fr;
 		grid-template-rows: fit-content fit-content;
 		height: fit-content;
-		padding: 10px;
-		gap: 10px;
+		padding: var(--spacing-md);
+		gap: var(--spacing-md);
+		box-shadow:
+			0 2px 4px -1px rgba(0, 0, 0, 0.1),
+			0 1px 2px -1px rgba(0, 0, 0, 0.06);
 	}
 
 	.user {
@@ -58,5 +80,9 @@
 		grid-row: 2;
 		align-items: center;
 		justify-content: center;
+	}
+
+	.appName {
+		font-size: var(--typography-font-size-base);
 	}
 }

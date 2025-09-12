@@ -5,11 +5,17 @@
 	border-radius: var(--border-radius-lg);
 	box-shadow: var(--color-semantic-shadow-sm);
 	background-color: var(--color-semantic-surface-card);
-	padding: var(--spacing-md);
+	padding: var(--spacing-lg);
 	width: 100%;
 	max-width: 600px;
 	color: var(--color-semantic-text-primary);
-	gap: 20px;
+	gap: var(--spacing-lg);
+	font-family: var(--typography-font-family-body);
+	transition: box-shadow 0.2s ease;
+}
+
+.root:hover {
+	box-shadow: var(--color-semantic-shadow-md);
 }
 
 .group {
@@ -17,7 +23,14 @@
 	flex-direction: column;
 	align-items: flex-start;
 	width: 100%;
-	gap: 5px;
+	gap: var(--spacing-xs);
+}
+
+.group label {
+	font-family: var(--typography-font-family-body);
+	font-size: var(--typography-font-size-sm);
+	font-weight: var(--typography-font-weight-medium);
+	color: var(--color-semantic-text-primary);
 }
 
 .actionsGroup {
@@ -39,6 +52,13 @@
 	text-align: center;
 }
 
+.form {
+	display: flex;
+	flex-direction: column;
+	width: 100%;
+	gap: var(--spacing-lg);
+}
+
 .messageBox {
 	margin-bottom: var(--spacing-sm);
 }
@@ -46,6 +66,14 @@
 .link {
 	text-decoration: none;
 	color: var(--color-semantic-interactive-link-default);
+	font-family: var(--typography-font-family-body);
+	font-size: var(--typography-font-size-sm);
+	font-weight: var(--typography-font-weight-medium);
+	transition: color 0.2s ease;
+}
+
+.link:hover {
+	color: var(--color-semantic-interactive-link-hover);
 }
 
 @media all and (max-width: 950px) {

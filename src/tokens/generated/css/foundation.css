@@ -31,4 +31,43 @@
   --spacing-5xl: 64px; /** quintuple extra large spacing */
   --spacing-6xl: 80px; /** sextuple extra large spacing */
   --spacing-7xl: 96px; /** septuple extra large spacing */
+  --typography-font-family-sans: 'Inter', 'Roboto', 'Lato', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; /** Primary sans-serif font stack */
+  --typography-font-family-serif: 'Merriweather', 'Georgia', 'Times New Roman', serif; /** Primary serif font stack */
+  --typography-font-family-mono: 'JetBrains Mono', 'Fira Code', 'Monaco', 'Consolas', 'Courier New', monospace; /** Monospace font stack */
+  --typography-font-family-display: 'Montserrat', 'Inter', 'Roboto', sans-serif; /** Display/heading font stack */
+  --typography-font-family-body: 'Inter', 'Roboto', 'Lato', sans-serif; /** Body text font stack */
+  --typography-font-size-xs: 0.75rem; /** 12px - Extra small text */
+  --typography-font-size-sm: 0.875rem; /** 14px - Small text */
+  --typography-font-size-base: 1rem; /** 16px - Base text size */
+  --typography-font-size-lg: 1.125rem; /** 18px - Large text */
+  --typography-font-size-xl: 1.25rem; /** 20px - Extra large text */
+  --typography-font-size-2xl: 1.5rem; /** 24px - 2x large text */
+  --typography-font-size-3xl: 1.875rem; /** 30px - 3x large text */
+  --typography-font-size-4xl: 2.25rem; /** 36px - 4x large text */
+  --typography-font-size-5xl: 3rem; /** 48px - 5x large text */
+  --typography-font-size-6xl: 3.75rem; /** 60px - 6x large text */
+  --typography-font-size-7xl: 4.5rem; /** 72px - 7x large text */
+  --typography-font-size-8xl: 6rem; /** 96px - 8x large text */
+  --typography-font-size-9xl: 8rem; /** 128px - 9x large text */
+  --typography-font-weight-thin: 100; /** Thin weight */
+  --typography-font-weight-extralight: 200; /** Extra light weight */
+  --typography-font-weight-light: 300; /** Light weight */
+  --typography-font-weight-normal: 400; /** Normal weight */
+  --typography-font-weight-medium: 500; /** Medium weight */
+  --typography-font-weight-semibold: 600; /** Semi bold weight */
+  --typography-font-weight-bold: 700; /** Bold weight */
+  --typography-font-weight-extrabold: 800; /** Extra bold weight */
+  --typography-font-weight-black: 900; /** Black weight */
+  --typography-line-height-none: 1; /** No line height */
+  --typography-line-height-tight: 1.25; /** Tight line height */
+  --typography-line-height-snug: 1.375; /** Snug line height */
+  --typography-line-height-normal: 1.5; /** Normal line height */
+  --typography-line-height-relaxed: 1.625; /** Relaxed line height */
+  --typography-line-height-loose: 2; /** Loose line height */
+  --typography-letter-spacing-tighter: -0.05em; /** Tighter letter spacing */
+  --typography-letter-spacing-tight: -0.025em; /** Tight letter spacing */
+  --typography-letter-spacing-normal: 0em; /** Normal letter spacing */
+  --typography-letter-spacing-wide: 0.025em; /** Wide letter spacing */
+  --typography-letter-spacing-wider: 0.05em; /** Wider letter spacing */
+  --typography-letter-spacing-widest: 0.1em; /** Widest letter spacing */
 }

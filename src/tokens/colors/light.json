@@ -293,7 +293,7 @@
 
 			"gradient": {
 				"primary": {
-					"value": "linear-gradient(135deg, {color.base.blue.600} 0%, {color.base.indigo.600} 100%)",
+					"value": "linear-gradient(135deg, {color.base.blue.500} 0%, {color.base.indigo.600} 50%, {color.base.purple.600} 100%)",
 					"comment": "Primary gradient"
 				},
 				"secondary": {

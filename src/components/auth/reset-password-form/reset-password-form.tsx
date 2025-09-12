@@ -49,14 +49,12 @@ export default function ResetPasswordForm({ onSubmit, loading, messages }: Reset
 						label={t('labels.password')}
 						withAsterisk={false}
 						placeholder={t('placeholders.password')}
-						className={styles.passwordField}
 						{...form.getInputProps('password')}
 					/>
 					<PasswordInput
 						label={t('labels.confirmPassword')}
 						withAsterisk={false}
 						placeholder={t('placeholders.confirmPassword')}
-						className={styles.confirmPasswordField}
 						{...form.getInputProps('confirmPassword')}
 					/>
 					{messages && !loadingInProgress && <MessageBox messages={messages} className={styles.messageBox} />}

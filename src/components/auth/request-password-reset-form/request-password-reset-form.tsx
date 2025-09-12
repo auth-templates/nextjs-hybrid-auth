@@ -49,7 +49,6 @@ export default function RequestPasswordResetForm({ messages, loading, onSubmit }
 						type="email"
 						withAsterisk={false}
 						placeholder={t('placeholders.email')}
-						className={styles.emailField}
 						{...form.getInputProps('email')}
 					/>
 					{messages && !loadingInProgress && <MessageBox messages={messages} className={styles.messageBox} />}

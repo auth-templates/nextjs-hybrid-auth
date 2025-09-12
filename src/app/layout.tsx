@@ -1,6 +1,6 @@
 import './globals.css';
 import '@mantine/core/styles.css';
-import { Inter } from 'next/font/google';
+import { Inter, Roboto, Montserrat, Merriweather, JetBrains_Mono } from 'next/font/google';
 import { MantineProvider } from '@mantine/core';
 import { MSWProvider } from '@/providers/msw-provider';
 import { theme } from '@/theme';
@@ -11,7 +11,39 @@ if (process.env.NEXT_RUNTIME === 'nodejs') {
 	server.listen();
 }
 
-const inter = Inter({ subsets: ['latin'] });
+const inter = Inter({
+	subsets: ['latin'],
+	variable: '--font-inter',
+	display: 'swap',
+});
+
+const roboto = Roboto({
+	weight: ['300', '400', '500', '700'],
+	subsets: ['latin'],
+	variable: '--font-roboto',
+	display: 'swap',
+});
+
+const montserrat = Montserrat({
+	weight: ['300', '400', '500', '600', '700', '800'],
+	subsets: ['latin'],
+	variable: '--font-montserrat',
+	display: 'swap',
+});
+
+const merriweather = Merriweather({
+	weight: ['300', '400', '700', '900'],
+	subsets: ['latin'],
+	variable: '--font-merriweather',
+	display: 'swap',
+});
+
+const jetbrainsMono = JetBrains_Mono({
+	weight: ['300', '400', '500', '600', '700'],
+	subsets: ['latin'],
+	variable: '--font-jetbrains-mono',
+	display: 'swap',
+});
 
 export const metadata = {
 	title: 'Create Next App',
@@ -21,7 +53,9 @@ export const metadata = {
 export default function RootLayout({ children }: { children: React.ReactNode }) {
 	return (
 		<html lang="en">
-			<body className={inter.className}>
+			<body
+				className={`${inter.variable} ${roboto.variable} ${montserrat.variable} ${merriweather.variable} ${jetbrainsMono.variable}`}
+			>
 				<ReactQueryProvider>
 					<MSWProvider>
 						<MantineProvider theme={theme}>{children}</MantineProvider>

@@ -3,9 +3,12 @@
 	border: 1px solid var(--color-semantic-border-divider);
 	border-radius: var(--border-radius-lg);
 	box-shadow: var(--color-semantic-shadow-sm);
+	transition:
+		box-shadow 0.2s ease,
+		border-color 0.2s ease;
 }
 
 .root:hover {
-	background-color: var(--color-semantic-surface-card-hover);
-	box-shadow: var(--color-semantic-shadow-md);
+	box-shadow: var(--color-semantic-shadow-lg);
+	border-color: var(--color-semantic-border-medium);
 }

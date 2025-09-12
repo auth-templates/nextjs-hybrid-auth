@@ -1,8 +1,38 @@
 .root {
-	padding: 3px 8px;
+	padding: var(--spacing-xs) var(--spacing-sm);
 	border: 1px solid var(--color-semantic-border-medium);
-	border-radius: var(--border-radius-sm);
+	border-radius: var(--border-radius-md);
 	text-decoration: none;
 	color: var(--color-semantic-interactive-link-default);
 	background-color: transparent;
+	font-family: var(--typography-font-family-body);
+	font-size: var(--typography-font-size-sm);
+	font-weight: var(--typography-font-weight-medium);
+	transition:
+		background-color 0.2s ease,
+		border-color 0.2s ease,
+		color 0.2s ease,
+		transform 0.2s ease,
+		box-shadow 0.2s ease;
+}
+
+.root:hover {
+	background-color: var(--color-semantic-interactive-button-secondary-hover);
+	border-color: var(--color-semantic-border-strong);
+	color: var(--color-semantic-interactive-link-hover);
+	transform: translateY(-1px);
+	box-shadow: var(--color-semantic-shadow-sm);
+}
+
+.root[aria-current='page'] {
+	background-color: var(--color-semantic-interactive-button-primary);
+	color: white;
+	border-color: var(--color-semantic-interactive-button-primary);
+	box-shadow: var(--color-semantic-shadow-sm);
+}
+
+.root[aria-current='page']:hover {
+	background-color: var(--color-semantic-interactive-button-primary-hover);
+	transform: translateY(-1px);
+	box-shadow: var(--color-semantic-shadow-md);
 }

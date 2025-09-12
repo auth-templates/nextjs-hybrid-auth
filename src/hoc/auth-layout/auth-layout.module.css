@@ -2,6 +2,7 @@
 	min-height: calc(100vh - var(--navbarHeight));
 	background: var(--color-semantic-background-primary);
 	color: var(--color-semantic-text-primary);
+	font-family: var(--typography-font-family-body);
 	display: flex;
 	flex-direction: column;
 	min-width: 100%;
@@ -26,17 +27,21 @@
 }
 
 .title {
-	font-size: 3rem;
-	font-weight: 700;
+	font-family: var(--typography-font-family-display);
+	font-size: var(--typography-font-size-5xl);
+	font-weight: var(--typography-font-weight-bold);
+	line-height: var(--typography-line-height-tight);
+	letter-spacing: var(--typography-letter-spacing-tight);
 	margin-bottom: var(--spacing-md);
-	line-height: 1.1;
+	color: var(--color-semantic-text-primary);
 }
 
 .subtitle {
-	font-size: 1.25rem;
-	font-weight: 400;
+	font-family: var(--typography-font-family-body);
+	font-size: var(--typography-font-size-xl);
+	font-weight: var(--typography-font-weight-normal);
 	color: var(--color-semantic-text-secondary);
-	line-height: 1.4;
+	line-height: var(--typography-line-height-relaxed);
 }
 
 .form {
@@ -44,14 +49,20 @@
 	background: var(--color-semantic-surface-card);
 	padding: var(--spacing-2xl) var(--spacing-xl);
 	border-radius: var(--border-radius-lg);
-	box-shadow: var(--color-semantic-shadow-md);
+	box-shadow: var(--color-semantic-shadow-lg);
 	border: 1px solid var(--color-semantic-border-divider);
 	color: var(--color-semantic-text-primary);
+	font-family: var(--typography-font-family-body);
 	display: flex;
 	flex-direction: column;
 	justify-content: center;
 	min-height: 280px;
 	box-sizing: border-box;
+	transition: box-shadow 0.2s ease;
+}
+
+.form:hover {
+	box-shadow: var(--color-semantic-shadow-xl);
 }
 
 .wave {

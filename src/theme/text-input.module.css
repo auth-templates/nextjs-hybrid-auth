@@ -5,12 +5,17 @@
 }
 .label {
 	color: var(--color-semantic-text-primary);
+	font-family: var(--typography-font-family-body);
+	font-weight: var(--typography-font-weight-medium);
+	font-size: var(--typography-font-size-sm);
+	line-height: var(--typography-line-height-tight);
+	margin-bottom: var(--spacing-xs);
 }
 .required {
 	color: var(--color-semantic-text-primary);
 }
 .description {
-	color: var(--color-semantic-text-primary);
+	color: var(--color-semantic-text-secondary);
 }
 .error {
 	color: var(--color-semantic-status-error);
@@ -19,25 +24,36 @@
 	border: 0;
 }
 
+.input:focus-visible {
+	outline: none;
+	border-color: var(--color-semantic-interactive-input-border-focus);
+	box-shadow:
+		0 0 0 2px var(--color-semantic-utility-focus-ring),
+		var(--color-semantic-shadow-md);
+}
+
 .input {
-	border-radius: 8px;
-	padding: 8px 10px;
+	border-radius: var(--border-radius-md);
+	padding: var(--spacing-sm) var(--spacing-md);
+	font-family: var(--typography-font-family-body);
+	font-size: var(--typography-font-size-base);
+	font-weight: var(--typography-font-weight-normal);
+	line-height: var(--typography-line-height-normal);
 	transition:
 		background-color 0.2s ease,
-		border-color 0.2s ease;
-	background-color: var(--color-semantic-interactive-input-background) !important;
+		border-color 0.2s ease,
+		box-shadow 0.2s ease;
+	background-color: var(--color-semantic-interactive-input-background);
 	border: 1px solid var(--color-semantic-interactive-input-border);
 	color: var(--color-semantic-text-primary);
+	box-shadow: var(--color-semantic-shadow-sm);
 }
 
 .input::placeholder {
 	color: var(--color-semantic-interactive-input-placeholder);
-}
-
-.input:focus-visible {
-	outline: none;
-	border-color: var(--color-semantic-interactive-input-border-focus);
-	box-shadow: 0 0 0 2px var(--color-semantic-utility-focus-ring);
+	font-family: var(--typography-font-family-body);
+	font-weight: var(--typography-font-weight-normal);
+	font-size: var(--typography-font-size-base);
 }
 
 /* Danger Variant: For critical actions or warnings */
@@ -47,19 +63,11 @@
 	border: 1px solid var(--color-semantic-interactive-input-border-error);
 }
 
-.input[data-variant='danger']:hover {
-	background-color: var(--color-semantic-status-error-hover);
-}
-
 /* Default Variant: Neutral style for regular inputs */
 .input[data-variant='default'] {
 	background-color: var(--color-semantic-interactive-input-background);
 	color: var(--color-semantic-text-primary);
 	border: 1px solid var(--color-semantic-interactive-input-border);
-}
-
-.input[data-variant='default']:hover {
-	border-color: var(--color-semantic-interactive-input-border-hover);
 }
 
 /* Disabled Variant: For inputs that are not interactive */

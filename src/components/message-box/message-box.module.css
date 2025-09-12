@@ -1,16 +1,32 @@
 .root {
 	border: 1px solid var(--color-semantic-border-default);
-	border-radius: var(--border-radius-sm);
+	border-radius: var(--border-radius-md);
 	box-shadow: var(--color-semantic-shadow-sm);
 	background-color: var(--color-semantic-surface-card);
 	color: var(--color-semantic-text-primary);
-	padding: var(--spacing-sm) var(--spacing-md);
+	padding: var(--spacing-md) var(--spacing-lg);
+	font-family: var(--typography-font-family-body);
+	font-size: var(--typography-font-size-sm);
+	font-weight: var(--typography-font-weight-normal);
+	line-height: var(--typography-line-height-relaxed);
+	transition: box-shadow 0.2s ease;
+}
+
+.root:hover {
+	box-shadow: var(--color-semantic-shadow-md);
 }
 
 .messageList {
 	list-style-type: disc;
+	margin: var(--spacing-sm) 0;
+	padding-left: var(--spacing-lg);
 }
 
 .messageList li {
 	color: var(--color-semantic-text-primary);
+	font-family: var(--typography-font-family-body);
+	font-size: var(--typography-font-size-sm);
+	font-weight: var(--typography-font-weight-normal);
+	line-height: var(--typography-line-height-relaxed);
+	margin-bottom: var(--spacing-xs);
 }

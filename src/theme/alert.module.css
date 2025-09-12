@@ -4,16 +4,28 @@
 	border: 1px solid var(--color-semantic-border-default);
 	border-radius: var(--border-radius-md);
 	padding: var(--spacing-md);
+	box-shadow: var(--color-semantic-shadow-sm);
+	transition: box-shadow 0.2s ease;
+}
+
+.root:hover {
+	box-shadow: var(--color-semantic-shadow-md);
 }
 
 .title {
 	color: var(--color-semantic-text-primary);
-	font-weight: 600;
+	font-family: var(--typography-font-family-body);
+	font-weight: var(--typography-font-weight-semibold);
+	font-size: var(--typography-font-size-sm);
+	line-height: var(--typography-line-height-tight);
 	margin-bottom: var(--spacing-xs);
 }
 
 .message {
 	color: var(--color-semantic-text-secondary);
+	font-family: var(--typography-font-family-body);
+	font-size: var(--typography-font-size-sm);
+	line-height: var(--typography-line-height-relaxed);
 }
 
 .icon {

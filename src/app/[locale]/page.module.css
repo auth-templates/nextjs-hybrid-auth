@@ -13,6 +13,20 @@
 	align-items: center;
 	text-align: center;
 	padding: var(--spacing-xl);
+	overflow: hidden;
+}
+
+.top::before {
+	content: '';
+	position: absolute;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	background:
+		radial-gradient(circle at 30% 20%, rgba(255, 255, 255, 0.1) 0%, transparent 50%),
+		radial-gradient(circle at 70% 80%, rgba(255, 255, 255, 0.05) 0%, transparent 50%);
+	pointer-events: none;
 }
 
 .heroContent {
@@ -21,29 +35,45 @@
 }
 
 .title {
-	font-size: 3rem;
+	font-size: var(--typography-font-size-5xl);
 	margin-bottom: var(--spacing-md);
+	color: white;
+	text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+	font-family: var(--typography-font-family-display);
+	font-weight: var(--typography-font-weight-bold);
+	letter-spacing: var(--typography-letter-spacing-tight);
+	line-height: var(--typography-line-height-tight);
 }
 
 .subtitle {
-	font-size: 1.2rem;
+	font-size: var(--typography-font-size-xl);
 	margin-bottom: var(--spacing-xl);
-	color: var(--color-semantic-text-secondary);
+	color: rgba(255, 255, 255, 0.9);
+	text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+	font-family: var(--typography-font-family-body);
+	font-weight: var(--typography-font-weight-normal);
+	line-height: var(--typography-line-height-relaxed);
 }
 
 .button {
 	display: inline-block;
 	padding: var(--spacing-sm) var(--spacing-lg);
-	background-color: var(--color-semantic-interactive-button-primary);
-	color: var(--color-semantic-interactive-button-text-primary);
+	background-color: rgba(255, 255, 255, 0.95);
+	color: var(--color-semantic-interactive-button-primary);
 	border-radius: var(--border-radius-md);
 	text-decoration: none;
-	font-weight: bold;
-	transition: background 0.3s ease;
+	font-family: var(--typography-font-family-body);
+	font-weight: var(--typography-font-weight-semibold);
+	font-size: var(--typography-font-size-lg);
+	transition: all 0.3s ease;
+	box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+	border: 1px solid rgba(255, 255, 255, 0.2);
 }
 
 .button:hover {
-	background-color: var(--color-semantic-interactive-button-primary-hover);
+	background-color: white;
+	transform: translateY(-2px);
+	box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
 }
 
 .wave {
@@ -59,11 +89,167 @@
 	display: block;
 	width: 100%;
 	height: 150px;
+	filter: drop-shadow(0 -4px 8px rgba(0, 0, 0, 0.1));
 }
 
 .bottom {
 	background: var(--color-semantic-background-secondary);
-	padding: var(--spacing-2xl) var(--spacing-xl);
-	min-height: 40vh;
+	padding: var(--spacing-4xl) var(--spacing-xl);
+	min-height: 50vh;
 	color: var(--color-semantic-text-primary);
+	font-family: var(--typography-font-family-body);
+}
+
+.bottom h2 {
+	font-family: var(--typography-font-family-display);
+	font-size: var(--typography-font-size-4xl);
+	font-weight: var(--typography-font-weight-bold);
+	line-height: var(--typography-line-height-tight);
+	letter-spacing: var(--typography-letter-spacing-tight);
+	color: var(--color-semantic-text-primary);
+	margin: 0 0 var(--spacing-2xl) 0;
+	text-align: center;
+}
+
+.bottom p {
+	font-size: var(--typography-font-size-lg);
+	font-weight: var(--typography-font-weight-normal);
+	line-height: var(--typography-line-height-relaxed);
+	color: var(--color-semantic-text-secondary);
+	margin: 0 0 var(--spacing-4xl) 0;
+	text-align: center;
+	max-width: 600px;
+	margin-left: auto;
+	margin-right: auto;
+	padding: 0 var(--spacing-lg);
+}
+
+.bottom ul {
+	list-style: none;
+	padding: 0;
+	margin: 0;
+	max-width: 1000px;
+	margin-left: auto;
+	margin-right: auto;
+	display: grid;
+	grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+	gap: var(--spacing-xl);
+	margin-top: var(--spacing-xl);
+}
+
+.bottom li {
+	font-size: var(--typography-font-size-base);
+	font-weight: var(--typography-font-weight-normal);
+	line-height: var(--typography-line-height-relaxed);
+	color: var(--color-semantic-text-primary);
+	padding: var(--spacing-xl);
+	background: var(--color-semantic-surface-card);
+	border-radius: var(--border-radius-lg);
+	border: 1px solid var(--color-semantic-border-divider);
+	box-shadow:
+		var(--color-semantic-shadow-sm),
+		0 0 0 1px rgba(255, 255, 255, 0.05);
+	transition:
+		box-shadow 0.2s ease,
+		border-color 0.2s ease,
+		background-color 0.2s ease;
+}
+
+.bottom li:hover {
+	box-shadow:
+		var(--color-semantic-shadow-md),
+		0 0 0 1px rgba(255, 255, 255, 0.1);
+	border-color: var(--color-semantic-border-medium);
+	background-color: var(--color-semantic-surface-card-hover);
+}
+
+.bottom li strong {
+	font-weight: var(--typography-font-weight-semibold);
+	color: var(--color-semantic-text-primary);
+}
+
+.bottom li code {
+	font-family: var(--typography-font-family-mono);
+	font-size: var(--typography-font-size-sm);
+	font-weight: var(--typography-font-weight-medium);
+	background: var(--color-semantic-background-tertiary);
+	color: var(--color-semantic-text-primary);
+	padding: var(--spacing-xs) var(--spacing-sm);
+	border-radius: var(--border-radius-sm);
+	border: 1px solid var(--color-semantic-border-light);
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+	.title {
+		font-size: var(--typography-font-size-4xl);
+	}
+
+	.subtitle {
+		font-size: var(--typography-font-size-lg);
+	}
+
+	.top {
+		padding: var(--spacing-lg);
+	}
+
+	.bottom {
+		padding: var(--spacing-2xl) var(--spacing-lg);
+	}
+
+	.bottom h2 {
+		font-size: var(--typography-font-size-3xl);
+		margin-bottom: var(--spacing-xl);
+	}
+
+	.bottom p {
+		font-size: var(--typography-font-size-base);
+		margin-bottom: var(--spacing-3xl);
+		max-width: 500px;
+		padding: 0 var(--spacing-md);
+	}
+
+	.bottom ul {
+		grid-template-columns: 1fr;
+		gap: var(--spacing-lg);
+	}
+
+	.bottom li {
+		padding: var(--spacing-lg);
+	}
+}
+
+@media (max-width: 480px) {
+	.title {
+		font-size: var(--typography-font-size-3xl);
+	}
+
+	.subtitle {
+		font-size: var(--typography-font-size-base);
+	}
+
+	.top {
+		padding: var(--spacing-md);
+	}
+
+	.bottom {
+		padding: var(--spacing-xl) var(--spacing-md);
+	}
+
+	.bottom h2 {
+		font-size: var(--typography-font-size-2xl);
+		margin-bottom: var(--spacing-lg);
+	}
+
+	.bottom p {
+		font-size: var(--typography-font-size-sm);
+		margin-bottom: var(--spacing-2xl);
+		max-width: 400px;
+		padding: 0 var(--spacing-sm);
+	}
+
+	.bottom li {
+		font-size: var(--typography-font-size-sm);
+		padding: var(--spacing-md);
+	}
 }

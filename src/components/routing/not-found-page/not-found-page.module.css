@@ -5,4 +5,26 @@
 	justify-content: center;
 	flex-direction: column;
 	color: var(--color-semantic-text-primary);
+	font-family: var(--typography-font-family-body);
+	text-align: center;
+	padding: var(--spacing-2xl);
+	gap: var(--spacing-lg);
+}
+
+.root h1 {
+	font-family: var(--typography-font-family-display);
+	font-size: var(--typography-font-size-6xl);
+	font-weight: var(--typography-font-weight-bold);
+	line-height: var(--typography-line-height-tight);
+	letter-spacing: var(--typography-letter-spacing-tight);
+	color: var(--color-semantic-text-primary);
+	margin: 0;
+}
+
+.root p {
+	font-size: var(--typography-font-size-lg);
+	font-weight: var(--typography-font-weight-normal);
+	line-height: var(--typography-line-height-relaxed);
+	color: var(--color-semantic-text-secondary);
+	margin: 0;
 }

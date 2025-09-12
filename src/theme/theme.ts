@@ -170,6 +170,7 @@ export const theme: MantineThemeOverride = {
 				required: passwordInputStyles.required,
 				description: passwordInputStyles.description,
 				error: passwordInputStyles.error,
+				innerInput: passwordInputStyles.innerInput,
 			},
 		}),
 		Title: Title.extend({

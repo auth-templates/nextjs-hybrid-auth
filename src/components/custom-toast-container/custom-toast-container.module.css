@@ -24,14 +24,20 @@
 }
 
 .toastClassname {
-	padding: 5px !important;
-	border-radius: var(--border-radius-sm);
-	padding: var(--spacing-md);
-	box-shadow: var(--color-semantic-shadow-md);
+	padding: var(--spacing-md) !important;
+	border-radius: var(--border-radius-md);
+	box-shadow: var(--color-semantic-shadow-lg);
 	display: flex;
 	position: relative;
 	width: 100%;
 	margin: 0;
+	font-family: var(--typography-font-family-body);
+	font-size: var(--typography-font-size-sm);
+	font-weight: var(--typography-font-weight-normal);
+	line-height: var(--typography-line-height-relaxed);
+	backdrop-filter: blur(8px);
+	-webkit-backdrop-filter: blur(8px);
+	border: 1px solid var(--color-semantic-border-divider);
 }
 
 .noAnimation {

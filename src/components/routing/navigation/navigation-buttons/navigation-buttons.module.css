@@ -9,14 +9,28 @@
 .username {
 	margin: 0px;
 	color: var(--color-semantic-text-primary);
+	font-family: var(--typography-font-family-body);
+	font-size: var(--typography-font-size-sm);
+	font-weight: var(--typography-font-weight-medium);
+	line-height: var(--typography-line-height-tight);
 }
 
 .user {
 	display: flex;
-	gap: 2px;
+	gap: var(--spacing-xs);
 	align-items: center;
 	justify-content: center;
 	cursor: pointer;
+	padding: var(--spacing-xs) var(--spacing-sm);
+	border-radius: var(--border-radius-md);
+	transition:
+		background-color 0.2s ease,
+		transform 0.2s ease;
+}
+
+.user:hover {
+	background-color: var(--color-semantic-interactive-button-secondary-hover);
+	transform: translateY(-1px);
 }
 
 .userIcon {
@@ -30,21 +44,63 @@
 }
 
 .loginButton {
-	padding: 3px 8px;
+	padding: var(--spacing-sm) var(--spacing-md);
+	min-height: 36px;
 	border: 1px solid var(--color-semantic-border-medium);
-	border-radius: var(--border-radius-sm);
+	border-radius: var(--border-radius-md);
 	text-decoration: none;
 	color: var(--color-semantic-interactive-link-default);
 	background-color: transparent;
+	font-family: var(--typography-font-family-body);
+	font-size: var(--typography-font-size-sm);
+	font-weight: var(--typography-font-weight-medium);
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	transition:
+		background-color 0.2s ease,
+		border-color 0.2s ease,
+		color 0.2s ease,
+		transform 0.2s ease,
+		box-shadow 0.2s ease;
+}
+
+.loginButton:hover {
+	background-color: var(--color-semantic-interactive-button-secondary-hover);
+	border-color: var(--color-semantic-border-strong);
+	color: var(--color-semantic-interactive-link-hover);
+	transform: translateY(-1px);
+	box-shadow: var(--color-semantic-shadow-sm);
 }
 
 .homeButton {
-	padding: 3px 8px;
+	padding: var(--spacing-sm) var(--spacing-md);
+	min-height: 36px;
 	border: 1px solid var(--color-semantic-border-medium);
-	border-radius: var(--border-radius-sm);
+	border-radius: var(--border-radius-md);
 	text-decoration: none;
 	color: var(--color-semantic-interactive-link-default);
 	background-color: transparent;
+	font-family: var(--typography-font-family-body);
+	font-size: var(--typography-font-size-sm);
+	font-weight: var(--typography-font-weight-medium);
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	transition:
+		background-color 0.2s ease,
+		border-color 0.2s ease,
+		color 0.2s ease,
+		transform 0.2s ease,
+		box-shadow 0.2s ease;
+}
+
+.homeButton:hover {
+	background-color: var(--color-semantic-interactive-button-secondary-hover);
+	border-color: var(--color-semantic-border-strong);
+	color: var(--color-semantic-interactive-link-hover);
+	transform: translateY(-1px);
+	box-shadow: var(--color-semantic-shadow-sm);
 }
 
 .logoutButton {

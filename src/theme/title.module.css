@@ -1,7 +1,10 @@
 .titleRoot {
 	color: var(--color-semantic-text-primary);
 	margin-bottom: var(--spacing-md);
-	font-weight: 700;
+	font-family: var(--typography-font-family-display);
+	font-weight: var(--typography-font-weight-bold);
+	line-height: var(--typography-line-height-tight);
+	letter-spacing: var(--typography-letter-spacing-tight);
 }
 
 .titleRoot[data-variant='secondary'] {

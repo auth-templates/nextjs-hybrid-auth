@@ -59,7 +59,6 @@ export default function SignupForm({ onSubmit, loading, messages }: SignupFormPr
 						type="email"
 						withAsterisk={false}
 						placeholder={t('placeholders.email')}
-						className={styles.emailField}
 						{...form.getInputProps('email')}
 					/>
 
@@ -67,7 +66,6 @@ export default function SignupForm({ onSubmit, loading, messages }: SignupFormPr
 						label={t('labels.password')}
 						withAsterisk={false}
 						placeholder={t('placeholders.password')}
-						className={styles.passwordField}
 						{...form.getInputProps('password')}
 					/>
 
@@ -75,7 +73,6 @@ export default function SignupForm({ onSubmit, loading, messages }: SignupFormPr
 						label={t('labels.confirmPassword')}
 						withAsterisk={false}
 						placeholder={t('placeholders.confirmPassword')}
-						className={styles.confirmPasswordField}
 						{...form.getInputProps('confirmPassword')}
 					/>
 
