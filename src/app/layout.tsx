@@ -1,9 +1,10 @@
 import './globals.css';
 import '@mantine/core/styles.css';
 import { Inter } from 'next/font/google';
+import { MantineProvider } from '@mantine/core';
 import { MSWProvider } from '@/providers/msw-provider';
+import { theme } from '@/theme';
 import { ReactQueryProvider } from '@/providers/react-query-provider';
-import { AppThemeProvider } from '@/theme/ThemeProvider';
 
 if (process.env.NEXT_RUNTIME === 'nodejs') {
 	const { server } = require('@/mocks/node');
@@ -19,14 +20,11 @@ export const metadata = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
 	return (
-		<html lang="en" data-mantine-color-scheme="light">
-			<head>
-				<link id="theme-colors" rel="stylesheet" href="/tokens/colors-light.css" />
-			</head>
+		<html lang="en">
 			<body className={inter.className}>
 				<ReactQueryProvider>
 					<MSWProvider>
-						<AppThemeProvider>{children}</AppThemeProvider>
+						<MantineProvider theme={theme}>{children}</MantineProvider>
 					</MSWProvider>
 				</ReactQueryProvider>
 			</body>

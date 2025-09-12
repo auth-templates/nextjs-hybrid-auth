@@ -4,7 +4,6 @@ import { GiDandelionFlower } from 'react-icons/gi';
 import classnames from 'classnames';
 import LocaleSwitcher from '../locale-switcher/locale-switcher';
 import { NavigationButtons } from './navigation-buttons/navigation-buttons';
-import { ThemeModeToggle } from '@/theme/ThemeProvider';
 
 export default function Navigation({ className }: { className?: string }) {
 	return (
@@ -15,7 +14,6 @@ export default function Navigation({ className }: { className?: string }) {
 			</div>
 			<div className={classes.user}>
 				<NavigationButtons />
-				<ThemeModeToggle />
 				<LocaleSwitcher />
 			</div>
 		</div>
