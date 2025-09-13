@@ -1,13 +1,11 @@
 import React, { useState } from 'react';
 import styles from './request-password-reset-form.module.css';
-import classNames from 'classnames';
 import MessageBox, { Message } from '../../message-box';
-import { Button, Card, TextInput } from '@mantine/core';
+import { Button, Card, TextInput, Container } from '@mantine/core';
 import Link from 'next/link';
 import { ResetPasswordRequest } from '@/api/generated';
 import { useTranslations } from 'next-intl';
 import { PublicRoutes } from '@/routes';
-import { Text } from '@mantine/core';
 import { useForm } from '@mantine/form';
 import { CustomLoadingOverlay } from '../custom-loading-overlay';
 
@@ -36,7 +34,7 @@ export default function RequestPasswordResetForm({ messages, loading, onSubmit }
 	});
 
 	return (
-		<div className={styles.root}>
+		<Container className={styles.container}>
 			<Card className={styles.card} pos="relative">
 				<CustomLoadingOverlay
 					visible={loading}
@@ -49,27 +47,25 @@ export default function RequestPasswordResetForm({ messages, loading, onSubmit }
 						type="email"
 						withAsterisk={false}
 						placeholder={t('placeholders.email')}
-						{...form.getInputProps('email')}
+						{...form.getInputProps('userEmail')}
 					/>
 					{messages && !loadingInProgress && <MessageBox messages={messages} className={styles.messageBox} />}
-					<div className={classNames(styles.actionsGroup)}>
-						<div className={styles.subgroup}>
-							<Button type="submit" className={styles.sendButton}>
-								{t('buttons.send_password_reset_email')}
-							</Button>
-							<Text size="sm">
-								{t.rich('back_to_sign_in', {
-									loginLink: (chunks) => (
-										<Link href={PublicRoutes.login} passHref>
-											{chunks}
-										</Link>
-									),
-								})}
-							</Text>
-						</div>
-					</div>
+					<Button fullWidth type="submit">
+						{t('buttons.send_password_reset_email')}
+					</Button>
 				</form>
+				<div className={styles.formLink}>
+					<span>
+						{t.rich('back_to_sign_in', {
+							loginLink: (chunks) => (
+								<Link href={PublicRoutes.login} className={styles.loginLink}>
+									{chunks}
+								</Link>
+							),
+						})}
+					</span>
+				</div>
 			</Card>
-		</div>
+		</Container>
 	);
 }

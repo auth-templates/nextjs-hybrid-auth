@@ -30,3 +30,26 @@
 	line-height: var(--typography-line-height-relaxed);
 	margin-bottom: var(--spacing-xs);
 }
+
+.singleMessage {
+	list-style-type: none;
+	padding-left: 0;
+}
+
+/* Close button hover styles */
+.closeButton {
+	transition: all 0.2s ease;
+	cursor: pointer;
+}
+
+.closeButton:hover {
+	background-color: var(--color-semantic-surface-card-hover);
+	transform: scale(1.1);
+	border-radius: var(--border-radius-sm);
+	opacity: 0.9;
+	box-shadow: var(--color-semantic-shadow-sm);
+}
+
+.closeButton:active {
+	transform: scale(0.95);
+}

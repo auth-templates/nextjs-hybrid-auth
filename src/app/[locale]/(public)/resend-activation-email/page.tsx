@@ -1,4 +1,4 @@
-import ResendConfirmationEmailContainer from '@/containers/request-confirmation-email';
+import RequestConfirmationEmailContainer from '@/containers/request-activation-email';
 import AuthLayout from '@/hoc/auth-layout';
 import { LocaleParams } from '@/types/global';
 import { Locale, useTranslations } from 'next-intl';
@@ -28,7 +28,7 @@ export default function ResendActivationEmailPage({ params }: Props) {
 
 	return (
 		<AuthLayout title={t('title')} subtitle={t('subtitle')}>
-			<ResendConfirmationEmailContainer />
+			<RequestConfirmationEmailContainer />
 		</AuthLayout>
 	);
 }

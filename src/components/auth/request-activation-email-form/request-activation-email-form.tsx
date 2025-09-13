@@ -1,22 +1,21 @@
 import React, { useState } from 'react';
-import styles from './request-confirmation-email-form.module.css';
+import styles from './request-activation-email-form.module.css';
 import Link from 'next/link';
-import classNames from 'classnames';
 import MessageBox, { Message } from '../../message-box';
 import { PublicRoutes } from '../../../routes';
-import { Button, Card, Text, TextInput } from '@mantine/core';
+import { Button, Card, TextInput, Container } from '@mantine/core';
 import { ResendActivationEmailRequest } from '@/api/generated';
 import { useTranslations } from 'next-intl';
 import { CustomLoadingOverlay } from '../custom-loading-overlay';
 import { useForm } from '@mantine/form';
 
-type RequestConfirmationEmailFormProps = {
+type RequestActivationEmailFormProps = {
 	onSubmit: (data: ResendActivationEmailRequest) => void;
 	loading?: boolean;
 	messages?: Message[];
 };
 
-export function RequestConfirmationEmailForm({ messages, loading, onSubmit }: RequestConfirmationEmailFormProps) {
+export function RequestActivationEmailForm({ messages, loading, onSubmit }: RequestActivationEmailFormProps) {
 	const [loadingInProgress, setLoading] = useState(loading);
 	const t = useTranslations('forms.request_confirmation_email');
 
@@ -35,7 +34,7 @@ export function RequestConfirmationEmailForm({ messages, loading, onSubmit }: Re
 	});
 
 	return (
-		<div className={styles.root}>
+		<Container className={styles.container}>
 			<Card className={styles.card} pos="relative">
 				<CustomLoadingOverlay
 					visible={loading}
@@ -48,27 +47,25 @@ export function RequestConfirmationEmailForm({ messages, loading, onSubmit }: Re
 						type="email"
 						withAsterisk={false}
 						placeholder={t('placeholders.email')}
-						{...form.getInputProps('email')}
+						{...form.getInputProps('userEmail')}
 					/>
 					{messages && !loadingInProgress && <MessageBox messages={messages} className={styles.messageBox} />}
-					<div className={classNames(styles.actionsGroup)}>
-						<div className={styles.subgroup}>
-							<Button type="submit" className={styles.sendButton}>
-								{t('buttons.resend_confirmation_email_button')}
-							</Button>
-							<Text size="sm">
-								{t.rich('back_to_sign_in', {
-									loginLink: (chunks) => (
-										<Link href={PublicRoutes.login} passHref>
-											{chunks}
-										</Link>
-									),
-								})}
-							</Text>
-						</div>
-					</div>
+					<Button fullWidth type="submit">
+						{t('buttons.resent_activation_email')}
+					</Button>
 				</form>
+				<div className={styles.formLink}>
+					<span>
+						{t.rich('back_to_sign_in', {
+							loginLink: (chunks) => (
+								<Link href={PublicRoutes.login} className={styles.loginLink}>
+									{chunks}
+								</Link>
+							),
+						})}
+					</span>
+				</div>
 			</Card>
-		</div>
+		</Container>
 	);
 }

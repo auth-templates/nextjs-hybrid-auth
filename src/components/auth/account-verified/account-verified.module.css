@@ -1,10 +1,46 @@
-.accountVerified {
-	composes: info from '../../message-box/message-box.module.css';
+.container {
+	width: 450px;
+	max-width: min(95vw, 400px);
+	max-width: 450px;
+	margin: 0 auto;
+	color: var(--color-semantic-text-primary);
 }
 
-.email {
-	display: inline;
+.card {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	background-color: var(--color-semantic-surface-card);
+	border-radius: var(--border-radius-lg);
+	box-shadow: var(--color-semantic-shadow-sm);
+	padding: var(--spacing-xl);
+	gap: var(--spacing-md);
+	text-align: center;
+}
+
+.message {
+	font-family: var(--typography-font-family-body);
+	font-size: var(--typography-font-size-base);
+	font-weight: var(--typography-font-weight-normal);
+	line-height: var(--typography-line-height-relaxed);
+	color: var(--color-semantic-text-primary);
+}
+
+.loginLink {
+	color: var(--color-semantic-interactive-link-default);
+	text-decoration: underline;
 	font-family: var(--typography-font-family-body);
 	font-weight: var(--typography-font-weight-semibold);
-	color: var(--color-semantic-text-primary);
+	transition: color 0.2s ease;
+}
+
+.loginLink:hover {
+	color: var(--color-semantic-interactive-link-hover);
+}
+
+/* Responsive */
+@media (max-width: 500px) {
+	.card {
+		padding: var(--spacing-lg);
+	}
 }

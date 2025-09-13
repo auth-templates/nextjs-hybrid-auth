@@ -133,6 +133,7 @@
 			"back_to_sign_in": "or go back to <loginLink>Sign in</loginLink> page."
 		},
 		"reset_password": {
+			"title": "Reset Your Password",
 			"validation": {
 				"passwordRules": "Your password should be at least 8 characters long and it should contain at least one lowercase character, one uppercase character, one symbol, and one number.",
 				"confirmPasswordRequired": "Confirming your password is required",
@@ -150,6 +151,15 @@
 				"reset_password": "Reset password"
 			}
 		},
+		"reset_password_email_sent": {
+			"message": "An email with reset password instructions has been sent to {email} and it should arrive soon. Please check your inbox."
+		},
+		"password_updated": {
+			"message": "Your password has been reset successfully. Please go to {loginLink} page to sign in."
+		},
+		"account_verified": {
+			"message": "Your account has been verified successfully. Please go to {loginLink} page to sign in."
+		},
 		"request_confirmation_email": {
 			"validation": {
 				"emailRequired": "Email is required"
@@ -161,7 +171,7 @@
 				"email": "Enter your email"
 			},
 			"buttons": {
-				"resend_confirmation_email": "Resend confirmation email"
+				"resent_activation_email": "Resend activation email"
 			},
 			"back_to_sign_in": "or go back to <loginLink>Sign in</loginLink> page."
 		},

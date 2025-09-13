@@ -1,12 +1,12 @@
 import { render, screen, waitFor, userEvent } from '@/test-utils';
-import ResendConfirmationEmailContainer from './request-confirmation-email';
+import ResendConfirmationEmailContainer from './request-activation-email';
 
 describe('ResendConfirmationEmailContainer', async () => {
 	test('it should display reset email sent message if reset email request is succesful', async () => {
 		render(<ResendConfirmationEmailContainer />);
 		const emailInput = screen.getByLabelText('Email');
 		await userEvent.type(emailInput, 'pass@mail.com');
-		const sendButton = screen.getByRole('button', { name: 'Resend confirmation email' });
+		const sendButton = screen.getByRole('button', { name: 'Resend activation email' });
 		await userEvent.click(sendButton);
 
 		await waitFor(() => {
@@ -19,7 +19,7 @@ describe('ResendConfirmationEmailContainer', async () => {
 
 		const emailInput = screen.getByLabelText('Email');
 		await userEvent.type(emailInput, 'inexistentaccount@mail.com');
-		const sendButton = screen.getByRole('button', { name: 'Resend confirmation email' });
+		const sendButton = screen.getByRole('button', { name: 'Resend activation email' });
 		await userEvent.click(sendButton);
 
 		expect(await screen.findByText(/No account with the email/)).toBeInTheDocument();
@@ -34,12 +34,12 @@ describe('ResendConfirmationEmailContainer', async () => {
 
 		const emailInput = screen.getByLabelText('Email');
 		await userEvent.type(emailInput, 'accountnotactive@mail.com');
-		const sendButton = screen.getByRole('button', { name: 'Resend confirmation email' });
+		const sendButton = screen.getByRole('button', { name: 'Resend activation email' });
 		await userEvent.click(sendButton);
 
 		expect(await screen.findByText(/An account with the email/)).toBeInTheDocument();
 		expect(await screen.findByText(/exists, but it is not active./)).toBeInTheDocument();
-		expect(screen.queryByRole('button', { name: 'Resend confirmation email' })).not.toBeInTheDocument();
+		expect(screen.queryByRole('button', { name: 'Resend activation email' })).not.toBeInTheDocument();
 	});
 
 	it('should display the custom error message received from server', async () => {
@@ -47,7 +47,7 @@ describe('ResendConfirmationEmailContainer', async () => {
 
 		const emailInput = screen.getByLabelText('Email');
 		await userEvent.type(emailInput, 'customservermessage@mail.com');
-		const sendButton = screen.getByRole('button', { name: 'Resend confirmation email' });
+		const sendButton = screen.getByRole('button', { name: 'Resend activation email' });
 		await userEvent.click(sendButton);
 
 		expect(await screen.findByText('Custom message')).toBeInTheDocument();

@@ -2,7 +2,7 @@ import styles from './reset-password-form.module.css';
 import React, { useState } from 'react';
 
 import MessageBox, { Message } from '../../message-box';
-import { Button, Card, PasswordInput } from '@mantine/core';
+import { Button, Card, PasswordInput, Container } from '@mantine/core';
 import { ConfirmResetPasswordRequest } from '@/api/generated';
 import { useTranslations } from 'next-intl';
 import { useForm } from '@mantine/form';
@@ -37,7 +37,7 @@ export default function ResetPasswordForm({ onSubmit, loading, messages }: Reset
 	};
 
 	return (
-		<div className={styles.resetPassword}>
+		<Container className={styles.container}>
 			<Card className={styles.card} pos="relative">
 				<CustomLoadingOverlay
 					visible={loading}
@@ -58,11 +58,11 @@ export default function ResetPasswordForm({ onSubmit, loading, messages }: Reset
 						{...form.getInputProps('confirmPassword')}
 					/>
 					{messages && !loadingInProgress && <MessageBox messages={messages} className={styles.messageBox} />}
-					<Button type="submit" className={styles.resetButton}>
+					<Button fullWidth type="submit">
 						{t('buttons.reset_password')}
 					</Button>
 				</form>
 			</Card>
-		</div>
+		</Container>
 	);
 }

@@ -1,13 +1,25 @@
 import classes from './password-updated.module.css';
-import { PublicRoutes } from '../../../routes';
+import { Container, Card, Text } from '@mantine/core';
+import { useTranslations } from 'next-intl';
 import Link from 'next/link';
+import { PublicRoutes } from '../../../routes';
 
 export default function PasswordUpdated() {
+	const t = useTranslations('forms.password_updated');
+
 	return (
-		<div className={classes.passwordUpdated}>
-			Your password has been reset successfully. Please go to
-			<Link href={PublicRoutes.login}> Sign in </Link>
-			page to sign in.
-		</div>
+		<Container className={classes.container}>
+			<Card className={classes.card}>
+				<Text className={classes.message}>
+					{t.rich('message', {
+						loginLink: (chunks) => (
+							<Link href={PublicRoutes.login} className={classes.loginLink}>
+								{chunks}
+							</Link>
+						),
+					})}
+				</Text>
+			</Card>
+		</Container>
 	);
 }

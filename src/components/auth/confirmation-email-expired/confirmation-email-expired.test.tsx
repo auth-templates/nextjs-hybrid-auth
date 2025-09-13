@@ -7,9 +7,9 @@ describe('ConfirmationEmailExpired', () => {
 		render(<ConfirmationEmailExpired />);
 
 		expect(screen.getByText(/Your account confirmation email has expired. Please go to/)).toBeInTheDocument();
-		expect(screen.getByRole('link', { name: 'Resend confirmation email' })).toHaveAttribute(
+		expect(screen.getByRole('link', { name: 'Resend activation email' })).toHaveAttribute(
 			'href',
-			PublicRoutes.requestConfirmationEmail
+			PublicRoutes.requestActivationEmail
 		);
 		expect(screen.getByText(/page in order to send a new mail./)).toBeInTheDocument();
 	});

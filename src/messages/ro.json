@@ -143,9 +143,37 @@
 				"email": "Introduceți email-ul"
 			},
 			"buttons": {
-				"resend_confirmation_email": "Retrimite email-ul de confirmare"
+				"resent_activation_email": "Retrimite email-ul de activare"
 			},
 			"back_to_sign_in": "sau întoarceți-vă la pagina de <loginLink>Autentificare</loginLink>."
+		},
+		"reset_password": {
+			"title": "Resetează Parola",
+			"validation": {
+				"passwordRules": "Parola ta trebuie să aibă cel puțin 8 caractere și să conțină cel puțin o literă mică, o literă mare, un simbol și o cifră.",
+				"confirmPasswordRequired": "Confirmarea parolei este obligatorie",
+				"passwordsMismatch": "Parolele nu se potrivesc"
+			},
+			"labels": {
+				"password": "Introduceți parola",
+				"confirmPassword": "Reintroduceți parola"
+			},
+			"placeholders": {
+				"password": "Introduceți parola",
+				"confirmPassword": "Reintroduceți parola"
+			},
+			"buttons": {
+				"reset_password": "Resetează parola"
+			}
+		},
+		"reset_password_email_sent": {
+			"message": "Un email cu instrucțiuni pentru resetarea parolei a fost trimis la {email} și ar trebui să ajungă în curând. Vă rugăm să verificați inbox-ul."
+		},
+		"password_updated": {
+			"message": "Parola dvs. a fost resetată cu succes. Vă rugăm să mergeți la pagina {loginLink} pentru a vă autentifica."
+		},
+		"account_verified": {
+			"message": "Contul dvs. a fost verificat cu succes. Vă rugăm să mergeți la pagina {loginLink} pentru a vă autentifica."
 		},
 		"social-auth": {
 			"login-with-google": "Autentificare cu Google",

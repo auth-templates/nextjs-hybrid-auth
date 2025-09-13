@@ -6,7 +6,7 @@ export default function ConfirmationEmailExpired() {
 	return (
 		<div className={classes.confirmationEmailExpired}>
 			Your account confirmation email has expired. Please go to
-			<Link href={PublicRoutes.requestConfirmationEmail}> Resend confirmation email </Link>
+			<Link href={PublicRoutes.requestActivationEmail}> Resend activation email </Link>
 			page in order to send a new mail.
 		</div>
 	);

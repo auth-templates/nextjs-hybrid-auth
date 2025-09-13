@@ -5,7 +5,6 @@ import { useParams } from 'next/navigation';
 import { useMutation } from '@tanstack/react-query';
 import { postAuthResetPasswordMutation } from '@/api/generated/@tanstack/react-query.gen';
 import { ConfirmResetPasswordRequest, getCsrfToken } from '@/api/generated';
-import ResetPasswordMailExpired from '@/components/auth/reset-password-email-expired';
 import PasswordUpdated from '@/components/auth/password-updated';
 
 export default function ResetPasswordContainer() {
@@ -17,7 +16,7 @@ export default function ResetPasswordContainer() {
 	const onSubmit = async (data: Omit<ConfirmResetPasswordRequest, 'token'>) => {
 		mutate({
 			headers: {
-				'x-csrf-token': (await getCsrfToken({ cache: 'no-store' })).data?.csrfToken,
+				'x-csrf-token': (await getCsrfToken({ cache: 'no-store' })).data?.csrfToken as string,
 			},
 			body: {
 				...data,
@@ -28,9 +27,7 @@ export default function ResetPasswordContainer() {
 
 	return (
 		<>
-			{expiredToken ? (
-				<ResetPasswordMailExpired />
-			) : passwordUpdated ? (
+			{!error && status === 'success' ? (
 				<PasswordUpdated />
 			) : (
 				<ResetPasswordForm loading={isPending} onSubmit={onSubmit} messages={error?.messages} />

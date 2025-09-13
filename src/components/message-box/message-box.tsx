@@ -43,10 +43,19 @@ export default function MessageBox({ messages, alertSeverity, onClose, className
 			radius="md"
 			withCloseButton
 			onClose={handleClose}
-			classNames={{ root: classNames(styles.root, className) }}
+			classNames={{
+				root: classNames(styles.root, className),
+				closeButton: styles.closeButton,
+			}}
 			{...rest}
 		>
-			<List size="sm" spacing="xs" classNames={{ root: styles.messageList }}>
+			<List
+				size="sm"
+				spacing="xs"
+				classNames={{
+					root: classNames(styles.messageList, messages.length === 1 && styles.singleMessage),
+				}}
+			>
 				{messages.map((item, idx) => {
 					const itemColor = colorMap[item.severity ?? overall] || alertColor;
 					return (
