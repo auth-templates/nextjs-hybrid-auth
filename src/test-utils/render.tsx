@@ -1,9 +1,14 @@
+import React from 'react';
 import { render as testingLibraryRender } from '@testing-library/react';
 import { MantineProvider } from '@mantine/core';
 import messages from '@/messages/en.json';
 import { NextIntlClientProvider } from 'next-intl';
 import { pick } from 'lodash';
 import { theme } from '@/theme';
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
+import { AppRouterContext } from 'next/dist/shared/lib/app-router-context.shared-runtime';
+import mockRouter from 'next-router-mock';
+import { vi } from 'vitest';
 
 /**
  * Renders a React component with necessary providers for testing purposes.
@@ -21,15 +26,40 @@ import { theme } from '@/theme';
  */
 export function render(
 	ui: React.ReactNode,
-	options?: { pickedMessages: string[] }
+	options?: { pickedMessages?: string[]; router?: any }
 ): ReturnType<typeof testingLibraryRender> {
+	const queryClient = new QueryClient({
+		defaultOptions: {
+			queries: { retry: false },
+			mutations: { retry: false },
+		},
+	});
+
+	// Create a mock router that can be controlled in tests
+	const router = options?.router || {
+		...mockRouter,
+		push: vi.fn(),
+		replace: vi.fn(),
+		prefetch: vi.fn(),
+		back: vi.fn(),
+		forward: vi.fn(),
+		refresh: vi.fn(),
+	};
+
+	// Use full messages by default, or pick specific ones if provided
+	const messagesToUse = options?.pickedMessages ? pick(messages, options.pickedMessages) : messages;
+
 	return testingLibraryRender(<>{ui}</>, {
 		wrapper: ({ children }: { children: React.ReactNode }) => (
-			<NextIntlClientProvider locale="en" messages={pick(messages, options?.pickedMessages ?? [])}>
-				<MantineProvider theme={theme} env="test">
-					{children}
-				</MantineProvider>
-			</NextIntlClientProvider>
+			<AppRouterContext.Provider value={router}>
+				<QueryClientProvider client={queryClient}>
+					<NextIntlClientProvider locale="en" messages={messagesToUse}>
+						<MantineProvider theme={theme} env="test">
+							{children}
+						</MantineProvider>
+					</NextIntlClientProvider>
+				</QueryClientProvider>
+			</AppRouterContext.Provider>
 		),
 	});
 }

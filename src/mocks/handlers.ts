@@ -1,4 +1,3 @@
-import { handlers as authHandlers } from './api/auth';
-import { handlers as csrfHandlers } from './api/csrf';
+import { allApiHandlers } from './api';
 
-export const handlers = [...csrfHandlers, ...authHandlers];
+export const handlers = allApiHandlers;

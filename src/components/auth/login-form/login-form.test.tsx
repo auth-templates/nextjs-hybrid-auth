@@ -3,7 +3,7 @@ import LoginForm from './login-form';
 
 describe('LoginForm', () => {
 	it('should contain all elements', () => {
-		render(<LoginForm onSubmit={jest.fn()} />, {
+		render(<LoginForm onSubmit={vi.fn()} />, {
 			pickedMessages: ['forms.login', 'forms.social-auth'],
 		});
 
@@ -22,13 +22,13 @@ describe('LoginForm', () => {
 		expect(screen.getByText(/Don't have an account?/)).toBeInTheDocument();
 		const linkSignUp = screen.getByRole('link', { name: 'Sign up' });
 		expect(linkSignUp).toBeInTheDocument();
-		expect(linkSignUp).toHaveAttribute('href', '/signup');
+		expect(linkSignUp).toHaveAttribute('href', '/register');
 		expect(screen.getByRole('link', { name: /Login with GitHub/ })).toBeInTheDocument();
 		expect(screen.getByRole('link', { name: /Login with Google/ })).toBeInTheDocument();
 	});
 
 	it('displays error messages when fields are empty', async () => {
-		render(<LoginForm onSubmit={jest.fn} />, {
+		render(<LoginForm onSubmit={vi.fn()} />, {
 			pickedMessages: ['forms.login', 'forms.social-auth'],
 		});
 
@@ -41,7 +41,7 @@ describe('LoginForm', () => {
 	});
 
 	it('displays error message when email is invalid', async () => {
-		render(<LoginForm onSubmit={jest.fn()} />, {
+		render(<LoginForm onSubmit={vi.fn()} />, {
 			pickedMessages: ['forms.login', 'forms.social-auth'],
 		});
 

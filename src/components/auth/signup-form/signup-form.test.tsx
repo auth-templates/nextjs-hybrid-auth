@@ -3,7 +3,7 @@ import { render, screen, waitFor, userEvent } from '@/test-utils';
 
 describe('SignupForm', () => {
 	it('should contain all elements', () => {
-		render(<SignupForm onSubmit={jest.fn()} />, {
+		render(<SignupForm onSubmit={vi.fn()} />, {
 			pickedMessages: ['forms.register', 'forms.terms', 'forms.social-auth'],
 		});
 
@@ -28,7 +28,7 @@ describe('SignupForm', () => {
 	});
 
 	it('displays errors when fields do not have values', async () => {
-		render(<SignupForm onSubmit={jest.fn()} />, {
+		render(<SignupForm onSubmit={vi.fn()} />, {
 			pickedMessages: ['forms.register', 'forms.terms', 'forms.social-auth'],
 		});
 
@@ -46,7 +46,7 @@ describe('SignupForm', () => {
 	});
 
 	it('calls onSubmit with the gathered data', async () => {
-		const onSubmit = jest.fn();
+		const onSubmit = vi.fn();
 
 		render(<SignupForm onSubmit={onSubmit} />, {
 			pickedMessages: ['forms.register', 'forms.terms', 'forms.social-auth'],
@@ -73,7 +73,7 @@ describe('SignupForm', () => {
 	}, 10000);
 
 	it('displays error message when email is invalid', async () => {
-		render(<SignupForm onSubmit={jest.fn()} />, {
+		render(<SignupForm onSubmit={vi.fn()} />, {
 			pickedMessages: ['forms.register', 'forms.terms', 'forms.social-auth'],
 		});
 
@@ -84,7 +84,7 @@ describe('SignupForm', () => {
 	});
 
 	it("displays error message when password doesn't meet the rules", async () => {
-		render(<SignupForm onSubmit={jest.fn()} />, {
+		render(<SignupForm onSubmit={vi.fn()} />, {
 			pickedMessages: ['forms.register', 'forms.terms', 'forms.social-auth'],
 		});
 
@@ -99,7 +99,7 @@ describe('SignupForm', () => {
 	});
 
 	it('displays error message when passwords do not match', async () => {
-		render(<SignupForm onSubmit={jest.fn()} />, {
+		render(<SignupForm onSubmit={vi.fn()} />, {
 			pickedMessages: ['forms.register', 'forms.terms', 'forms.social-auth'],
 		});
 

@@ -11,7 +11,7 @@ import {
 
 export const authResendActivationHandlers = [
 	// POST /auth/resend-activation-email - Comprehensive scenarios
-	http.post('/auth/resend-activation-email', async ({ request }) => {
+	http.post('http://localhost:3001/auth/resend-activation-email', async ({ request }) => {
 		const csrfError = validateCSRF(request);
 		if (csrfError) return csrfError;
 
@@ -19,6 +19,15 @@ export const authResendActivationHandlers = [
 
 		// Comprehensive test scenarios
 		if (userEmail === 'invalid-email') return createErrorResponse('Please enter a valid email address', 400);
+		if (userEmail === 'inexistentaccount@mail.com')
+			return createErrorResponse('No account with the email inexistentaccount@mail.com has been found', 404);
+		if (userEmail === 'accountnotactive@mail.com')
+			return createErrorResponse(
+				'An account with the email accountnotactive@mail.com exists, but it is not active.',
+				400
+			);
+		if (userEmail === 'customservermessage@mail.com')
+			return createErrorResponse('Custom server error message', 500);
 		if (userEmail === 'notfound@example.com')
 			return createErrorResponse('No account found with this email address', 404);
 		if (userEmail === 'alreadyverified@example.com')

@@ -11,7 +11,7 @@ import {
 
 export const authResetPasswordHandlers = [
 	// POST /auth/reset-password/request - Comprehensive scenarios
-	http.post('/auth/reset-password/request', async ({ request }) => {
+	http.post('http://localhost:3001/auth/reset-password/request', async ({ request }) => {
 		const csrfError = validateCSRF(request);
 		if (csrfError) return csrfError;
 
@@ -33,7 +33,7 @@ export const authResetPasswordHandlers = [
 	}),
 
 	// POST /auth/reset-password - Comprehensive scenarios
-	http.post('/auth/reset-password', async ({ request }) => {
+	http.post('http://localhost:3001/auth/reset-password', async ({ request }) => {
 		const csrfError = validateCSRF(request);
 		if (csrfError) return csrfError;
 
@@ -77,7 +77,7 @@ export const authResetPasswordHandlers = [
 	}),
 
 	// POST /auth/request-password-reset - Legacy password reset request
-	http.post('/auth/request-password-reset', async ({ request }) => {
+	http.post('http://localhost:3001/auth/request-password-reset', async ({ request }) => {
 		const { email } = (await request.json()) as any;
 
 		if (email === 'inexistentaccount@mail.com') {

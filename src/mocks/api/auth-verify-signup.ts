@@ -10,7 +10,7 @@ import {
 
 export const authVerifySignupHandlers = [
 	// POST /auth/verify-signup - Comprehensive scenarios
-	http.post('/auth/verify-signup', async ({ request }) => {
+	http.post('http://localhost:3001/auth/verify-signup', async ({ request }) => {
 		const csrfError = validateCSRF(request);
 		if (csrfError) return csrfError;
 

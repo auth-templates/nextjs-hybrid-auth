@@ -12,11 +12,7 @@ export default function ResetPasswordEmailSent({ email }: ResetPasswordEmailSent
 	return (
 		<Container className={classes.container}>
 			<Card className={classes.card}>
-				<Text className={classes.message}>
-					{t.rich('message', {
-						email: (chunks) => <span className={classes.email}>{email}</span>,
-					})}
-				</Text>
+				<Text className={classes.message}>{t('message', { email })}</Text>
 			</Card>
 		</Container>
 	);

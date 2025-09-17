@@ -10,7 +10,7 @@ import {
 
 export const authLoginHandlers = [
 	// POST /auth/login - Comprehensive scenarios
-	http.post('/auth/login', async ({ request }) => {
+	http.post('http://localhost:3001/auth/login', async ({ request }) => {
 		const csrfError = validateCSRF(request);
 		if (csrfError) return csrfError;
 

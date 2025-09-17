@@ -15,6 +15,14 @@ type VerifyAccountProps = {
 export default function VerifyAccount({ loading, messages }: VerifyAccountProps) {
 	const [loadingInProgress, setLoading] = useState(loading);
 
+	// Check if account is verified based on messages
+	const accountVerified =
+		messages?.some((msg) => msg.lines?.some((line) => line.includes('Account verified'))) || false;
+
+	// Check if token is expired based on messages
+	const expiredToken =
+		messages?.some((msg) => msg.lines?.some((line) => line.includes('Confirmation token is not valid'))) || false;
+
 	return (
 		<div className={styles.verifyAccount}>
 			<Card className={styles.card} pos="relative">

@@ -9,7 +9,7 @@ import {
 
 export const authLogoutHandlers = [
 	// POST /auth/logout - Comprehensive scenarios
-	http.post('/auth/logout', async ({ request }) => {
+	http.post('http://localhost:3001/auth/logout', async ({ request }) => {
 		const csrfError = validateCSRF(request);
 		if (csrfError) return csrfError;
 

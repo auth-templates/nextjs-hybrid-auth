@@ -16,7 +16,7 @@ const createServiceUnavailableResponse = (service: string) =>
 
 export const csrfHandlers = [
 	// GET /csrf/token - Comprehensive scenarios
-	http.get('/csrf/token', async ({ request }) => {
+	http.get('http://localhost:3001/csrf/token', async ({ request }) => {
 		const userAgent = request.headers.get('user-agent');
 
 		// Comprehensive test scenarios
