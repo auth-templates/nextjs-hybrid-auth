@@ -9,7 +9,7 @@
 		"test": "vitest",
 		"test:watch": "vitest --watch",
 		"test:ui": "vitest --ui",
-		"coverage": "vitest run --coverage && node -e \"console.log('📄 Coverage report: file:///' + require('path').resolve('coverage/index.html'))\"",
+		"coverage": "vitest --run --coverage && npm run make-badge && node -e \"console.log('📄 Coverage report: file:///' + require('path').resolve('coverage/lcov-report/index.html'))\"",
 		"test:ci": "vitest run --coverage",
 		"dev": "next dev",
 		"build": "next build",
@@ -17,7 +17,8 @@
 		"lint": "next lint",
 		"prepare": "npx husky",
 		"start:backend-local": "docker-compose -f .devcontainer/docker-compose.prod.yml down -v && docker-compose -f .devcontainer/docker-compose.prod.yml up -d postgres redis smtp4dev && docker-compose -f .devcontainer/docker-compose.prod.yml run --rm migrate && docker-compose -f .devcontainer/docker-compose.prod.yml up --build -d --remove-orphans api",
-		"generate:tokens": "tsx src/tokens/build.ts"
+		"generate:tokens": "tsx src/tokens/build.ts",
+		"make-badge": "coverage-badges --output badges/coverage.svg"
 	},
 	"dependencies": {
 		"@edge-csrf/nextjs": "^2.5.3-cloudflare-rc1",
@@ -63,6 +64,7 @@
 		"@vitejs/plugin-react": "^4.7.0",
 		"@vitest/coverage-v8": "^3.2.4",
 		"@vitest/ui": "^3.2.4",
+		"coverage-badges-cli": "^2.2.0",
 		"dotenv-cli": "^7.4.1",
 		"eslint": "^9.34.0",
 		"glob": "^11.0.3",

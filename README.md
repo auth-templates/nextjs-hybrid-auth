@@ -3,6 +3,8 @@
 
 # Next.js Frontend for Hybrid Session + JWT Authentication API
 
+![Coverage badge](./badges/coverage.svg)
+
 This frontend is built to interface with a secure backend that employs a hybrid authentication model, combining server-side sessions and JWT-based access control. It ensures strong security (via HTTP-only cookies) while allowing a responsive, stateless experience on the frontend using Next.js.
 
 
