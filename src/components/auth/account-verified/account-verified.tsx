@@ -10,15 +10,13 @@ export default function AccountVerified() {
 	return (
 		<Container className={classes.container}>
 			<Card className={classes.card}>
-				<Text className={classes.message}>
-					{t.rich('message', {
-						loginLink: (chunks) => (
-							<Link href={PublicRoutes.login} className={classes.loginLink}>
-								{chunks}
-							</Link>
-						),
-					})}
-				</Text>
+				{t.rich('message', {
+					loginLink: (chunks) => (
+						<Link href={PublicRoutes.login} className={classes.loginLink}>
+							{chunks}
+						</Link>
+					),
+				})}
 			</Card>
 		</Container>
 	);

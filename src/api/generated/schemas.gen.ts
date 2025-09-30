@@ -168,13 +168,13 @@ export const ResetPasswordRequestSchema = {
 
 export const ConfirmResetPasswordRequestSchema = {
     type: 'object',
-    required: ['token', 'newPassword'],
+    required: ['token', 'password'],
     properties: {
         token: {
             type: 'string',
             example: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...'
         },
-        newPassword: {
+        password: {
             type: 'string',
             example: 'StrongNewPassword!2025'
         }

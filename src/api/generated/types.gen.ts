@@ -55,7 +55,7 @@ export type ResetPasswordRequest = {
 
 export type ConfirmResetPasswordRequest = {
     token: string;
-    newPassword: string;
+    password: string;
 };
 
 export type Verify2FaRequest = {

@@ -170,10 +170,10 @@
 			"message": "Un email cu instrucțiuni pentru resetarea parolei a fost trimis la {email} și ar trebui să ajungă în curând. Vă rugăm să verificați inbox-ul."
 		},
 		"password_updated": {
-			"message": "Parola dvs. a fost resetată cu succes. Vă rugăm să mergeți la pagina {loginLink} pentru a vă autentifica."
+			"message": "Parola dvs. a fost resetată cu succes. Vă rugăm să mergeți la pagina <loginLink>Autentificare</loginLink>."
 		},
 		"account_verified": {
-			"message": "Contul dvs. a fost verificat cu succes. Vă rugăm să mergeți la pagina {loginLink} pentru a vă autentifica."
+			"message": "Contul dvs. a fost verificat cu succes. Vă rugăm să mergeți la pagina <loginLink>Autentificare</loginLink>."
 		},
 		"social-auth": {
 			"login-with-google": "Autentificare cu Google",

@@ -3,13 +3,13 @@
 import RequestPasswordResetForm from '../../components/auth/request-password-reset-form';
 import { useMutation } from '@tanstack/react-query';
 import { postAuthResetPasswordRequestMutation } from '@/api/generated/@tanstack/react-query.gen';
-import { getCsrfToken } from '@/api/generated';
+import { getCsrfToken, StatusCode } from '@/api/generated';
 import ResetPasswordEmailSent from '@/components/auth/reset-password-email-sent';
 import { useRef } from 'react';
 
 export default function RequestPasswordResetContainer() {
 	const email = useRef('');
-	const { error, mutate, status, isPending } = useMutation({
+	const { data, error, mutate, status, isPending } = useMutation({
 		...postAuthResetPasswordRequestMutation(),
 	});
 
@@ -25,12 +25,14 @@ export default function RequestPasswordResetContainer() {
 		});
 	};
 
+	const messages = data?.code === StatusCode.PASSWORD_RESET_NOT_INITIATED ? data.messages : error?.messages;
+
 	return (
 		<>
-			{!error && status === 'success' ? (
+			{!error && status === 'success' && data?.code !== StatusCode.PASSWORD_RESET_NOT_INITIATED ? (
 				<ResetPasswordEmailSent email={email.current} />
 			) : (
-				<RequestPasswordResetForm loading={isPending} onSubmit={onSend} messages={error?.messages} />
+				<RequestPasswordResetForm loading={isPending} onSubmit={onSend} messages={messages} />
 			)}
 		</>
 	);

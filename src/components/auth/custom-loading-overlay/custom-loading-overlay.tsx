@@ -4,9 +4,17 @@ import { useColorScheme } from '@mantine/hooks';
 type AppLoadingOverlayProps = LoadingOverlayProps & {
 	visible?: boolean;
 	zIndex?: number;
+	onTransitionStart?: () => void;
+	onTransitionEnd?: () => void;
 };
 
-export function CustomLoadingOverlay({ visible, zIndex = 1000, ...rest }: AppLoadingOverlayProps) {
+export function CustomLoadingOverlay({
+	visible,
+	zIndex = 1000,
+	onTransitionStart,
+	onTransitionEnd,
+	...rest
+}: AppLoadingOverlayProps) {
 	const colorScheme = useColorScheme();
 
 	const overlayColor = colorScheme === 'dark' ? 'rgba(0, 0, 0, 0.3)' : 'rgba(255, 255, 255, 0.3)';
@@ -19,6 +27,8 @@ export function CustomLoadingOverlay({ visible, zIndex = 1000, ...rest }: AppLoa
 			transitionProps={{
 				duration: 1000,
 				exitDelay: 500,
+				onEnter: onTransitionStart,
+				onExited: onTransitionEnd,
 			}}
 			{...rest}
 		/>

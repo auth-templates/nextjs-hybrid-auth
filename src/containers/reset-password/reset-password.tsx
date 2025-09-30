@@ -1,14 +1,15 @@
 'use client';
 
 import ResetPasswordForm from '../../components/auth/reset-password-form';
-import { useParams } from 'next/navigation';
+import { useParams, useSearchParams } from 'next/navigation';
 import { useMutation } from '@tanstack/react-query';
 import { postAuthResetPasswordMutation } from '@/api/generated/@tanstack/react-query.gen';
 import { ConfirmResetPasswordRequest, getCsrfToken } from '@/api/generated';
 import PasswordUpdated from '@/components/auth/password-updated';
 
 export default function ResetPasswordContainer() {
-	const { token } = useParams<{ token: string }>();
+	const searchParams = useSearchParams();
+	const token = searchParams.get('token');
 	const { data, error, mutate, status, isPending } = useMutation({
 		...postAuthResetPasswordMutation(),
 	});
@@ -20,7 +21,7 @@ export default function ResetPasswordContainer() {
 			},
 			body: {
 				...data,
-				token: token,
+				token: token as string,
 			},
 		});
 	};

@@ -16,7 +16,7 @@
 		"start": "docker-compose up --build",
 		"lint": "next lint",
 		"prepare": "npx husky",
-		"start:backend-local": "docker-compose -f .devcontainer/docker-compose.prod.yml down -v && docker-compose -f .devcontainer/docker-compose.prod.yml up -d postgres redis smtp4dev && docker-compose -f .devcontainer/docker-compose.prod.yml run --rm migrate && docker-compose -f .devcontainer/docker-compose.prod.yml up --build -d --remove-orphans api",
+		"start:backend-local": "docker-compose -f .devcontainer/docker-compose.prod.yml down -v && docker-compose -f .devcontainer/docker-compose.prod.yml up -d postgres redis smtp4dev dozzle && docker-compose -f .devcontainer/docker-compose.prod.yml run --rm migrate && docker-compose -f .devcontainer/docker-compose.prod.yml up --build -d --remove-orphans api",
 		"generate:tokens": "tsx src/tokens/build.ts",
 		"make-badge": "coverage-badges --output badges/coverage.svg"
 	},
@@ -37,7 +37,7 @@
 		"check-password-strength": "^2.0.10",
 		"classnames": "^2.5.1",
 		"date-fns": "^2.29.3",
-		"next": "^15.3.3",
+		"next": "^15.5.4",
 		"next-intl": "^4.1.0",
 		"react": "^18.3.1",
 		"react-dom": "^18.3.1",

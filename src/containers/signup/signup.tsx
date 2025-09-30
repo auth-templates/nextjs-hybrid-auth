@@ -21,7 +21,7 @@ const SignupContainer = () => {
 	const onRegister = async (data: SignupRequest) => {
 		mutate({
 			headers: {
-				'x-csrf-token': (await getCsrfToken({ cache: 'no-store' })).data?.csrfToken,
+				'x-csrf-token': (await getCsrfToken({ cache: 'no-store' })).data?.csrfToken as string,
 			},
 			body: {
 				...data,

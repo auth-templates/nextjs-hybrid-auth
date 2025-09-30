@@ -155,10 +155,10 @@
 			"message": "An email with reset password instructions has been sent to {email} and it should arrive soon. Please check your inbox."
 		},
 		"password_updated": {
-			"message": "Your password has been reset successfully. Please go to {loginLink} page to sign in."
+			"message": "Your password has been reset successfully. Please go to <loginLink>Sign in</loginLink> page."
 		},
 		"account_verified": {
-			"message": "Your account has been verified successfully. Please go to {loginLink} page to sign in."
+			"message": "Your account has been verified successfully. Please go to <loginLink>Sign in</loginLink> page."
 		},
 		"request_confirmation_email": {
 			"validation": {

@@ -33,7 +33,7 @@ export default function ResetPasswordForm({ onSubmit, loading, messages }: Reset
 
 	const callSubmit = async (values: typeof form.values) => {
 		const { password } = values;
-		onSubmit({ newPassword: password });
+		onSubmit({ password: password });
 	};
 
 	return (
