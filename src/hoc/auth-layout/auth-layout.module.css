@@ -26,6 +26,17 @@
 	text-align: left;
 }
 
+.left {
+	max-width: 480px;
+	text-align: center;
+}
+
+.right {
+	max-width: 480px;
+	display: flex;
+	justify-content: center;
+}
+
 .title {
 	font-family: var(--typography-font-family-display);
 	font-size: var(--typography-font-size-5xl);
@@ -56,6 +67,7 @@
 	display: flex;
 	flex-direction: column;
 	justify-content: center;
+	align-items: center;
 	min-height: 280px;
 	box-sizing: border-box;
 	transition: box-shadow 0.2s ease;
@@ -85,21 +97,43 @@
 }
 
 /* Responsive: stack vertically on smaller screens */
-@media (max-width: 768px) {
+@media (max-width: 1024px) {
 	.top {
 		flex-direction: column;
-		gap: var(--spacing-lg);
+		gap: var(--spacing-xl);
 		padding-bottom: var(--spacing-6xl); /* extra padding so wave doesn't overlap */
 	}
 
 	.hero,
+	.left,
+	.right,
 	.form {
 		max-width: 100%;
 		width: 100%;
 		text-align: center;
 	}
 
+	.left {
+		order: -1; /* Ensure title appears first */
+	}
+
 	.form {
 		min-height: auto;
+	}
+}
+
+/* Additional responsive adjustments for very small screens */
+@media (max-width: 480px) {
+	.top {
+		gap: var(--spacing-lg);
+		padding: 0 var(--spacing-md);
+	}
+
+	.title {
+		font-size: var(--typography-font-size-4xl);
+	}
+
+	.subtitle {
+		font-size: var(--typography-font-size-lg);
 	}
 }

@@ -1,5 +1,5 @@
 import classes from './activation-email-sent.module.css';
-import { Container, Card, Text } from '@mantine/core';
+import { Container, Card } from '@mantine/core';
 
 type ActivationEmailSentProps = {
 	message: string;
@@ -9,7 +9,7 @@ export default function ActivationEmailSent({ message }: ActivationEmailSentProp
 	return (
 		<Container className={classes.container}>
 			<Card className={classes.card}>
-				<Text className={classes.message}>{message}</Text>
+				<div className={classes.message}>{message}</div>
 			</Card>
 		</Container>
 	);

@@ -16,7 +16,7 @@
 		"start": "docker-compose up --build",
 		"lint": "next lint",
 		"prepare": "npx husky",
-		"start:backend-local": "docker-compose -f .devcontainer/docker-compose.prod.yml down -v && docker-compose -f .devcontainer/docker-compose.prod.yml up -d postgres redis smtp4dev dozzle && docker-compose -f .devcontainer/docker-compose.prod.yml run --rm migrate && docker-compose -f .devcontainer/docker-compose.prod.yml up --build -d --remove-orphans api",
+		"start:backend": "docker-compose -f .devcontainer/docker-compose.prod.yml down -v && docker-compose -f .devcontainer/docker-compose.prod.yml up -d postgres redis smtp4dev dozzle && docker-compose -f .devcontainer/docker-compose.prod.yml run --rm migrate && docker-compose -f .devcontainer/docker-compose.prod.yml up --build -d --remove-orphans api",
 		"generate:tokens": "tsx src/tokens/build.ts",
 		"make-badge": "coverage-badges --output badges/coverage.svg"
 	},
@@ -50,6 +50,7 @@
 		"@commitlint/cli": "^19.8.1",
 		"@commitlint/config-conventional": "^19.8.1",
 		"@faker-js/faker": "^9.8.0",
+		"@playwright/test": "^1.56.0",
 		"@tanstack/react-query-devtools": "^5.80.6",
 		"@testing-library/jest-dom": "^6.6.3",
 		"@testing-library/react": "^16.3.0",

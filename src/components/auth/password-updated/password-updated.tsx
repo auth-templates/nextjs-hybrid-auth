@@ -1,5 +1,5 @@
 import classes from './password-updated.module.css';
-import { Container, Card, Text } from '@mantine/core';
+import { Container, Card } from '@mantine/core';
 import { useTranslations } from 'next-intl';
 import Link from 'next/link';
 import { PublicRoutes } from '../../../routes';
@@ -10,13 +10,15 @@ export default function PasswordUpdated() {
 	return (
 		<Container className={classes.container}>
 			<Card className={classes.card}>
-				{t.rich('message', {
-					loginLink: (chunks) => (
-						<Link href={PublicRoutes.login} className={classes.loginLink}>
-							{chunks}
-						</Link>
-					),
-				})}
+				<div className={classes.message}>
+					{t.rich('message', {
+						loginLink: (chunks) => (
+							<Link href={PublicRoutes.login} className={classes.loginLink}>
+								{chunks}
+							</Link>
+						),
+					})}
+				</div>
 			</Card>
 		</Container>
 	);
