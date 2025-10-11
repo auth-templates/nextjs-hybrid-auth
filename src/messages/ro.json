@@ -52,6 +52,10 @@
 			"title": "Verificare Dezactivare Autentificare în Doi Pași",
 			"subtitle": "Validăm solicitarea dvs. de a dezactiva autentificarea în doi pași. Vă rugăm să așteptați finalizarea procesului."
 		},
+		"twoStep": {
+			"title": "Autentificare în Doi Pași",
+			"subtitle": "Vă rugăm să introduceți codul de 6 cifre din aplicația dvs. de autentificare pentru a finaliza autentificarea."
+		},
 		"dashboard": {
 			"title": "Tabloul de Bord",
 			"subtitle": "Prezentare generală a contului, activității și informațiilor esențiale."
@@ -184,6 +188,21 @@
 		"terms": {
 			"agreement": "Am citit și sunt de acord cu <termsLink>termenii și condițiile</termsLink>.",
 			"termsAndConditions": "terms and conditions"
+		},
+		"twoFA": {
+			"labels": {
+				"code": "Cod de Autentificare:"
+			},
+			"placeholders": {
+				"code": "Introduceți codul de 6 cifre"
+			},
+			"validation": {
+				"codeRequired": "Codul de autentificare este obligatoriu",
+				"invalidCode": "Vă rugăm să introduceți un cod valid de 6 cifre"
+			},
+			"buttons": {
+				"verify": "Verifică Codul"
+			}
 		}
 	},
 	"manifest": {

@@ -52,6 +52,10 @@
 			"title": "Verify Two-Factor Deactivation",
 			"subtitle": "We are validating your request to deactivate two-factor authentication. Please wait while we complete the process."
 		},
+		"twoStep": {
+			"title": "Two-Factor Authentication",
+			"subtitle": "Please enter the 6-digit code from your authenticator app to complete your login."
+		},
 		"dashboard": {
 			"title": "Your Dashboard",
 			"subtitle": "Overview of your account, activity, and key insights."
@@ -184,6 +188,21 @@
 		"terms": {
 			"agreement": "I have read and I agree to the <termsLink>terms and conditions</termsLink>.",
 			"termsAndConditions": "termenii și condițiile"
+		},
+		"twoFA": {
+			"labels": {
+				"code": "Authentication Code:"
+			},
+			"placeholders": {
+				"code": "Enter 6-digit code"
+			},
+			"validation": {
+				"codeRequired": "Authentication code is required",
+				"invalidCode": "Please enter a valid 6-digit code"
+			},
+			"buttons": {
+				"verify": "Verify Code"
+			}
 		}
 	},
 	"manifest": {

@@ -192,6 +192,16 @@ export const Verify2FARequestSchema = {
     }
 } as const;
 
+export const ValidateSessionResponseSchema = {
+    type: 'object',
+    properties: {
+        valid: {
+            type: 'boolean',
+            description: 'Whether the session and refresh token are valid'
+        }
+    }
+} as const;
+
 export const CsrfTokenResponseSchema = {
     type: 'object',
     properties: {

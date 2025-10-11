@@ -16,18 +16,26 @@ export default function LoginContainer() {
 
 	useEffect(() => {
 		if (status === 'success') {
-			// Check if there's a redirect parameter from middleware
-			const redirectUrl = searchParams.get('redirect');
-
-			if (redirectUrl) {
-				// Redirect to the original requested page
-				router.replace(redirectUrl);
+			// Check if 2FA is required
+			if (data?.enabled2FA) {
+				// Redirect to 2FA verification page
+				const redirectUrl = searchParams.get('redirect');
+				const twoStepUrl = redirectUrl ? `/two-step?redirect=${encodeURIComponent(redirectUrl)}` : '/two-step';
+				router.replace(twoStepUrl);
 			} else {
-				// Default redirect to dashboard
-				router.replace(PrivateRoutes.dashboard);
+				// Check if there's a redirect parameter from middleware
+				const redirectUrl = searchParams.get('redirect');
+
+				if (redirectUrl) {
+					// Redirect to the original requested page
+					router.replace(redirectUrl);
+				} else {
+					// Default redirect to dashboard
+					router.replace(PrivateRoutes.dashboard);
+				}
 			}
 		}
-	}, [status, searchParams, router]);
+	}, [status, data, searchParams, router]);
 
 	const handleLogin = async (data: LoginRequest) => {
 		mutate({

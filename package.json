@@ -38,6 +38,7 @@
 		"check-password-strength": "^2.0.10",
 		"classnames": "^2.5.1",
 		"date-fns": "^2.29.3",
+		"jose": "^6.1.0",
 		"jsonwebtoken": "^9.0.2",
 		"next": "^15.5.4",
 		"next-intl": "^4.1.0",

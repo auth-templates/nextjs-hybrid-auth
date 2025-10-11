@@ -50,16 +50,52 @@ export const authLoginHandlers = [
 
 		// Success scenarios
 		if (email === 'success@example.com') {
-			return HttpResponse.json({ has2FA: false, referrer: '/dashboard' });
+			return HttpResponse.json({
+				id: 1,
+				firstName: 'John',
+				lastName: 'Doe',
+				email: 'success@example.com',
+				role: 'user',
+				createdAt: '2023-01-01T12:00:00Z',
+				enabled2FA: false,
+				status: 'active',
+			});
 		}
 		if (email === 'success2fa@example.com') {
-			return HttpResponse.json({ has2FA: true, referrer: '/verify-2fa' });
+			return HttpResponse.json({
+				id: 2,
+				firstName: 'Jane',
+				lastName: 'Smith',
+				email: 'success2fa@example.com',
+				role: 'user',
+				createdAt: '2023-01-01T12:00:00Z',
+				enabled2FA: true,
+				status: 'active',
+			});
 		}
 		if (email === 'customreferrer@example.com') {
-			return HttpResponse.json({ has2FA: false, referrer: '/custom-page' });
+			return HttpResponse.json({
+				id: 3,
+				firstName: 'Custom',
+				lastName: 'User',
+				email: 'customreferrer@example.com',
+				role: 'user',
+				createdAt: '2023-01-01T12:00:00Z',
+				enabled2FA: false,
+				status: 'active',
+			});
 		}
 
 		// Default successful login response
-		return HttpResponse.json({ has2FA: false, referrer: '/dashboard' });
+		return HttpResponse.json({
+			id: 4,
+			firstName: 'Default',
+			lastName: 'User',
+			email: email,
+			role: 'user',
+			createdAt: '2023-01-01T12:00:00Z',
+			enabled2FA: false,
+			status: 'active',
+		});
 	}),
 ];

@@ -62,6 +62,13 @@ export type Verify2FaRequest = {
     code: string;
 };
 
+export type ValidateSessionResponse = {
+    /**
+     * Whether the session and refresh token are valid
+     */
+    valid?: boolean;
+};
+
 export type CsrfTokenResponse = {
     csrfToken?: string;
 };
@@ -751,6 +758,22 @@ export type GetAuthSessionResponses = {
 };
 
 export type GetAuthSessionResponse = GetAuthSessionResponses[keyof GetAuthSessionResponses];
+
+export type GetAuthValidateSessionData = {
+    body?: never;
+    path?: never;
+    query?: never;
+    url: '/auth/validate-session';
+};
+
+export type GetAuthValidateSessionResponses = {
+    /**
+     * Session validation completed successfully.
+     */
+    200: ValidateSessionResponse;
+};
+
+export type GetAuthValidateSessionResponse = GetAuthValidateSessionResponses[keyof GetAuthValidateSessionResponses];
 
 export type GetCsrfTokenData = {
     body?: never;
