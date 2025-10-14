@@ -1,4 +1,9 @@
 .root {
-	display: grid;
-	text-align: center;
+	min-height: 100vh;
+	width: 100%;
+	background-color: var(--color-semantic-background-primary);
+	color: var(--color-semantic-text-primary);
+	transition:
+		background-color 0.2s ease,
+		color 0.2s ease;
 }

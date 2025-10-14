@@ -13,8 +13,8 @@ export default function Navigation({ className }: { className?: string }) {
 				<div className={classes.appName}> Company Logo </div>
 			</div>
 			<div className={classes.user}>
-				<NavigationButtons />
 				<LocaleSwitcher />
+				<NavigationButtons />
 			</div>
 		</div>
 	);

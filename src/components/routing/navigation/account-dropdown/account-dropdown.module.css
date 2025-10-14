@@ -1,0 +1,63 @@
+.triggerButton {
+	background: none;
+	border: none;
+	cursor: pointer;
+	padding: 4px;
+	border-radius: 50%;
+	transition: background-color 0.2s ease;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	border: 1px solid var(--color-semantic-border-light);
+	max-height: 40px;
+	max-width: 40px;
+}
+
+.triggerButton:hover {
+	background-color: var(--color-semantic-background-secondary);
+	border-color: var(--color-semantic-border-medium);
+	transform: scale(1.02);
+}
+
+.avatar {
+	font-weight: 600;
+	font-size: 12px;
+	box-shadow: var(--color-semantic-shadow-sm);
+	transition:
+		transform 0.2s ease,
+		box-shadow 0.2s ease;
+	background-color: var(--color-semantic-brand-primary) !important;
+	color: var(--color-semantic-text-on-primary) !important;
+	border: 1px solid var(--color-semantic-brand-primary-hover);
+	width: 32px !important;
+	height: 32px !important;
+	min-width: 32px !important;
+	min-height: 32px !important;
+}
+
+.avatar:hover {
+	transform: scale(1.05);
+	box-shadow: var(--color-semantic-shadow-md);
+	background-color: var(--color-semantic-brand-primary-hover) !important;
+	border-color: var(--color-semantic-brand-accent);
+}
+
+.dropdown {
+	background-color: var(--color-semantic-surface-card);
+	border: 1px solid var(--color-semantic-border-light);
+	box-shadow: var(--color-semantic-shadow-md);
+	padding: var(--spacing-xs);
+}
+
+.menuItem {
+	color: var(--color-semantic-text-primary);
+	transition: background-color 0.2s ease;
+	padding: var(--spacing-sm) var(--spacing-md);
+	margin: var(--spacing-xs) 0;
+	border-radius: var(--border-radius-sm);
+}
+
+.menuItem:hover {
+	background-color: var(--color-semantic-background-tertiary) !important;
+	color: var(--color-semantic-text-primary) !important;
+}

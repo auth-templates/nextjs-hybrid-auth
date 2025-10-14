@@ -2,7 +2,10 @@
 	"navigation": {
 		"login": "Autentificare",
 		"home": "Pagina de start",
-		"signout": "Ieșire din cont"
+		"signout": "Ieșire din cont",
+		"logout": "Deconectare",
+		"loggingOut": "Se deconectează...",
+		"account": "Cont"
 	},
 	"pages": {
 		"home": {

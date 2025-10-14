@@ -4,27 +4,31 @@ import classes from './navigation-buttons.module.css';
 import { usePathname } from 'next/navigation';
 import Link from 'next/link';
 import { useTranslations } from 'next-intl';
-import { BiSolidUserRectangle } from 'react-icons/bi';
 import { Button } from '@mantine/core';
+import { useQuery } from '@tanstack/react-query';
+import { getAuthSessionQueryKey, getAuthSessionOptions } from '@/api/generated/@tanstack/react-query.gen';
+import AccountDropdown from '../account-dropdown';
 
 export const NavigationButtons = () => {
 	const t = useTranslations('navigation');
 	const pathname = usePathname();
 	const isLogin = pathname.match('/login');
-	const session: any = undefined;
+	const isPublicPage = pathname === '/' || isLogin;
+
+	// Only get user session data if we're not on a public page
+	const { data: sessionData, isLoading } = useQuery({
+		...getAuthSessionOptions(),
+		queryKey: getAuthSessionQueryKey(),
+		enabled: !isPublicPage, // Only run query on private pages
+		retry: false, // Don't retry on error to avoid loops
+	});
+
+	const user = sessionData?.user;
 
 	return (
 		<div className={classes.root}>
-			{session && session.user ? (
-				<>
-					<div className={classes.user}>
-						<BiSolidUserRectangle className={classes.userIcon} />
-						<p className={classes.username}>{session.user.name}</p>
-					</div>
-					<Button onClick={() => {}} className={classes.logoutButton} variant="filled">
-						{t('logout')}
-					</Button>
-				</>
+			{!isPublicPage && user ? (
+				<AccountDropdown />
 			) : isLogin ? (
 				<Link className={classes.homeButton} href={'/'}>
 					{t('home')}

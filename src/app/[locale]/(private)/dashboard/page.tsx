@@ -1,9 +1,8 @@
-import LogoutContainer from '@/containers/logout';
 import { LocaleParams } from '@/types/global';
-import { Button } from '@mantine/core';
 import { Locale } from 'next-intl';
 import { getTranslations, setRequestLocale } from 'next-intl/server';
 import { use } from 'react';
+import classes from './page.module.css';
 
 export async function generateMetadata({ params }: LocaleParams) {
 	const { locale } = await params;
@@ -25,9 +24,5 @@ export default function Dashboard({ params }: Props) {
 	// Enable static rendering
 	setRequestLocale(locale);
 
-	return (
-		<div>
-			<LogoutContainer />
-		</div>
-	);
+	return <div className={classes.dashboardPage}>{/* Dashboard content will go here */}</div>;
 }

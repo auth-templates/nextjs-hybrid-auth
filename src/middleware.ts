@@ -59,12 +59,13 @@ async function validateSession(request: NextRequest): Promise<boolean> {
 		const refreshToken = request.cookies.get('refresh_token')?.value;
 
 		if (!sessionId || !refreshToken) {
+			console.warn('Missing session cookies:', { hasSessionId: !!sessionId, hasRefreshToken: !!refreshToken });
 			return false;
 		}
 
 		// Make request to backend to validate session
-		const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/auth/validate-session`, {
-			method: 'POST',
+		const response = await fetch(`http://localhost:3001/auth/validate-session`, {
+			method: 'GET',
 			headers: {
 				'Content-Type': 'application/json',
 				Cookie: `connect.sid=${sessionId}; refresh_token=${refreshToken}`,
@@ -73,7 +74,16 @@ async function validateSession(request: NextRequest): Promise<boolean> {
 			redirect: 'manual',
 		});
 
-		return response.status === 200;
+		console.log('Session validation response:', { status: response.status, url: response.url });
+
+		if (response.status === 200) {
+			const data = await response.json();
+			console.log('Session validation data:', data);
+			return data.valid === true;
+		}
+
+		console.warn('Session validation failed with status:', response.status);
+		return false;
 	} catch (error) {
 		console.warn('Session validation failed:', error);
 		return false;
