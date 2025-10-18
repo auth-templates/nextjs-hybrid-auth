@@ -50,7 +50,7 @@ export const authResetPasswordHandlers = [
 		if (body.token === 'rate-limited-token') return createRateLimitResponse('password reset');
 		if (body.token === 'locked-token') return createAccountLockedResponse();
 
-		if (body.newPassword === 'weak') {
+		if (body.password === 'weak') {
 			return HttpResponse.json(
 				{
 					messages: [
@@ -64,7 +64,7 @@ export const authResetPasswordHandlers = [
 			);
 		}
 
-		if (body.newPassword === 'same-password') {
+		if (body.password === 'same-password') {
 			return createErrorResponse('New password must be different from your current password', 400);
 		}
 

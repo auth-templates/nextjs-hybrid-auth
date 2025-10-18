@@ -22,7 +22,7 @@ export default function LogoutContainer() {
 	const handleLogout = async () => {
 		mutate({
 			headers: {
-				'x-csrf-token': (await getCsrfToken({ cache: 'no-store' })).data?.csrfToken,
+				'x-csrf-token': (await getCsrfToken({ cache: 'no-store' })).data?.csrfToken as string,
 			},
 		});
 	};
