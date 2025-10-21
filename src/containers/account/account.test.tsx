@@ -7,10 +7,8 @@ describe('AccountContainer', () => {
 	it('should render the account view', () => {
 		render(<AccountContainer />);
 
-		// Check if the account view container is rendered
-		const accountView = screen.getByTestId('account-view');
-		expect(accountView).toBeInTheDocument();
-		expect(accountView).toBeInTheDocument();
+		// Check if the Two-Factor Authentication title is rendered
+		expect(screen.getByText('Two-Factor Authentication')).toBeInTheDocument();
 	});
 
 	it('should render without crashing', () => {

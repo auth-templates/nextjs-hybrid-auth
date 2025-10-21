@@ -17,9 +17,19 @@ vi.mock('@/i18n/navigation', () => ({
 	}),
 }));
 
-// Mock useParams to provide a token
+// Mock useParams and useSearchParams to provide a token
 vi.mock('next/navigation', () => ({
 	useParams: () => ({ token: 'test-token' }),
+	useSearchParams: () => new URLSearchParams('token=test-token'),
+	useRouter: () => ({
+		push: vi.fn(),
+		replace: vi.fn(),
+		prefetch: vi.fn(),
+		back: vi.fn(),
+		forward: vi.fn(),
+		refresh: vi.fn(),
+	}),
+	usePathname: () => '/test',
 }));
 
 describe('VerifyAccountContainer', () => {

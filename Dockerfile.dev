@@ -1,0 +1,25 @@
+# Development and testing Docker image
+FROM node:22-alpine
+
+# Set working directory
+WORKDIR /app
+
+# Copy package files and install all dependencies (including dev)
+COPY package*.json ./
+RUN npm ci --ignore-scripts
+
+# Copy all source code
+COPY . .
+
+# Generate tokens (needed for tests)
+RUN npm run generate:tokens
+
+# Set proper permissions
+RUN chown -R node:node /app
+USER node
+
+# Expose port for testing if needed
+EXPOSE 3000
+
+# Default command for CI testing
+CMD ["npm", "run", "test:ci"]

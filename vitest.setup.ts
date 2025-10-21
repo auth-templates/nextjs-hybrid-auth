@@ -72,7 +72,7 @@ vi.mock('next/navigation', () => ({
 		refresh: vi.fn(),
 	})),
 	useParams: vi.fn(() => ({ token: 'test-token' })),
-	useSearchParams: vi.fn(() => new URLSearchParams()),
+	useSearchParams: vi.fn(() => new URLSearchParams('token=test-token')),
 	usePathname: vi.fn(() => '/test'),
 }));
 
@@ -87,6 +87,6 @@ vi.mock('@/i18n/navigation', () => ({
 		refresh: vi.fn(),
 	})),
 	useParams: vi.fn(() => ({ token: 'test-token' })),
-	useSearchParams: vi.fn(() => new URLSearchParams()),
+	useSearchParams: vi.fn(() => new URLSearchParams('token=test-token')),
 	usePathname: vi.fn(() => '/test'),
 }));
