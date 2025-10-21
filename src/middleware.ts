@@ -131,19 +131,19 @@ async function isAuthenticated(request: NextRequest): Promise<boolean> {
 export default async function middleware(request: NextRequest) {
 	const { pathname } = request.nextUrl;
 
-	// First, handle internationalization
-	const intlResponse = intlMiddleware(request);
-
-	// Skip auth check for API routes, static files, and other non-page routes
+	// Skip ALL processing for static files, API routes, and Next.js internals
+	// This prevents the internationalization middleware from running on static files
 	if (
 		pathname.startsWith('/api/') ||
 		pathname.startsWith('/_next/') ||
 		pathname.startsWith('/_vercel/') ||
-		pathname.includes('.') ||
-		pathname.startsWith('/favicon')
+		pathname.includes('.')
 	) {
-		return intlResponse;
+		return NextResponse.next();
 	}
+
+	// Handle internationalization for actual pages
+	const intlResponse = intlMiddleware(request);
 
 	// Check if the route is public
 	if (isPublicRoute(pathname)) {
@@ -165,6 +165,7 @@ export default async function middleware(request: NextRequest) {
 export const config = {
 	// Match all pathnames except for
 	// - … if they start with `/api`, `/trpc`, `/_next` or `/_vercel`
-	// - … the ones containing a dot (e.g. `favicon.ico`)
-	matcher: '/((?!api|trpc|_next|_vercel|.*\\..*).*)',
+	// - … the ones containing a dot (e.g. `favicon.ico`, `installHook.js.map`)
+	// - … favicon.ico specifically
+	matcher: '/((?!api|trpc|_next|_vercel|favicon\\.ico|.*\\..*).*)',
 };

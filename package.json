@@ -13,7 +13,7 @@
 		"test:ci": "vitest run --coverage",
 		"dev": "next dev",
 		"build": "next build",
-		"start": "docker-compose up --build",
+		"start": "docker-compose down && docker-compose build --no-cache && docker-compose up",
 		"lint": "next lint",
 		"prepare": "npx husky",
 		"start:backend": "docker-compose -f .devcontainer/docker-compose.prod.yml down -v && docker-compose -f .devcontainer/docker-compose.prod.yml up -d postgres redis smtp4dev dozzle && docker-compose -f .devcontainer/docker-compose.prod.yml run --rm migrate && docker-compose -f .devcontainer/docker-compose.prod.yml up --build -d --remove-orphans api",

@@ -234,6 +234,8 @@
 		}
 	},
 	"manifest": {
-		"name": "Next.js Auth Demo"
+		"name": "Next.js Auth Demo",
+		"short_name": "Auth Demo",
+		"description": "Next.js application with hybrid authentication"
 	}
 }
